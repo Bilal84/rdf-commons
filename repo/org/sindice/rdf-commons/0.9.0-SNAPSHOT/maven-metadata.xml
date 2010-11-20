@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+  <groupId>org.sindice</groupId>
+  <artifactId>rdf-commons</artifactId>
+  <version>0.9.0-SNAPSHOT</version>
+  <versioning>
+    <snapshot>
+      <timestamp>20101120.232650</timestamp>
+      <buildNumber>1</buildNumber>
+    </snapshot>
+    <lastUpdated>20101120232659</lastUpdated>
+  </versioning>
+</metadata>
