@@ -1,0 +1,7 @@
+org.sindice.rdfcommons
+org.sindice.rdfcommons.beanmapper
+org.sindice.rdfcommons.beanmapper.annotations
+org.sindice.rdfcommons.jena
+org.sindice.rdfcommons.query
+org.sindice.rdfcommons.storage
+org.sindice.rdfcommons.vocabulary
