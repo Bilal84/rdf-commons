@@ -70,12 +70,12 @@
         <repository>
             <id>rdf-commons-googlecode</id>
             <name>RDF Commons Google Code Snapshot Repository</name>
-            <url>https://rdf-commons.googlecode.com/svn/repo/</url>
+            <url>svn:https://rdf-commons.googlecode.com/svn/repo/</url>
         </repository>
         <site>
             <id>rdf-commons-googlecode</id>
             <name>RDF Commons Developer Web Site</name>
-            <url>https://rdf-commons.googlecode.com/svn/site/</url>
+            <url>svn:https://rdf-commons.googlecode.com/svn/site/</url>
         </site>
     </distributionManagement>
 
@@ -263,6 +263,15 @@
                 </configuration>
             </plugin>
         </plugins>
+
+        <extensions>
+            <!-- Wagon extension for deploying via SVN. -->
+            <extension>
+                <groupId>org.jvnet.wagon-svn</groupId>
+                <artifactId>wagon-svn</artifactId>
+                <version>1.8</version>
+            </extension>
+        </extensions>
     </build>
 
     <dependencies>
