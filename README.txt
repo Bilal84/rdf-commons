@@ -65,7 +65,7 @@ Deploy Documentation
 
 (Developers interest only.)
 
-In order to correctly deploy the site to a remote FTP you just need to properly set up
+In order to correctly deploy the site to a remote repository you just need to properly set up
 the following lines in your <distributionManagement> of the root pom.xml:
 
     <distributionManagement>
@@ -77,8 +77,8 @@ the following lines in your <distributionManagement> of the root pom.xml:
         </site>
     </distributionManagement>
 
-Please remember that you need to set up your username and password to access to that FTP in your
-~/.m2/settings.xml as:
+Remember that you need to set up your username and password to access to that repository
+in your ~/.m2/settings.xml as:
 
     <server>
         <id>rdf-commons-googlecode</id>
@@ -86,8 +86,20 @@ Please remember that you need to set up your username and password to access to 
         <password>PASSWORD</password>
     </server>
 
+To perform the deployment simply run:
+
+    mvn clean site:site site:deploy
+
+Optionally you may require to fix the mimetype for *.html files:
+
+  cd site
+  svn up
+  find . -name "*.html" | xargs svn ps svn:mime-type text/html
+  find . -name "*.css"  | xargs svn ps svn:mime-type text/css
+  svn ci
+
 ------------------
-Make a new release
+Make a new Release
 ------------------
 
 (Developers interest only.)
@@ -96,7 +108,7 @@ To prepare a new release, just verify that the are no local changes and then inv
 
 	mvn release:prepare -Dusername=<svn.username> -Dpassword=<svn.pass>
 	
-if everything goes right, perform the release simply typing:
+if everything goes smooth, perform the release simply typing:
 
 	mvn release:perform
 
