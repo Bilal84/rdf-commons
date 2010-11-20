@@ -1,0 +1,17 @@
+
+                          RDF Commons Library 0.9.0
+                               Release Notes
+
+This is the first release of the RDF Commons Library.
+Such library aims to collect a set of general utility classes for
+dealing with RDF data, providing the following features:
+
+   - RDF dataset abstract representation;
+   - Java Bean to RDF mapping support;
+   - parsing and serialization facilities;
+   - data storing and querying facilities;
+   - abstract query language over RDF;
+   - Jena specific data structure conversion.
+
+======================================================================
+EOF
