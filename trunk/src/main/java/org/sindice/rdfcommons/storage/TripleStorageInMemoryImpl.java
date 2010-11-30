@@ -140,14 +140,14 @@ public class TripleStorageInMemoryImpl implements TripleStorage {
 
     private boolean acceptSubject(TripleStorageFilter filter, Triple triple) {
         if (filter.requireSubjectBlank()) {
-            return triple.isBlankSubject();
+            return triple.isSubjectBNode();
         }
         return matches(filter.getSubjectMatching(), triple.getSubject() );
     }
 
     private boolean acceptObject(TripleStorageFilter filter, Triple triple) {
         if (filter.requireObjectBlank()) {
-            return triple.isBlankObject();
+            return triple.isObjectBNode();
         }
         return
             matches( filter.getObjectMatching(), triple.getObject() )

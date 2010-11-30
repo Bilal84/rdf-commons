@@ -133,7 +133,7 @@ public class SerializerManagerTestCase {
 
         TripleSet blankSubjects = tripleBuffer.getTriples( new TripleFilter() {
             public boolean acceptTriple(Triple triple) {
-                return triple.isBlankSubject();
+                return triple.isSubjectBNode();
             }
         });
         logger.debug("-----");

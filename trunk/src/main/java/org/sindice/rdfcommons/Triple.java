@@ -22,7 +22,7 @@ package org.sindice.rdfcommons;
  * @author Michele Mostarda ( mostarda@fbk.eu )
  * @version $Id$
  */
-public class Triple {
+public class Triple<O> {
 
     private static final long BLANK_NODE_BASE = System.currentTimeMillis();
 
@@ -30,27 +30,29 @@ public class Triple {
 
     private final String subject;
     private final String predicate;
-    private final Object object;
+    private final O      object;
 
     private final boolean objLiteral;
-    private final boolean subBlank;
-    private final boolean objBlank;
+    private final boolean subBNode;
+    private final boolean objBNode;
 
-    public static Triple createBlankSubjectTriple(String pred, Object obj, boolean literal, boolean bobj) {
-        final String blank = nextBlankNodeIdentifier();
-        return new Triple(blank, pred, obj, literal, true, bobj);
+    public synchronized static <O> Triple createBNodeSubjectTriple(
+            String pred, O obj, boolean literal, boolean bobj
+    ) {
+        final String blank = nextBNodeIdentifier();
+        return new Triple<O>(blank, pred, obj, literal, true, bobj);
     }
 
-    public static Triple createBlankObjectTriple(String sub, boolean blank, String pred) {
-        final String blankUrl = nextBlankNodeIdentifier();
-        return new Triple(sub, pred, blankUrl, false, blank, true);
+    public synchronized static Triple createBNodeObjectTriple(String sub, boolean blank, String pred) {
+        final String blankUrl = nextBNodeIdentifier();
+        return new Triple<String>(sub, pred, blankUrl, false, blank, true);
     }
 
-    protected static String nextBlankNodeIdentifier() {
+    protected static String nextBNodeIdentifier() {
         return String.format("%s_%s", BLANK_NODE_BASE, counter++);
     }
 
-    public Triple(String sub, String pred, Object obj, boolean lit, boolean bsub, boolean bobj) {
+    public Triple(String sub, String pred, O obj, boolean lit, boolean bsub, boolean bobj) {
         if(sub == null || pred == null || obj == null) {
             throw new IllegalArgumentException("The terms a triple cannot be null.");
         }
@@ -58,22 +60,24 @@ public class Triple {
             throw new IllegalArgumentException("Object cannot be both blank node and literal.");
         }
         if( (!lit || bobj) && !(obj instanceof String) ) {
-            throw new IllegalArgumentException("If the object is a URI or a blank node then the object must be a string.");
+            throw new IllegalArgumentException(
+                    "If the object is a URI or a blank node then the object must be a string."
+            );
         }
 
         subject    = sub;
         predicate  = pred;
         object     = obj;
         objLiteral = lit;
-        subBlank   = bsub;
-        objBlank   = bobj;
+        subBNode   = bsub;
+        objBNode   = bobj;
     }
 
-    public Triple(String sub, String pred, Object obj, boolean literal) {
+    public Triple(String sub, String pred, O obj, boolean literal) {
         this(sub, pred, obj, literal, false, false);
     }
 
-    public Triple(String sub, String pred, Object obj) {
+    public Triple(String sub, String pred, O obj) {
         this(sub, pred, obj, false);
     }
 
@@ -85,7 +89,7 @@ public class Triple {
         return predicate;
     }
 
-    public Object getObject() {
+    public O getObject() {
         return object;
     }
 
@@ -97,12 +101,21 @@ public class Triple {
         return objLiteral;
     }
 
-    public boolean isBlankSubject() {
-        return subBlank;
+    public boolean isSubjectBNode() {
+        return subBNode;
     }
 
-    public boolean isBlankObject() {
-        return objBlank;
+    public boolean isObjectBNode() {
+        return objBNode;
+    }
+
+    public String toTripleString() {
+        return
+                objLiteral
+                    ?
+                toTripleLiteral()
+                    :
+                toTriple();
     }
 
     @Override
@@ -110,10 +123,10 @@ public class Triple {
         if(o == null) {
             return false;
         }
-        if( o == this) {
+        if(o == this) {
             return true;
         }
-        if( ! (o instanceof Triple) ) {
+        if(! (o instanceof Triple)) {
             return false;
         }
         Triple other = (Triple) o;
@@ -126,9 +139,9 @@ public class Triple {
                 &&
             objLiteral == other.objLiteral
                 &&
-            subBlank == other.subBlank
+            subBNode   == other.subBNode
                 &&
-            objBlank == other.objBlank;
+            objBNode   == other.objBNode;
     }
 
     @Override
@@ -138,28 +151,22 @@ public class Triple {
 
     @Override
     public String toString() {
-        return
-                objLiteral
-                    ?
-                toLiteralTriple()
-                    :
-                toTriple();
+        return toTripleString();
+    }
 
+    private String toTripleLiteral() {
+        return String.format("{ %s <%s> \"%s\"}", toSubjectString(), predicate, object);
     }
 
     private String toTriple() {
         return String.format("{ %s <%s> %s }" , toSubjectString(), predicate, toObjectString());
     }
 
-    private String toLiteralTriple() {
-        return String.format("{ %s <%s> \"%s\"}", toSubjectString(), predicate, object);
-    }
-
     private String toSubjectString() {
-        return subBlank ? String.format("_%s", subject) : String.format("<%s>", subject);
+        return subBNode ? String.format("_%s", subject) : String.format("<%s>", subject);
     }
 
     private String toObjectString() {
-        return objBlank ? String.format("_%s", object) : String.format("<%s>", object);
+        return objBNode ? String.format("_%s", object) : String.format("<%s>", object);
     }
 }

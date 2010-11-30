@@ -60,11 +60,11 @@ public class TripleIteratorImpl implements TripleIterator {
     }
 
     public boolean isBlankSubject() {
-        return next.isBlankSubject();
+        return next.isSubjectBNode();
     }
 
     public boolean isBlankObject() {
-        return next.isBlankObject();
+        return next.isObjectBNode();
     }
 
     public boolean isObjLiteral() {
