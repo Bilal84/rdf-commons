@@ -124,7 +124,7 @@ public class JenaConversionUtil {
         Model model = ModelFactory.createDefaultModel();
         for(Triple t : ts) {
             com.hp.hpl.jena.rdf.model.Resource subject;
-            if( t.isBlankSubject() ) {
+            if( t.isSubjectBNode() ) {
                 subject = model.createResource(AnonId.create( t.getSubject() ) );
             } else {
                 subject = model.createResource( t.getSubject() );
@@ -133,7 +133,7 @@ public class JenaConversionUtil {
             com.hp.hpl.jena.rdf.model.Property predicate = model.createProperty( t.getPredicate() );
 
             com.hp.hpl.jena.rdf.model.RDFNode object;
-            if( t.isBlankObject() ) {
+            if( t.isObjectBNode() ) {
                 object = model.createResource(AnonId.create( t.getObjectAsString() ) );
             } else {
                 if(t.isObjLiteral()) {
@@ -156,7 +156,7 @@ public class JenaConversionUtil {
      */
     public static com.hp.hpl.jena.graph.Node createSubjectNode(Triple triple) {
         return
-                triple.isBlankSubject()
+                triple.isSubjectBNode()
                         ?
                 Node.createAnon( AnonId.create(triple.getSubject()) ) : Node.createURI( triple.getSubject() );
     }
@@ -172,7 +172,7 @@ public class JenaConversionUtil {
         if(triple.isObjLiteral()) {
             return Node.createLiteral( triple.getObject().toString(), null, getRDFDatatype(triple.getObject()) );
         }
-        if(triple.isBlankObject()) {
+        if(triple.isObjectBNode()) {
             return Node.createAnon(AnonId.create( triple.getObjectAsString() ) );
         }
         return Node.createURI( triple.getObjectAsString() );

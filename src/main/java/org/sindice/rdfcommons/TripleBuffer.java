@@ -63,13 +63,13 @@ public class TripleBuffer implements TripleSet {
     }
 
     public String addBlankSubjectTriple(String pred, Object obj, boolean literal, boolean bobj) {
-        Triple triple = Triple.createBlankSubjectTriple(pred, obj, literal, bobj);
+        Triple triple = Triple.createBNodeSubjectTriple(pred, obj, literal, bobj);
         internalAdd(triple);
         return triple.getSubject();
     }
 
     public String addBlankObjectTriple(String sub, boolean blank, String pred) {
-        Triple triple = Triple.createBlankObjectTriple(sub, blank, pred);
+        Triple triple = Triple.createBNodeObjectTriple(sub, blank, pred);
         internalAdd(triple);
         return triple.getObjectAsString();
     }
