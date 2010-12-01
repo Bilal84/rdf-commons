@@ -16,13 +16,13 @@
 
 package org.sindice.rdfcommons.beanmapper;
 
+import org.sindice.rdfcommons.beanmapper.annotations.Type;
 import org.sindice.rdfcommons.model.Triple;
 import org.sindice.rdfcommons.model.TripleSet;
 import org.sindice.rdfcommons.beanmapper.annotations.Id;
 import org.sindice.rdfcommons.beanmapper.annotations.Ignore;
 import org.sindice.rdfcommons.beanmapper.annotations.Namespace;
 import org.sindice.rdfcommons.beanmapper.annotations.Property;
-import org.sindice.rdfcommons.beanmapper.annotations.Subject;
 import org.sindice.rdfcommons.vocabulary.SerializerVocabulary;
 
 import java.lang.annotation.Annotation;
@@ -367,25 +367,25 @@ public class BaseMapper {
     }
 
     /**
-     * Finds the subject string possibly defined for a class.
+     * Finds the type possibly defined for a class.
      *
      * @param clazz
      * @return the property string.
-     * @throws MalformedURLException if the subject string is not an URL.
+     * @throws MalformedURLException if the type string is not an URL.
      */
     protected static String findSubjectAnnotation(Class clazz) {
-        Subject subject = (Subject) findAnnotation(clazz, Subject.class);
-        if(subject == null) {
+        Type type = (Type) findAnnotation(clazz, Type.class);
+        if(type == null) {
             return null;
         }
         try {
-            return new URL( subject.value() ).toString();
+            return new URL( type.value() ).toString();
         } catch (MalformedURLException murle) {
             throw new RuntimeException(
                     String.format(
                         "Invalid annotation for class %s, the %s annotation value must be a valid URL.",
                         clazz,
-                        Subject.class
+                        Type.class
                     )
             );
         }

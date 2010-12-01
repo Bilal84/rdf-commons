@@ -18,21 +18,23 @@ package org.sindice.rdfcommons.beanmapper;
 
 import org.sindice.rdfcommons.beanmapper.annotations.Property;
 import org.sindice.rdfcommons.beanmapper.annotations.Static;
-import org.sindice.rdfcommons.beanmapper.annotations.Subject;
+import org.sindice.rdfcommons.beanmapper.annotations.Type;
 
 /**
+ * Fake bean used to test custom type declaration.
+ *
  * @author Michele Mostarda ( mostarda@fbk.eu )
  * @version $Id$
  */
 @Static
-@Subject("http://path/to#Class")
-public class CustomSubjectBean {
+@Type("http://path/to#Class")
+public class CustomTypeBean {
 
     private String field1;
 
     private String field2;
 
-    public CustomSubjectBean() {
+    public CustomTypeBean() {
         field1 = "value1";
         field2 = "value2";
     }

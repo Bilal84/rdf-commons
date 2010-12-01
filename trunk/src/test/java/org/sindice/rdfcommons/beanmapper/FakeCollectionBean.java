@@ -17,7 +17,7 @@
 package org.sindice.rdfcommons.beanmapper;
 
 import org.sindice.rdfcommons.beanmapper.annotations.Property;
-import org.sindice.rdfcommons.beanmapper.annotations.Subject;
+import org.sindice.rdfcommons.beanmapper.annotations.Type;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,7 +29,7 @@ import java.util.List;
  * @version $Id$
  * @see SerializerManagerTestCase
  */
-@Subject("http://fake/Collection")
+@Type("http://fake/Collection")
 public class FakeCollectionBean {
 
     private List<CollectionItem> items;
@@ -44,7 +44,7 @@ public class FakeCollectionBean {
         return items;
     }
 
-    @Subject("http://fake/Item")
+    @Type("http://fake/Item")
     class CollectionItem {
 
     }

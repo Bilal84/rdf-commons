@@ -168,13 +168,13 @@ public class SerializerManagerTestCase {
     }
 
     /**
-     * Tests the custom {@link org.sindice.rdfcommons.beanmapper.annotations.Subject} annotation on beans.
+     * Tests the custom {@link org.sindice.rdfcommons.beanmapper.annotations.Type} annotation on beans.
      *
      * @throws SerializationException
      */
     @Test
-    public void testCustomSubjectBean() throws SerializationException {
-        TripleBuffer tripleBuffer = serializationManager.serializeObject(new CustomSubjectBean());
+    public void testCustomTypeBean() throws SerializationException {
+        TripleBuffer tripleBuffer = serializationManager.serializeObject(new CustomTypeBean());
 
         logger.debug(tripleBuffer);
 
