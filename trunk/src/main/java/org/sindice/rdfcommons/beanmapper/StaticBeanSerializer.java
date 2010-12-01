@@ -16,14 +16,16 @@
 
 package org.sindice.rdfcommons.beanmapper;
 
+import org.apache.commons.beanutils.BeanMap;
 import org.sindice.rdfcommons.TripleSet;
 import org.sindice.rdfcommons.beanmapper.annotations.Static;
-import org.apache.commons.beanutils.BeanMap;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
 import java.util.Map;
 import java.util.Set;
+
+import static org.sindice.rdfcommons.Triple.ObjectType;
 
 /**
  * Defines the default static serializer for Java <i>beans</i>.
@@ -41,7 +43,9 @@ public class StaticBeanSerializer extends BaseSerializer<Object> {
         return true;
     }
 
-    public Identifier getIdentifier(SerializationContext context, Object bean, Annotation[] annotations, TripleSet buffer) {
+    public Identifier getIdentifier(
+            SerializationContext context, Object bean, Annotation[] annotations, TripleSet buffer
+    ) {
         return new Identifier(getClassURL(bean.getClass()), Identifier.Type.resource);
     }
 
@@ -77,7 +81,7 @@ public class StaticBeanSerializer extends BaseSerializer<Object> {
                         classURL,
                         getPropertyURL(classURL, propertyName, propertyReadMethod),
                         identifierEntry.getId(),
-                        identifierEntry.isLiteral()
+                        identifierEntry.isLiteral() ? ObjectType.literal : ObjectType.uri
                 );
 
             }

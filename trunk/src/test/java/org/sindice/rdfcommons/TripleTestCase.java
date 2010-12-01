@@ -5,6 +5,8 @@ import org.testng.annotations.Test;
 
 import java.util.GregorianCalendar;
 
+import static org.sindice.rdfcommons.Triple.*;
+
 /**
  * Test case for {@link org.sindice.rdfcommons.Triple} class.
  *
@@ -30,7 +32,9 @@ public class TripleTestCase {
 
     @Test
     public void testSPOLiteral() {
-        final Triple<String> triple = new Triple<String>("sub-value", "pred-value", "obj-value", true);
+        final Triple<String> triple = new Triple<String>(
+                "sub-value", "pred-value", "obj-value", ObjectType.literal
+        );
         Assert.assertEquals(triple.getSubject()  , "sub-value" );
         Assert.assertEquals(triple.getPredicate(), "pred-value");
         Assert.assertEquals(triple.getObject()   , "obj-value" );
@@ -46,7 +50,9 @@ public class TripleTestCase {
 
     @Test
     public void testSPOImplicitTypedLiteral1() {
-        final Triple<Object> triple = new Triple<Object>("sub-value", "pred-value", 13.4F, true);
+        final Triple<Object> triple = new Triple<Object>(
+                "sub-value", "pred-value", 13.4F, ObjectType.literal
+        );
         Assert.assertEquals(triple.getSubject()  , "sub-value" );
         Assert.assertEquals(triple.getPredicate(), "pred-value");
         Assert.assertEquals(triple.getObject()   , 13.4F );
@@ -67,7 +73,9 @@ public class TripleTestCase {
     public void testSPOImplicitTypedLiteral2() {
         final GregorianCalendar gc = new GregorianCalendar();
         gc.set(2010, GregorianCalendar.NOVEMBER, 23);
-        final Triple<Object> triple = new Triple<Object>("sub-value", "pred-value", gc.getTime(), true);
+        final Triple<Object> triple = new Triple<Object>(
+                "sub-value", "pred-value", gc.getTime(), ObjectType.literal
+        );
         Assert.assertEquals(triple.getSubject()  , "sub-value" );
         Assert.assertEquals(triple.getPredicate(), "pred-value");
         Assert.assertEquals(triple.getObject()   , gc.getTime());
@@ -87,7 +95,9 @@ public class TripleTestCase {
     @Test
     public void testSPOExplicitTypedLiteral() {
         final Point point = new Point(12.7F, 13.9F);
-        final Triple<Object> triple = new Triple<Object>("sub-value", "pred-value", point, true);
+        final Triple<Object> triple = new Triple<Object>(
+                "sub-value", "pred-value", point, ObjectType.literal
+        );
         Assert.assertEquals(triple.getSubject()  , "sub-value" );
         Assert.assertEquals(triple.getPredicate(), "pred-value");
         Assert.assertEquals(triple.getObject()   , point );
@@ -107,7 +117,9 @@ public class TripleTestCase {
     @Test
     public void testSPOLangLiteral() {
         final Message message = new Message("Hello World!!");
-        final Triple<Object> triple = new Triple<Object>("sub-value", "pred-value", message, true);
+        final Triple<Object> triple = new Triple<Object>(
+                "sub-value", "pred-value", message, ObjectType.literal
+        );
         Assert.assertEquals(triple.getSubject()  , "sub-value" );
         Assert.assertEquals(triple.getPredicate(), "pred-value");
         Assert.assertEquals(triple.getObject()   , message );
@@ -127,7 +139,8 @@ public class TripleTestCase {
     @Test
     public void testSBlankPO() {
         final Point point = new Point(12.7F, 13.9F);
-        final Triple<Object> triple = new Triple<Object>("sub-bnode", "pred-value", point, true, true, false);
+        final Triple<Object> triple = new Triple<Object>(
+                "sub-bnode", "pred-value", point, SubjectType.bnode, ObjectType.literal);
         Assert.assertEquals(triple.getSubject()  , "sub-bnode" );
         Assert.assertEquals(triple.getPredicate(), "pred-value");
         Assert.assertEquals(triple.getObject()   , point );
@@ -146,7 +159,9 @@ public class TripleTestCase {
 
     @Test
     public void testSBlankPOBlank() {
-        final Triple<Object> triple = new Triple<Object>("sub-bnode", "pred-value", "obj-bnode", false, true, true);
+        final Triple<Object> triple = new Triple<Object>(
+                "sub-bnode", "pred-value", "obj-bnode",  SubjectType.bnode, ObjectType.bnode
+        );
         Assert.assertEquals(triple.getSubject()  , "sub-bnode" );
         Assert.assertEquals(triple.getPredicate(), "pred-value");
         Assert.assertEquals(triple.getObject()   , "obj-bnode" );

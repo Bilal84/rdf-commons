@@ -33,6 +33,8 @@ import org.sindice.rdfcommons.storage.TripleStorageFilter;
 import java.io.OutputStream;
 import java.util.Date;
 
+import static org.sindice.rdfcommons.Triple.*;
+
 /**
  * Utility functions to convert data from <i>jena</i> domain to
  * <i>sindice.rdfcommons</i> domain.
@@ -50,6 +52,7 @@ public class JenaConversionUtil {
      * @param triple Jena triple to convert.
      * @return the equivalent {@link org.sindice.rdfcommons.Triple}.
      */
+    @SuppressWarnings("unchecked")
     public static Triple convertJenaTripleToTriple(com.hp.hpl.jena.graph.Triple triple) {
         final Node subject = triple.getSubject();
         final Node object  = triple.getObject();
@@ -74,7 +77,8 @@ public class JenaConversionUtil {
                 subjectStr,
                 triple.getPredicate().getURI(),
                 objectValue,
-                object.isLiteral(), subject.isBlank(), object.isBlank()
+                subject.isBlank() ? SubjectType.bnode : SubjectType.uri,
+                getObjectType(object)
         );
     }
 
@@ -251,7 +255,10 @@ public class JenaConversionUtil {
      */
     public static String convertToSparqlConstructQuery(String graphName, TripleStorageFilter tsf) {
         return String.format(
-                "PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> CONSTRUCT {%s %s %s} FROM <%s> WHERE {%s %s %s %s %s %s}",
+                "PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> " +
+                "CONSTRUCT {%s %s %s} " +
+                "FROM <%s> " +
+                "WHERE {%s %s %s %s %s %s}",
 
                 toTerm( "?s", tsf.getSubjectMatching()   ),
                 toTerm( "?p", tsf.getPredicateMatching() ),
@@ -325,6 +332,16 @@ public class JenaConversionUtil {
 
     private static String toObjectTerm(String var, Object in) {
         return in == null ? var : String.format("\"%s\"^^xsd:%s", in.toString(), getRDFDatatypeFragment(in) );
+    }
+
+    private static Triple.ObjectType getObjectType(Node node) {
+        if(node.isLiteral()) {
+            return ObjectType.literal;
+        }
+        if(node.isBlank()) {
+            return ObjectType.bnode;
+        }
+        return ObjectType.uri;
     }
 
 }

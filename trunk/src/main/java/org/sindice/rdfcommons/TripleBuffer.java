@@ -16,6 +16,9 @@
 
 package org.sindice.rdfcommons;
 
+import org.sindice.rdfcommons.Triple.ObjectType;
+import org.sindice.rdfcommons.Triple.SubjectType;
+
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.util.ArrayList;
@@ -50,28 +53,19 @@ public class TripleBuffer implements TripleSet {
         this( Arrays.asList(triples) );
     }
 
-    public void addTriple(String sub, String pred, Object obj) {
-        internalAdd( new Triple(sub, pred, obj) );
+    public <O> void addTriple(String sub, String pred, O obj) {
+        internalAdd( new Triple<O>(sub, pred, obj) );
     }
 
-    public void addTriple(String sub, String pred, Object obj, boolean literal) {
-        internalAdd( new Triple(sub, pred, obj, literal) );
+    public <O> void addTriple(String sub, String pred, O obj, ObjectType objectType) {
+        internalAdd( new Triple<O>(sub, pred, obj, objectType) );
     }
 
-    public void addTriple(String sub, boolean bsub, String pred, Object obj, boolean literal, boolean bobj) {
-        internalAdd( new Triple(sub, pred, obj, literal, bsub, bobj) );
-    }
-
-    public String addBlankSubjectTriple(String pred, Object obj, boolean literal, boolean bobj) {
-        Triple triple = Triple.createBNodeSubjectTriple(pred, obj, literal, bobj);
-        internalAdd(triple);
-        return triple.getSubject();
-    }
-
-    public String addBlankObjectTriple(String sub, boolean blank, String pred) {
-        Triple triple = Triple.createBNodeObjectTriple(sub, blank, pred);
-        internalAdd(triple);
-        return triple.getObjectAsString();
+    public <O> void addTriple(
+            String sub, String pred, O obj,
+            SubjectType subjectType, ObjectType objectType
+    ) {
+        internalAdd( new Triple<O>(sub, pred, obj, subjectType, objectType) );
     }
 
     public void addTriple(Triple triple) {
@@ -88,24 +82,39 @@ public class TripleBuffer implements TripleSet {
         internalRemove(triple);
     }
 
-    public void removeTriple(String sub, String pred, Object obj, boolean literal) {
-        triples.remove( new Triple(sub, pred, obj, literal)  );
+    public <O> String addBNodeSubjectTriple(String pred, O obj, ObjectType objectType) {
+        Triple triple = Triple.createBNodeSubjectTriple(pred, obj, objectType);
+        internalAdd(triple);
+        return triple.getSubject();
     }
 
-    public void removeTriple(String sub, String pred, Object obj) {
-        triples.remove( new Triple(sub, pred, obj)  );
+    public String addBNodeObjectTriple(String sub, String pred, SubjectType subjectType) {
+        Triple triple = Triple.createBNodeObjectTriple(sub, pred, subjectType);
+        internalAdd(triple);
+        return triple.getObjectAsString();
     }
 
-    public boolean containsTriple(String sub, String pred, Object obj,  boolean literal, boolean blankSub, boolean blankObj) {
-        return triples.contains( new Triple(sub, pred, obj, literal, blankSub, blankObj) );
+    public <O> void removeTriple(String sub, String pred, O obj) {
+        triples.remove( new Triple<O>(sub, pred, obj)  );
     }
 
-    public boolean containsTriple(String sub, String pred, Object obj, boolean literal) {
-        return triples.contains( new Triple(sub, pred, obj, literal)  );
+    public <O> void removeTriple(String sub, String pred, O obj, ObjectType objectType) {
+        triples.remove( new Triple<O>(sub, pred, obj, objectType)  );
     }
 
-    public boolean containsTriple(String sub, String pred, Object obj) {
-        return triples.contains( new Triple(sub, pred, obj)  );
+    public <O> boolean containsTriple(String sub, String pred, O obj) {
+        return triples.contains( new Triple<O>(sub, pred, obj) );
+    }
+
+    public <O> boolean containsTriple(String sub, String pred, O obj, ObjectType objectType) {
+        return triples.contains( new Triple<O>(sub, pred, obj, objectType)  );
+    }
+
+    public <O> boolean containsTriple(
+            String sub, String pred, O obj,
+            SubjectType subjectType, ObjectType objectType
+    ) {
+        return triples.contains( new Triple<O>(sub, pred, obj, subjectType, objectType) );
     }
 
     public void add(TripleSet ts) {

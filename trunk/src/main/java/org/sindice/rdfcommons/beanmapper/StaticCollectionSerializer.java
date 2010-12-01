@@ -23,6 +23,8 @@ import org.sindice.rdfcommons.vocabulary.RDFSVocabulary;
 import java.lang.annotation.Annotation;
 import java.util.Collection;
 
+import static org.sindice.rdfcommons.Triple.ObjectType;
+
 /**
  * Serializer for bags.
  *
@@ -39,7 +41,12 @@ public class StaticCollectionSerializer extends BaseSerializer<Collection> {
         return true;
     }
 
-    public Identifier getIdentifier(SerializationContext context, Collection object, Annotation[] annotations, TripleSet buffer) {
+    public Identifier getIdentifier(
+            SerializationContext context,
+            Collection object,
+            Annotation[] annotations,
+            TripleSet buffer
+    ) {
         return new Identifier(getClassURL(Collection.class), Identifier.Type.resource);
     }
 
@@ -52,7 +59,10 @@ public class StaticCollectionSerializer extends BaseSerializer<Collection> {
         final String classURL = getClassURL(Collection.class);
         for (Object collectionItem : collection) {
             Identifier identifierItem = context.serialize(context, collectionItem, annotations, buffer);
-            buffer.addTriple(classURL, RDFSVocabulary.MEMBER, identifierItem.getId(), identifierItem.isLiteral());
+            buffer.addTriple(
+                    classURL, RDFSVocabulary.MEMBER, identifierItem.getId(),
+                    identifierItem.isLiteral() ? ObjectType.literal : ObjectType.uri
+            );
         }
         return null;
     }

@@ -25,6 +25,9 @@ import org.sindice.rdfcommons.vocabulary.SerializerVocabulary;
 import java.lang.annotation.Annotation;
 import java.util.Collection;
 
+import static org.sindice.rdfcommons.Triple.ObjectType;
+import static org.sindice.rdfcommons.Triple.SubjectType;
+
 /**
  * Dafault serializer for {@link java.util.Collection} classes.
  *
@@ -41,7 +44,12 @@ public class CollectionSerializer extends BaseSerializer<Collection> {
         return true;
     }
 
-    public Identifier getIdentifier(SerializationContext context, Collection collection, Annotation[] annotations, TripleSet buffer) {
+    public Identifier getIdentifier(
+            SerializationContext context,
+            Collection collection,
+            Annotation[] annotations,
+            TripleSet buffer
+    ) {
         return new Identifier(getObjectURL(collection), Identifier.Type.resource);
     }
 
@@ -61,9 +69,11 @@ public class CollectionSerializer extends BaseSerializer<Collection> {
             for(Object collectionItem : collection) {
                 Identifier root = context.serialize(context, collectionItem, getAnnotations(collectionItem), buffer);
                 buffer.addTriple(
-                        instanceNode, false,
+                        instanceNode,
                         propertyAnnotation.value(),
-                        root.getId(), root.isLiteral(), root.isBlank()
+                        root.getId(),
+                        SubjectType.uri,
+                        getObjectType(root)
                 );
             }
             return null;
@@ -72,17 +82,34 @@ public class CollectionSerializer extends BaseSerializer<Collection> {
         // Otherwise a sequence pattern is used.
         buffer.addTriple(instanceNode, RDFVocabulary.TYPE, RDFVocabulary.SEQ);
         for(Object collectionItem : collection) {
-            final String blankObject = buffer.addBlankObjectTriple(instanceNode, false, RDFSVocabulary.MEMBER);
-            buffer.addTriple(blankObject, true, SerializerVocabulary.ITEM_INDEX, Integer.toString(index), true, false );
+            final String blankObject = buffer.addBNodeObjectTriple(
+                    instanceNode, RDFSVocabulary.MEMBER, SubjectType.uri
+            );
+            buffer.addTriple(
+                    blankObject, SerializerVocabulary.ITEM_INDEX, Integer.toString(index),
+                    SubjectType.bnode, ObjectType.literal
+            );
             Identifier root = context.serialize(context, collectionItem, getAnnotations(collectionItem), buffer);
             buffer.addTriple(
-                    blankObject, true,
+                    blankObject,
                     SerializerVocabulary.ITEM_VALUE,
-                    root.getId(), root.isLiteral(), root.isBlank()
+                    root.getId(),
+                    SubjectType.bnode,
+                    getObjectType(root)
             );
             index++;
         }
         return null;
+    }
+
+    ObjectType getObjectType(Identifier id) {
+        if(id.isLiteral()) {
+            return ObjectType.literal;
+        }
+        if(id.isBlank()) {
+            return ObjectType.bnode;
+        }
+        return ObjectType.uri;
     }
 
 }

@@ -16,6 +16,7 @@
 
 package org.sindice.rdfcommons.beanmapper;
 
+import org.sindice.rdfcommons.Triple;
 import org.sindice.rdfcommons.TripleSet;
 import org.sindice.rdfcommons.beanmapper.annotations.Id;
 import org.sindice.rdfcommons.beanmapper.annotations.Ignore;
@@ -179,7 +180,9 @@ public class BaseMapper {
                 throw new IllegalArgumentException( String.format("Expected a URL for literal '%s'.", literal) );
             }
         }
-        throw new UnsupportedOperationException( String.format("Cannot convert literal %s to type %s", literal, type) );
+        throw new UnsupportedOperationException(
+                String.format("Cannot convert literal %s to type %s", literal, type)
+        );
     }
 
     /**
@@ -257,7 +260,7 @@ public class BaseMapper {
      */
     protected static String urifyKey(Identifier key, TripleSet buffer) {
         if(key.isLiteral()) {
-            return buffer.addBlankSubjectTriple(SerializerVocabulary.KEY, key.getId(), true, false);
+            return buffer.addBNodeSubjectTriple(SerializerVocabulary.KEY, key.getId(), Triple.ObjectType.literal);
         } else {
             return (String) key.getId();
         }

@@ -71,7 +71,7 @@ public class TripleSetQueryExecutorTestCase {
     @Test
     public void testCreateMatch() {
         Match match = TripleSetQueryExecutor.createMatch(
-                new Triple("1", "2", "3"),
+                new Triple<String>("1", "2", "3"),
                 new Match(queryContext, "?a",  "2", "?c"),
                 new Match(queryContext, "?c", "?d", "?e")
         );

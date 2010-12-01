@@ -16,6 +16,8 @@
 
 package org.sindice.rdfcommons;
 
+import org.sindice.rdfcommons.Triple.*;
+
 import java.io.PrintStream;
 import java.util.List;
 
@@ -30,33 +32,32 @@ public interface TripleSet extends Iterable<Triple> {
     /**
      * Adds a triple to the triple set.
      *
-     * @param sub
-     * @param pred
-     * @param obj
+     * @param sub the URI triple subject.
+     * @param pred the URI triple predicate.
+     * @param obj the URI triple object
      */
-    void addTriple(String sub, String pred, Object obj);
+     <O> void addTriple(String sub, String pred, O obj);
 
     /**
      * Adds a triple to the triple set with object literal.
      *
-     * @param sub
-     * @param pred
-     * @param obj
-     * @param literal
+     * @param sub the URI triple subject.
+     * @param pred the URI triple predicate.
+     * @param obj the triple object, of type declared by {#objectType}.
+     * @param objectType the object type.
      */
-    void addTriple(String sub, String pred, Object obj, boolean literal);
+     <O> void addTriple(String sub, String pred, O obj, ObjectType objectType);
 
     /**
      * Adds a blank subject triple with explicit value.
      *
      * @param sub the subject URI or identifier.
-     * @param bsub if <code>true</code>  the subject is a blank node.
      * @param pred the predicate string URI.
      * @param obj the object URI or literal.
-     * @param literal if <code>true</code> the object is a literal.
-     * @param bobj if <code>true</code> the object is a blank node.
+     * @param subjectType the type of the subject.
+     * @param objectType the type of the object.
      */
-    void addTriple(String sub, boolean bsub, String pred, Object obj, boolean literal, boolean bobj);
+    <O> void addTriple(String sub, String pred, O obj, SubjectType subjectType, ObjectType objectType);
 
     /**
      * Adds a triple to the set.
@@ -77,21 +78,20 @@ public interface TripleSet extends Iterable<Triple> {
      *
      * @param pred the predicate URI.
      * @param obj the object string.
-     * @param literal if <code>true</code> the object is literal.
-     * @param bobj if <code>true</code> the object is blank. 
+     * @param objectType the type of the object.
      * @return the blank subject.
      */
-    String addBlankSubjectTriple(String pred, Object obj, boolean literal, boolean bobj);
+    <O> String addBNodeSubjectTriple(String pred, O obj, ObjectType objectType);
 
     /**
      * Adds a triple with blank object.
      *
      * @param sub
-     * @param bsub if <code>true</code> the subject is blank.
      * @param pred
+     * @param subjectType
      * @return the blank object.
      */
-    String addBlankObjectTriple(String sub, boolean bsub, String pred);
+    String addBNodeObjectTriple(String sub, String pred, SubjectType subjectType);
 
     /**
      * Removes a triple from the triple set.
@@ -100,7 +100,7 @@ public interface TripleSet extends Iterable<Triple> {
      * @param pred
      * @param obj
      */
-    void removeTriple(String sub, String pred, Object obj);
+    <O> void removeTriple(String sub, String pred, O obj);
 
     /**
      * Removes a triple from the triple set with object literal.
@@ -108,9 +108,9 @@ public interface TripleSet extends Iterable<Triple> {
      * @param sub
      * @param pred
      * @param obj
-     * @param literal
+     * @param objectType
      */
-    void removeTriple(String sub, String pred, Object obj, boolean literal);
+    <O> void removeTriple(String sub, String pred, O obj, ObjectType objectType);
 
     /**
      * Checks if a triple is contained in the triple set.
@@ -120,7 +120,7 @@ public interface TripleSet extends Iterable<Triple> {
      * @param obj
      * @return <code>true</code> if contained, <code>false</code> otherwise.
      */
-    boolean containsTriple(String sub, String pred, Object obj, boolean literal, boolean bsub, boolean bobj); //TODO: (HIGH) introduce enumerations instead of booleans.
+    <O> boolean containsTriple(String sub, String pred, O obj, SubjectType subjectType, ObjectType objectType);
 
     /**
      * Returns the triple set iterator.
