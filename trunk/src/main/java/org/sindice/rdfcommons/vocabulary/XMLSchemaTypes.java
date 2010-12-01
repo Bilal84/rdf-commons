@@ -3,6 +3,8 @@ package org.sindice.rdfcommons.vocabulary;
 import java.text.SimpleDateFormat;
 
 /**
+ * Main <a href="http://www.w3.org/TR/xmlschema-1/">XML Schema</i> data types.
+ *
  * @author Michele Mostarda (mostarda@fbk.eu)
  */
 public class XMLSchemaTypes {
