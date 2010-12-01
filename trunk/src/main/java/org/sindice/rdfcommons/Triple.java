@@ -16,6 +16,10 @@
 
 package org.sindice.rdfcommons;
 
+import org.sindice.rdfcommons.vocabulary.XMLSchemaTypes;
+
+import java.util.Date;
+
 /**
  * Models an <i>RDF</i> triple.
  *
@@ -93,7 +97,54 @@ public class Triple<O> {
         return object;
     }
 
+    public String getObjectImplicitType() {
+        if(object.getClass().equals(boolean.class) || object.getClass().equals(Boolean.class)) {
+            return XMLSchemaTypes.BOOLEAN;
+        }
+        if(object.getClass().equals(byte.class) || object.getClass().equals(Byte.class)) {
+            return XMLSchemaTypes.BYTE;
+        }
+        if(object.getClass().equals(short.class) || object.getClass().equals(Short.class)) {
+            return XMLSchemaTypes.SHORT;
+        }
+        if(object.getClass().equals(int.class) || object.getClass().equals(Integer.class)) {
+            return XMLSchemaTypes.INT;
+        }
+        if(object.getClass().equals(long.class) || object.getClass().equals(Long.class)) {
+            return XMLSchemaTypes.LONG;
+        }
+        if(object.getClass().equals(float.class) || object.getClass().equals(Float.class)) {
+            return XMLSchemaTypes.FLOAT;
+        }
+        if(object.getClass().equals(double.class) || object.getClass().equals(Double.class)) {
+            return XMLSchemaTypes.DOUBLE;
+        }
+        if(object instanceof Date) {
+            return XMLSchemaTypes.DATE;
+        }
+        return null;
+    }
+
+    public String getObjectType() {
+        if(object instanceof TypedLiteral) {
+            final TypedLiteral typedLiteral = (TypedLiteral) object;
+            return typedLiteral.getType();
+        }
+        return getObjectImplicitType();
+    }
+
+    public String getObjectLanguage() {
+        if(object instanceof LanguageLiteral) {
+            final LanguageLiteral languageLiteral = (LanguageLiteral) object;
+            return languageLiteral.getLanguage();
+        }
+        return null;
+    }
+
     public String getObjectAsString() {
+        if( object instanceof Date) {
+            return XMLSchemaTypes.dateFormatter.format((Date) object);
+        }
         return object.toString();
     }
 
@@ -110,12 +161,9 @@ public class Triple<O> {
     }
 
     public String toTripleString() {
-        return
-                objLiteral
-                    ?
-                toTripleLiteral()
-                    :
-                toTriple();
+        final StringBuilder sb = new StringBuilder();
+        toTripleString(sb);
+        return sb.toString();
     }
 
     @Override
@@ -151,22 +199,49 @@ public class Triple<O> {
 
     @Override
     public String toString() {
-        return toTripleString();
+        return "{" + toTripleString() + "}";
     }
 
-    private String toTripleLiteral() {
-        return String.format("{ %s <%s> \"%s\"}", toSubjectString(), predicate, object);
+    private void toTripleString(StringBuilder sb) {
+        toSubjectString(sb);
+        sb.append(' ');
+        toPredicateString(sb);
+        sb.append(' ');
+        toObjectString(sb);
     }
 
-    private String toTriple() {
-        return String.format("{ %s <%s> %s }" , toSubjectString(), predicate, toObjectString());
+    private void toSubjectString(StringBuilder sb) {
+        if(subBNode) {
+            sb.append("_:").append(subject);
+        } else {
+            sb.append('<').append(subject).append('>');
+        }
     }
 
-    private String toSubjectString() {
-        return subBNode ? String.format("_%s", subject) : String.format("<%s>", subject);
+    private void toPredicateString(StringBuilder sb) {
+        sb.append('<');
+        sb.append(predicate);
+        sb.append('>');
     }
 
-    private String toObjectString() {
-        return objBNode ? String.format("_%s", object) : String.format("<%s>", object);
+    private void toObjectString(StringBuilder sb) {
+        if(objBNode) {
+            sb.append("_:").append(object);
+            return;
+        }
+        if(! objLiteral) {
+            sb.append('<').append(object).append('>');
+            return;
+        }
+        sb.append('"').append( getObjectAsString() ).append('"');
+        final String objectType = getObjectType();
+        if(objectType != null) {
+            sb.append("^^").append('<').append(objectType).append('>');
+            return;
+        }
+        final String objectLang = getObjectLanguage();
+        if(objectLang != null) {
+            sb.append('@').append(objectLang);
+        }
     }
 }
