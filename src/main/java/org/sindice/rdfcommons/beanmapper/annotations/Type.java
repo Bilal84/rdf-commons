@@ -22,15 +22,13 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * Allows to customize the URL used to express a subject.
+ * Allows to customize the <i>URL</i> used to express a bean <i>RDF Schema</i> type.
  *
  * @author Michele Mostarda ( mostarda@fbk.eu )
  * @version $Id$
  */
 @Retention(RetentionPolicy.RUNTIME)
 @Target( {ElementType.TYPE})
-public @interface Subject {
-
+public @interface Type {
      String value();
-
 }
