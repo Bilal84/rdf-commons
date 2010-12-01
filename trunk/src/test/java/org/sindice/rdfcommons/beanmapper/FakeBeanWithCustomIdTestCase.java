@@ -16,7 +16,7 @@
 
 package org.sindice.rdfcommons.beanmapper;
 
-import org.sindice.rdfcommons.TripleSet;
+import org.sindice.rdfcommons.model.TripleSet;
 import org.sindice.rdfcommons.beanmapper.annotations.Id;
 import org.sindice.rdfcommons.beanmapper.annotations.Property;
 import org.apache.log4j.Logger;

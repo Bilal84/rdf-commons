@@ -16,7 +16,7 @@
 
 package org.sindice.rdfcommons.beanmapper;
 
-import org.sindice.rdfcommons.ResultSet;
+import org.sindice.rdfcommons.storage.ResultSet;
 import org.sindice.rdfcommons.beanmapper.annotations.Property;
 import org.sindice.rdfcommons.vocabulary.RDFSVocabulary;
 import org.sindice.rdfcommons.vocabulary.RDFVocabulary;

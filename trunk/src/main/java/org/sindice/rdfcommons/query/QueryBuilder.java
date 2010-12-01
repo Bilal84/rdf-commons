@@ -16,10 +16,10 @@
 
 package org.sindice.rdfcommons.query;
 
-import org.sindice.rdfcommons.ResultSet;
-import org.sindice.rdfcommons.SparqlEndPoint;
-import org.sindice.rdfcommons.SparqlEndpointException;
-import org.sindice.rdfcommons.TripleSet;
+import org.sindice.rdfcommons.storage.ResultSet;
+import org.sindice.rdfcommons.storage.SparqlEndPoint;
+import org.sindice.rdfcommons.storage.SparqlEndpointException;
+import org.sindice.rdfcommons.model.TripleSet;
 import org.sindice.rdfcommons.storage.TripleStorage;
 
 /**
@@ -99,7 +99,7 @@ public class QueryBuilder {
      *
      * @param ts the input storage.
      * @return the obtained result set.
-     * @throws org.sindice.rdfcommons.SparqlEndpointException if the triple storage doesn't support a <i>SPARQL</i> endpoint.
+     * @throws org.sindice.rdfcommons.storage.SparqlEndpointException if the triple storage doesn't support a <i>SPARQL</i> endpoint.
      */
     public ResultSet execOnStorage(TripleStorage ts) throws SparqlEndpointException {
         SparqlEndPoint se = ts.getSparqlEndPoint();

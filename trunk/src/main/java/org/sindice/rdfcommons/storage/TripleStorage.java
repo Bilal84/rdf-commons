@@ -16,15 +16,14 @@
 
 package org.sindice.rdfcommons.storage;
 
-import org.sindice.rdfcommons.SparqlEndPoint;
-import org.sindice.rdfcommons.TripleIterator;
-import org.sindice.rdfcommons.TripleSet;
+import org.sindice.rdfcommons.model.TripleIterator;
+import org.sindice.rdfcommons.model.TripleSet;
 
 
 /**
  * Defines the triples storage.
  *
- * @see org.sindice.rdfcommons.TripleFilter
+ * @see org.sindice.rdfcommons.model.TripleFilter
  * @author Michele Mostarda ( mostarda@fbk.eu )
  * @version $Id$
  */

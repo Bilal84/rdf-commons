@@ -15,6 +15,6 @@
  */
 
 /**
- * Declares <i>RDF</i> storage specific classes.
+ * This package provides <i>RDF</i> serialization facilities.
  */
-package org.sindice.rdfcommons.storage;
+package org.sindice.rdfcommons.serialization;

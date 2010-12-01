@@ -16,9 +16,9 @@
 
 package org.sindice.rdfcommons.beanmapper;
 
-import org.sindice.rdfcommons.ResultSet;
-import org.sindice.rdfcommons.SparqlEndpointException;
-import org.sindice.rdfcommons.TripleSet;
+import org.sindice.rdfcommons.storage.ResultSet;
+import org.sindice.rdfcommons.storage.SparqlEndpointException;
+import org.sindice.rdfcommons.model.TripleSet;
 import org.sindice.rdfcommons.query.QueryBuilder;
 import org.sindice.rdfcommons.storage.TripleStorage;
 

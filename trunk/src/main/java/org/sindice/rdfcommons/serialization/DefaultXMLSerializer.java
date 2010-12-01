@@ -14,7 +14,9 @@
  * limitations under the License.
  */
 
-package org.sindice.rdfcommons;
+package org.sindice.rdfcommons.serialization;
+
+import org.sindice.rdfcommons.storage.ResultSet;
 
 import java.io.OutputStream;
 import java.io.PrintWriter;

@@ -14,17 +14,20 @@
  * limitations under the License.
  */
 
-package org.sindice.rdfcommons;
+package org.sindice.rdfcommons.model;
 
+import org.sindice.rdfcommons.model.LanguageLiteral;
+import org.sindice.rdfcommons.model.Triple;
+import org.sindice.rdfcommons.model.TypedLiteral;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import java.util.GregorianCalendar;
 
-import static org.sindice.rdfcommons.Triple.*;
+import static org.sindice.rdfcommons.model.Triple.*;
 
 /**
- * Test case for {@link org.sindice.rdfcommons.Triple} class.
+ * Test case for {@link org.sindice.rdfcommons.model.Triple} class.
  *
  * @author Michele Mostarda (mostarda@fbk.eu)
  */

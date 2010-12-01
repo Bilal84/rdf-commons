@@ -14,25 +14,7 @@
  * limitations under the License.
  */
 
-package org.sindice.rdfcommons;
-
-import java.io.OutputStream;
-
 /**
- * This class is responsible for serializing RDF objects in XML.
- *
- * @author Michele Mostarda ( mostarda@fbk.eu )
- * @version $Id$
+ * Declares <i>RDF</i> parser facilities.
  */
-public interface ResultSetXMLSerializer {
-
-    /**
-     * Serializes the content of the given {@link ResultSet}
-     * in the output stream.
-     *
-     * @param rs result set to serialize.
-     * @param os output strem to dump the content.
-     */
-    void serialize(ResultSet rs, OutputStream os);
-
-}
+package org.sindice.rdfcommons.parser;

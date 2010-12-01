@@ -18,14 +18,14 @@ package org.sindice.rdfcommons.jena;
 
 import com.hp.hpl.jena.rdf.model.Model;
 import com.hp.hpl.jena.rdf.model.ModelFactory;
-import org.sindice.rdfcommons.RDFParser;
-import org.sindice.rdfcommons.RDFParserException;
-import org.sindice.rdfcommons.TripleSet;
+import org.sindice.rdfcommons.parser.RDFParser;
+import org.sindice.rdfcommons.parser.RDFParserException;
+import org.sindice.rdfcommons.model.TripleSet;
 
 import java.io.InputStream;
 
 /**
- * Default implementation of {@link org.sindice.rdfcommons.RDFParser}.
+ * Default implementation of {@link org.sindice.rdfcommons.parser.RDFParser}.
  *
  * @author Michele Mostarda ( mostarda@fbk.eu )
  * @version $Id$

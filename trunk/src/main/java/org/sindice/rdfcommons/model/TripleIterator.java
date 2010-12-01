@@ -14,10 +14,10 @@
  * limitations under the License.
  */
 
-package org.sindice.rdfcommons;
+package org.sindice.rdfcommons.model;
 
 /**
- * Defines the iterator over a {@link TripleSet}.
+ * Defines the iterator over a {@link org.sindice.rdfcommons.model.TripleSet}.
  *
  * @author Michele Mostarda ( mostarda@fbk.eu )
  * @version $Id$

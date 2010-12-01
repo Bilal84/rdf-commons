@@ -16,12 +16,12 @@
 
 package org.sindice.rdfcommons.query;
 
-import org.sindice.rdfcommons.InMemoryResultSet;
-import org.sindice.rdfcommons.ResultSet;
-import org.sindice.rdfcommons.Triple;
-import org.sindice.rdfcommons.TripleBuffer;
-import org.sindice.rdfcommons.TripleFilter;
-import org.sindice.rdfcommons.TripleSet;
+import org.sindice.rdfcommons.storage.InMemoryResultSet;
+import org.sindice.rdfcommons.storage.ResultSet;
+import org.sindice.rdfcommons.model.Triple;
+import org.sindice.rdfcommons.model.TripleBuffer;
+import org.sindice.rdfcommons.model.TripleFilter;
+import org.sindice.rdfcommons.model.TripleSet;
 
 import java.util.ArrayList;
 import java.util.HashSet;

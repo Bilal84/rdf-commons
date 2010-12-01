@@ -16,9 +16,9 @@
 
 package org.sindice.rdfcommons.query;
 
-import org.sindice.rdfcommons.ResultSet;
-import org.sindice.rdfcommons.TripleBuffer;
-import org.sindice.rdfcommons.TripleSet;
+import org.sindice.rdfcommons.storage.ResultSet;
+import org.sindice.rdfcommons.model.TripleBuffer;
+import org.sindice.rdfcommons.model.TripleSet;
 import org.apache.log4j.Logger;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;

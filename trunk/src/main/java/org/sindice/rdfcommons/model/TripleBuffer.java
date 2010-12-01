@@ -14,10 +14,10 @@
  * limitations under the License.
  */
 
-package org.sindice.rdfcommons;
+package org.sindice.rdfcommons.model;
 
-import org.sindice.rdfcommons.Triple.ObjectType;
-import org.sindice.rdfcommons.Triple.SubjectType;
+import org.sindice.rdfcommons.model.Triple.ObjectType;
+import org.sindice.rdfcommons.model.Triple.SubjectType;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;

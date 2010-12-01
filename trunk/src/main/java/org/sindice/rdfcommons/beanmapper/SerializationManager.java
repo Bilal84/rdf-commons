@@ -16,8 +16,8 @@
 
 package org.sindice.rdfcommons.beanmapper;
 
-import org.sindice.rdfcommons.TripleBuffer;
-import org.sindice.rdfcommons.TripleSet;
+import org.sindice.rdfcommons.model.TripleBuffer;
+import org.sindice.rdfcommons.model.TripleSet;
 
 import java.lang.annotation.Annotation;
 import java.util.ArrayList;

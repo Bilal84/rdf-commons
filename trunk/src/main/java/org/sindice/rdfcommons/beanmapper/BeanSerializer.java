@@ -17,7 +17,7 @@
 package org.sindice.rdfcommons.beanmapper;
 
 import org.apache.commons.beanutils.BeanMap;
-import org.sindice.rdfcommons.TripleSet;
+import org.sindice.rdfcommons.model.TripleSet;
 import org.sindice.rdfcommons.beanmapper.annotations.Adapt;
 import org.sindice.rdfcommons.vocabulary.RDFVocabulary;
 
@@ -26,7 +26,7 @@ import java.lang.reflect.Method;
 import java.util.Map;
 import java.util.Set;
 
-import static org.sindice.rdfcommons.Triple.ObjectType;
+import static org.sindice.rdfcommons.model.Triple.ObjectType;
 
 /**
  * Default serializer for Java <i>beans</i>.

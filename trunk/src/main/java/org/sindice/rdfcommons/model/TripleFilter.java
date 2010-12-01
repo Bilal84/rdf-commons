@@ -14,7 +14,23 @@
  * limitations under the License.
  */
 
+package org.sindice.rdfcommons.model;
+
 /**
- * Declares <i>RDF</i> storage specific classes.
+ * Filter for triples of a triple set.
+ *
+ * @see TripleSet
+ * @author Michele Mostarda ( mostarda@fbk.eu )
+ * @version $Id$
  */
-package org.sindice.rdfcommons.storage;
+public interface TripleFilter {
+
+    /**
+     * Acceps a subject.
+     *
+     * @param triple triple to be accepted.
+     * @return <code>true</code> if accepted, <code>false</code> otherwise.
+     */
+    boolean acceptTriple(Triple triple);
+
+}

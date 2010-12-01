@@ -14,13 +14,13 @@
  * limitations under the License.
  */
 
-package org.sindice.rdfcommons;
+package org.sindice.rdfcommons.storage;
 
 /**
  * Defines the result for a <i>SPARQL</i> select query.
  *
- * @see SparqlEndPoint
- * @see SparqlEndPoint#processSelectQuery(String)
+ * @see org.sindice.rdfcommons.storage.SparqlEndPoint
+ * @see org.sindice.rdfcommons.storage.SparqlEndPoint#processSelectQuery(String)
  * @author Michele Mostarda ( mostarda@fbk.eu )
  * @version $Id$
  */

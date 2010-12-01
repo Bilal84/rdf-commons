@@ -14,7 +14,9 @@
  * limitations under the License.
  */
 
-package org.sindice.rdfcommons;
+package org.sindice.rdfcommons.storage;
+
+import org.sindice.rdfcommons.model.TripleSet;
 
 /**
  * Endpoint to access to the <i>SPARQL</i> interface.

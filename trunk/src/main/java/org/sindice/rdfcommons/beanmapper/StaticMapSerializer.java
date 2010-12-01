@@ -16,8 +16,8 @@
 
 package org.sindice.rdfcommons.beanmapper;
 
-import org.sindice.rdfcommons.Triple;
-import org.sindice.rdfcommons.TripleSet;
+import org.sindice.rdfcommons.model.Triple;
+import org.sindice.rdfcommons.model.TripleSet;
 import org.sindice.rdfcommons.beanmapper.annotations.Static;
 import org.sindice.rdfcommons.vocabulary.SerializerVocabulary;
 
