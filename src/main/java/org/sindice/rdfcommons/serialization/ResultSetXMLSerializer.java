@@ -14,26 +14,27 @@
  * limitations under the License.
  */
 
-package org.sindice.rdfcommons;
+package org.sindice.rdfcommons.serialization;
+
+import org.sindice.rdfcommons.storage.ResultSet;
+
+import java.io.OutputStream;
 
 /**
- * Accepts all submitted triples.
+ * This class is responsible for serializing RDF objects in XML.
  *
- * @see TripleFilter
  * @author Michele Mostarda ( mostarda@fbk.eu )
  * @version $Id$
  */
-public class AllTriplesFilter implements TripleFilter {
-
-    public static final AllTriplesFilter INSTANCE = new AllTriplesFilter();
+public interface ResultSetXMLSerializer {
 
     /**
-     * Singleton.
+     * Serializes the content of the given {@link ResultSet}
+     * in the output stream.
+     *
+     * @param rs result set to serialize.
+     * @param os output strem to dump the content.
      */
-    private AllTriplesFilter() {}
-
-    public boolean acceptTriple(Triple triple) {
-        return true;
-    }
+    void serialize(ResultSet rs, OutputStream os);
 
 }

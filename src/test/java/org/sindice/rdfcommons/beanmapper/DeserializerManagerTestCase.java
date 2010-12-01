@@ -16,7 +16,7 @@
 
 package org.sindice.rdfcommons.beanmapper;
 
-import org.sindice.rdfcommons.TripleBuffer;
+import org.sindice.rdfcommons.model.TripleBuffer;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;

@@ -15,6 +15,6 @@
  */
 
 /**
- * Declares <i>RDF</i> storage specific classes.
+ * <i>RDF</i> model interfaces and classes.
  */
-package org.sindice.rdfcommons.storage;
+package org.sindice.rdfcommons.model;

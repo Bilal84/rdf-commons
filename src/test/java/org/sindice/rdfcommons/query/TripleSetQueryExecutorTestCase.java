@@ -16,10 +16,10 @@
 
 package org.sindice.rdfcommons.query;
 
-import org.sindice.rdfcommons.InMemoryResultSet;
-import org.sindice.rdfcommons.Triple;
-import org.sindice.rdfcommons.TripleBuffer;
-import org.sindice.rdfcommons.TripleSet;
+import org.sindice.rdfcommons.storage.InMemoryResultSet;
+import org.sindice.rdfcommons.model.Triple;
+import org.sindice.rdfcommons.model.TripleBuffer;
+import org.sindice.rdfcommons.model.TripleSet;
 import org.apache.log4j.Logger;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -65,7 +65,7 @@ public class TripleSetQueryExecutorTestCase {
     }
 
     /**
-     * Tests the {@link TripleSetQueryExecutor#createMatch(org.sindice.rdfcommons.Triple , Match, Match)}
+     * Tests the {@link TripleSetQueryExecutor#createMatch(org.sindice.rdfcommons.model.Triple , Match, Match)}
      * method.
      */
     @Test
@@ -82,7 +82,7 @@ public class TripleSetQueryExecutorTestCase {
     }
 
     /**
-     * Tests the {@link TripleSetQueryExecutor#progressIndex(int, int[], org.sindice.rdfcommons.TripleSet[])}
+     * Tests the {@link TripleSetQueryExecutor#progressIndex(int, int[], org.sindice.rdfcommons.model.TripleSet[])}
      * method. 
      */
     @Test
@@ -110,7 +110,7 @@ public class TripleSetQueryExecutorTestCase {
     }
 
     /**
-     * Tests the {@link TripleSetQueryExecutor#multiply(Match[], org.sindice.rdfcommons.TripleSet[], org.sindice.rdfcommons.InMemoryResultSet)}.
+     * Tests the {@link TripleSetQueryExecutor#multiply(Match[], org.sindice.rdfcommons.model.TripleSet[], org.sindice.rdfcommons.storage.InMemoryResultSet)}.
      */
     @Test
     public void testMultiply() {

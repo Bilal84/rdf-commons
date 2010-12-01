@@ -18,8 +18,8 @@ package org.sindice.rdfcommons.storage;
 
 /**
  * Defines the filter for a triple storage.
- * This filter differs from the {@link org.sindice.rdfcommons.TripleFilter}
- * because is works in propositive mode.
+ * This filter differs from the {@link org.sindice.rdfcommons.model.TripleFilter}
+ * because is works in positive mode.
  *
  * @author Michele Mostarda ( mostarda@fbk.eu )
  * @version $Id$

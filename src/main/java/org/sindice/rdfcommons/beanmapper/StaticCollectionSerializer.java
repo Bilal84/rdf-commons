@@ -16,14 +16,14 @@
 
 package org.sindice.rdfcommons.beanmapper;
 
-import org.sindice.rdfcommons.TripleSet;
+import org.sindice.rdfcommons.model.TripleSet;
 import org.sindice.rdfcommons.beanmapper.annotations.Static;
 import org.sindice.rdfcommons.vocabulary.RDFSVocabulary;
 
 import java.lang.annotation.Annotation;
 import java.util.Collection;
 
-import static org.sindice.rdfcommons.Triple.ObjectType;
+import static org.sindice.rdfcommons.model.Triple.ObjectType;
 
 /**
  * Serializer for bags.

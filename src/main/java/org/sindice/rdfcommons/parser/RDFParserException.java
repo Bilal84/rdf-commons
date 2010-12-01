@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.sindice.rdfcommons;
+package org.sindice.rdfcommons.parser;
 
 /**
  * Defines an exception thown by {@link RDFParser}.

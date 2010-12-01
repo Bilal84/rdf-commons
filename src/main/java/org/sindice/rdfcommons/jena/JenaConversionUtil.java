@@ -25,15 +25,15 @@ import com.hp.hpl.jena.rdf.model.Model;
 import com.hp.hpl.jena.rdf.model.ModelFactory;
 import com.hp.hpl.jena.rdf.model.Statement;
 import com.hp.hpl.jena.rdf.model.StmtIterator;
-import org.sindice.rdfcommons.Triple;
-import org.sindice.rdfcommons.TripleBuffer;
-import org.sindice.rdfcommons.TripleSet;
+import org.sindice.rdfcommons.model.Triple;
+import org.sindice.rdfcommons.model.TripleBuffer;
+import org.sindice.rdfcommons.model.TripleSet;
 import org.sindice.rdfcommons.storage.TripleStorageFilter;
 
 import java.io.OutputStream;
 import java.util.Date;
 
-import static org.sindice.rdfcommons.Triple.*;
+import static org.sindice.rdfcommons.model.Triple.*;
 
 /**
  * Utility functions to convert data from <i>jena</i> domain to
@@ -47,10 +47,10 @@ public class JenaConversionUtil {
     private JenaConversionUtil() {}
 
     /**
-     * Converts a <i>Jena</i> triple in a {@link org.sindice.rdfcommons.Triple}.
+     * Converts a <i>Jena</i> triple in a {@link org.sindice.rdfcommons.model.Triple}.
      *
      * @param triple Jena triple to convert.
-     * @return the equivalent {@link org.sindice.rdfcommons.Triple}.
+     * @return the equivalent {@link org.sindice.rdfcommons.model.Triple}.
      */
     @SuppressWarnings("unchecked")
     public static Triple convertJenaTripleToTriple(com.hp.hpl.jena.graph.Triple triple) {
@@ -83,7 +83,7 @@ public class JenaConversionUtil {
     }
 
     /**
-     * Converts a {@link org.sindice.rdfcommons.TripleSet} to a list of <i>Jena</i> triples.
+     * Converts a {@link org.sindice.rdfcommons.model.TripleSet} to a list of <i>Jena</i> triples.
      *
      * @param tripleSet input triple set.
      * @return list of converted Jena triples.
@@ -103,7 +103,7 @@ public class JenaConversionUtil {
     }
 
     /**
-     * Converts a <i>Jena</i> model in a {@link org.sindice.rdfcommons.TripleSet}.
+     * Converts a <i>Jena</i> model in a {@link org.sindice.rdfcommons.model.TripleSet}.
      *
      * @param model input model.
      * @return generated triple set.
@@ -119,7 +119,7 @@ public class JenaConversionUtil {
     }
 
     /**
-     * Converts a {@link org.sindice.rdfcommons.TripleSet} to a Jena {@link com.hp.hpl.jena.rdf.model.Model}.
+     * Converts a {@link org.sindice.rdfcommons.model.TripleSet} to a Jena {@link com.hp.hpl.jena.rdf.model.Model}.
      *
      * @param ts triple set.
      * @return generated model.
@@ -237,7 +237,7 @@ public class JenaConversionUtil {
     }
 
     /**
-     * Serialzes the content of a {@link org.sindice.rdfcommons.TripleSet} on the given output stream.
+     * Serialzes the content of a {@link org.sindice.rdfcommons.model.TripleSet} on the given output stream.
      *
      * @param os
      * @param ts

@@ -16,10 +16,10 @@
 
 package org.sindice.rdfcommons.beanmapper;
 
-import org.sindice.rdfcommons.Triple;
-import org.sindice.rdfcommons.TripleBuffer;
-import org.sindice.rdfcommons.TripleFilter;
-import org.sindice.rdfcommons.TripleSet;
+import org.sindice.rdfcommons.model.Triple;
+import org.sindice.rdfcommons.model.TripleBuffer;
+import org.sindice.rdfcommons.model.TripleFilter;
+import org.sindice.rdfcommons.model.TripleSet;
 import org.sindice.rdfcommons.beanmapper.annotations.Static;
 import org.sindice.rdfcommons.vocabulary.RDFSVocabulary;
 import org.apache.log4j.Logger;
@@ -34,7 +34,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-import static org.sindice.rdfcommons.Triple.*;
+import static org.sindice.rdfcommons.model.Triple.*;
 
 /**
  * Test case for {@link SerializationManager} class.

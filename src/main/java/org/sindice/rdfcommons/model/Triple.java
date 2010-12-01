@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.sindice.rdfcommons;
+package org.sindice.rdfcommons.model;
 
 import org.sindice.rdfcommons.vocabulary.XMLSchemaTypes;
 

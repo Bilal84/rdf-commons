@@ -14,23 +14,23 @@
  * limitations under the License.
  */
 
-package org.sindice.rdfcommons;
+package org.sindice.rdfcommons.storage;
 
 /**
- * Filter for triples of a triple set.
+ * Defines an exception raised by a {@link org.sindice.rdfcommons.storage.SparqlEndPoint} implementation.
  *
- * @see TripleSet
+ * @see org.sindice.rdfcommons.storage.SparqlEndPoint
  * @author Michele Mostarda ( mostarda@fbk.eu )
  * @version $Id$
  */
-public interface TripleFilter {
+public class SparqlEndpointException extends Exception {
 
-    /**
-     * Acceps a subject.
-     *
-     * @param triple triple to be accepted.
-     * @return <code>true</code> if accepted, <code>false</code> otherwise.
-     */
-    boolean acceptTriple(Triple triple);
+    public SparqlEndpointException(String message) {
+        super(message);
+    }
 
+    public SparqlEndpointException(String message, Throwable cause) {
+        super(message, cause);
+    }
+    
 }

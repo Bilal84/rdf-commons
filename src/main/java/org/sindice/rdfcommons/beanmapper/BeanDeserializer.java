@@ -16,7 +16,7 @@
 
 package org.sindice.rdfcommons.beanmapper;
 
-import org.sindice.rdfcommons.ResultSet;
+import org.sindice.rdfcommons.storage.ResultSet;
 import org.apache.commons.beanutils.BeanMap;
 
 import java.lang.annotation.Annotation;

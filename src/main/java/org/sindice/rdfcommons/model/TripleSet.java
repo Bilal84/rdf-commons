@@ -14,9 +14,9 @@
  * limitations under the License.
  */
 
-package org.sindice.rdfcommons;
+package org.sindice.rdfcommons.model;
 
-import org.sindice.rdfcommons.Triple.*;
+import org.sindice.rdfcommons.model.Triple.*;
 
 import java.io.PrintStream;
 import java.util.List;

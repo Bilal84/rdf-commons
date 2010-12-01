@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.sindice.rdfcommons;
+package org.sindice.rdfcommons.storage;
 
 import java.util.ArrayList;
 import java.util.Arrays;

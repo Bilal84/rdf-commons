@@ -1,7 +1,7 @@
-package org.sindice.rdfcommons;
+package org.sindice.rdfcommons.model;
 
 /**
- * Declares any {@link org.sindice.rdfcommons.Triple}
+ * Declares any {@link org.sindice.rdfcommons.model.Triple}
  * object literal with language attribute.
  *
  * @author Michele Mostarda (mostarda@fbk.eu)

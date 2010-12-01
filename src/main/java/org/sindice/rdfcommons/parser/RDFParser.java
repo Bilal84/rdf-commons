@@ -14,7 +14,9 @@
  * limitations under the License.
  */
 
-package org.sindice.rdfcommons;
+package org.sindice.rdfcommons.parser;
+
+import org.sindice.rdfcommons.model.TripleSet;
 
 import java.io.InputStream;
 

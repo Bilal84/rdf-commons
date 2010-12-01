@@ -17,7 +17,7 @@
 package org.sindice.rdfcommons.beanmapper;
 
 import org.apache.commons.beanutils.BeanMap;
-import org.sindice.rdfcommons.TripleSet;
+import org.sindice.rdfcommons.model.TripleSet;
 import org.sindice.rdfcommons.beanmapper.annotations.Static;
 
 import java.lang.annotation.Annotation;
@@ -25,7 +25,7 @@ import java.lang.reflect.Method;
 import java.util.Map;
 import java.util.Set;
 
-import static org.sindice.rdfcommons.Triple.ObjectType;
+import static org.sindice.rdfcommons.model.Triple.ObjectType;
 
 /**
  * Defines the default static serializer for Java <i>beans</i>.

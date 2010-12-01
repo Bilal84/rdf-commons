@@ -1,8 +1,8 @@
-package org.sindice.rdfcommons;
+package org.sindice.rdfcommons.model;
 
 /**
  * Declares any typed
- * {@link org.sindice.rdfcommons.Triple} object literal.
+ * {@link org.sindice.rdfcommons.model.Triple} object literal.
  *
  * @author Michele Mostarda (mostarda@fbk.eu)
  */

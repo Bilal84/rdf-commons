@@ -16,12 +16,11 @@
 
 package org.sindice.rdfcommons.storage;
 
-import org.sindice.rdfcommons.SparqlEndPoint;
-import org.sindice.rdfcommons.Triple;
-import org.sindice.rdfcommons.TripleBuffer;
-import org.sindice.rdfcommons.TripleIterator;
-import org.sindice.rdfcommons.TripleIteratorImpl;
-import org.sindice.rdfcommons.TripleSet;
+import org.sindice.rdfcommons.model.Triple;
+import org.sindice.rdfcommons.model.TripleBuffer;
+import org.sindice.rdfcommons.model.TripleIterator;
+import org.sindice.rdfcommons.model.TripleIteratorImpl;
+import org.sindice.rdfcommons.model.TripleSet;
 
 import java.util.ArrayList;
 import java.util.HashMap;

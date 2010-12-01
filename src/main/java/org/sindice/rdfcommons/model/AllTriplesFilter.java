@@ -14,23 +14,26 @@
  * limitations under the License.
  */
 
-package org.sindice.rdfcommons;
+package org.sindice.rdfcommons.model;
 
 /**
- * Defines an exception raised by a {@link SparqlEndPoint} implementation.
+ * Accepts all submitted triples.
  *
- * @see SparqlEndPoint
+ * @see org.sindice.rdfcommons.model.TripleFilter
  * @author Michele Mostarda ( mostarda@fbk.eu )
  * @version $Id$
  */
-public class SparqlEndpointException extends Exception {
+public class AllTriplesFilter implements TripleFilter {
 
-    public SparqlEndpointException(String message) {
-        super(message);
+    public static final AllTriplesFilter INSTANCE = new AllTriplesFilter();
+
+    /**
+     * Singleton.
+     */
+    private AllTriplesFilter() {}
+
+    public boolean acceptTriple(Triple triple) {
+        return true;
     }
 
-    public SparqlEndpointException(String message, Throwable cause) {
-        super(message, cause);
-    }
-    
 }
