@@ -24,6 +24,8 @@ import java.lang.annotation.Annotation;
 import java.util.Iterator;
 import java.util.Map;
 
+import static org.sindice.rdfcommons.Triple.ObjectType;
+
 /**
  * Default serializer for {@link java.util.Map} classes.
  *
@@ -58,8 +60,11 @@ public class MapSerializer extends BaseSerializer<Map> {
             Identifier keyRoot   = context.serialize(context, itemKey  , getAnnotations(itemKey)  , buffer);
             Identifier valueRoot = context.serialize(context, itemValue, getAnnotations(itemValue), buffer);
             final String urifiedKey = urifyKey(keyRoot, buffer);
-            buffer.addTriple(mapInstanceURL, SerializerVocabulary.ENTRY, urifiedKey, false);
-            buffer.addTriple(urifiedKey    , SerializerVocabulary.VALUE, valueRoot.getId(), valueRoot.isLiteral());
+            buffer.addTriple(mapInstanceURL, SerializerVocabulary.ENTRY, urifiedKey);
+            buffer.addTriple(
+                    urifiedKey, SerializerVocabulary.VALUE, valueRoot.getId(),
+                    valueRoot.isLiteral() ? ObjectType.literal : ObjectType.uri
+            );
         }
         return null;
     }

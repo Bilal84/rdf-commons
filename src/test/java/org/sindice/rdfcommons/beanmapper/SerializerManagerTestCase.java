@@ -34,6 +34,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import static org.sindice.rdfcommons.Triple.*;
+
 /**
  * Test case for {@link SerializationManager} class.
  *
@@ -105,17 +107,17 @@ public class SerializerManagerTestCase {
         assert tripleBuffer.containsTriple(
                 "http://java.util/Collection",
                 RDFSVocabulary.MEMBER,
-                "Appo", true
+                "Appo", ObjectType.literal
         );
         assert tripleBuffer.containsTriple(
                 "http://java.util/Collection",
                 RDFSVocabulary.MEMBER,
-                123, true
+                123, ObjectType.literal
         );
         assert tripleBuffer.containsTriple(
                 "http://java.util/Collection",
                 RDFSVocabulary.MEMBER,
-                false, true
+                false, ObjectType.literal
         );
     }
 
@@ -138,7 +140,7 @@ public class SerializerManagerTestCase {
         });
         logger.debug("-----");
         logger.debug(blankSubjects);
-        assert blankSubjects.getSize() == 12 : "Unespected number of elements: " + blankSubjects.getSize();
+        assert blankSubjects.getSize() == 12 : "Unexpected number of elements: " + blankSubjects.getSize();
     }
 
     @Test
@@ -176,8 +178,12 @@ public class SerializerManagerTestCase {
 
         logger.debug(tripleBuffer);
 
-        assert tripleBuffer.containsTriple("http://path/to#Class", "http://path/to#Class#field1", "value1", true);
-        assert tripleBuffer.containsTriple("http://path/to#Class", "http://custom/predicate"    , "value2", true);
+        assert tripleBuffer.containsTriple(
+                "http://path/to#Class", "http://path/to#Class#field1", "value1", ObjectType.literal
+        );
+        assert tripleBuffer.containsTriple(
+                "http://path/to#Class", "http://custom/predicate"    , "value2", ObjectType.literal
+        );
     }
 
     /**
@@ -248,27 +254,27 @@ public class SerializerManagerTestCase {
         assert tripleBuffer.containsTriple(
                 "http://org.sindice.rdfcommons.beanmapper/StaticFakeBean",
                 "http://org.sindice.rdfcommons.beanmapper/StaticFakeBean#field1",
-                "field1 value", true
+                "field1 value", ObjectType.literal
         );
         assert tripleBuffer.containsTriple(
                 "http://org.sindice.rdfcommons.beanmapper/StaticFakeBean",
                 "http://org.sindice.rdfcommons.beanmapper/StaticFakeBean#field2",
-                true, true
+                true, ObjectType.literal
         );
         assert tripleBuffer.containsTriple(
                 "http://org.sindice.rdfcommons.beanmapper/StaticFakeBean",
                 "http://specific/property#field3",
-                1, true
+                1, ObjectType.literal
         );
         assert tripleBuffer.containsTriple(
                 "http://org.sindice.rdfcommons.beanmapper/StaticFakeBean",
                 "http://org.sindice.rdfcommons.beanmapper/StaticFakeBean#field4",
-                original.getField4(), true
+                original.getField4(), ObjectType.literal
         );
         assert ! tripleBuffer.containsTriple(
                 "http://org.sindice.rdfcommons.beanmapper/StaticFakeBean",
                 "http://org.sindice.rdfcommons.beanmapper/StaticFakeBean#field5",
-                "this should be skipped.", true
+                "this should be skipped.", ObjectType.literal
         ) : "Field5 is expected to be skipped.";
 
     }
@@ -284,34 +290,34 @@ public class SerializerManagerTestCase {
         assert tripleBuffer.containsTriple(
             instanceURL,
             "http://org.sindice.rdfcommons.beanmapper/FakeBean#field1",
-            "value1", true
+            "value1", ObjectType.literal
         );
         assert tripleBuffer.containsTriple(
             instanceURL,
             "http://org.sindice.rdfcommons.beanmapper/FakeBean#field2",
-            true, true
+            true, ObjectType.literal
         );
         assert tripleBuffer.containsTriple(
             instanceURL,
             "http://org.sindice.rdfcommons.beanmapper/FakeBean#field3",
-            11, true
+            11, ObjectType.literal
         );
         assert tripleBuffer.containsTriple(
             instanceURL,
             "http://org.sindice.rdfcommons.beanmapper/FakeBean#field4",
-            original.getField4(), true
+            original.getField4(), ObjectType.literal
         );
 
         assert tripleBuffer.containsTriple(
             instanceURL,
             "http://org.sindice.rdfcommons.beanmapper/FakeBean#field5",
-            new URL("http://www.afakeulr.com/aqua"), true
+            new URL("http://www.afakeulr.com/aqua"), ObjectType.literal
         );
 
         assert tripleBuffer.containsTriple(
             instanceURL,
             "http://org.sindice.rdfcommons.beanmapper/FakeBean#field6",
-            3.1415f, true
+            3.1415f, ObjectType.literal
         );
 
     }

@@ -28,6 +28,17 @@ import java.util.Date;
  */
 public class Triple<O> {
 
+    public enum SubjectType {
+        bnode,
+        uri
+    }
+
+    public enum ObjectType {
+        bnode,
+        uri,
+        literal
+    }
+
     private static final long BLANK_NODE_BASE = System.currentTimeMillis();
 
     private static long counter = 0;
@@ -36,34 +47,33 @@ public class Triple<O> {
     private final String predicate;
     private final O      object;
 
-    private final boolean objLiteral;
-    private final boolean subBNode;
-    private final boolean objBNode;
+    private final SubjectType subjectType;
+    private final ObjectType  objectType;
 
     public synchronized static <O> Triple createBNodeSubjectTriple(
-            String pred, O obj, boolean literal, boolean bobj
+            String pred, O obj, ObjectType objectType
     ) {
         final String blank = nextBNodeIdentifier();
-        return new Triple<O>(blank, pred, obj, literal, true, bobj);
+        return new Triple<O>(blank, pred, obj, objectType);
     }
 
-    public synchronized static Triple createBNodeObjectTriple(String sub, boolean blank, String pred) {
-        final String blankUrl = nextBNodeIdentifier();
-        return new Triple<String>(sub, pred, blankUrl, false, blank, true);
+    public synchronized static Triple createBNodeObjectTriple(String sub, String pred, SubjectType subjectType) {
+        final String blank = nextBNodeIdentifier();
+        return new Triple<String>(sub, pred, blank, subjectType, ObjectType.bnode);
     }
 
     protected static String nextBNodeIdentifier() {
         return String.format("%s_%s", BLANK_NODE_BASE, counter++);
     }
 
-    public Triple(String sub, String pred, O obj, boolean lit, boolean bsub, boolean bobj) {
+    public Triple(String sub, String pred, O obj, SubjectType subjectType, ObjectType objectType) {
         if(sub == null || pred == null || obj == null) {
-            throw new IllegalArgumentException("The terms a triple cannot be null.");
+            throw new IllegalArgumentException("The terms of a triple cannot be null.");
         }
-        if(lit && bobj) {
-            throw new IllegalArgumentException("Object cannot be both blank node and literal.");
+        if(subjectType == null || objectType == null) {
+            throw new IllegalArgumentException("The types of a triple cannot be null.");
         }
-        if( (!lit || bobj) && !(obj instanceof String) ) {
+        if( !(objectType == ObjectType.literal) && !(obj instanceof String) ) {
             throw new IllegalArgumentException(
                     "If the object is a URI or a blank node then the object must be a string."
             );
@@ -72,17 +82,16 @@ public class Triple<O> {
         subject    = sub;
         predicate  = pred;
         object     = obj;
-        objLiteral = lit;
-        subBNode   = bsub;
-        objBNode   = bobj;
+        this.subjectType = subjectType;
+        this.objectType  = objectType;
     }
 
-    public Triple(String sub, String pred, O obj, boolean literal) {
-        this(sub, pred, obj, literal, false, false);
+    public Triple(String sub, String pred, O obj, ObjectType objectType) {
+        this(sub, pred, obj, SubjectType.uri, objectType);
     }
 
     public Triple(String sub, String pred, O obj) {
-        this(sub, pred, obj, false);
+        this(sub, pred, obj, ObjectType.uri);
     }
 
     public String getSubject() {
@@ -148,16 +157,16 @@ public class Triple<O> {
         return object.toString();
     }
 
-    public boolean isObjLiteral() {
-        return objLiteral;
+    public boolean isSubjectBNode() {
+        return subjectType == SubjectType.bnode;
     }
 
-    public boolean isSubjectBNode() {
-        return subBNode;
+    public boolean isObjLiteral() {
+        return objectType == ObjectType.literal;
     }
 
     public boolean isObjectBNode() {
-        return objBNode;
+        return objectType == ObjectType.bnode;
     }
 
     public String toTripleString() {
@@ -185,16 +194,19 @@ public class Triple<O> {
                 &&
             object.equals( other.object )
                 &&
-            objLiteral == other.objLiteral
+            subjectType == other.subjectType
                 &&
-            subBNode   == other.subBNode
-                &&
-            objBNode   == other.objBNode;
+            objectType  == other.objectType;
     }
 
     @Override
     public int hashCode() {
-        return subject.hashCode() +  predicate.hashCode() * 2 + object.hashCode() * 3;
+        return
+                subject.hashCode() *
+                predicate.hashCode() * 2 *
+                object.hashCode() * 3 *
+                subjectType.hashCode() * 5 *
+                objectType.hashCode() * 7;
     }
 
     @Override
@@ -211,7 +223,7 @@ public class Triple<O> {
     }
 
     private void toSubjectString(StringBuilder sb) {
-        if(subBNode) {
+        if(subjectType == SubjectType.bnode) {
             sb.append("_:").append(subject);
         } else {
             sb.append('<').append(subject).append('>');
@@ -225,11 +237,11 @@ public class Triple<O> {
     }
 
     private void toObjectString(StringBuilder sb) {
-        if(objBNode) {
+        if(objectType == ObjectType.bnode) {
             sb.append("_:").append(object);
             return;
         }
-        if(! objLiteral) {
+        if(!(objectType == ObjectType.literal) ) {
             sb.append('<').append(object).append('>');
             return;
         }

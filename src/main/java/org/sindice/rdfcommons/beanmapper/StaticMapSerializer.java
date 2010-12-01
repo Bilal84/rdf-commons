@@ -16,6 +16,7 @@
 
 package org.sindice.rdfcommons.beanmapper;
 
+import org.sindice.rdfcommons.Triple;
 import org.sindice.rdfcommons.TripleSet;
 import org.sindice.rdfcommons.beanmapper.annotations.Static;
 import org.sindice.rdfcommons.vocabulary.SerializerVocabulary;
@@ -44,6 +45,7 @@ public class StaticMapSerializer extends BaseSerializer<Map> {
         return new Identifier(getClassURL(map.getClass()), Identifier.Type.resource);
     }
 
+    @SuppressWarnings("unchecked")
     public Identifier serialize(SerializationContext context, Map map, Annotation[] annotations, TripleSet buffer)
     throws SerializationException {
         Iterator<Map.Entry> iter = map.entrySet().iterator();
@@ -56,8 +58,11 @@ public class StaticMapSerializer extends BaseSerializer<Map> {
             Identifier keyRoot   = context.serialize(context, key  , getAnnotations(key)  , buffer);
             Identifier valueRoot = context.serialize(context, value, getAnnotations(value), buffer);
             final String urified =  urifyKey(keyRoot, buffer);
-            buffer.addTriple(mapClass, SerializerVocabulary.ENTRY, urified, false);
-            buffer.addTriple(urified , SerializerVocabulary.VALUE, valueRoot.getId(), valueRoot.isLiteral());
+            buffer.addTriple(mapClass, SerializerVocabulary.ENTRY, urified);
+            buffer.addTriple(
+                    urified , SerializerVocabulary.VALUE, valueRoot.getId(),
+                    valueRoot.isLiteral() ? Triple.ObjectType.literal : Triple.ObjectType.uri
+            );
         }
         return null;
     }

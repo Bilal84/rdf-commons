@@ -16,15 +16,17 @@
 
 package org.sindice.rdfcommons.beanmapper;
 
+import org.apache.commons.beanutils.BeanMap;
 import org.sindice.rdfcommons.TripleSet;
 import org.sindice.rdfcommons.beanmapper.annotations.Adapt;
 import org.sindice.rdfcommons.vocabulary.RDFVocabulary;
-import org.apache.commons.beanutils.BeanMap;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
 import java.util.Map;
 import java.util.Set;
+
+import static org.sindice.rdfcommons.Triple.ObjectType;
 
 /**
  * Default serializer for Java <i>beans</i>.
@@ -95,7 +97,7 @@ public class BeanSerializer extends BaseSerializer<Object> {
                         instanceUrl,
                         getPropertyURL(classUrl, propertyName, propertyReadMethod),
                         identifierEntry.getId(),
-                        identifierEntry.isLiteral()
+                        identifierEntry.isLiteral() ? ObjectType.literal : ObjectType.uri
                 );
 
             }
@@ -118,7 +120,10 @@ public class BeanSerializer extends BaseSerializer<Object> {
             if(m.getAnnotation(Adapt.class) != null) {
                 if(annotated != null) {
                     throw new SerializationException(
-                        String.format("Just one method an be annotated with the the annotation %s. Found more than one.", Adapt.class)
+                        String.format(
+                                "Just one method an be annotated with the the annotation %s. Found more than one.",
+                                Adapt.class
+                        )
                     );
                 }
                 annotated = m;
