@@ -141,6 +141,8 @@ public class SerializationManager {
      * Configures the default serializers in the right order.
      */
     private void configureDefaultSerializers() {
+        // Primitive serializers.
+        addSerializer( new PrimitiveSerializer() );
 
         // Static serializers.
         addSerializer( new StaticCollectionSerializer() );
@@ -153,9 +155,6 @@ public class SerializationManager {
         addSerializer( new MapSerializer()        );
         addSerializer( new EnumSerializer()       );
         addSerializer( new BeanSerializer()       );
-
-        // Primitive serializers.
-        addSerializer( new PrimitiveSerializer() );
     }
 
 }

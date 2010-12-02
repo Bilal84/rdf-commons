@@ -29,7 +29,7 @@ import java.lang.annotation.Annotation;
 public class PrimitiveSerializer extends BaseSerializer<Object> {
 
     public boolean acceptClass(Class clazz, Annotation[] annotations) {
-        return true;
+        return isPrimitive(clazz);
     }
 
     public boolean isComplex() {
