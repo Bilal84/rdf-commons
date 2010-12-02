@@ -162,6 +162,9 @@ public class Triple<O> {
         if( object instanceof Date) {
             return XMLSchemaTypes.dateFormatter.format((Date) object);
         }
+        if(object instanceof Literal) {
+            return ((Literal) object).getValue();
+        }
         return object.toString();
     }
 
