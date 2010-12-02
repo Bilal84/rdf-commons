@@ -17,22 +17,18 @@
 package org.sindice.rdfcommons.beanmapper;
 
 import java.lang.annotation.Annotation;
-import java.util.Collection;
+import java.lang.reflect.Array;
+import java.util.List;
 
 /**
- * Default deserializer for {@link java.util.Collection}s.
+ * Default deserializer for <i>Java arrays</i>.
  *
  * @author Michele Mostarda (mostarda@fbk.eu)
  */
-public class CollectionDeserializer extends SequenceDeserializer {
+public class ArrayDeserializer extends SequenceDeserializer {
 
     public boolean acceptClass(Class clazz, Annotation[] annotations) {
-        for(Class iface : clazz.getInterfaces()) {
-            if(iface.equals(Collection.class)) {
-                return true;
-            }
-        }
-        return false;
+        return clazz.isArray();
     }
 
     public Identifier getIdentifier(Class clazz, Annotation[] annotations) {
@@ -41,11 +37,11 @@ public class CollectionDeserializer extends SequenceDeserializer {
 
     public <T> T deserialize(
             DeserializationContext context,
-            Class<T> clazz,
-            Annotation[] annotations,
-            Identifier identifier,
-            QueryEndpoint endPoint
+            Class<T> clazz, Annotation[] annotations,
+            Identifier identifier, QueryEndpoint endPoint
     ) throws DeserializationException {
-        return (T) internalDeserialize(context, annotations, identifier, endPoint);
+        final List result = internalDeserialize(context, annotations, identifier, endPoint);
+        return (T) result.toArray( (Object[]) Array.newInstance(clazz, result.size() ) );
     }
+
 }

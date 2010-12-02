@@ -149,6 +149,7 @@ public class SerializationManager {
 
         // Instance serializers.
         addSerializer( new CollectionSerializer() );
+        addSerializer( new ArraySerializer()      );
         addSerializer( new MapSerializer()        );
         addSerializer( new EnumSerializer()       );
         addSerializer( new BeanSerializer()       );

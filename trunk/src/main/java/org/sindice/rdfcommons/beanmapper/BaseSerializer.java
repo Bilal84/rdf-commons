@@ -16,6 +16,8 @@
 
 package org.sindice.rdfcommons.beanmapper;
 
+import org.sindice.rdfcommons.model.Triple;
+
 /**
  * Base class for serializer classes.
  *
@@ -23,5 +25,22 @@ package org.sindice.rdfcommons.beanmapper;
  * @version $Id$
  */
 public abstract class BaseSerializer<T> extends BaseMapper implements CriteriaSerializer<T> {
+
+    /**
+     * Returns the most appropriate {@link org.sindice.rdfcommons.model.Triple.ObjectType}
+     * for the given identifier.
+     *
+     * @param id input identifier.
+     * @return object type.
+     */
+    protected Triple.ObjectType getObjectType(Identifier id) {
+        if(id.isLiteral()) {
+            return Triple.ObjectType.literal;
+        }
+        if(id.isBlank()) {
+            return Triple.ObjectType.bnode;
+        }
+        return Triple.ObjectType.uri;
+    }
 
 }

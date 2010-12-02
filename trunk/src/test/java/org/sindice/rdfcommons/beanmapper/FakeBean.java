@@ -47,6 +47,8 @@ public class FakeBean {
 
     private List<FakeAggregateBean> aggregateBeans;
 
+    private FakeAggregateBean[] aggregateBeansArray;
+
     private FakeEnum fakeEnum;
 
     private FakeBean self;
@@ -63,6 +65,12 @@ public class FakeBean {
         }
         this.field6 = 3.1415f;
         aggregateBeans = Arrays.asList( new FakeAggregateBean(), new FakeAggregateBean() );
+        aggregateBeansArray = new FakeAggregateBean[]{
+                new FakeAggregateBean(),
+                new FakeAggregateBean(),
+                new FakeAggregateBean(),
+                new FakeAggregateBean()
+        };
         fakeEnum = FakeEnum.ENUM1;
         this.self = this;
     }
