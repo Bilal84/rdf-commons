@@ -28,7 +28,7 @@ import java.io.PrintWriter;
  * @author Michele Mostarda ( mostarda@fbk.eu )
  * @version $Id$
  */
-public class DefaultXMLSerializer implements ResultSetXMLSerializer {
+public class DefaultResultSetXMLSerializer implements ResultSetXMLSerializer {
 
     public void serialize(ResultSet rs, OutputStream os) {
         PrintWriter pw = new PrintWriter(os);
