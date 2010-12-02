@@ -16,28 +16,25 @@
 
 package org.sindice.rdfcommons.beanmapper;
 
-import org.sindice.rdfcommons.model.TripleSet;
 import org.sindice.rdfcommons.beanmapper.annotations.Property;
+import org.sindice.rdfcommons.model.Triple;
+import org.sindice.rdfcommons.model.TripleSet;
 import org.sindice.rdfcommons.vocabulary.RDFSVocabulary;
 import org.sindice.rdfcommons.vocabulary.RDFVocabulary;
 import org.sindice.rdfcommons.vocabulary.SerializerVocabulary;
 
 import java.lang.annotation.Annotation;
-import java.util.Collection;
-
-import static org.sindice.rdfcommons.model.Triple.ObjectType;
-import static org.sindice.rdfcommons.model.Triple.SubjectType;
+import java.lang.reflect.Array;
 
 /**
- * Default serializer for {@link java.util.Collection} classes.
+ * Default serializer for <i>Java</i> native arrays.
  *
- * @author Michele Mostarda ( mostarda@fbk.eu )
- * @version $Id$
+ * @author Michele Mostarda (mostarda@fbk.eu)
  */
-public class CollectionSerializer extends BaseSerializer<Collection> {
+public class ArraySerializer extends BaseSerializer<Object> {
 
     public boolean acceptClass(Class clazz, Annotation[] annotations) {
-        return definesInterface(clazz, Collection.class);
+        return clazz.isArray();
     }
 
     public boolean isComplex() {
@@ -46,32 +43,34 @@ public class CollectionSerializer extends BaseSerializer<Collection> {
 
     public Identifier getIdentifier(
             SerializationContext context,
-            Collection collection,
+            Object array,
             Annotation[] annotations,
             TripleSet buffer
     ) {
-        return new Identifier(getObjectURL(collection), Identifier.Type.resource);
+        return new Identifier(getObjectURL(array), Identifier.Type.resource);
     }
 
     public Identifier serialize(
             SerializationContext context,
-            Collection collection,
+            Object array,
             Annotation[] annotations,
             TripleSet buffer
     ) throws SerializationException {
         int index = 0;
-        final String instanceNode = getObjectURL(collection);
+        final String instanceNode = getObjectURL(array);
 
         // If the collection is annotated then the collection is serialized with that annotation.
         Property propertyAnnotation = (Property) findAnnotation(annotations, Property.class);
         if( propertyAnnotation != null ) {
-            for(Object collectionItem : collection) {
-                Identifier root = context.serialize(context, collectionItem, getAnnotations(collectionItem), buffer);
+            Object arrayItem;
+            for(int i = 0; i < Array.getLength(array); i++) {
+                arrayItem = Array.get(array, i);
+                Identifier root = context.serialize(context, arrayItem, getAnnotations(arrayItem), buffer);
                 buffer.addTriple(
                         instanceNode,
                         propertyAnnotation.value(),
                         root.getId(),
-                        SubjectType.uri,
+                        Triple.SubjectType.uri,
                         getObjectType(root)
                 );
             }
@@ -80,25 +79,27 @@ public class CollectionSerializer extends BaseSerializer<Collection> {
 
         // Otherwise a sequence pattern is used.
         buffer.addTriple(instanceNode, RDFVocabulary.TYPE, RDFVocabulary.SEQ);
-        for(Object collectionItem : collection) {
+        Object arrayItem;
+        for(int i = 0; i < Array.getLength(array); i++) {
+            arrayItem = Array.get(array, i);
             final String blankObject = buffer.addBNodeObjectTriple(
-                    instanceNode, RDFSVocabulary.MEMBER, SubjectType.uri
+                    instanceNode, RDFSVocabulary.MEMBER, Triple.SubjectType.uri
             );
             buffer.addTriple(
                     blankObject, SerializerVocabulary.ITEM_INDEX, Integer.toString(index),
-                    SubjectType.bnode, ObjectType.literal
+                    Triple.SubjectType.bnode, Triple.ObjectType.literal
             );
-            Identifier root = context.serialize(context, collectionItem, getAnnotations(collectionItem), buffer);
+            Identifier root = context.serialize(context, arrayItem, getAnnotations(arrayItem), buffer);
             buffer.addTriple(
                     blankObject,
                     SerializerVocabulary.ITEM_VALUE,
                     root.getId(),
-                    SubjectType.bnode,
+                    Triple.SubjectType.bnode,
                     getObjectType(root)
             );
             index++;
         }
         return null;
     }
-
+    
 }

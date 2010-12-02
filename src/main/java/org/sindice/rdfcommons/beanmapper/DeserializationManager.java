@@ -205,6 +205,7 @@ public class DeserializationManager {
     private void registerDefaultDeserializers() {
         addDeserializer( new EnumDeserializer()       );
         addDeserializer( new CollectionDeserializer() );
+        addDeserializer( new ArrayDeserializer()      );
         addDeserializer( new StaticBeanDeserializer() );
         addDeserializer( new PrimitiveDeserializer()  );
         addDeserializer( new BeanDeserializer()       );

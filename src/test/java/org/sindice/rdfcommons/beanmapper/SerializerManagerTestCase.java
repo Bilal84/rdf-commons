@@ -144,6 +144,38 @@ public class SerializerManagerTestCase {
     }
 
     @Test
+    public void testArraySerializer() throws SerializationException {
+        final String[] array = new String[]{"string1", "string2", "string3"};
+        TripleBuffer tripleBuffer = serializationManager.serializeObject(array);
+        logger.debug(tripleBuffer);
+
+        assert tripleBuffer.containsTriplePattern(
+                null, "http://sindice.com/vocab/#itemindex", "0",
+                SubjectType.bnode, ObjectType.literal
+        );
+        assert tripleBuffer.containsTriplePattern(
+                null, "http://sindice.com/vocab/#itemvalue", "string1",
+                SubjectType.bnode, ObjectType.literal
+        );
+        assert tripleBuffer.containsTriplePattern(
+                null, "http://sindice.com/vocab/#itemindex", "1",
+                SubjectType.bnode, ObjectType.literal
+        );
+        assert tripleBuffer.containsTriplePattern(
+                null, "http://sindice.com/vocab/#itemvalue", "string2",
+                SubjectType.bnode, ObjectType.literal
+        );
+        assert tripleBuffer.containsTriplePattern(
+                null, "http://sindice.com/vocab/#itemindex", "2",
+                SubjectType.bnode, ObjectType.literal
+        );
+        assert tripleBuffer.containsTriplePattern(
+                null, "http://sindice.com/vocab/#itemvalue", "string3",
+                SubjectType.bnode, ObjectType.literal
+        );
+    }
+
+    @Test
     public void testStaticMapSerializer() throws SerializationException {
         final StaticFakeBean staticFakeBean = new StaticFakeBean();
         Map<Object,Object> map = new HashMap<Object,Object>();
