@@ -22,10 +22,10 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * In a a method of a bean is marked with this annotation,
+ * If the method of a bean is marked with this annotation,
  * then the serialization is performed no more on the bean itself
  * but on the object returned by the annotated method.
- * The method is expected to not accept parameters. 
+ * The method is expected to accept no parameters. 
  *
  * @author Michele Mostarda ( mostarda@fbk.eu )
  * @version $Id$
