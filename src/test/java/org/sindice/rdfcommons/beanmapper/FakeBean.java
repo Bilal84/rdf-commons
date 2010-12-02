@@ -159,6 +159,7 @@ public class FakeBean {
                 ( field5 == null ? 1 : field5.hashCode() * 5 ) *
                 ( field6 * 7 ) *
                 ( aggregateBeans == null ? 1 : aggregateBeans.hashCode() ) *
+                ( aggregateBeansArray == null ? 1 : aggregateBeansArray.hashCode() ) *
                 ( fakeEnum == null ? 1 : fakeEnum.hashCode() * 11) );
     }
 
@@ -185,7 +186,16 @@ public class FakeBean {
                     &&
                     field6 == other.field6
                     &&
-                    aggregateBeans != null ? aggregateBeans.equals(other.aggregateBeans) : other.aggregateBeans == null
+                    aggregateBeans != null
+                            ?
+                    aggregateBeans.equals(other.aggregateBeans)
+                            :
+                    other.aggregateBeans == null
+                    &&
+                    aggregateBeansArray != null ?
+                            Arrays.equals(aggregateBeansArray, other.aggregateBeansArray)
+                            :
+                            other.aggregateBeansArray == null
                     &&
                     fakeEnum == other.fakeEnum;
         }
