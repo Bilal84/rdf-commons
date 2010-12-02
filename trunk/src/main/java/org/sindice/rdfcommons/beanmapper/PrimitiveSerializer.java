@@ -36,7 +36,12 @@ public class PrimitiveSerializer extends BaseSerializer<Object> {
         return false;
     }
 
-    public Identifier getIdentifier(SerializationContext context, Object object, Annotation[] annotations, TripleSet buffer) {
+    public Identifier getIdentifier(
+            SerializationContext context,
+            Object object,
+            Annotation[] annotations,
+            TripleSet buffer
+    ) {
         throw new UnsupportedOperationException();
     }
 
