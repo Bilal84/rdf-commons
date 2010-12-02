@@ -118,9 +118,24 @@ public interface TripleSet extends Iterable<Triple> {
      * @param sub
      * @param pred
      * @param obj
+     * @param subjectType
+     * @param objectType
      * @return <code>true</code> if contained, <code>false</code> otherwise.
      */
     <O> boolean containsTriple(String sub, String pred, O obj, SubjectType subjectType, ObjectType objectType);
+
+    /**
+     * Checks if a triple pattern is contained in the triple set.
+     * 
+     * @param sub
+     * @param pred
+     * @param obj
+     * @param subjectType
+     * @param objectType
+     * @param <O>
+     * @return
+     */
+    <O> boolean containsTriplePattern(String sub, String pred, O obj, SubjectType subjectType, ObjectType objectType);
 
     /**
      * Returns the triple set iterator.

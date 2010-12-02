@@ -106,6 +106,14 @@ public class Triple<O> {
         return object;
     }
 
+    public SubjectType getSubjectType() {
+        return subjectType;
+    }
+
+    public ObjectType getObjectType() {
+        return objectType;
+    }
+
     public String getObjectImplicitType() {
         if(object.getClass().equals(boolean.class) || object.getClass().equals(Boolean.class)) {
             return XMLSchemaTypes.BOOLEAN;
@@ -134,7 +142,7 @@ public class Triple<O> {
         return null;
     }
 
-    public String getObjectType() {
+    public String getLiteralType() {
         if(object instanceof TypedLiteral) {
             final TypedLiteral typedLiteral = (TypedLiteral) object;
             return typedLiteral.getType();
@@ -246,9 +254,9 @@ public class Triple<O> {
             return;
         }
         sb.append('"').append( getObjectAsString() ).append('"');
-        final String objectType = getObjectType();
-        if(objectType != null) {
-            sb.append("^^").append('<').append(objectType).append('>');
+        final String literalType = getLiteralType();
+        if(literalType != null) {
+            sb.append("^^").append('<').append(literalType).append('>');
             return;
         }
         final String objectLang = getObjectLanguage();
