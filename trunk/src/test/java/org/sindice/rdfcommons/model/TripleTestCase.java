@@ -16,15 +16,13 @@
 
 package org.sindice.rdfcommons.model;
 
-import org.sindice.rdfcommons.model.LanguageLiteral;
-import org.sindice.rdfcommons.model.Triple;
-import org.sindice.rdfcommons.model.TypedLiteral;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import java.util.GregorianCalendar;
 
-import static org.sindice.rdfcommons.model.Triple.*;
+import static org.sindice.rdfcommons.model.Triple.ObjectType;
+import static org.sindice.rdfcommons.model.Triple.SubjectType;
 
 /**
  * Test case for {@link org.sindice.rdfcommons.model.Triple} class.
@@ -41,7 +39,7 @@ public class TripleTestCase {
         Assert.assertEquals(triple.getObject()   , "obj-value" );
         Assert.assertEquals(triple.getObjectAsString(), "obj-value" );
         Assert.assertNull(triple.getObjectImplicitType() );
-        Assert.assertNull(triple.getObjectType() );
+        Assert.assertNull(triple.getLiteralType() );
         Assert.assertNull(triple.getObjectLanguage() );
         Assert.assertFalse(triple.isSubjectBNode());
         Assert.assertFalse(triple.isObjectBNode());
@@ -59,7 +57,7 @@ public class TripleTestCase {
         Assert.assertEquals(triple.getObject()   , "obj-value" );
         Assert.assertEquals(triple.getObjectAsString(), "obj-value" );
         Assert.assertNull(triple.getObjectImplicitType() );
-        Assert.assertNull(triple.getObjectType() );
+        Assert.assertNull(triple.getLiteralType() );
         Assert.assertNull(triple.getObjectLanguage() );
         Assert.assertFalse(triple.isSubjectBNode());
         Assert.assertFalse(triple.isObjectBNode());
@@ -77,7 +75,7 @@ public class TripleTestCase {
         Assert.assertEquals(triple.getObject()   , 13.4F );
         Assert.assertEquals(triple.getObjectAsString(), "13.4" );
         Assert.assertEquals(triple.getObjectImplicitType(), "http://www.w3.org/2001/XMLSchema/float" );
-        Assert.assertEquals(triple.getObjectType()        , "http://www.w3.org/2001/XMLSchema/float" );
+        Assert.assertEquals(triple.getLiteralType()       , "http://www.w3.org/2001/XMLSchema/float" );
         Assert.assertNull(triple.getObjectLanguage());
         Assert.assertFalse(triple.isSubjectBNode());
         Assert.assertFalse(triple.isObjectBNode());
@@ -100,7 +98,7 @@ public class TripleTestCase {
         Assert.assertEquals(triple.getObject()   , gc.getTime());
         Assert.assertEquals(triple.getObjectAsString(), "2010-11-23" );
         Assert.assertEquals(triple.getObjectImplicitType(), "http://www.w3.org/2001/XMLSchema/date" );
-        Assert.assertEquals(triple.getObjectType()        , "http://www.w3.org/2001/XMLSchema/date" );
+        Assert.assertEquals(triple.getLiteralType()       , "http://www.w3.org/2001/XMLSchema/date" );
         Assert.assertNull(triple.getObjectLanguage());
         Assert.assertFalse(triple.isSubjectBNode());
         Assert.assertFalse(triple.isObjectBNode());
@@ -122,7 +120,7 @@ public class TripleTestCase {
         Assert.assertEquals(triple.getObject()   , point );
         Assert.assertEquals(triple.getObjectAsString(), "POINT(12.7,13.9)" );
         Assert.assertNull( triple.getObjectImplicitType() );
-        Assert.assertEquals(triple.getObjectType(), "http://www.sindice.org/test/custom-geometry" );
+        Assert.assertEquals(triple.getLiteralType(), "http://www.sindice.org/test/custom-geometry" );
         Assert.assertNull(triple.getObjectLanguage() );
         Assert.assertFalse(triple.isSubjectBNode());
         Assert.assertFalse(triple.isObjectBNode());
@@ -144,7 +142,7 @@ public class TripleTestCase {
         Assert.assertEquals(triple.getObject()   , message );
         Assert.assertEquals(triple.getObjectAsString(), "Hello World!!" );
         Assert.assertNull( triple.getObjectImplicitType() );
-        Assert.assertNull(triple.getObjectType());
+        Assert.assertNull(triple.getLiteralType());
         Assert.assertEquals(triple.getObjectLanguage(), "en");
         Assert.assertFalse(triple.isSubjectBNode());
         Assert.assertFalse(triple.isObjectBNode());
@@ -165,7 +163,7 @@ public class TripleTestCase {
         Assert.assertEquals(triple.getObject()   , point );
         Assert.assertEquals(triple.getObjectAsString(), "POINT(12.7,13.9)" );
         Assert.assertNull( triple.getObjectImplicitType() );
-        Assert.assertEquals(triple.getObjectType(), "http://www.sindice.org/test/custom-geometry" );
+        Assert.assertEquals(triple.getLiteralType(), "http://www.sindice.org/test/custom-geometry" );
         Assert.assertNull(triple.getObjectLanguage() );
         Assert.assertTrue(triple.isSubjectBNode());
         Assert.assertFalse(triple.isObjectBNode());
@@ -186,7 +184,7 @@ public class TripleTestCase {
         Assert.assertEquals(triple.getObject()   , "obj-bnode" );
         Assert.assertEquals(triple.getObjectAsString(), "obj-bnode" );
         Assert.assertNull( triple.getObjectImplicitType() );
-        Assert.assertNull(triple.getObjectType() );
+        Assert.assertNull(triple.getLiteralType() );
         Assert.assertNull(triple.getObjectLanguage() );
         Assert.assertTrue(triple.isSubjectBNode());
         Assert.assertTrue(triple.isObjectBNode());
