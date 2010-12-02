@@ -29,7 +29,7 @@ import static org.sindice.rdfcommons.model.Triple.ObjectType;
 import static org.sindice.rdfcommons.model.Triple.SubjectType;
 
 /**
- * Dafault serializer for {@link java.util.Collection} classes.
+ * Default serializer for {@link java.util.Collection} classes.
  *
  * @author Michele Mostarda ( mostarda@fbk.eu )
  * @version $Id$
