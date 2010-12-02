@@ -23,6 +23,8 @@ import java.util.Date;
 import java.util.List;
 
 /**
+ * Fake bean used to test serialization and deserialization features.
+ *
  * @author Michele Mostarda ( mostarda@fbk.eu )
  * @version $Id$
  */
