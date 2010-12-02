@@ -17,6 +17,7 @@
 package org.sindice.rdfcommons.beanmapper;
 
 import org.sindice.rdfcommons.beanmapper.annotations.Type;
+import org.sindice.rdfcommons.model.Literal;
 import org.sindice.rdfcommons.model.Triple;
 import org.sindice.rdfcommons.model.TripleSet;
 import org.sindice.rdfcommons.beanmapper.annotations.Id;
@@ -107,8 +108,11 @@ public class BaseMapper {
      * @return <code>true</code> if the type is primitive, <code>false</code> otherwise.
      */
     protected static boolean isPrimitive(Class in) {
+        if(definesInterface(in, Literal.class)) {
+            return true;
+        }
         for(Class clazz : PRIMITIVE_TIPES) {
-            if( clazz.equals( in) ) {
+            if( clazz.equals(in) ) {
                 return true;
             }
         }

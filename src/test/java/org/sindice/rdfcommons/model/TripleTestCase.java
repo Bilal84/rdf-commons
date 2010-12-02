@@ -209,8 +209,7 @@ public class TripleTestCase {
             return "http://www.sindice.org/test/custom-geometry";
         }
 
-        @Override
-        public String toString() {
+        public String getValue() {
             return String.format("POINT(%s,%s)", x, y);
         }
     }
@@ -227,8 +226,7 @@ public class TripleTestCase {
             return "en";
         }
 
-        @Override
-        public String toString() {
+        public String getValue() {
             return content;
         }
     }
