@@ -6,7 +6,7 @@ package org.sindice.rdfcommons.model;
  *
  * @author Michele Mostarda (mostarda@fbk.eu)
  */
-public interface LanguageLiteral {
+public interface LanguageLiteral extends Literal {
 
     /**
      * Returns the literal language.
