@@ -117,6 +117,28 @@ public class TripleBuffer implements TripleSet {
         return triples.contains( new Triple<O>(sub, pred, obj, subjectType, objectType) );
     }
 
+    public <O> boolean containsTriplePattern(
+            String sub, String pred, O obj,
+            SubjectType subjectType, ObjectType objectType
+    ) {
+        for(Triple triple : triples) {
+            if(
+                    (sub == null || sub.equals(triple.getSubject()))
+                    &&
+                    (subjectType == null || subjectType.equals(triple.getSubjectType()))
+                    &&
+                    (pred == null || pred.equals(triple.getPredicate()))
+                    &&
+                    (obj == null || obj.equals(triple.getObject()))
+                    &&
+                    (objectType == null || objectType.equals(triple.getObjectType()))
+            ) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public void add(TripleSet ts) {
         for(Triple triple : ts) {
             addTriple(triple);
