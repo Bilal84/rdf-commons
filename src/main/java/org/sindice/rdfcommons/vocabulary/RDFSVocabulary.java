@@ -24,52 +24,57 @@ package org.sindice.rdfcommons.vocabulary;
  */
 public class RDFSVocabulary extends RDFVocabulary {
 
+    /**
+     * Base vocabulary prefix.
+     */
+    public static final String RDFS_PREFIX = "http://www.w3.org/2000/01/rdf-schema";
+
     /* ------ BEGIN PROPERTIES ------ */
 
     /**
      * <pre>rdfs:subClassOf Indicates membership of a class.</pre>
      */
-    public static final String SUBCLASSOF = PREFIX  + "#subClassOf";
+    public static final String SUBCLASSOF = RDFS_PREFIX  + "#subClassOf";
 
     /**
      * <pre>rdfs:subPropertyOf Indicates specialization of properties.</pre>
      */
-    public static final String SUBPROPERTYOF = PREFIX  + "#subPropertyOf";
+    public static final String SUBPROPERTYOF = RDFS_PREFIX  + "#subPropertyOf";
 
     /**
      * <pre>rdfs:domain A domain class for a property type.</pre>
      */
-    public static final String DOMAIN = PREFIX  + "#domain";
+    public static final String DOMAIN = RDFS_PREFIX  + "#domain";
 
     /**
      * <pre>rdfs:range A range class for a property type.</pre>
      */
-    public static final String RANGE = PREFIX  + "#range";
+    public static final String RANGE = RDFS_PREFIX  + "#range";
 
     /**
      * <pre>rdfs:label Provides a human-readable version of a resource name.</pre>
      */
-    public static final String LABEL = PREFIX  + "#label";
+    public static final String LABEL = RDFS_PREFIX  + "#label";
 
     /**
      * <pre>rdfs:comment Use this for descriptions.</pre>
      */
-    public static final String COMMENT = PREFIX  + "#comment";
+    public static final String COMMENT = RDFS_PREFIX  + "#comment";
 
     /**
      * <pre>rdfs:member A member of a container.</pre>
      */
-    public static final String MEMBER = PREFIX  + "#member";
+    public static final String MEMBER = RDFS_PREFIX  + "#member";
 
     /**
      * <pre>rdfs:seeAlso A resource that provides information about the subject resource.</pre>
      */
-    public static final String SEEALSO = PREFIX  + "#seeAlso";
+    public static final String SEEALSO = RDFS_PREFIX  + "#seeAlso";
 
     /**
      * <pre>rdfs:isDefinedBy Indicates the namespace of a resource.</pre>
      */
-    public static final String ISDEFINEDBY = PREFIX  + "#isDefinedBy";
+    public static final String ISDEFINEDBY = RDFS_PREFIX  + "#isDefinedBy";
 
     /* ------ END PROPERTIES ------ */
 
