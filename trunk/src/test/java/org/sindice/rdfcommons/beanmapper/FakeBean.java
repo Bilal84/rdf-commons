@@ -47,6 +47,8 @@ public class FakeBean {
 
     private float field6;
 
+    private FakeTypedLiteral fakeTypedLiteral;
+
     private List<FakeAggregateBean> aggregateBeans;
 
     private FakeAggregateBean[] aggregateBeansArray;
@@ -66,6 +68,7 @@ public class FakeBean {
             throw new RuntimeException(murle);
         }
         this.field6 = 3.1415f;
+        fakeTypedLiteral = new FakeTypedLiteral();
         aggregateBeans = Arrays.asList( new FakeAggregateBean(), new FakeAggregateBean() );
         aggregateBeansArray = new FakeAggregateBean[]{
                 new FakeAggregateBean(),
@@ -125,6 +128,14 @@ public class FakeBean {
         this.field6 = field6;
     }
 
+    public FakeTypedLiteral getFakeTypedLiteral() {
+        return fakeTypedLiteral;
+    }
+
+    public void setFakeTypedLiteral(FakeTypedLiteral fakeTypedLiteral) {
+        this.fakeTypedLiteral = fakeTypedLiteral;
+    }
+
     public List<FakeAggregateBean> getInnerBeans() {
         return aggregateBeans;
     }
@@ -158,6 +169,7 @@ public class FakeBean {
                 ( field4 == null ? 1 : field4.hashCode() * 3 ) *
                 ( field5 == null ? 1 : field5.hashCode() * 5 ) *
                 ( field6 * 7 ) *
+                ( fakeTypedLiteral == null ? 1 : fakeTypedLiteral.hashCode() ) *
                 ( aggregateBeans == null ? 1 : aggregateBeans.hashCode() ) *
                 ( aggregateBeansArray == null ? 1 : aggregateBeansArray.hashCode() ) *
                 ( fakeEnum == null ? 1 : fakeEnum.hashCode() * 11) );
@@ -185,6 +197,12 @@ public class FakeBean {
                     field5 != null ? field5.equals(other.field5) : other.field5 == null
                     &&
                     field6 == other.field6
+                    &&
+                    fakeTypedLiteral == null
+                            ?
+                    other.fakeTypedLiteral == null
+                            :
+                    fakeTypedLiteral.equals(other.fakeTypedLiteral)
                     &&
                     aggregateBeans != null
                             ?
