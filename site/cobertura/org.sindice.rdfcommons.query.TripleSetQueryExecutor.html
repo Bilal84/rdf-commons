@@ -109,32 +109,32 @@
 <tr>
   <td class="numLine">&nbsp;19</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;<span class="keyword">import</span> org.sindice.rdfcommons.InMemoryResultSet;</pre></td>
+  <td class="src"><pre class="src">&nbsp;<span class="keyword">import</span> org.sindice.rdfcommons.storage.InMemoryResultSet;</pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;20</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;<span class="keyword">import</span> org.sindice.rdfcommons.ResultSet;</pre></td>
+  <td class="src"><pre class="src">&nbsp;<span class="keyword">import</span> org.sindice.rdfcommons.storage.ResultSet;</pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;21</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;<span class="keyword">import</span> org.sindice.rdfcommons.Triple;</pre></td>
+  <td class="src"><pre class="src">&nbsp;<span class="keyword">import</span> org.sindice.rdfcommons.model.Triple;</pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;22</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;<span class="keyword">import</span> org.sindice.rdfcommons.TripleBuffer;</pre></td>
+  <td class="src"><pre class="src">&nbsp;<span class="keyword">import</span> org.sindice.rdfcommons.model.TripleBuffer;</pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;23</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;<span class="keyword">import</span> org.sindice.rdfcommons.TripleFilter;</pre></td>
+  <td class="src"><pre class="src">&nbsp;<span class="keyword">import</span> org.sindice.rdfcommons.model.TripleFilter;</pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;24</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;<span class="keyword">import</span> org.sindice.rdfcommons.TripleSet;</pre></td>
+  <td class="src"><pre class="src">&nbsp;<span class="keyword">import</span> org.sindice.rdfcommons.model.TripleSet;</pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;25</td>
@@ -199,7 +199,7 @@
 <tr>
   <td class="numLine">&nbsp;37</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;<span class="comment"> * @version $Id: TripleSetQueryExecutor.java 2 2010-11-20 17:45:05Z michele.mostarda $</span></pre></td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * @version $Id: TripleSetQueryExecutor.java 24 2010-12-01 23:47:33Z michele.mostarda $</span></pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;38</td>
@@ -208,7 +208,7 @@
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;39</td>
-  <td class="nbHitsCovered">&nbsp;48</td>
+  <td class="nbHitsCovered">&nbsp;73</td>
   <td class="src"><pre class="src">&nbsp;<span class="keyword">public</span> <span class="keyword">class</span> TripleSetQueryExecutor {</pre></td>
 </tr>
 <tr>
@@ -263,7 +263,7 @@
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;50</td>
-  <td class="nbHitsCovered">&nbsp;2</td>
+  <td class="nbHitsCovered">&nbsp;3</td>
   <td class="src"><pre class="src">&nbsp;        <span class="keyword">if</span>(previous == <span class="keyword">null</span>) {</pre></td>
 </tr>
 <tr>
@@ -278,47 +278,47 @@
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;53</td>
-  <td class="nbHitsCovered">&nbsp;2</td>
+  <td class="nbHitsCovered">&nbsp;3</td>
   <td class="src"><pre class="src">&nbsp;        String[] currVars = current.getVars();</pre></td>
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;54</td>
-  <td class="nbHitsCovered">&nbsp;2</td>
+  <td class="nbHitsCovered">&nbsp;3</td>
   <td class="src"><pre class="src">&nbsp;        String value  = <span class="keyword">null</span>;</pre></td>
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;55</td>
-  <td class="nbHitsCovered">&nbsp;2</td>
+  <td class="nbHitsCovered">&nbsp;3</td>
   <td class="src"><pre class="src">&nbsp;        String sub = <span class="keyword">null</span>;</pre></td>
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;56</td>
-  <td class="nbHitsCovered">&nbsp;2</td>
+  <td class="nbHitsCovered">&nbsp;3</td>
   <td class="src"><pre class="src">&nbsp;        String pred = <span class="keyword">null</span>;</pre></td>
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;57</td>
-  <td class="nbHitsCovered">&nbsp;2</td>
+  <td class="nbHitsCovered">&nbsp;3</td>
   <td class="src"><pre class="src">&nbsp;        String obj = <span class="keyword">null</span>;</pre></td>
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;58</td>
-  <td class="nbHitsCovered">&nbsp;8</td>
+  <td class="nbHitsCovered">&nbsp;12</td>
   <td class="src"><pre class="src">&nbsp;        <span class="keyword">for</span>(String currVar : currVars) {</pre></td>
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;59</td>
-  <td class="nbHitsCovered">&nbsp;6</td>
+  <td class="nbHitsCovered">&nbsp;9</td>
   <td class="src"><pre class="src">&nbsp;            <span class="keyword">int</span> prevVarIndex = previous.getVarIndex(currVar);</pre></td>
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;60</td>
-  <td class="nbHitsCovered">&nbsp;6</td>
+  <td class="nbHitsCovered">&nbsp;9</td>
   <td class="src"><pre class="src">&nbsp;            <span class="keyword">int</span> currVarIndex = current.getVarIndex(currVar);</pre></td>
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;61</td>
-  <td class="nbHitsCovered">&nbsp;6</td>
+  <td class="nbHitsCovered">&nbsp;9</td>
   <td class="src"><pre class="src">&nbsp;            <span class="keyword">switch</span> (prevVarIndex) {</pre></td>
 </tr>
 <tr>
@@ -328,12 +328,12 @@
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;63</td>
-  <td class="nbHitsCovered">&nbsp;4</td>
+  <td class="nbHitsCovered">&nbsp;6</td>
   <td class="src"><pre class="src">&nbsp;                    value = currVar;</pre></td>
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;64</td>
-  <td class="nbHitsCovered">&nbsp;4</td>
+  <td class="nbHitsCovered">&nbsp;6</td>
   <td class="src"><pre class="src">&nbsp;                    <span class="keyword">break</span>;</pre></td>
 </tr>
 <tr>
@@ -373,7 +373,7 @@
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;72</td>
-  <td class="nbHitsCovered">&nbsp;2</td>
+  <td class="nbHitsCovered">&nbsp;3</td>
   <td class="src"><pre class="src">&nbsp;                    value = t.getObjectAsString();</pre></td>
 </tr>
 <tr>
@@ -388,7 +388,7 @@
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;75</td>
-  <td class="nbHitsCovered">&nbsp;6</td>
+  <td class="nbHitsCovered">&nbsp;9</td>
   <td class="src"><pre class="src">&nbsp;            <span class="keyword">switch</span> (currVarIndex) {</pre></td>
 </tr>
 <tr>
@@ -398,12 +398,12 @@
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;77</td>
-  <td class="nbHitsCovered">&nbsp;2</td>
+  <td class="nbHitsCovered">&nbsp;3</td>
   <td class="src"><pre class="src">&nbsp;                    sub = value;</pre></td>
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;78</td>
-  <td class="nbHitsCovered">&nbsp;2</td>
+  <td class="nbHitsCovered">&nbsp;3</td>
   <td class="src"><pre class="src">&nbsp;                    <span class="keyword">break</span>;</pre></td>
 </tr>
 <tr>
@@ -413,12 +413,12 @@
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;80</td>
-  <td class="nbHitsCovered">&nbsp;2</td>
+  <td class="nbHitsCovered">&nbsp;3</td>
   <td class="src"><pre class="src">&nbsp;                    pred = value;</pre></td>
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;81</td>
-  <td class="nbHitsCovered">&nbsp;2</td>
+  <td class="nbHitsCovered">&nbsp;3</td>
   <td class="src"><pre class="src">&nbsp;                    <span class="keyword">break</span>;</pre></td>
 </tr>
 <tr>
@@ -428,7 +428,7 @@
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;83</td>
-  <td class="nbHitsCovered">&nbsp;2</td>
+  <td class="nbHitsCovered">&nbsp;3</td>
   <td class="src"><pre class="src">&nbsp;                    obj = value;</pre></td>
 </tr>
 <tr>
@@ -448,7 +448,7 @@
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;87</td>
-  <td class="nbHitsCovered">&nbsp;2</td>
+  <td class="nbHitsCovered">&nbsp;3</td>
   <td class="src"><pre class="src">&nbsp;        <span class="keyword">return</span> <span class="keyword">new</span> Match(current.getQueryContext(), sub, pred, obj);</pre></td>
 </tr>
 <tr>
@@ -518,22 +518,22 @@
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;101</td>
-  <td class="nbHitsCovered">&nbsp;148</td>
+  <td class="nbHitsCovered">&nbsp;224</td>
   <td class="src"><pre class="src">&nbsp;        <span class="keyword">for</span>(i = begin; i &lt; indexes.length; i++) {</pre></td>
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;102</td>
-  <td class="nbHitsCovered">&nbsp;90</td>
+  <td class="nbHitsCovered">&nbsp;136</td>
   <td class="src"><pre class="src">&nbsp;            <span class="keyword">if</span>(indexes[i] &lt; sets[i].getSize() - 1) {</pre></td>
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;103</td>
-  <td class="nbHitsCovered">&nbsp;20</td>
+  <td class="nbHitsCovered">&nbsp;30</td>
   <td class="src"><pre class="src">&nbsp;                indexes[i]++;</pre></td>
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;104</td>
-  <td class="nbHitsCovered">&nbsp;20</td>
+  <td class="nbHitsCovered">&nbsp;30</td>
   <td class="src"><pre class="src">&nbsp;                <span class="keyword">return</span> begin;</pre></td>
 </tr>
 <tr>
@@ -543,7 +543,7 @@
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;106</td>
-  <td class="nbHitsCovered">&nbsp;70</td>
+  <td class="nbHitsCovered">&nbsp;106</td>
   <td class="src"><pre class="src">&nbsp;                indexes[i] = 0;</pre></td>
 </tr>
 <tr>
@@ -558,7 +558,7 @@
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;109</td>
-  <td class="nbHitsCovered">&nbsp;58</td>
+  <td class="nbHitsCovered">&nbsp;88</td>
   <td class="src"><pre class="src">&nbsp;        <span class="keyword">return</span> i == indexes.length ? -1 : i;</pre></td>
 </tr>
 <tr>
@@ -618,7 +618,7 @@
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;121</td>
-  <td class="nbHitsCovered">&nbsp;56</td>
+  <td class="nbHitsCovered">&nbsp;85</td>
   <td class="src"><pre class="src">&nbsp;        <span class="keyword">if</span>(matches.length != sets.length) {</pre></td>
 </tr>
 <tr>
@@ -638,12 +638,12 @@
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;125</td>
-  <td class="nbHitsCovered">&nbsp;56</td>
+  <td class="nbHitsCovered">&nbsp;85</td>
   <td class="src"><pre class="src">&nbsp;        <span class="keyword">int</span>[] indexes = <span class="keyword">new</span> <span class="keyword">int</span>[sets.length];</pre></td>
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;126</td>
-  <td class="nbHitsCovered">&nbsp;56</td>
+  <td class="nbHitsCovered">&nbsp;85</td>
   <td class="src"><pre class="src">&nbsp;        <span class="keyword">int</span> cursor = 0;</pre></td>
 </tr>
 <tr>
@@ -653,12 +653,12 @@
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;128</td>
-  <td class="nbHitsCovered">&nbsp;56</td>
+  <td class="nbHitsCovered">&nbsp;85</td>
   <td class="src"><pre class="src">&nbsp;        List&lt;InMemoryResultSet.VarEntry&gt; entries = <span class="keyword">new</span> ArrayList&lt;InMemoryResultSet.VarEntry&gt;();</pre></td>
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;129</td>
-  <td class="nbHitsCovered">&nbsp;122</td>
+  <td class="nbHitsCovered">&nbsp;185</td>
   <td class="src"><pre class="src">&nbsp;        <span class="keyword">while</span>(cursor &gt;= 0) {</pre></td>
 </tr>
 <tr>
@@ -668,32 +668,32 @@
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;131</td>
-  <td class="nbHitsCovered">&nbsp;66</td>
+  <td class="nbHitsCovered">&nbsp;100</td>
   <td class="src"><pre class="src">&nbsp;            entries.clear();</pre></td>
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;132</td>
-  <td class="nbHitsCovered">&nbsp;66</td>
+  <td class="nbHitsCovered">&nbsp;100</td>
   <td class="src"><pre class="src">&nbsp;            Set&lt;String&gt; processedVars = <span class="keyword">new</span> HashSet&lt;String&gt;();</pre></td>
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;133</td>
-  <td class="nbHitsCovered">&nbsp;144</td>
+  <td class="nbHitsCovered">&nbsp;218</td>
   <td class="src"><pre class="src">&nbsp;            <span class="keyword">for</span>(<span class="keyword">int</span> i = 0; i &lt; matches.length; i++) {</pre></td>
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;134</td>
-  <td class="nbHitsCovered">&nbsp;78</td>
+  <td class="nbHitsCovered">&nbsp;118</td>
   <td class="src"><pre class="src">&nbsp;                match = matches[i];</pre></td>
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;135</td>
-  <td class="nbHitsCovered">&nbsp;78</td>
+  <td class="nbHitsCovered">&nbsp;118</td>
   <td class="src"><pre class="src">&nbsp;                List&lt;Triple&gt; triples = sets[i].getTriples();  <span class="comment">// TODO: this MUST be optimized.</span></pre></td>
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;136</td>
-  <td class="nbHitsCovered">&nbsp;78</td>
+  <td class="nbHitsCovered">&nbsp;118</td>
   <td class="src"><pre class="src">&nbsp;                Triple triple = triples.get(indexes[i]);</pre></td>
 </tr>
 <tr>
@@ -703,22 +703,22 @@
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;138</td>
-  <td class="nbHitsCovered">&nbsp;78</td>
+  <td class="nbHitsCovered">&nbsp;118</td>
   <td class="src"><pre class="src">&nbsp;                <span class="keyword">if</span>(match.isSubVar()) {</pre></td>
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;139</td>
-  <td class="nbHitsCovered">&nbsp;30</td>
+  <td class="nbHitsCovered">&nbsp;45</td>
   <td class="src"><pre class="src">&nbsp;                    <span class="keyword">if</span>( ! processedVars.contains(match.getSub()) ) {</pre></td>
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;140</td>
-  <td class="nbHitsCovered">&nbsp;30</td>
+  <td class="nbHitsCovered">&nbsp;45</td>
   <td class="src"><pre class="src">&nbsp;                        entries.add( <span class="keyword">new</span> InMemoryResultSet.VarEntry(triple.getSubject()) );</pre></td>
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;141</td>
-  <td class="nbHitsCovered">&nbsp;30</td>
+  <td class="nbHitsCovered">&nbsp;45</td>
   <td class="src"><pre class="src">&nbsp;                        processedVars.add(match.getSub());</pre></td>
 </tr>
 <tr>
@@ -733,22 +733,22 @@
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;144</td>
-  <td class="nbHitsCovered">&nbsp;78</td>
+  <td class="nbHitsCovered">&nbsp;118</td>
   <td class="src"><pre class="src">&nbsp;                <span class="keyword">if</span>(match.isPredVar()) {</pre></td>
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;145</td>
-  <td class="nbHitsCovered">&nbsp;34</td>
+  <td class="nbHitsCovered">&nbsp;51</td>
   <td class="src"><pre class="src">&nbsp;                    <span class="keyword">if</span>( ! processedVars.contains(match.getPred()) ) {</pre></td>
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;146</td>
-  <td class="nbHitsCovered">&nbsp;34</td>
+  <td class="nbHitsCovered">&nbsp;51</td>
   <td class="src"><pre class="src">&nbsp;                        entries.add( <span class="keyword">new</span> InMemoryResultSet.VarEntry(triple.getPredicate()));</pre></td>
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;147</td>
-  <td class="nbHitsCovered">&nbsp;34</td>
+  <td class="nbHitsCovered">&nbsp;51</td>
   <td class="src"><pre class="src">&nbsp;                        processedVars.add(match.getPred());</pre></td>
 </tr>
 <tr>
@@ -763,22 +763,22 @@
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;150</td>
-  <td class="nbHitsCovered">&nbsp;78</td>
+  <td class="nbHitsCovered">&nbsp;118</td>
   <td class="src"><pre class="src">&nbsp;                <span class="keyword">if</span>(match.isObjVar()) {</pre></td>
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;151</td>
-  <td class="nbHitsCovered">&nbsp;76</td>
+  <td class="nbHitsCovered">&nbsp;115</td>
   <td class="src"><pre class="src">&nbsp;                    <span class="keyword">if</span>( ! processedVars.contains(match.getObj()) ) {</pre></td>
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;152</td>
-  <td class="nbHitsCovered">&nbsp;76</td>
+  <td class="nbHitsCovered">&nbsp;115</td>
   <td class="src"><pre class="src">&nbsp;                        <span class="keyword">if</span>(triple.isObjLiteral()) {</pre></td>
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;153</td>
-  <td class="nbHitsCovered">&nbsp;30</td>
+  <td class="nbHitsCovered">&nbsp;46</td>
   <td class="src"><pre class="src">&nbsp;                            entries.add(</pre></td>
 </tr>
 <tr>
@@ -813,7 +813,7 @@
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;160</td>
-  <td class="nbHitsCovered">&nbsp;46</td>
+  <td class="nbHitsCovered">&nbsp;69</td>
   <td class="src"><pre class="src">&nbsp;                            entries.add( <span class="keyword">new</span> InMemoryResultSet.VarEntry(triple.getObjectAsString()) );</pre></td>
 </tr>
 <tr>
@@ -823,7 +823,7 @@
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;162</td>
-  <td class="nbHitsCovered">&nbsp;76</td>
+  <td class="nbHitsCovered">&nbsp;115</td>
   <td class="src"><pre class="src">&nbsp;                        processedVars.add(match.getObj());</pre></td>
 </tr>
 <tr>
@@ -853,7 +853,7 @@
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;168</td>
-  <td class="nbHitsCovered">&nbsp;66</td>
+  <td class="nbHitsCovered">&nbsp;100</td>
   <td class="src"><pre class="src">&nbsp;            rs.addResult( entries.toArray( <span class="keyword">new</span> InMemoryResultSet.VarEntry[entries.size()] ) );</pre></td>
 </tr>
 <tr>
@@ -863,17 +863,17 @@
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;170</td>
-  <td class="nbHitsCovered">&nbsp;66</td>
+  <td class="nbHitsCovered">&nbsp;100</td>
   <td class="src"><pre class="src">&nbsp;            cursor = progressIndex(cursor, indexes, sets);</pre></td>
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;171</td>
-  <td class="nbHitsCovered">&nbsp;66</td>
+  <td class="nbHitsCovered">&nbsp;100</td>
   <td class="src"><pre class="src">&nbsp;        }</pre></td>
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;172</td>
-  <td class="nbHitsCovered">&nbsp;56</td>
+  <td class="nbHitsCovered">&nbsp;85</td>
   <td class="src"><pre class="src">&nbsp;    }</pre></td>
 </tr>
 <tr>
@@ -888,7 +888,7 @@
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;175</td>
-  <td class="nbHitsCovered">&nbsp;42</td>
+  <td class="nbHitsCovered">&nbsp;64</td>
   <td class="src"><pre class="src">&nbsp;        <span class="keyword">if</span>(qry.isEmpty()) {</pre></td>
 </tr>
 <tr>
@@ -908,7 +908,7 @@
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;179</td>
-  <td class="nbHitsCovered">&nbsp;42</td>
+  <td class="nbHitsCovered">&nbsp;64</td>
   <td class="src"><pre class="src">&nbsp;        InMemoryResultSet rs = <span class="keyword">new</span> InMemoryResultSet( qry.getVars() );</pre></td>
 </tr>
 <tr>
@@ -918,7 +918,7 @@
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;181</td>
-  <td class="nbHitsCovered">&nbsp;42</td>
+  <td class="nbHitsCovered">&nbsp;64</td>
   <td class="src"><pre class="src">&nbsp;        <span class="keyword">if</span>(in.getSize() == 0) {</pre></td>
 </tr>
 <tr>
@@ -943,22 +943,22 @@
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;186</td>
-  <td class="nbHitsCovered">&nbsp;42</td>
+  <td class="nbHitsCovered">&nbsp;64</td>
   <td class="src"><pre class="src">&nbsp;        TripleSet matchSet = in.getTriples( <span class="keyword">new</span> InternalFilter( qry.get(0) ) );</pre></td>
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;187</td>
-  <td class="nbHitsCovered">&nbsp;42</td>
+  <td class="nbHitsCovered">&nbsp;64</td>
   <td class="src"><pre class="src">&nbsp;        Stack&lt;TripleSet&gt; partialResults = <span class="keyword">new</span> Stack&lt;TripleSet&gt;();</pre></td>
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;188</td>
-  <td class="nbHitsCovered">&nbsp;42</td>
+  <td class="nbHitsCovered">&nbsp;64</td>
   <td class="src"><pre class="src">&nbsp;        <span class="keyword">for</span>(Triple triple : matchSet) {</pre></td>
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;189</td>
-  <td class="nbHitsCovered">&nbsp;54</td>
+  <td class="nbHitsCovered">&nbsp;82</td>
   <td class="src"><pre class="src">&nbsp;            partialResults.push( <span class="keyword">new</span> TripleBuffer(triple) );</pre></td>
 </tr>
 <tr>
@@ -973,7 +973,7 @@
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;192</td>
-  <td class="nbHitsCovered">&nbsp;42</td>
+  <td class="nbHitsCovered">&nbsp;64</td>
   <td class="src"><pre class="src">&nbsp;        Match previous = qry.get(0);</pre></td>
 </tr>
 <tr>
@@ -988,7 +988,7 @@
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;195</td>
-  <td class="nbHitsCovered">&nbsp;96</td>
+  <td class="nbHitsCovered">&nbsp;146</td>
   <td class="src"><pre class="src">&nbsp;        <span class="keyword">while</span>( ! partialResults.isEmpty() ) {</pre></td>
 </tr>
 <tr>
@@ -998,7 +998,7 @@
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;197</td>
-  <td class="nbHitsCovered">&nbsp;54</td>
+  <td class="nbHitsCovered">&nbsp;82</td>
   <td class="src"><pre class="src">&nbsp;            nextPartial = partialResults.peek();</pre></td>
 </tr>
 <tr>
@@ -1008,7 +1008,7 @@
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;199</td>
-  <td class="nbHitsCovered">&nbsp;54</td>
+  <td class="nbHitsCovered">&nbsp;82</td>
   <td class="src"><pre class="src">&nbsp;            <span class="keyword">for</span>(Triple triple : nextPartial) {</pre></td>
 </tr>
 <tr>
@@ -1018,12 +1018,12 @@
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;201</td>
-  <td class="nbHitsCovered">&nbsp;54</td>
+  <td class="nbHitsCovered">&nbsp;82</td>
   <td class="src"><pre class="src">&nbsp;                <span class="keyword">boolean</span> completed = <span class="keyword">true</span>;</pre></td>
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;202</td>
-  <td class="nbHitsCovered">&nbsp;54</td>
+  <td class="nbHitsCovered">&nbsp;82</td>
   <td class="src"><pre class="src">&nbsp;                <span class="keyword">for</span>(<span class="keyword">int</span> i = 1; i &lt; qry.size(); i++) {</pre></td>
 </tr>
 <tr>
@@ -1123,22 +1123,22 @@
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;222</td>
-  <td class="nbHitsCovered">&nbsp;54</td>
+  <td class="nbHitsCovered">&nbsp;82</td>
   <td class="src"><pre class="src">&nbsp;                <span class="keyword">if</span>(completed) {</pre></td>
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;223</td>
-  <td class="nbHitsCovered">&nbsp;54</td>
+  <td class="nbHitsCovered">&nbsp;82</td>
   <td class="src"><pre class="src">&nbsp;                    TripleSet[] sets = <span class="keyword">new</span> TripleSet[qry.size()];</pre></td>
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;224</td>
-  <td class="nbHitsCovered">&nbsp;108</td>
+  <td class="nbHitsCovered">&nbsp;164</td>
   <td class="src"><pre class="src">&nbsp;                    <span class="keyword">for</span>(<span class="keyword">int</span> i = qry.size() - 1; i &gt;= 0; i--) {</pre></td>
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;225</td>
-  <td class="nbHitsCovered">&nbsp;54</td>
+  <td class="nbHitsCovered">&nbsp;82</td>
   <td class="src"><pre class="src">&nbsp;                        sets[i] = partialResults.pop();</pre></td>
 </tr>
 <tr>
@@ -1148,7 +1148,7 @@
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;227</td>
-  <td class="nbHitsCovered">&nbsp;54</td>
+  <td class="nbHitsCovered">&nbsp;82</td>
   <td class="src"><pre class="src">&nbsp;                    multiply(qry.getMatches(), sets, rs);</pre></td>
 </tr>
 <tr>
@@ -1163,7 +1163,7 @@
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;230</td>
-  <td class="nbHitsCovered">&nbsp;54</td>
+  <td class="nbHitsCovered">&nbsp;82</td>
   <td class="src"><pre class="src">&nbsp;            }</pre></td>
 </tr>
 <tr>
@@ -1183,7 +1183,7 @@
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;234</td>
-  <td class="nbHitsCovered">&nbsp;42</td>
+  <td class="nbHitsCovered">&nbsp;64</td>
   <td class="src"><pre class="src">&nbsp;        <span class="keyword">return</span> rs;</pre></td>
 </tr>
 <tr>
@@ -1198,7 +1198,7 @@
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;237</td>
-  <td class="nbHitsCovered">&nbsp;48</td>
+  <td class="nbHitsCovered">&nbsp;73</td>
   <td class="src"><pre class="src">&nbsp;    <span class="keyword">class</span> InternalFilter <span class="keyword">implements</span> TripleFilter {</pre></td>
 </tr>
 <tr>
@@ -1218,17 +1218,17 @@
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;241</td>
-  <td class="nbHitsCovered">&nbsp;42</td>
+  <td class="nbHitsCovered">&nbsp;64</td>
   <td class="src"><pre class="src">&nbsp;        InternalFilter(Match m) {</pre></td>
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;242</td>
-  <td class="nbHitsCovered">&nbsp;42</td>
+  <td class="nbHitsCovered">&nbsp;64</td>
   <td class="src"><pre class="src">&nbsp;            match = m;</pre></td>
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;243</td>
-  <td class="nbHitsCovered">&nbsp;42</td>
+  <td class="nbHitsCovered">&nbsp;64</td>
   <td class="src"><pre class="src">&nbsp;        }</pre></td>
 </tr>
 <tr>
@@ -1243,7 +1243,7 @@
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;246</td>
-  <td class="nbHitsCovered">&nbsp;824</td>
+  <td class="nbHitsCovered">&nbsp;1277</td>
   <td class="src"><pre class="src">&nbsp;            <span class="keyword">return</span></pre></td>
 </tr>
 <tr>

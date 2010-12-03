@@ -26,7 +26,7 @@
 <a name="16" href="#16">16</a>  
 <a name="17" href="#17">17</a>  <strong class="jxr_keyword">package</strong> org.sindice.rdfcommons.beanmapper;
 <a name="18" href="#18">18</a>  
-<a name="19" href="#19">19</a>  <strong class="jxr_keyword">import</strong> org.sindice.rdfcommons.TripleSet;
+<a name="19" href="#19">19</a>  <strong class="jxr_keyword">import</strong> org.sindice.rdfcommons.model.TripleSet;
 <a name="20" href="#20">20</a>  
 <a name="21" href="#21">21</a>  <strong class="jxr_keyword">import</strong> java.lang.annotation.Annotation;
 <a name="22" href="#22">22</a>  
@@ -34,7 +34,7 @@
 <a name="24" href="#24">24</a>  <em class="jxr_javadoccomment"> * Defines a serializer for the enumerations.</em>
 <a name="25" href="#25">25</a>  <em class="jxr_javadoccomment"> *</em>
 <a name="26" href="#26">26</a>  <em class="jxr_javadoccomment"> * @author Michele Mostarda ( mostarda@fbk.eu )</em>
-<a name="27" href="#27">27</a>  <em class="jxr_javadoccomment"> * @version $Id: EnumSerializer.java 2 2010-11-20 17:45:05Z michele.mostarda $</em>
+<a name="27" href="#27">27</a>  <em class="jxr_javadoccomment"> * @version $Id: EnumSerializer.java 24 2010-12-01 23:47:33Z michele.mostarda $</em>
 <a name="28" href="#28">28</a>  <em class="jxr_javadoccomment"> */</em>
 <a name="29" href="#29">29</a>  <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">class</strong> <a href="../../../../org/sindice/rdfcommons/beanmapper/EnumSerializer.html">EnumSerializer</a> implements <a href="../../../../org/sindice/rdfcommons/beanmapper/CriteriaSerializer.html">CriteriaSerializer</a> {
 <a name="30" href="#30">30</a>  
@@ -46,11 +46,11 @@
 <a name="36" href="#36">36</a>          <strong class="jxr_keyword">return</strong> false;
 <a name="37" href="#37">37</a>      }
 <a name="38" href="#38">38</a>  
-<a name="39" href="#39">39</a>      <strong class="jxr_keyword">public</strong> <a href="../../../../org/sindice/rdfcommons/beanmapper/Identifier.html">Identifier</a> getIdentifier(<a href="../../../../org/sindice/rdfcommons/beanmapper/SerializationContext.html">SerializationContext</a> context, Object object, Annotation[] annotations, <a href="../../../../org/sindice/rdfcommons/TripleSet.html">TripleSet</a> buffer) {
+<a name="39" href="#39">39</a>      <strong class="jxr_keyword">public</strong> <a href="../../../../org/sindice/rdfcommons/beanmapper/Identifier.html">Identifier</a> getIdentifier(<a href="../../../../org/sindice/rdfcommons/beanmapper/SerializationContext.html">SerializationContext</a> context, Object object, Annotation[] annotations, <a href="../../../../org/sindice/rdfcommons/model/TripleSet.html">TripleSet</a> buffer) {
 <a name="40" href="#40">40</a>          <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> UnsupportedOperationException();
 <a name="41" href="#41">41</a>      }
 <a name="42" href="#42">42</a>  
-<a name="43" href="#43">43</a>      <strong class="jxr_keyword">public</strong> <a href="../../../../org/sindice/rdfcommons/beanmapper/Identifier.html">Identifier</a> serialize(<a href="../../../../org/sindice/rdfcommons/beanmapper/SerializationContext.html">SerializationContext</a> context, Object object, Annotation[] annotations, <a href="../../../../org/sindice/rdfcommons/TripleSet.html">TripleSet</a> buffer)
+<a name="43" href="#43">43</a>      <strong class="jxr_keyword">public</strong> <a href="../../../../org/sindice/rdfcommons/beanmapper/Identifier.html">Identifier</a> serialize(<a href="../../../../org/sindice/rdfcommons/beanmapper/SerializationContext.html">SerializationContext</a> context, Object object, Annotation[] annotations, <a href="../../../../org/sindice/rdfcommons/model/TripleSet.html">TripleSet</a> buffer)
 <a name="44" href="#44">44</a>      <strong class="jxr_keyword">throws</strong> <a href="../../../../org/sindice/rdfcommons/beanmapper/SerializationException.html">SerializationException</a> {
 <a name="45" href="#45">45</a>          <strong class="jxr_keyword">return</strong> <strong class="jxr_keyword">new</strong> <a href="../../../../org/sindice/rdfcommons/beanmapper/Identifier.html">Identifier</a>( ((Enum) object).name(), Identifier.Type.literal);
 <a name="46" href="#46">46</a>      }

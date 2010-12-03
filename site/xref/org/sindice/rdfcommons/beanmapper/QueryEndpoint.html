@@ -26,9 +26,9 @@
 <a name="16" href="#16">16</a>  
 <a name="17" href="#17">17</a>  <strong class="jxr_keyword">package</strong> org.sindice.rdfcommons.beanmapper;
 <a name="18" href="#18">18</a>  
-<a name="19" href="#19">19</a>  <strong class="jxr_keyword">import</strong> org.sindice.rdfcommons.ResultSet;
-<a name="20" href="#20">20</a>  <strong class="jxr_keyword">import</strong> org.sindice.rdfcommons.SparqlEndpointException;
-<a name="21" href="#21">21</a>  <strong class="jxr_keyword">import</strong> org.sindice.rdfcommons.TripleSet;
+<a name="19" href="#19">19</a>  <strong class="jxr_keyword">import</strong> org.sindice.rdfcommons.storage.ResultSet;
+<a name="20" href="#20">20</a>  <strong class="jxr_keyword">import</strong> org.sindice.rdfcommons.storage.SparqlEndpointException;
+<a name="21" href="#21">21</a>  <strong class="jxr_keyword">import</strong> org.sindice.rdfcommons.model.TripleSet;
 <a name="22" href="#22">22</a>  <strong class="jxr_keyword">import</strong> org.sindice.rdfcommons.query.QueryBuilder;
 <a name="23" href="#23">23</a>  <strong class="jxr_keyword">import</strong> org.sindice.rdfcommons.storage.TripleStorage;
 <a name="24" href="#24">24</a>  
@@ -36,17 +36,17 @@
 <a name="26" href="#26">26</a>  <em class="jxr_javadoccomment"> * Endpoint to perform query on the triple data set.</em>
 <a name="27" href="#27">27</a>  <em class="jxr_javadoccomment"> *</em>
 <a name="28" href="#28">28</a>  <em class="jxr_javadoccomment"> * @author Michele Mostarda ( mostarda@fbk.eu )</em>
-<a name="29" href="#29">29</a>  <em class="jxr_javadoccomment"> * @version $Id: QueryEndpoint.java 2 2010-11-20 17:45:05Z michele.mostarda $</em>
+<a name="29" href="#29">29</a>  <em class="jxr_javadoccomment"> * @version $Id: QueryEndpoint.java 24 2010-12-01 23:47:33Z michele.mostarda $</em>
 <a name="30" href="#30">30</a>  <em class="jxr_javadoccomment"> */</em>
 <a name="31" href="#31">31</a>  <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">class</strong> <a href="../../../../org/sindice/rdfcommons/beanmapper/QueryEndpoint.html">QueryEndpoint</a> {
 <a name="32" href="#32">32</a>  
-<a name="33" href="#33">33</a>      <strong class="jxr_keyword">private</strong> <a href="../../../../org/sindice/rdfcommons/TripleSet.html">TripleSet</a> tripleSet;
+<a name="33" href="#33">33</a>      <strong class="jxr_keyword">private</strong> <a href="../../../../org/sindice/rdfcommons/model/TripleSet.html">TripleSet</a> tripleSet;
 <a name="34" href="#34">34</a>  
 <a name="35" href="#35">35</a>      <strong class="jxr_keyword">private</strong> <a href="../../../../org/sindice/rdfcommons/storage/TripleStorage.html">TripleStorage</a> tripleStorage;
 <a name="36" href="#36">36</a>  
 <a name="37" href="#37">37</a>      <strong class="jxr_keyword">private</strong> <a href="../../../../org/sindice/rdfcommons/query/QueryBuilder.html">QueryBuilder</a> queryBuilder = <strong class="jxr_keyword">new</strong> <a href="../../../../org/sindice/rdfcommons/query/QueryBuilder.html">QueryBuilder</a>();
 <a name="38" href="#38">38</a>  
-<a name="39" href="#39">39</a>      <strong class="jxr_keyword">public</strong> <a href="../../../../org/sindice/rdfcommons/beanmapper/QueryEndpoint.html">QueryEndpoint</a>(<a href="../../../../org/sindice/rdfcommons/TripleSet.html">TripleSet</a> ts) {
+<a name="39" href="#39">39</a>      <strong class="jxr_keyword">public</strong> <a href="../../../../org/sindice/rdfcommons/beanmapper/QueryEndpoint.html">QueryEndpoint</a>(<a href="../../../../org/sindice/rdfcommons/model/TripleSet.html">TripleSet</a> ts) {
 <a name="40" href="#40">40</a>          <strong class="jxr_keyword">if</strong>(ts == <strong class="jxr_keyword">null</strong>) {
 <a name="41" href="#41">41</a>              <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> NullPointerException(<span class="jxr_string">"triple set cannot be null."</span>);
 <a name="42" href="#42">42</a>          }
@@ -68,7 +68,7 @@
 <a name="58" href="#58">58</a>          queryBuilder.removeQuery(subCriteria, predCriteria, objCriteria);
 <a name="59" href="#59">59</a>      }
 <a name="60" href="#60">60</a>  
-<a name="61" href="#61">61</a>      <strong class="jxr_keyword">public</strong> <a href="../../../../org/sindice/rdfcommons/ResultSet.html">ResultSet</a> execute() {
+<a name="61" href="#61">61</a>      <strong class="jxr_keyword">public</strong> <a href="../../../../org/sindice/rdfcommons/storage/ResultSet.html">ResultSet</a> execute() {
 <a name="62" href="#62">62</a>          assert logicalXOR(tripleSet != <strong class="jxr_keyword">null</strong>, tripleStorage != <strong class="jxr_keyword">null</strong>);
 <a name="63" href="#63">63</a>          <strong class="jxr_keyword">try</strong> {
 <a name="64" href="#64">64</a>              <strong class="jxr_keyword">if</strong>(tripleSet != <strong class="jxr_keyword">null</strong>) {

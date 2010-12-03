@@ -32,13 +32,13 @@
 <a name="22" href="#22">22</a>  <strong class="jxr_keyword">import</strong> java.lang.annotation.Target;
 <a name="23" href="#23">23</a>  
 <a name="24" href="#24">24</a>  <em class="jxr_javadoccomment">/**</em>
-<a name="25" href="#25">25</a>  <em class="jxr_javadoccomment"> * In a a method of a bean is marked with this annotation,</em>
+<a name="25" href="#25">25</a>  <em class="jxr_javadoccomment"> * If the method of a bean is marked with this annotation,</em>
 <a name="26" href="#26">26</a>  <em class="jxr_javadoccomment"> * then the serialization is performed no more on the bean itself</em>
 <a name="27" href="#27">27</a>  <em class="jxr_javadoccomment"> * but on the object returned by the annotated method.</em>
-<a name="28" href="#28">28</a>  <em class="jxr_javadoccomment"> * The method is expected to not accept parameters. </em>
+<a name="28" href="#28">28</a>  <em class="jxr_javadoccomment"> * The method is expected to accept no parameters. </em>
 <a name="29" href="#29">29</a>  <em class="jxr_javadoccomment"> *</em>
 <a name="30" href="#30">30</a>  <em class="jxr_javadoccomment"> * @author Michele Mostarda ( mostarda@fbk.eu )</em>
-<a name="31" href="#31">31</a>  <em class="jxr_javadoccomment"> * @version $Id: Adapt.java 2 2010-11-20 17:45:05Z michele.mostarda $</em>
+<a name="31" href="#31">31</a>  <em class="jxr_javadoccomment"> * @version $Id: Adapt.java 26 2010-12-02 00:07:50Z michele.mostarda $</em>
 <a name="32" href="#32">32</a>  <em class="jxr_javadoccomment"> */</em>
 <a name="33" href="#33">33</a>  @Retention(RetentionPolicy.RUNTIME)
 <a name="34" href="#34">34</a>  @Target( {ElementType.METHOD})

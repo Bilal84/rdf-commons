@@ -109,7 +109,7 @@
 <tr>
   <td class="numLine">&nbsp;19</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;<span class="keyword">import</span> org.sindice.rdfcommons.TripleSet;</pre></td>
+  <td class="src"><pre class="src">&nbsp;<span class="keyword">import</span> org.sindice.rdfcommons.model.TripleSet;</pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;20</td>
@@ -144,175 +144,225 @@
 <tr>
   <td class="numLine">&nbsp;26</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;<span class="comment">/**</span></pre></td>
+  <td class="src"><pre class="src">&nbsp;<span class="keyword">import</span> <span class="keyword">static</span> org.sindice.rdfcommons.model.Triple.ObjectType;</pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;27</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;<span class="comment"> * Serializer for bags.</span></pre></td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;28</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;<span class="comment"> *</span></pre></td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">/**</span></pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;29</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;<span class="comment"> * @author Michele Mostarda ( mostarda@fbk.eu )</span></pre></td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * Serializer for bags.</span></pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;30</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;<span class="comment"> * @version $Id: StaticCollectionSerializer.java 2 2010-11-20 17:45:05Z michele.mostarda $</span></pre></td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> *</span></pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;31</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;<span class="comment"> */</span></pre></td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * @author Michele Mostarda ( mostarda@fbk.eu )</span></pre></td>
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;32</td>
   <td class="nbHitsCovered">&nbsp;14</td>
-  <td class="src"><pre class="src">&nbsp;<span class="keyword">public</span> <span class="keyword">class</span> StaticCollectionSerializer <span class="keyword">extends</span> BaseSerializer&lt;Collection&gt; {</pre></td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * @version $Id: StaticCollectionSerializer.java 24 2010-12-01 23:47:33Z michele.mostarda $</span></pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;33</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;</pre></td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> */</span></pre></td>
 </tr>
 <tr>
-  <td class="numLine">&nbsp;34</td>
-  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;    <span class="keyword">public</span> <span class="keyword">boolean</span> acceptClass(Class clazz, Annotation[] annotations) {</pre></td>
+  <td class="numLineCover">&nbsp;34</td>
+  <td class="nbHitsCovered">&nbsp;7</td>
+  <td class="src"><pre class="src">&nbsp;<span class="keyword">public</span> <span class="keyword">class</span> StaticCollectionSerializer <span class="keyword">extends</span> BaseSerializer&lt;Collection&gt; {</pre></td>
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;35</td>
   <td class="nbHitsCovered">&nbsp;224</td>
-  <td class="src"><pre class="src">&nbsp;        <span class="keyword">return</span> definesInterface(clazz, Collection.<span class="keyword">class</span>) &amp;&amp; definesAnnotation(annotations, Static.<span class="keyword">class</span>);</pre></td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;36</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;    }</pre></td>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">public</span> <span class="keyword">boolean</span> acceptClass(Class clazz, Annotation[] annotations) {</pre></td>
 </tr>
 <tr>
-  <td class="numLine">&nbsp;37</td>
-  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;</pre></td>
+  <td class="numLineCover">&nbsp;37</td>
+  <td class="nbHitsCovered">&nbsp;45</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="keyword">return</span> definesInterface(clazz, Collection.<span class="keyword">class</span>) &amp;&amp; definesAnnotation(annotations, Static.<span class="keyword">class</span>);</pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;38</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;    <span class="keyword">public</span> <span class="keyword">boolean</span> isComplex() {</pre></td>
+  <td class="src"><pre class="src">&nbsp;    }</pre></td>
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;39</td>
   <td class="nbHitsCovered">&nbsp;2</td>
-  <td class="src"><pre class="src">&nbsp;        <span class="keyword">return</span> <span class="keyword">true</span>;</pre></td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;40</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;    }</pre></td>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">public</span> <span class="keyword">boolean</span> isComplex() {</pre></td>
 </tr>
 <tr>
-  <td class="numLine">&nbsp;41</td>
-  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;</pre></td>
+  <td class="numLineCover">&nbsp;41</td>
+  <td class="nbHitsCovered">&nbsp;1</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="keyword">return</span> <span class="keyword">true</span>;</pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;42</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;    <span class="keyword">public</span> Identifier getIdentifier(SerializationContext context, Collection object, Annotation[] annotations, TripleSet buffer) {</pre></td>
+  <td class="src"><pre class="src">&nbsp;    }</pre></td>
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;43</td>
   <td class="nbHitsCovered">&nbsp;2</td>
-  <td class="src"><pre class="src">&nbsp;        <span class="keyword">return</span> <span class="keyword">new</span> Identifier(getClassURL(Collection.<span class="keyword">class</span>), Identifier.Type.resource);</pre></td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;44</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;    }</pre></td>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">public</span> Identifier getIdentifier(</pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;45</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;</pre></td>
+  <td class="src"><pre class="src">&nbsp;            SerializationContext context,</pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;46</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;    <span class="keyword">public</span> Identifier serialize(</pre></td>
+  <td class="src"><pre class="src">&nbsp;            Collection object,</pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;47</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;            SerializationContext context,</pre></td>
+  <td class="src"><pre class="src">&nbsp;            Annotation[] annotations,</pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;48</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;            Collection collection,</pre></td>
+  <td class="src"><pre class="src">&nbsp;            TripleSet buffer</pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;49</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;            Annotation[] annotations,</pre></td>
+  <td class="src"><pre class="src">&nbsp;    ) {</pre></td>
 </tr>
 <tr>
-  <td class="numLine">&nbsp;50</td>
-  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;            TripleSet buffer</pre></td>
+  <td class="numLineCover">&nbsp;50</td>
+  <td class="nbHitsCovered">&nbsp;1</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="keyword">return</span> <span class="keyword">new</span> Identifier(getClassURL(Collection.<span class="keyword">class</span>), Identifier.Type.resource);</pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;51</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;    ) <span class="keyword">throws</span> SerializationException {</pre></td>
+  <td class="src"><pre class="src">&nbsp;    }</pre></td>
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;52</td>
   <td class="nbHitsCovered">&nbsp;2</td>
-  <td class="src"><pre class="src">&nbsp;        <span class="keyword">final</span> String classURL = getClassURL(Collection.<span class="keyword">class</span>);</pre></td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;53</td>
   <td class="nbHitsCovered">&nbsp;2</td>
-  <td class="src"><pre class="src">&nbsp;        <span class="keyword">for</span> (Object collectionItem : collection) {</pre></td>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">public</span> Identifier serialize(</pre></td>
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;54</td>
   <td class="nbHitsCovered">&nbsp;8</td>
-  <td class="src"><pre class="src">&nbsp;            Identifier identifierItem = context.serialize(context, collectionItem, annotations, buffer);</pre></td>
+  <td class="src"><pre class="src">&nbsp;            SerializationContext context,</pre></td>
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;55</td>
   <td class="nbHitsCovered">&nbsp;8</td>
-  <td class="src"><pre class="src">&nbsp;            buffer.addTriple(classURL, RDFSVocabulary.MEMBER, identifierItem.getId(), identifierItem.isLiteral());</pre></td>
+  <td class="src"><pre class="src">&nbsp;            Collection collection,</pre></td>
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;56</td>
   <td class="nbHitsCovered">&nbsp;8</td>
-  <td class="src"><pre class="src">&nbsp;        }</pre></td>
+  <td class="src"><pre class="src">&nbsp;            Annotation[] annotations,</pre></td>
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;57</td>
   <td class="nbHitsCovered">&nbsp;2</td>
-  <td class="src"><pre class="src">&nbsp;        <span class="keyword">return</span> <span class="keyword">null</span>;</pre></td>
+  <td class="src"><pre class="src">&nbsp;            TripleSet buffer</pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;58</td>
   <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    ) <span class="keyword">throws</span> SerializationException {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;59</td>
+  <td class="nbHitsCovered">&nbsp;1</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="keyword">final</span> String classURL = getClassURL(Collection.<span class="keyword">class</span>);</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;60</td>
+  <td class="nbHitsCovered">&nbsp;1</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="keyword">for</span> (Object collectionItem : collection) {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;61</td>
+  <td class="nbHitsCovered">&nbsp;4</td>
+  <td class="src"><pre class="src">&nbsp;            Identifier identifierItem = context.serialize(context, collectionItem, annotations, buffer);</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;62</td>
+  <td class="nbHitsCovered">&nbsp;4</td>
+  <td class="src"><pre class="src">&nbsp;            buffer.addTriple(</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;63</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;                    classURL, RDFSVocabulary.MEMBER, identifierItem.getId(),</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;64</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;                    identifierItem.isLiteral() ? ObjectType.literal : ObjectType.uri</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;65</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            );</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;66</td>
+  <td class="nbHitsCovered">&nbsp;4</td>
+  <td class="src"><pre class="src">&nbsp;        }</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;67</td>
+  <td class="nbHitsCovered">&nbsp;1</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="keyword">return</span> <span class="keyword">null</span>;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;68</td>
+  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;    }</pre></td>
 </tr>
 <tr>
-  <td class="numLine">&nbsp;59</td>
+  <td class="numLine">&nbsp;69</td>
   <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;</pre></td>
 </tr>
 <tr>
-  <td class="numLine">&nbsp;60</td>
+  <td class="numLine">&nbsp;70</td>
   <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;}</pre></td>
 </tr>

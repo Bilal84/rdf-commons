@@ -26,7 +26,7 @@
 <a name="16" href="#16">16</a>  
 <a name="17" href="#17">17</a>  <strong class="jxr_keyword">package</strong> org.sindice.rdfcommons.beanmapper;
 <a name="18" href="#18">18</a>  
-<a name="19" href="#19">19</a>  <strong class="jxr_keyword">import</strong> org.sindice.rdfcommons.ResultSet;
+<a name="19" href="#19">19</a>  <strong class="jxr_keyword">import</strong> org.sindice.rdfcommons.storage.ResultSet;
 <a name="20" href="#20">20</a>  <strong class="jxr_keyword">import</strong> org.sindice.rdfcommons.beanmapper.annotations.Static;
 <a name="21" href="#21">21</a>  <strong class="jxr_keyword">import</strong> org.apache.commons.beanutils.BeanMap;
 <a name="22" href="#22">22</a>  
@@ -40,7 +40,7 @@
 <a name="30" href="#30">30</a>  <em class="jxr_javadoccomment"> * Static deserializer for a generic &lt;i&gt;Bean&lt;/i&gt;.</em>
 <a name="31" href="#31">31</a>  <em class="jxr_javadoccomment"> *</em>
 <a name="32" href="#32">32</a>  <em class="jxr_javadoccomment"> * @author Michele Mostarda ( mostarda@fbk.eu )</em>
-<a name="33" href="#33">33</a>  <em class="jxr_javadoccomment"> * @version $Id: StaticBeanDeserializer.java 2 2010-11-20 17:45:05Z michele.mostarda $</em>
+<a name="33" href="#33">33</a>  <em class="jxr_javadoccomment"> * @version $Id: StaticBeanDeserializer.java 24 2010-12-01 23:47:33Z michele.mostarda $</em>
 <a name="34" href="#34">34</a>  <em class="jxr_javadoccomment"> */</em>
 <a name="35" href="#35">35</a>  <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">class</strong> <a href="../../../../org/sindice/rdfcommons/beanmapper/StaticBeanDeserializer.html">StaticBeanDeserializer</a> <strong class="jxr_keyword">extends</strong> <a href="../../../../org/sindice/rdfcommons/beanmapper/BaseDeserializer.html">BaseDeserializer</a> {
 <a name="36" href="#36">36</a>  
@@ -97,7 +97,7 @@
 <a name="87" href="#87">87</a>  
 <a name="88" href="#88">88</a>          <em class="jxr_comment">// Retrieve the class triples.</em>
 <a name="89" href="#89">89</a>          endPoint.addQuery( (String) staticIdentifier.getId(), <span class="jxr_string">"?prop"</span>, <span class="jxr_string">"?value"</span> );
-<a name="90" href="#90">90</a>          <a href="../../../../org/sindice/rdfcommons/ResultSet.html">ResultSet</a> rs = endPoint.execute();
+<a name="90" href="#90">90</a>          <a href="../../../../org/sindice/rdfcommons/storage/ResultSet.html">ResultSet</a> rs = endPoint.execute();
 <a name="91" href="#91">91</a>  
 <a name="92" href="#92">92</a>          <em class="jxr_comment">// Coupling object properties with actual ones.</em>
 <a name="93" href="#93">93</a>          Object property;

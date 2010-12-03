@@ -109,22 +109,22 @@
 <tr>
   <td class="numLine">&nbsp;19</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;<span class="keyword">import</span> org.sindice.rdfcommons.ResultSet;</pre></td>
+  <td class="src"><pre class="src">&nbsp;<span class="keyword">import</span> org.sindice.rdfcommons.storage.ResultSet;</pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;20</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;<span class="keyword">import</span> org.sindice.rdfcommons.SparqlEndPoint;</pre></td>
+  <td class="src"><pre class="src">&nbsp;<span class="keyword">import</span> org.sindice.rdfcommons.storage.SparqlEndPoint;</pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;21</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;<span class="keyword">import</span> org.sindice.rdfcommons.SparqlEndpointException;</pre></td>
+  <td class="src"><pre class="src">&nbsp;<span class="keyword">import</span> org.sindice.rdfcommons.storage.SparqlEndpointException;</pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;22</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;<span class="keyword">import</span> org.sindice.rdfcommons.TripleSet;</pre></td>
+  <td class="src"><pre class="src">&nbsp;<span class="keyword">import</span> org.sindice.rdfcommons.model.TripleSet;</pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;23</td>
@@ -159,7 +159,7 @@
 <tr>
   <td class="numLine">&nbsp;29</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;<span class="comment"> * @version $Id: QueryBuilder.java 2 2010-11-20 17:45:05Z michele.mostarda $</span></pre></td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * @version $Id: QueryBuilder.java 24 2010-12-01 23:47:33Z michele.mostarda $</span></pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;30</td>
@@ -243,22 +243,22 @@
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;46</td>
-  <td class="nbHitsCovered">&nbsp;12</td>
+  <td class="nbHitsCovered">&nbsp;18</td>
   <td class="src"><pre class="src">&nbsp;    <span class="keyword">public</span> QueryBuilder() {</pre></td>
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;47</td>
-  <td class="nbHitsCovered">&nbsp;12</td>
+  <td class="nbHitsCovered">&nbsp;18</td>
   <td class="src"><pre class="src">&nbsp;        context = <span class="keyword">new</span> QueryContext();</pre></td>
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;48</td>
-  <td class="nbHitsCovered">&nbsp;12</td>
+  <td class="nbHitsCovered">&nbsp;18</td>
   <td class="src"><pre class="src">&nbsp;        matchChain = <span class="keyword">new</span> MatchChain(context);</pre></td>
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;49</td>
-  <td class="nbHitsCovered">&nbsp;12</td>
+  <td class="nbHitsCovered">&nbsp;18</td>
   <td class="src"><pre class="src">&nbsp;    }</pre></td>
 </tr>
 <tr>
@@ -343,12 +343,12 @@
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;66</td>
-  <td class="nbHitsCovered">&nbsp;50</td>
+  <td class="nbHitsCovered">&nbsp;76</td>
   <td class="src"><pre class="src">&nbsp;        addQuery( <span class="keyword">new</span> Match(context, subCriteria, predCriteria, objCriteria) );</pre></td>
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;67</td>
-  <td class="nbHitsCovered">&nbsp;50</td>
+  <td class="nbHitsCovered">&nbsp;76</td>
   <td class="src"><pre class="src">&nbsp;        <span class="keyword">return</span> <span class="keyword">this</span>;</pre></td>
 </tr>
 <tr>
@@ -443,12 +443,12 @@
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;86</td>
-  <td class="nbHitsCovered">&nbsp;40</td>
+  <td class="nbHitsCovered">&nbsp;61</td>
   <td class="src"><pre class="src">&nbsp;        matchChain.clear();</pre></td>
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;87</td>
-  <td class="nbHitsCovered">&nbsp;40</td>
+  <td class="nbHitsCovered">&nbsp;61</td>
   <td class="src"><pre class="src">&nbsp;        <span class="keyword">return</span> <span class="keyword">this</span>;</pre></td>
 </tr>
 <tr>
@@ -483,7 +483,7 @@
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;94</td>
-  <td class="nbHitsCovered">&nbsp;2</td>
+  <td class="nbHitsCovered">&nbsp;3</td>
   <td class="src"><pre class="src">&nbsp;        <span class="keyword">return</span> matchChain.toSparqlTriplePattern();</pre></td>
 </tr>
 <tr>
@@ -524,7 +524,7 @@
 <tr>
   <td class="numLine">&nbsp;102</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;<span class="comment">     * @throws org.sindice.rdfcommons.SparqlEndpointException if the triple storage doesn't support a &lt;i&gt;SPARQL&lt;/i&gt; endpoint.</span></pre></td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * @throws org.sindice.rdfcommons.storage.SparqlEndpointException if the triple storage doesn't support a &lt;i&gt;SPARQL&lt;/i&gt; endpoint.</span></pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;103</td>
@@ -593,12 +593,12 @@
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;116</td>
-  <td class="nbHitsCovered">&nbsp;42</td>
+  <td class="nbHitsCovered">&nbsp;64</td>
   <td class="src"><pre class="src">&nbsp;        TripleSetQueryExecutor queryExecutor = <span class="keyword">new</span> TripleSetQueryExecutor();</pre></td>
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;117</td>
-  <td class="nbHitsCovered">&nbsp;42</td>
+  <td class="nbHitsCovered">&nbsp;64</td>
   <td class="src"><pre class="src">&nbsp;        <span class="keyword">return</span> queryExecutor.filter(matchChain, ts);</pre></td>
 </tr>
 <tr>
@@ -618,7 +618,7 @@
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;121</td>
-  <td class="nbHitsCovered">&nbsp;2</td>
+  <td class="nbHitsCovered">&nbsp;3</td>
   <td class="src"><pre class="src">&nbsp;        <span class="keyword">return</span> matchChain.getVars();</pre></td>
 </tr>
 <tr>
@@ -663,7 +663,7 @@
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;130</td>
-  <td class="nbHitsCovered">&nbsp;50</td>
+  <td class="nbHitsCovered">&nbsp;76</td>
   <td class="src"><pre class="src">&nbsp;        <span class="keyword">if</span>(query == <span class="keyword">null</span>) {</pre></td>
 </tr>
 <tr>
@@ -678,12 +678,12 @@
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;133</td>
-  <td class="nbHitsCovered">&nbsp;50</td>
+  <td class="nbHitsCovered">&nbsp;76</td>
   <td class="src"><pre class="src">&nbsp;        matchChain.add(query);</pre></td>
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;134</td>
-  <td class="nbHitsCovered">&nbsp;50</td>
+  <td class="nbHitsCovered">&nbsp;76</td>
   <td class="src"><pre class="src">&nbsp;    }</pre></td>
 </tr>
 <tr>

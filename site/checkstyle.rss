@@ -8,8 +8,8 @@
     <language>en-us</language>
     <copyright>&#169;2010 Fondazione Bruno Kessler (FBK)</copyright>
     <item>
-      <title>File: 82,
-             Errors: 1981,
+      <title>File: 91,
+             Errors: 2142,
              Warnings: 0,
              Infos: 0
       </title>
@@ -27,34 +27,6 @@
             </tr>
           </thead>
           <tbody>
-                          <tr>
-                <td>
-                  <a href="http://code.google.com/p/rdf-commons//checkstyle.html#org.sindice.rdfcommons.TripleBuffer.java">org/sindice/rdfcommons/TripleBuffer.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  145
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="http://code.google.com/p/rdf-commons//checkstyle.html#org.sindice.rdfcommons.SparqlEndPoint.java">org/sindice/rdfcommons/SparqlEndPoint.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  23
-                </td>
-              </tr>
                           <tr>
                 <td>
                   <a href="http://code.google.com/p/rdf-commons//checkstyle.html#org.sindice.rdfcommons.query.Match.java">org/sindice/rdfcommons/query/Match.java</a>
@@ -80,7 +52,7 @@
                   0
                 </td>
                 <td>
-                  1
+                  2
                 </td>
               </tr>
                           <tr>
@@ -155,6 +127,34 @@
               </tr>
                           <tr>
                 <td>
+                  <a href="http://code.google.com/p/rdf-commons//checkstyle.html#org.sindice.rdfcommons.model.TripleBuffer.java">org/sindice/rdfcommons/model/TripleBuffer.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  151
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://code.google.com/p/rdf-commons//checkstyle.html#org.sindice.rdfcommons.parser.RDFParser.java">org/sindice/rdfcommons/parser/RDFParser.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
                   <a href="http://code.google.com/p/rdf-commons//checkstyle.html#org.sindice.rdfcommons.beanmapper.Deserializer.java">org/sindice/rdfcommons/beanmapper/Deserializer.java</a>
                 </td>
                 <td>
@@ -178,7 +178,7 @@
                   0
                 </td>
                 <td>
-                  22
+                  21
                 </td>
               </tr>
                           <tr>
@@ -211,6 +211,20 @@
               </tr>
                           <tr>
                 <td>
+                  <a href="http://code.google.com/p/rdf-commons//checkstyle.html#org.sindice.rdfcommons.storage.SparqlEndpointException.java">org/sindice/rdfcommons/storage/SparqlEndpointException.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  8
+                </td>
+              </tr>
+                          <tr>
+                <td>
                   <a href="http://code.google.com/p/rdf-commons//checkstyle.html#org.sindice.rdfcommons.query.QueryContext.java">org/sindice/rdfcommons/query/QueryContext.java</a>
                 </td>
                 <td>
@@ -234,7 +248,7 @@
                   0
                 </td>
                 <td>
-                  137
+                  135
                 </td>
               </tr>
                           <tr>
@@ -253,6 +267,34 @@
               </tr>
                           <tr>
                 <td>
+                  <a href="http://code.google.com/p/rdf-commons//checkstyle.html#org.sindice.rdfcommons.parser.RDFParserException.java">org/sindice/rdfcommons/parser/RDFParserException.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  6
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://code.google.com/p/rdf-commons//checkstyle.html#org.sindice.rdfcommons.storage.ResultSet.java">org/sindice/rdfcommons/storage/ResultSet.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  11
+                </td>
+              </tr>
+                          <tr>
+                <td>
                   <a href="http://code.google.com/p/rdf-commons//checkstyle.html#org.sindice.rdfcommons.beanmapper.CollectionSerializer.java">org/sindice/rdfcommons/beanmapper/CollectionSerializer.java</a>
                 </td>
                 <td>
@@ -262,12 +304,26 @@
                   0
                 </td>
                 <td>
-                  33
+                  30
                 </td>
               </tr>
                           <tr>
                 <td>
-                  <a href="http://code.google.com/p/rdf-commons//checkstyle.html#org.sindice.rdfcommons.TripleIterator.java">org/sindice/rdfcommons/TripleIterator.java</a>
+                  <a href="http://code.google.com/p/rdf-commons//checkstyle.html#org.sindice.rdfcommons.model.package-info.java">org/sindice/rdfcommons/model/package-info.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  1
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://code.google.com/p/rdf-commons//checkstyle.html#org.sindice.rdfcommons.beanmapper.annotations.Adapt.java">org/sindice/rdfcommons/beanmapper/annotations/Adapt.java</a>
                 </td>
                 <td>
                   0
@@ -281,7 +337,7 @@
               </tr>
                           <tr>
                 <td>
-                  <a href="http://code.google.com/p/rdf-commons//checkstyle.html#org.sindice.rdfcommons.RDFParser.java">org/sindice/rdfcommons/RDFParser.java</a>
+                  <a href="http://code.google.com/p/rdf-commons//checkstyle.html#org.sindice.rdfcommons.model.TripleSet.java">org/sindice/rdfcommons/model/TripleSet.java</a>
                 </td>
                 <td>
                   0
@@ -290,12 +346,12 @@
                   0
                 </td>
                 <td>
-                  0
+                  37
                 </td>
               </tr>
                           <tr>
                 <td>
-                  <a href="http://code.google.com/p/rdf-commons//checkstyle.html#org.sindice.rdfcommons.beanmapper.annotations.Adapt.java">org/sindice/rdfcommons/beanmapper/annotations/Adapt.java</a>
+                  <a href="http://code.google.com/p/rdf-commons//checkstyle.html#org.sindice.rdfcommons.model.TripleIterator.java">org/sindice/rdfcommons/model/TripleIterator.java</a>
                 </td>
                 <td>
                   0
@@ -346,7 +402,7 @@
                   0
                 </td>
                 <td>
-                  89
+                  91
                 </td>
               </tr>
                           <tr>
@@ -393,20 +449,6 @@
               </tr>
                           <tr>
                 <td>
-                  <a href="http://code.google.com/p/rdf-commons//checkstyle.html#org.sindice.rdfcommons.SparqlEndpointException.java">org/sindice/rdfcommons/SparqlEndpointException.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  7
-                </td>
-              </tr>
-                          <tr>
-                <td>
                   <a href="http://code.google.com/p/rdf-commons//checkstyle.html#org.sindice.rdfcommons.vocabulary.BaseVocabulary.java">org/sindice/rdfcommons/vocabulary/BaseVocabulary.java</a>
                 </td>
                 <td>
@@ -421,6 +463,20 @@
               </tr>
                           <tr>
                 <td>
+                  <a href="http://code.google.com/p/rdf-commons//checkstyle.html#org.sindice.rdfcommons.model.AllTriplesFilter.java">org/sindice/rdfcommons/model/AllTriplesFilter.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  7
+                </td>
+              </tr>
+                          <tr>
+                <td>
                   <a href="http://code.google.com/p/rdf-commons//checkstyle.html#org.sindice.rdfcommons.beanmapper.BaseSerializer.java">org/sindice/rdfcommons/beanmapper/BaseSerializer.java</a>
                 </td>
                 <td>
@@ -430,7 +486,7 @@
                   0
                 </td>
                 <td>
-                  2
+                  7
                 </td>
               </tr>
                           <tr>
@@ -458,7 +514,7 @@
                   0
                 </td>
                 <td>
-                  63
+                  18
                 </td>
               </tr>
                           <tr>
@@ -472,7 +528,7 @@
                   0
                 </td>
                 <td>
-                  42
+                  44
                 </td>
               </tr>
                           <tr>
@@ -491,20 +547,6 @@
               </tr>
                           <tr>
                 <td>
-                  <a href="http://code.google.com/p/rdf-commons//checkstyle.html#org.sindice.rdfcommons.Triple.java">org/sindice/rdfcommons/Triple.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  89
-                </td>
-              </tr>
-                          <tr>
-                <td>
                   <a href="http://code.google.com/p/rdf-commons//checkstyle.html#org.sindice.rdfcommons.jena.JenaConversionUtil.java">org/sindice/rdfcommons/jena/JenaConversionUtil.java</a>
                 </td>
                 <td>
@@ -514,7 +556,7 @@
                   0
                 </td>
                 <td>
-                  160
+                  168
                 </td>
               </tr>
                           <tr>
@@ -533,7 +575,7 @@
               </tr>
                           <tr>
                 <td>
-                  <a href="http://code.google.com/p/rdf-commons//checkstyle.html#org.sindice.rdfcommons.TripleSet.java">org/sindice/rdfcommons/TripleSet.java</a>
+                  <a href="http://code.google.com/p/rdf-commons//checkstyle.html#org.sindice.rdfcommons.parser.package-info.java">org/sindice/rdfcommons/parser/package-info.java</a>
                 </td>
                 <td>
                   0
@@ -542,7 +584,7 @@
                   0
                 </td>
                 <td>
-                  28
+                  1
                 </td>
               </tr>
                           <tr>
@@ -575,20 +617,6 @@
               </tr>
                           <tr>
                 <td>
-                  <a href="http://code.google.com/p/rdf-commons//checkstyle.html#org.sindice.rdfcommons.ResultSet.java">org/sindice/rdfcommons/ResultSet.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  11
-                </td>
-              </tr>
-                          <tr>
-                <td>
                   <a href="http://code.google.com/p/rdf-commons//checkstyle.html#org.sindice.rdfcommons.beanmapper.BeanDeserializer.java">org/sindice/rdfcommons/beanmapper/BeanDeserializer.java</a>
                 </td>
                 <td>
@@ -598,7 +626,7 @@
                   0
                 </td>
                 <td>
-                  36
+                  37
                 </td>
               </tr>
                           <tr>
@@ -631,6 +659,20 @@
               </tr>
                           <tr>
                 <td>
+                  <a href="http://code.google.com/p/rdf-commons//checkstyle.html#org.sindice.rdfcommons.serialization.DefaultResultSetXMLSerializer.java">org/sindice/rdfcommons/serialization/DefaultResultSetXMLSerializer.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  29
+                </td>
+              </tr>
+                          <tr>
+                <td>
                   <a href="http://code.google.com/p/rdf-commons//checkstyle.html#org.sindice.rdfcommons.beanmapper.DeserializationManager.java">org/sindice/rdfcommons/beanmapper/DeserializationManager.java</a>
                 </td>
                 <td>
@@ -640,12 +682,12 @@
                   0
                 </td>
                 <td>
-                  124
+                  126
                 </td>
               </tr>
                           <tr>
                 <td>
-                  <a href="http://code.google.com/p/rdf-commons//checkstyle.html#org.sindice.rdfcommons.TripleIteratorImpl.java">org/sindice/rdfcommons/TripleIteratorImpl.java</a>
+                  <a href="http://code.google.com/p/rdf-commons//checkstyle.html#org.sindice.rdfcommons.vocabulary.XMLSchemaTypes.java">org/sindice/rdfcommons/vocabulary/XMLSchemaTypes.java</a>
                 </td>
                 <td>
                   0
@@ -654,7 +696,7 @@
                   0
                 </td>
                 <td>
-                  24
+                  16
                 </td>
               </tr>
                           <tr>
@@ -743,6 +785,20 @@
               </tr>
                           <tr>
                 <td>
+                  <a href="http://code.google.com/p/rdf-commons//checkstyle.html#org.sindice.rdfcommons.beanmapper.ArraySerializer.java">org/sindice/rdfcommons/beanmapper/ArraySerializer.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  29
+                </td>
+              </tr>
+                          <tr>
+                <td>
                   <a href="http://code.google.com/p/rdf-commons//checkstyle.html#org.sindice.rdfcommons.beanmapper.StaticBeanSerializer.java">org/sindice/rdfcommons/beanmapper/StaticBeanSerializer.java</a>
                 </td>
                 <td>
@@ -752,7 +808,7 @@
                   0
                 </td>
                 <td>
-                  39
+                  41
                 </td>
               </tr>
                           <tr>
@@ -771,7 +827,7 @@
               </tr>
                           <tr>
                 <td>
-                  <a href="http://code.google.com/p/rdf-commons//checkstyle.html#org.sindice.rdfcommons.AllTriplesFilter.java">org/sindice/rdfcommons/AllTriplesFilter.java</a>
+                  <a href="http://code.google.com/p/rdf-commons//checkstyle.html#org.sindice.rdfcommons.serialization.package-info.java">org/sindice/rdfcommons/serialization/package-info.java</a>
                 </td>
                 <td>
                   0
@@ -780,35 +836,7 @@
                   0
                 </td>
                 <td>
-                  6
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="http://code.google.com/p/rdf-commons//checkstyle.html#org.sindice.rdfcommons.beanmapper.annotations.Subject.java">org/sindice/rdfcommons/beanmapper/annotations/Subject.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  3
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="http://code.google.com/p/rdf-commons//checkstyle.html#org.sindice.rdfcommons.DefaultXMLSerializer.java">org/sindice/rdfcommons/DefaultXMLSerializer.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  29
+                  1
                 </td>
               </tr>
                           <tr>
@@ -841,6 +869,20 @@
               </tr>
                           <tr>
                 <td>
+                  <a href="http://code.google.com/p/rdf-commons//checkstyle.html#org.sindice.rdfcommons.serialization.ResultSetXMLSerializer.java">org/sindice/rdfcommons/serialization/ResultSetXMLSerializer.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  1
+                </td>
+              </tr>
+                          <tr>
+                <td>
                   <a href="http://code.google.com/p/rdf-commons//checkstyle.html#org.sindice.rdfcommons.beanmapper.CriteriaDeserializer.java">org/sindice/rdfcommons/beanmapper/CriteriaDeserializer.java</a>
                 </td>
                 <td>
@@ -865,6 +907,20 @@
                 </td>
                 <td>
                   16
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://code.google.com/p/rdf-commons//checkstyle.html#org.sindice.rdfcommons.beanmapper.CustomTypeBean.java">org/sindice/rdfcommons/beanmapper/CustomTypeBean.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  15
                 </td>
               </tr>
                           <tr>
@@ -897,7 +953,7 @@
               </tr>
                           <tr>
                 <td>
-                  <a href="http://code.google.com/p/rdf-commons//checkstyle.html#org.sindice.rdfcommons.TripleFilter.java">org/sindice/rdfcommons/TripleFilter.java</a>
+                  <a href="http://code.google.com/p/rdf-commons//checkstyle.html#org.sindice.rdfcommons.model.Literal.java">org/sindice/rdfcommons/model/Literal.java</a>
                 </td>
                 <td>
                   0
@@ -907,6 +963,20 @@
                 </td>
                 <td>
                   0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://code.google.com/p/rdf-commons//checkstyle.html#org.sindice.rdfcommons.model.Triple.java">org/sindice/rdfcommons/model/Triple.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  138
                 </td>
               </tr>
                           <tr>
@@ -953,6 +1023,20 @@
               </tr>
                           <tr>
                 <td>
+                  <a href="http://code.google.com/p/rdf-commons//checkstyle.html#org.sindice.rdfcommons.model.TripleIteratorImpl.java">org/sindice/rdfcommons/model/TripleIteratorImpl.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  24
+                </td>
+              </tr>
+                          <tr>
+                <td>
                   <a href="http://code.google.com/p/rdf-commons//checkstyle.html#org.sindice.rdfcommons.beanmapper.SerializationSupport.java">org/sindice/rdfcommons/beanmapper/SerializationSupport.java</a>
                 </td>
                 <td>
@@ -995,7 +1079,7 @@
               </tr>
                           <tr>
                 <td>
-                  <a href="http://code.google.com/p/rdf-commons//checkstyle.html#org.sindice.rdfcommons.beanmapper.CustomSubjectBean.java">org/sindice/rdfcommons/beanmapper/CustomSubjectBean.java</a>
+                  <a href="http://code.google.com/p/rdf-commons//checkstyle.html#org.sindice.rdfcommons.beanmapper.ArrayDeserializer.java">org/sindice/rdfcommons/beanmapper/ArrayDeserializer.java</a>
                 </td>
                 <td>
                   0
@@ -1004,12 +1088,12 @@
                   0
                 </td>
                 <td>
-                  16
+                  20
                 </td>
               </tr>
                           <tr>
                 <td>
-                  <a href="http://code.google.com/p/rdf-commons//checkstyle.html#org.sindice.rdfcommons.InMemoryResultSet.java">org/sindice/rdfcommons/InMemoryResultSet.java</a>
+                  <a href="http://code.google.com/p/rdf-commons//checkstyle.html#org.sindice.rdfcommons.model.LanguageLiteral.java">org/sindice/rdfcommons/model/LanguageLiteral.java</a>
                 </td>
                 <td>
                   0
@@ -1018,7 +1102,7 @@
                   0
                 </td>
                 <td>
-                  67
+                  0
                 </td>
               </tr>
                           <tr>
@@ -1051,6 +1135,20 @@
               </tr>
                           <tr>
                 <td>
+                  <a href="http://code.google.com/p/rdf-commons//checkstyle.html#org.sindice.rdfcommons.model.TypedLiteral.java">org/sindice/rdfcommons/model/TypedLiteral.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
                   <a href="http://code.google.com/p/rdf-commons//checkstyle.html#org.sindice.rdfcommons.beanmapper.Identifier.java">org/sindice/rdfcommons/beanmapper/Identifier.java</a>
                 </td>
                 <td>
@@ -1061,6 +1159,34 @@
                 </td>
                 <td>
                   28
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://code.google.com/p/rdf-commons//checkstyle.html#org.sindice.rdfcommons.model.TripleFilter.java">org/sindice/rdfcommons/model/TripleFilter.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://code.google.com/p/rdf-commons//checkstyle.html#org.sindice.rdfcommons.storage.SparqlEndPoint.java">org/sindice/rdfcommons/storage/SparqlEndPoint.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  23
                 </td>
               </tr>
                           <tr>
@@ -1079,20 +1205,6 @@
               </tr>
                           <tr>
                 <td>
-                  <a href="http://code.google.com/p/rdf-commons//checkstyle.html#org.sindice.rdfcommons.package-info.java">org/sindice/rdfcommons/package-info.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  1
-                </td>
-              </tr>
-                          <tr>
-                <td>
                   <a href="http://code.google.com/p/rdf-commons//checkstyle.html#org.sindice.rdfcommons.storage.TripleStorageConfig.java">org/sindice/rdfcommons/storage/TripleStorageConfig.java</a>
                 </td>
                 <td>
@@ -1107,7 +1219,7 @@
               </tr>
                           <tr>
                 <td>
-                  <a href="http://code.google.com/p/rdf-commons//checkstyle.html#org.sindice.rdfcommons.ResultSetXMLSerializer.java">org/sindice/rdfcommons/ResultSetXMLSerializer.java</a>
+                  <a href="http://code.google.com/p/rdf-commons//checkstyle.html#org.sindice.rdfcommons.beanmapper.package-info.java">org/sindice/rdfcommons/beanmapper/package-info.java</a>
                 </td>
                 <td>
                   0
@@ -1121,7 +1233,7 @@
               </tr>
                           <tr>
                 <td>
-                  <a href="http://code.google.com/p/rdf-commons//checkstyle.html#org.sindice.rdfcommons.beanmapper.package-info.java">org/sindice/rdfcommons/beanmapper/package-info.java</a>
+                  <a href="http://code.google.com/p/rdf-commons//checkstyle.html#org.sindice.rdfcommons.storage.InMemoryResultSet.java">org/sindice/rdfcommons/storage/InMemoryResultSet.java</a>
                 </td>
                 <td>
                   0
@@ -1130,7 +1242,7 @@
                   0
                 </td>
                 <td>
-                  1
+                  67
                 </td>
               </tr>
                           <tr>
@@ -1163,7 +1275,7 @@
               </tr>
                           <tr>
                 <td>
-                  <a href="http://code.google.com/p/rdf-commons//checkstyle.html#org.sindice.rdfcommons.RDFParserException.java">org/sindice/rdfcommons/RDFParserException.java</a>
+                  <a href="http://code.google.com/p/rdf-commons//checkstyle.html#org.sindice.rdfcommons.beanmapper.SequenceDeserializer.java">org/sindice/rdfcommons/beanmapper/SequenceDeserializer.java</a>
                 </td>
                 <td>
                   0
@@ -1172,7 +1284,21 @@
                   0
                 </td>
                 <td>
-                  6
+                  56
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://code.google.com/p/rdf-commons//checkstyle.html#org.sindice.rdfcommons.beanmapper.annotations.Type.java">org/sindice/rdfcommons/beanmapper/annotations/Type.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  4
                 </td>
               </tr>
                       </tbody>

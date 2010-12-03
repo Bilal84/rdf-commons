@@ -26,17 +26,17 @@
 <a name="16" href="#16">16</a>  
 <a name="17" href="#17">17</a>  <strong class="jxr_keyword">package</strong> org.sindice.rdfcommons.query;
 <a name="18" href="#18">18</a>  
-<a name="19" href="#19">19</a>  <strong class="jxr_keyword">import</strong> org.sindice.rdfcommons.ResultSet;
-<a name="20" href="#20">20</a>  <strong class="jxr_keyword">import</strong> org.sindice.rdfcommons.SparqlEndPoint;
-<a name="21" href="#21">21</a>  <strong class="jxr_keyword">import</strong> org.sindice.rdfcommons.SparqlEndpointException;
-<a name="22" href="#22">22</a>  <strong class="jxr_keyword">import</strong> org.sindice.rdfcommons.TripleSet;
+<a name="19" href="#19">19</a>  <strong class="jxr_keyword">import</strong> org.sindice.rdfcommons.storage.ResultSet;
+<a name="20" href="#20">20</a>  <strong class="jxr_keyword">import</strong> org.sindice.rdfcommons.storage.SparqlEndPoint;
+<a name="21" href="#21">21</a>  <strong class="jxr_keyword">import</strong> org.sindice.rdfcommons.storage.SparqlEndpointException;
+<a name="22" href="#22">22</a>  <strong class="jxr_keyword">import</strong> org.sindice.rdfcommons.model.TripleSet;
 <a name="23" href="#23">23</a>  <strong class="jxr_keyword">import</strong> org.sindice.rdfcommons.storage.TripleStorage;
 <a name="24" href="#24">24</a>  
 <a name="25" href="#25">25</a>  <em class="jxr_javadoccomment">/**</em>
 <a name="26" href="#26">26</a>  <em class="jxr_javadoccomment"> * Defines a list of matches.</em>
 <a name="27" href="#27">27</a>  <em class="jxr_javadoccomment"> *</em>
 <a name="28" href="#28">28</a>  <em class="jxr_javadoccomment"> * @author Michele Mostarda ( mostarda@fbk.eu )</em>
-<a name="29" href="#29">29</a>  <em class="jxr_javadoccomment"> * @version $Id: QueryBuilder.java 2 2010-11-20 17:45:05Z michele.mostarda $</em>
+<a name="29" href="#29">29</a>  <em class="jxr_javadoccomment"> * @version $Id: QueryBuilder.java 24 2010-12-01 23:47:33Z michele.mostarda $</em>
 <a name="30" href="#30">30</a>  <em class="jxr_javadoccomment"> */</em>
 <a name="31" href="#31">31</a>  <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">class</strong> <a href="../../../../org/sindice/rdfcommons/query/QueryBuilder.html">QueryBuilder</a> {
 <a name="32" href="#32">32</a>  
@@ -109,10 +109,10 @@
 <a name="99" href="#99">99</a>  <em class="jxr_javadoccomment">     *</em>
 <a name="100" href="#100">100</a> <em class="jxr_javadoccomment">     * @param ts the input storage.</em>
 <a name="101" href="#101">101</a> <em class="jxr_javadoccomment">     * @return the obtained result set.</em>
-<a name="102" href="#102">102</a> <em class="jxr_javadoccomment">     * @throws org.sindice.rdfcommons.SparqlEndpointException if the triple storage doesn't support a &lt;i&gt;SPARQL&lt;/i&gt; endpoint.</em>
+<a name="102" href="#102">102</a> <em class="jxr_javadoccomment">     * @throws org.sindice.rdfcommons.storage.SparqlEndpointException if the triple storage doesn't support a &lt;i&gt;SPARQL&lt;/i&gt; endpoint.</em>
 <a name="103" href="#103">103</a> <em class="jxr_javadoccomment">     */</em>
-<a name="104" href="#104">104</a>     <strong class="jxr_keyword">public</strong> <a href="../../../../org/sindice/rdfcommons/ResultSet.html">ResultSet</a> execOnStorage(<a href="../../../../org/sindice/rdfcommons/storage/TripleStorage.html">TripleStorage</a> ts) <strong class="jxr_keyword">throws</strong> SparqlEndpointException {
-<a name="105" href="#105">105</a>         <a href="../../../../org/sindice/rdfcommons/SparqlEndPoint.html">SparqlEndPoint</a> se = ts.getSparqlEndPoint();
+<a name="104" href="#104">104</a>     <strong class="jxr_keyword">public</strong> <a href="../../../../org/sindice/rdfcommons/storage/ResultSet.html">ResultSet</a> execOnStorage(<a href="../../../../org/sindice/rdfcommons/storage/TripleStorage.html">TripleStorage</a> ts) <strong class="jxr_keyword">throws</strong> SparqlEndpointException {
+<a name="105" href="#105">105</a>         <a href="../../../../org/sindice/rdfcommons/storage/SparqlEndPoint.html">SparqlEndPoint</a> se = ts.getSparqlEndPoint();
 <a name="106" href="#106">106</a>         <strong class="jxr_keyword">return</strong> se.processSelectQuery( matchChain.toSparqlTriplePattern() );
 <a name="107" href="#107">107</a>     }
 <a name="108" href="#108">108</a> 
@@ -122,7 +122,7 @@
 <a name="112" href="#112">112</a> <em class="jxr_javadoccomment">     * @param ts input triple set.</em>
 <a name="113" href="#113">113</a> <em class="jxr_javadoccomment">     * @return result set.</em>
 <a name="114" href="#114">114</a> <em class="jxr_javadoccomment">     */</em>
-<a name="115" href="#115">115</a>     <strong class="jxr_keyword">public</strong> <a href="../../../../org/sindice/rdfcommons/ResultSet.html">ResultSet</a> execOnTriples(<a href="../../../../org/sindice/rdfcommons/TripleSet.html">TripleSet</a> ts) {
+<a name="115" href="#115">115</a>     <strong class="jxr_keyword">public</strong> <a href="../../../../org/sindice/rdfcommons/storage/ResultSet.html">ResultSet</a> execOnTriples(<a href="../../../../org/sindice/rdfcommons/model/TripleSet.html">TripleSet</a> ts) {
 <a name="116" href="#116">116</a>         <a href="../../../../org/sindice/rdfcommons/query/TripleSetQueryExecutor.html">TripleSetQueryExecutor</a> queryExecutor = <strong class="jxr_keyword">new</strong> <a href="../../../../org/sindice/rdfcommons/query/TripleSetQueryExecutor.html">TripleSetQueryExecutor</a>();
 <a name="117" href="#117">117</a>         <strong class="jxr_keyword">return</strong> queryExecutor.filter(matchChain, ts);
 <a name="118" href="#118">118</a>     }

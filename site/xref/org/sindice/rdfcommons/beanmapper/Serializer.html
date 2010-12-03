@@ -26,7 +26,7 @@
 <a name="16" href="#16">16</a>  
 <a name="17" href="#17">17</a>  <strong class="jxr_keyword">package</strong> org.sindice.rdfcommons.beanmapper;
 <a name="18" href="#18">18</a>  
-<a name="19" href="#19">19</a>  <strong class="jxr_keyword">import</strong> org.sindice.rdfcommons.TripleSet;
+<a name="19" href="#19">19</a>  <strong class="jxr_keyword">import</strong> org.sindice.rdfcommons.model.TripleSet;
 <a name="20" href="#20">20</a>  
 <a name="21" href="#21">21</a>  <strong class="jxr_keyword">import</strong> java.lang.annotation.Annotation;
 <a name="22" href="#22">22</a>  
@@ -34,7 +34,7 @@
 <a name="24" href="#24">24</a>  <em class="jxr_javadoccomment"> * This class serializes a specific bean. </em>
 <a name="25" href="#25">25</a>  <em class="jxr_javadoccomment"> *</em>
 <a name="26" href="#26">26</a>  <em class="jxr_javadoccomment"> * @author Michele Mostarda ( mostarda@fbk.eu )</em>
-<a name="27" href="#27">27</a>  <em class="jxr_javadoccomment"> * @version $Id: Serializer.java 2 2010-11-20 17:45:05Z michele.mostarda $</em>
+<a name="27" href="#27">27</a>  <em class="jxr_javadoccomment"> * @version $Id: Serializer.java 24 2010-12-01 23:47:33Z michele.mostarda $</em>
 <a name="28" href="#28">28</a>  <em class="jxr_javadoccomment"> */</em>
 <a name="29" href="#29">29</a>  <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">interface</strong> Serializer&lt;T&gt; <strong class="jxr_keyword">extends</strong> SerializationSupport&lt;T&gt; {
 <a name="30" href="#30">30</a>  
@@ -53,7 +53,7 @@
 <a name="43" href="#43">43</a>  <em class="jxr_javadoccomment">     * @param buffer triple set buffer used to store triples representing the serialization result.</em>
 <a name="44" href="#44">44</a>  <em class="jxr_javadoccomment">     * @return the identifier of the serialization.</em>
 <a name="45" href="#45">45</a>  <em class="jxr_javadoccomment">     */</em>
-<a name="46" href="#46">46</a>      <a href="../../../../org/sindice/rdfcommons/beanmapper/Identifier.html">Identifier</a> getIdentifier(<a href="../../../../org/sindice/rdfcommons/beanmapper/SerializationContext.html">SerializationContext</a> context, T object, Annotation[] annotations, <a href="../../../../org/sindice/rdfcommons/TripleSet.html">TripleSet</a> buffer);
+<a name="46" href="#46">46</a>      <a href="../../../../org/sindice/rdfcommons/beanmapper/Identifier.html">Identifier</a> getIdentifier(<a href="../../../../org/sindice/rdfcommons/beanmapper/SerializationContext.html">SerializationContext</a> context, T object, Annotation[] annotations, <a href="../../../../org/sindice/rdfcommons/model/TripleSet.html">TripleSet</a> buffer);
 <a name="47" href="#47">47</a>  
 <a name="48" href="#48">48</a>  }
 </pre>

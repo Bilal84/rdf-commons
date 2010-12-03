@@ -109,17 +109,17 @@
 <tr>
   <td class="numLine">&nbsp;19</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;<span class="keyword">import</span> org.sindice.rdfcommons.SparqlEndPoint;</pre></td>
+  <td class="src"><pre class="src">&nbsp;<span class="keyword">import</span> org.sindice.rdfcommons.model.TripleIterator;</pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;20</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;<span class="keyword">import</span> org.sindice.rdfcommons.TripleIterator;</pre></td>
+  <td class="src"><pre class="src">&nbsp;<span class="keyword">import</span> org.sindice.rdfcommons.model.TripleSet;</pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;21</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;<span class="keyword">import</span> org.sindice.rdfcommons.TripleSet;</pre></td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;22</td>
@@ -129,575 +129,570 @@
 <tr>
   <td class="numLine">&nbsp;23</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;</pre></td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">/**</span></pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;24</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;<span class="comment">/**</span></pre></td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * Defines the triples storage.</span></pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;25</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;<span class="comment"> * Defines the triples storage.</span></pre></td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> *</span></pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;26</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;<span class="comment"> *</span></pre></td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * @see org.sindice.rdfcommons.model.TripleFilter</span></pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;27</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;<span class="comment"> * @see org.sindice.rdfcommons.TripleFilter</span></pre></td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * @author Michele Mostarda ( mostarda@fbk.eu )</span></pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;28</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;<span class="comment"> * @author Michele Mostarda ( mostarda@fbk.eu )</span></pre></td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * @version $Id: TripleStorage.java 24 2010-12-01 23:47:33Z michele.mostarda $</span></pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;29</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;<span class="comment"> * @version $Id: TripleStorage.java 2 2010-11-20 17:45:05Z michele.mostarda $</span></pre></td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> */</span></pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;30</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;<span class="comment"> */</span></pre></td>
+  <td class="src"><pre class="src">&nbsp;<span class="keyword">public</span> <span class="keyword">interface</span> TripleStorage {</pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;31</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;<span class="keyword">public</span> <span class="keyword">interface</span> TripleStorage {</pre></td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;32</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;</pre></td>
+  <td class="src"><pre class="src">&nbsp;    <span class="comment">/**</span></pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;33</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;    <span class="comment">/**</span></pre></td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * Opens the triple storage.</span></pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;34</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;<span class="comment">     * Opens the triple storage.</span></pre></td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     *</span></pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;35</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;<span class="comment">     *</span></pre></td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * @param config configuration for the triple storage.</span></pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;36</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;<span class="comment">     * @param config configuration for the triple storage.</span></pre></td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     */</span></pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;37</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;<span class="comment">     */</span></pre></td>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">void</span> openStorage(TripleStorageConfig config);</pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;38</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;    <span class="keyword">void</span> openStorage(TripleStorageConfig config);</pre></td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;39</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;</pre></td>
+  <td class="src"><pre class="src">&nbsp;    <span class="comment">/**</span></pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;40</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;    <span class="comment">/**</span></pre></td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * Closes the triple storage.</span></pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;41</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;<span class="comment">     * Closes the triple storage.</span></pre></td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     */</span></pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;42</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;<span class="comment">     */</span></pre></td>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">void</span> closeStorage();</pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;43</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;    <span class="keyword">void</span> closeStorage();</pre></td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;44</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;</pre></td>
+  <td class="src"><pre class="src">&nbsp;    <span class="comment">/**</span></pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;45</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;    <span class="comment">/**</span></pre></td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * Checks if a triple storage is open or not.</span></pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;46</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;<span class="comment">     * Checks if a triple storage is open or not.</span></pre></td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     *</span></pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;47</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;<span class="comment">     *</span></pre></td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * @return &lt;code&gt;true&lt;/code&gt; if opened, &lt;code&gt;false&lt;/code&gt; otherwise.</span></pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;48</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;<span class="comment">     * @return &lt;code&gt;true&lt;/code&gt; if opened, &lt;code&gt;false&lt;/code&gt; otherwise.</span></pre></td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     */</span></pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;49</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;<span class="comment">     */</span></pre></td>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">boolean</span> isOpen();</pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;50</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;    <span class="keyword">boolean</span> isOpen();</pre></td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;51</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;</pre></td>
+  <td class="src"><pre class="src">&nbsp;    <span class="comment">/**</span></pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;52</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;    <span class="comment">/**</span></pre></td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * Stores a triple set in the default graph.</span></pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;53</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;<span class="comment">     * Stores a triple set in the default graph.</span></pre></td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     *</span></pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;54</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;<span class="comment">     *</span></pre></td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * @param ts</span></pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;55</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;<span class="comment">     * @param ts</span></pre></td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * @throws StorageException if an error occurs during storaging.</span></pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;56</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;<span class="comment">     * @throws StorageException if an error occurs during storaging.</span></pre></td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     */</span></pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;57</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;<span class="comment">     */</span></pre></td>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">void</span> store(TripleSet ts) <span class="keyword">throws</span> StorageException;</pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;58</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;    <span class="keyword">void</span> store(TripleSet ts) <span class="keyword">throws</span> StorageException;</pre></td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;59</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;</pre></td>
+  <td class="src"><pre class="src">&nbsp;    <span class="comment">/**</span></pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;60</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;    <span class="comment">/**</span></pre></td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * Stores the triple set in the named &lt;i&gt;graph&lt;/i&gt;.</span></pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;61</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;<span class="comment">     * Stores the triple set in the named &lt;i&gt;graph&lt;/i&gt;.</span></pre></td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     *</span></pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;62</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;<span class="comment">     *</span></pre></td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * @param graph name of the graph.</span></pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;63</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;<span class="comment">     * @param graph name of the graph.</span></pre></td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * @param ts</span></pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;64</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;<span class="comment">     * @param ts</span></pre></td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * @throws StorageException</span></pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;65</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;<span class="comment">     * @throws StorageException</span></pre></td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     */</span></pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;66</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;<span class="comment">     */</span></pre></td>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">void</span> store(String graph, TripleSet ts) <span class="keyword">throws</span> StorageException;</pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;67</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;    <span class="keyword">void</span> store(String graph, TripleSet ts) <span class="keyword">throws</span> StorageException;</pre></td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;68</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;</pre></td>
+  <td class="src"><pre class="src">&nbsp;    <span class="comment">/**</span></pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;69</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;    <span class="comment">/**</span></pre></td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * Removes the triples listed in the triple set from the default graph.</span></pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;70</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;<span class="comment">     * Removes the triples listed in the triple set from the default graph.</span></pre></td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * </span></pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;71</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;<span class="comment">     * </span></pre></td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * @param ts list of triples to be removed.</span></pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;72</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;<span class="comment">     * @param ts list of triples to be removed.</span></pre></td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * @throws StorageException if an error occurs during the triples removal.</span></pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;73</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;<span class="comment">     * @throws StorageException if an error occurs during the triples removal.</span></pre></td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     */</span></pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;74</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;<span class="comment">     */</span></pre></td>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">void</span> remove(TripleSet ts) <span class="keyword">throws</span> StorageException;</pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;75</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;    <span class="keyword">void</span> remove(TripleSet ts) <span class="keyword">throws</span> StorageException;</pre></td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;76</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;</pre></td>
+  <td class="src"><pre class="src">&nbsp;    <span class="comment">/**</span></pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;77</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;    <span class="comment">/**</span></pre></td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * Removes the triples listed in the triple set from the named &lt;i&gt;graph&lt;/i&gt;.</span></pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;78</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;<span class="comment">     * Removes the triples listed in the triple set from the named &lt;i&gt;graph&lt;/i&gt;.</span></pre></td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     *</span></pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;79</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;<span class="comment">     *</span></pre></td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * @param graph name of the graph.</span></pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;80</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;<span class="comment">     * @param graph name of the graph.</span></pre></td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * @param ts</span></pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;81</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;<span class="comment">     * @param ts</span></pre></td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * @throws StorageException</span></pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;82</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;<span class="comment">     * @throws StorageException</span></pre></td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     */</span></pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;83</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;<span class="comment">     */</span></pre></td>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">void</span> remove(String graph, TripleSet ts) <span class="keyword">throws</span> StorageException;</pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;84</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;    <span class="keyword">void</span> remove(String graph, TripleSet ts) <span class="keyword">throws</span> StorageException;</pre></td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;85</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;</pre></td>
+  <td class="src"><pre class="src">&nbsp;    <span class="comment">/**</span></pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;86</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;    <span class="comment">/**</span></pre></td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * Returns an iterator over the triples matching the filter searched in the default graph.</span></pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;87</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;<span class="comment">     * Returns an iterator over the triples matching the filter searched in the default graph.</span></pre></td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     *</span></pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;88</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;<span class="comment">     *</span></pre></td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * @param tripleFilter the filter to be applied on the triples. </span></pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;89</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;<span class="comment">     * @param tripleFilter the filter to be applied on the triples. </span></pre></td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * @return all the triples matching the filter.</span></pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;90</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;<span class="comment">     * @return all the triples matching the filter.</span></pre></td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     */</span></pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;91</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;<span class="comment">     */</span></pre></td>
+  <td class="src"><pre class="src">&nbsp;    TripleIterator getTriplesIterator(TripleStorageFilter tripleFilter);</pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;92</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;    TripleIterator getTriplesIterator(TripleStorageFilter tripleFilter);</pre></td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;93</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;</pre></td>
+  <td class="src"><pre class="src">&nbsp;    <span class="comment">/**</span></pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;94</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;    <span class="comment">/**</span></pre></td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * Returns an iterator over the triples matching the filter searched in the named &lt;i&gt;graph&lt;/i&gt;.</span></pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;95</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;<span class="comment">     * Returns an iterator over the triples matching the filter searched in the named &lt;i&gt;graph&lt;/i&gt;.</span></pre></td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     *</span></pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;96</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;<span class="comment">     *</span></pre></td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * @param graph name of the graph.</span></pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;97</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;<span class="comment">     * @param graph name of the graph.</span></pre></td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * @param tripleFilter</span></pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;98</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;<span class="comment">     * @param tripleFilter</span></pre></td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * @return all the triples matching the filter.</span></pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;99</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;<span class="comment">     * @return all the triples matching the filter.</span></pre></td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     */</span></pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;100</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;<span class="comment">     */</span></pre></td>
+  <td class="src"><pre class="src">&nbsp;    TripleIterator getTriplesIterator(String graph, TripleStorageFilter tripleFilter);</pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;101</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;    TripleIterator getTriplesIterator(String graph, TripleStorageFilter tripleFilter);</pre></td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;102</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;</pre></td>
+  <td class="src"><pre class="src">&nbsp;    <span class="comment">/**</span></pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;103</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;    <span class="comment">/**</span></pre></td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * Returns a set of triples matching the triple filter searched in the default graph.</span></pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;104</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;<span class="comment">     * Returns a set of triples matching the triple filter searched in the default graph.</span></pre></td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     *  </span></pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;105</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;<span class="comment">     *  </span></pre></td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * @param tripleFilter</span></pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;106</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;<span class="comment">     * @param tripleFilter</span></pre></td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * @return set of triples matching with filter criteria.</span></pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;107</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;<span class="comment">     * @return set of triples matching with filter criteria.</span></pre></td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     */</span></pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;108</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;<span class="comment">     */</span></pre></td>
+  <td class="src"><pre class="src">&nbsp;    TripleSet getTriples(TripleStorageFilter tripleFilter);</pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;109</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;    TripleSet getTriples(TripleStorageFilter tripleFilter);</pre></td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;110</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;</pre></td>
+  <td class="src"><pre class="src">&nbsp;    <span class="comment">/**</span></pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;111</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;    <span class="comment">/**</span></pre></td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * Returns a set of triples matching the triple filter searched in the named &lt;i&gt;graph&lt;/i&gt;.</span></pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;112</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;<span class="comment">     * Returns a set of triples matching the triple filter searched in the named &lt;i&gt;graph&lt;/i&gt;.</span></pre></td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     *</span></pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;113</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;<span class="comment">     *</span></pre></td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * @param graph</span></pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;114</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;<span class="comment">     * @param graph</span></pre></td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * @param tripleFilter</span></pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;115</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;<span class="comment">     * @param tripleFilter</span></pre></td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * @return set of triples matching with filter criteria.</span></pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;116</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;<span class="comment">     * @return set of triples matching with filter criteria.</span></pre></td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     */</span></pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;117</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;<span class="comment">     */</span></pre></td>
+  <td class="src"><pre class="src">&nbsp;    TripleSet getTriples(String graph, TripleStorageFilter tripleFilter);</pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;118</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;    TripleSet getTriples(String graph, TripleStorageFilter tripleFilter);</pre></td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;119</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;</pre></td>
+  <td class="src"><pre class="src">&nbsp;    <span class="comment">/**</span></pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;120</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;    <span class="comment">/**</span></pre></td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * Returns the &lt;i&gt;SPARQL&lt;/i&gt; endpoint of the triple storage.</span></pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;121</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;<span class="comment">     * Returns the &lt;i&gt;SPARQL&lt;/i&gt; endpoint of the triple storage.</span></pre></td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     *</span></pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;122</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;<span class="comment">     *</span></pre></td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * @return  the endpoint.</span></pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;123</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;<span class="comment">     * @return  the endpoint.</span></pre></td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     */</span></pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;124</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;<span class="comment">     */</span></pre></td>
+  <td class="src"><pre class="src">&nbsp;    SparqlEndPoint getSparqlEndPoint();</pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;125</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;    SparqlEndPoint getSparqlEndPoint();</pre></td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;126</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;</pre></td>
+  <td class="src"><pre class="src">&nbsp;    <span class="comment">/**</span></pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;127</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;    <span class="comment">/**</span></pre></td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * Removes the entire content of the named &lt;i&gt;graph&lt;/i&gt;.</span></pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;128</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;<span class="comment">     * Removes the entire content of the named &lt;i&gt;graph&lt;/i&gt;.</span></pre></td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     */</span></pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;129</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;<span class="comment">     */</span></pre></td>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">void</span> clear(String graph);</pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;130</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;    <span class="keyword">void</span> clear(String graph);</pre></td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;131</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;</pre></td>
+  <td class="src"><pre class="src">&nbsp;    <span class="comment">/**</span></pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;132</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;    <span class="comment">/**</span></pre></td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * Removes the content of the entire storage.</span></pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;133</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;<span class="comment">     * Removes the content of the entire storage.</span></pre></td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     */</span></pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;134</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;<span class="comment">     */</span></pre></td>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">void</span> clearAll();</pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;135</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;    <span class="keyword">void</span> clearAll();</pre></td>
-</tr>
-<tr>
-  <td class="numLine">&nbsp;136</td>
-  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;</pre></td>
 </tr>
 <tr>
-  <td class="numLine">&nbsp;137</td>
+  <td class="numLine">&nbsp;136</td>
   <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;}</pre></td>
 </tr>

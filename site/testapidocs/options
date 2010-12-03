@@ -1,0 +1,24 @@
+-classpath
+'/Users/hardest/repository/SindiceOS/RDFCommons/rdf-commons/trunk/target/classes:/Users/hardest/repository/SindiceOS/RDFCommons/rdf-commons/trunk/target/test-classes:/Users/hardest/.m2/repository/com/hp/hpl/jena/jena/2.6.3/jena-2.6.3.jar:/Users/hardest/.m2/repository/log4j/log4j/1.2.16/log4j-1.2.16.jar:/Users/hardest/.m2/repository/commons-collections/commons-collections/3.2.1/commons-collections-3.2.1.jar:/Users/hardest/.m2/repository/com/hp/hpl/jena/iri/0.8/iri-0.8-sources.jar:/Users/hardest/.m2/repository/commons-beanutils/commons-beanutils/1.8.0/commons-beanutils-1.8.0.jar:/Users/hardest/.m2/repository/org/slf4j/slf4j-api/1.5.8/slf4j-api-1.5.8.jar:/Users/hardest/.m2/repository/org/testng/testng/5.8/testng-5.8-jdk15.jar:/Users/hardest/.m2/repository/junit/junit/3.8.1/junit-3.8.1.jar:/Users/hardest/.m2/repository/com/hp/hpl/jena/iri/0.8/iri-0.8.jar:/Users/hardest/.m2/repository/xerces/xercesImpl/2.7.1/xercesImpl-2.7.1.jar:/Users/hardest/.m2/repository/commons-logging/commons-logging/1.1.1/commons-logging-1.1.1.jar:/Users/hardest/.m2/repository/com/ibm/icu/icu4j/3.4.4/icu4j-3.4.4.jar:/Users/hardest/.m2/repository/org/slf4j/slf4j-log4j12/1.5.8/slf4j-log4j12-1.5.8.jar'
+-encoding
+'UTF-8'
+-protected
+-sourcepath
+'/Users/hardest/repository/SindiceOS/RDFCommons/rdf-commons/trunk/src/test/java'
+-author
+-bottom
+'Copyright &#169; 2010 <a href="http://www.fbk.eu/">Fondazione Bruno Kessler (FBK)</a>. All Rights Reserved.'
+-charset
+'UTF-8'
+-d
+'/Users/hardest/repository/SindiceOS/RDFCommons/rdf-commons/trunk/target/site/testapidocs'
+-docencoding
+'UTF-8'
+-doctitle
+'RDF Commons Library 0.9.0-SNAPSHOT Test API'
+-link
+'../apidocs'
+-use
+-version
+-windowtitle
+'RDF Commons Library 0.9.0-SNAPSHOT Test API'

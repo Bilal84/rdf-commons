@@ -28,19 +28,19 @@
 <a name="18" href="#18">18</a>  
 <a name="19" href="#19">19</a>  <strong class="jxr_keyword">import</strong> com.hp.hpl.jena.rdf.model.Model;
 <a name="20" href="#20">20</a>  <strong class="jxr_keyword">import</strong> com.hp.hpl.jena.rdf.model.ModelFactory;
-<a name="21" href="#21">21</a>  <strong class="jxr_keyword">import</strong> org.sindice.rdfcommons.RDFParser;
-<a name="22" href="#22">22</a>  <strong class="jxr_keyword">import</strong> org.sindice.rdfcommons.RDFParserException;
-<a name="23" href="#23">23</a>  <strong class="jxr_keyword">import</strong> org.sindice.rdfcommons.TripleSet;
+<a name="21" href="#21">21</a>  <strong class="jxr_keyword">import</strong> org.sindice.rdfcommons.parser.RDFParser;
+<a name="22" href="#22">22</a>  <strong class="jxr_keyword">import</strong> org.sindice.rdfcommons.parser.RDFParserException;
+<a name="23" href="#23">23</a>  <strong class="jxr_keyword">import</strong> org.sindice.rdfcommons.model.TripleSet;
 <a name="24" href="#24">24</a>  
 <a name="25" href="#25">25</a>  <strong class="jxr_keyword">import</strong> java.io.InputStream;
 <a name="26" href="#26">26</a>  
 <a name="27" href="#27">27</a>  <em class="jxr_javadoccomment">/**</em>
-<a name="28" href="#28">28</a>  <em class="jxr_javadoccomment"> * Default implementation of {@link org.sindice.rdfcommons.RDFParser}.</em>
+<a name="28" href="#28">28</a>  <em class="jxr_javadoccomment"> * Default implementation of {@link org.sindice.rdfcommons.parser.RDFParser}.</em>
 <a name="29" href="#29">29</a>  <em class="jxr_javadoccomment"> *</em>
 <a name="30" href="#30">30</a>  <em class="jxr_javadoccomment"> * @author Michele Mostarda ( mostarda@fbk.eu )</em>
-<a name="31" href="#31">31</a>  <em class="jxr_javadoccomment"> * @version $Id: JenaRDFParser.java 2 2010-11-20 17:45:05Z michele.mostarda $</em>
+<a name="31" href="#31">31</a>  <em class="jxr_javadoccomment"> * @version $Id: JenaRDFParser.java 24 2010-12-01 23:47:33Z michele.mostarda $</em>
 <a name="32" href="#32">32</a>  <em class="jxr_javadoccomment"> */</em>
-<a name="33" href="#33">33</a>  <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">class</strong> <a href="../../../../org/sindice/rdfcommons/jena/JenaRDFParser.html">JenaRDFParser</a> implements <a href="../../../../org/sindice/rdfcommons/RDFParser.html">RDFParser</a> {
+<a name="33" href="#33">33</a>  <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">class</strong> <a href="../../../../org/sindice/rdfcommons/jena/JenaRDFParser.html">JenaRDFParser</a> implements <a href="../../../../org/sindice/rdfcommons/parser/RDFParser.html">RDFParser</a> {
 <a name="34" href="#34">34</a>  
 <a name="35" href="#35">35</a>      <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">static</strong> <a href="../../../../org/sindice/rdfcommons/jena/JenaRDFParser.html">JenaRDFParser</a> instance;
 <a name="36" href="#36">36</a>  
@@ -61,12 +61,12 @@
 <a name="51" href="#51">51</a>  <em class="jxr_javadoccomment">     */</em>
 <a name="52" href="#52">52</a>      <strong class="jxr_keyword">private</strong> <a href="../../../../org/sindice/rdfcommons/jena/JenaRDFParser.html">JenaRDFParser</a>() {}
 <a name="53" href="#53">53</a>  
-<a name="54" href="#54">54</a>      <strong class="jxr_keyword">public</strong> <a href="../../../../org/sindice/rdfcommons/TripleSet.html">TripleSet</a> parse(InputStream is) <strong class="jxr_keyword">throws</strong> RDFParserException {
+<a name="54" href="#54">54</a>      <strong class="jxr_keyword">public</strong> <a href="../../../../org/sindice/rdfcommons/model/TripleSet.html">TripleSet</a> parse(InputStream is) <strong class="jxr_keyword">throws</strong> RDFParserException {
 <a name="55" href="#55">55</a>          Model model = ModelFactory.createDefaultModel();
 <a name="56" href="#56">56</a>          <strong class="jxr_keyword">try</strong> {
 <a name="57" href="#57">57</a>              model.read(is, <span class="jxr_string">""</span>);
 <a name="58" href="#58">58</a>          } <strong class="jxr_keyword">catch</strong> (Exception e) {
-<a name="59" href="#59">59</a>              <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> <a href="../../../../org/sindice/rdfcommons/RDFParserException.html">RDFParserException</a>(<span class="jxr_string">"An error occurred during stream reading."</span>, e);
+<a name="59" href="#59">59</a>              <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> <a href="../../../../org/sindice/rdfcommons/parser/RDFParserException.html">RDFParserException</a>(<span class="jxr_string">"An error occurred during stream reading."</span>, e);
 <a name="60" href="#60">60</a>          }
 <a name="61" href="#61">61</a>          <strong class="jxr_keyword">return</strong> JenaConversionUtil.convertJenaModelToTripleSet(model);
 <a name="62" href="#62">62</a>      }

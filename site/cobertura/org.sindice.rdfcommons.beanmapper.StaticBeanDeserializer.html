@@ -109,7 +109,7 @@
 <tr>
   <td class="numLine">&nbsp;19</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;<span class="keyword">import</span> org.sindice.rdfcommons.ResultSet;</pre></td>
+  <td class="src"><pre class="src">&nbsp;<span class="keyword">import</span> org.sindice.rdfcommons.storage.ResultSet;</pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;20</td>
@@ -179,7 +179,7 @@
 <tr>
   <td class="numLine">&nbsp;33</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;<span class="comment"> * @version $Id: StaticBeanDeserializer.java 2 2010-11-20 17:45:05Z michele.mostarda $</span></pre></td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * @version $Id: StaticBeanDeserializer.java 24 2010-12-01 23:47:33Z michele.mostarda $</span></pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;34</td>
@@ -188,7 +188,7 @@
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;35</td>
-  <td class="nbHitsCovered">&nbsp;6</td>
+  <td class="nbHitsCovered">&nbsp;9</td>
   <td class="src"><pre class="src">&nbsp;<span class="keyword">public</span> <span class="keyword">class</span> StaticBeanDeserializer <span class="keyword">extends</span> BaseDeserializer {</pre></td>
 </tr>
 <tr>
@@ -203,7 +203,7 @@
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;38</td>
-  <td class="nbHitsCovered">&nbsp;36</td>
+  <td class="nbHitsCovered">&nbsp;55</td>
   <td class="src"><pre class="src">&nbsp;        <span class="keyword">return</span> ! isPrimitive(clazz) &amp;&amp; definesAnnotation(annotations, Static.<span class="keyword">class</span>);</pre></td>
 </tr>
 <tr>
@@ -223,7 +223,7 @@
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;42</td>
-  <td class="nbHitsCovered">&nbsp;2</td>
+  <td class="nbHitsCovered">&nbsp;3</td>
   <td class="src"><pre class="src">&nbsp;        <span class="keyword">return</span> <span class="keyword">new</span> Identifier( getClassURL(clazz), Identifier.Type.resource );</pre></td>
 </tr>
 <tr>
@@ -278,7 +278,7 @@
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;53</td>
-  <td class="nbHitsCovered">&nbsp;2</td>
+  <td class="nbHitsCovered">&nbsp;3</td>
   <td class="src"><pre class="src">&nbsp;        <span class="keyword">if</span>(identifier != <span class="keyword">null</span>) {</pre></td>
 </tr>
 <tr>
@@ -298,7 +298,7 @@
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;57</td>
-  <td class="nbHitsCovered">&nbsp;2</td>
+  <td class="nbHitsCovered">&nbsp;3</td>
   <td class="src"><pre class="src">&nbsp;        <span class="keyword">final</span> Identifier staticIdentifier = getIdentifier(clazz, annotations);</pre></td>
 </tr>
 <tr>
@@ -323,7 +323,7 @@
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;62</td>
-  <td class="nbHitsCovered">&nbsp;2</td>
+  <td class="nbHitsCovered">&nbsp;3</td>
   <td class="src"><pre class="src">&nbsp;            instance = clazz.newInstance();</pre></td>
 </tr>
 <tr>
@@ -348,12 +348,12 @@
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;67</td>
-  <td class="nbHitsCovered">&nbsp;2</td>
+  <td class="nbHitsCovered">&nbsp;3</td>
   <td class="src"><pre class="src">&nbsp;        }</pre></td>
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;68</td>
-  <td class="nbHitsCovered">&nbsp;2</td>
+  <td class="nbHitsCovered">&nbsp;3</td>
   <td class="src"><pre class="src">&nbsp;        context.registerInstance(staticIdentifier, instance);</pre></td>
 </tr>
 <tr>
@@ -368,7 +368,7 @@
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;71</td>
-  <td class="nbHitsCovered">&nbsp;2</td>
+  <td class="nbHitsCovered">&nbsp;3</td>
   <td class="src"><pre class="src">&nbsp;        <span class="keyword">final</span> BeanMap beanMap = <span class="keyword">new</span> BeanMap(instance);</pre></td>
 </tr>
 <tr>
@@ -383,12 +383,12 @@
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;74</td>
-  <td class="nbHitsCovered">&nbsp;2</td>
+  <td class="nbHitsCovered">&nbsp;3</td>
   <td class="src"><pre class="src">&nbsp;        <span class="keyword">final</span> Map&lt;String,Method&gt; propertyURLs = <span class="keyword">new</span> HashMap&lt;String,Method&gt;();</pre></td>
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;75</td>
-  <td class="nbHitsCovered">&nbsp;2</td>
+  <td class="nbHitsCovered">&nbsp;3</td>
   <td class="src"><pre class="src">&nbsp;        <span class="keyword">final</span> String classURL = getClassURL(clazz);</pre></td>
 </tr>
 <tr>
@@ -403,7 +403,7 @@
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;78</td>
-  <td class="nbHitsCovered">&nbsp;2</td>
+  <td class="nbHitsCovered">&nbsp;3</td>
   <td class="src"><pre class="src">&nbsp;        <span class="keyword">for</span> (Map.Entry&lt;String, Object&gt; entry : (Set&lt;Map.Entry&lt;String, Object&gt;&gt;) beanMap.entrySet()) {</pre></td>
 </tr>
 <tr>
@@ -413,12 +413,12 @@
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;80</td>
-  <td class="nbHitsCovered">&nbsp;14</td>
+  <td class="nbHitsCovered">&nbsp;21</td>
   <td class="src"><pre class="src">&nbsp;            <span class="keyword">if</span> (<span class="string">"class"</span>.equals(entry.getKey())) {</pre></td>
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;81</td>
-  <td class="nbHitsCovered">&nbsp;2</td>
+  <td class="nbHitsCovered">&nbsp;3</td>
   <td class="src"><pre class="src">&nbsp;                <span class="keyword">continue</span>;</pre></td>
 </tr>
 <tr>
@@ -428,17 +428,17 @@
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;83</td>
-  <td class="nbHitsCovered">&nbsp;12</td>
+  <td class="nbHitsCovered">&nbsp;18</td>
   <td class="src"><pre class="src">&nbsp;            propertyName = entry.getKey();</pre></td>
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;84</td>
-  <td class="nbHitsCovered">&nbsp;12</td>
+  <td class="nbHitsCovered">&nbsp;18</td>
   <td class="src"><pre class="src">&nbsp;            propertyWriteMethod = beanMap.getWriteMethod(propertyName);</pre></td>
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;85</td>
-  <td class="nbHitsCovered">&nbsp;12</td>
+  <td class="nbHitsCovered">&nbsp;18</td>
   <td class="src"><pre class="src">&nbsp;            propertyURLs.put(getPropertyURL(classURL, propertyName, propertyWriteMethod), propertyWriteMethod);</pre></td>
 </tr>
 <tr>
@@ -458,12 +458,12 @@
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;89</td>
-  <td class="nbHitsCovered">&nbsp;2</td>
+  <td class="nbHitsCovered">&nbsp;3</td>
   <td class="src"><pre class="src">&nbsp;        endPoint.addQuery( (String) staticIdentifier.getId(), <span class="string">"?prop"</span>, <span class="string">"?value"</span> );</pre></td>
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;90</td>
-  <td class="nbHitsCovered">&nbsp;2</td>
+  <td class="nbHitsCovered">&nbsp;3</td>
   <td class="src"><pre class="src">&nbsp;        ResultSet rs = endPoint.execute();</pre></td>
 </tr>
 <tr>
@@ -493,22 +493,22 @@
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;96</td>
-  <td class="nbHitsCovered">&nbsp;12</td>
+  <td class="nbHitsCovered">&nbsp;18</td>
   <td class="src"><pre class="src">&nbsp;        <span class="keyword">while</span> (rs.hasNext()) {</pre></td>
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;97</td>
-  <td class="nbHitsCovered">&nbsp;10</td>
+  <td class="nbHitsCovered">&nbsp;15</td>
   <td class="src"><pre class="src">&nbsp;            property = rs.getVariableValue(<span class="string">"?prop"</span>);</pre></td>
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;98</td>
-  <td class="nbHitsCovered">&nbsp;10</td>
+  <td class="nbHitsCovered">&nbsp;15</td>
   <td class="src"><pre class="src">&nbsp;            value    = rs.getVariableValue(<span class="string">"?value"</span>);</pre></td>
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;99</td>
-  <td class="nbHitsCovered">&nbsp;10</td>
+  <td class="nbHitsCovered">&nbsp;15</td>
   <td class="src"><pre class="src">&nbsp;            rs.next();</pre></td>
 </tr>
 <tr>
@@ -518,12 +518,12 @@
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;101</td>
-  <td class="nbHitsCovered">&nbsp;10</td>
+  <td class="nbHitsCovered">&nbsp;15</td>
   <td class="src"><pre class="src">&nbsp;            propertyWriteMethod = propertyURLs.get(property);</pre></td>
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;102</td>
-  <td class="nbHitsCovered">&nbsp;10</td>
+  <td class="nbHitsCovered">&nbsp;15</td>
   <td class="src"><pre class="src">&nbsp;            <span class="keyword">if</span> (propertyWriteMethod == <span class="keyword">null</span>) {</pre></td>
 </tr>
 <tr>
@@ -543,7 +543,7 @@
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;106</td>
-  <td class="nbHitsCovered">&nbsp;10</td>
+  <td class="nbHitsCovered">&nbsp;15</td>
   <td class="src"><pre class="src">&nbsp;            propertyType = propertyWriteMethod.getParameterTypes()[0];</pre></td>
 </tr>
 <tr>
@@ -558,7 +558,7 @@
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;109</td>
-  <td class="nbHitsCovered">&nbsp;10</td>
+  <td class="nbHitsCovered">&nbsp;15</td>
   <td class="src"><pre class="src">&nbsp;            Object deserialized = context.deserialize(</pre></td>
 </tr>
 <tr>
@@ -603,7 +603,7 @@
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;118</td>
-  <td class="nbHitsCovered">&nbsp;10</td>
+  <td class="nbHitsCovered">&nbsp;15</td>
   <td class="src"><pre class="src">&nbsp;                propertyWriteMethod.invoke(instance, deserialized);</pre></td>
 </tr>
 <tr>
@@ -658,17 +658,17 @@
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;129</td>
-  <td class="nbHitsCovered">&nbsp;10</td>
+  <td class="nbHitsCovered">&nbsp;15</td>
   <td class="src"><pre class="src">&nbsp;            }</pre></td>
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;130</td>
-  <td class="nbHitsCovered">&nbsp;10</td>
+  <td class="nbHitsCovered">&nbsp;15</td>
   <td class="src"><pre class="src">&nbsp;        }</pre></td>
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;131</td>
-  <td class="nbHitsCovered">&nbsp;2</td>
+  <td class="nbHitsCovered">&nbsp;3</td>
   <td class="src"><pre class="src">&nbsp;        <span class="keyword">return</span> instance;</pre></td>
 </tr>
 <tr>

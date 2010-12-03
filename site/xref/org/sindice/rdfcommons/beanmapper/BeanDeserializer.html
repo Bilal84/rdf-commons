@@ -26,7 +26,7 @@
 <a name="16" href="#16">16</a>  
 <a name="17" href="#17">17</a>  <strong class="jxr_keyword">package</strong> org.sindice.rdfcommons.beanmapper;
 <a name="18" href="#18">18</a>  
-<a name="19" href="#19">19</a>  <strong class="jxr_keyword">import</strong> org.sindice.rdfcommons.ResultSet;
+<a name="19" href="#19">19</a>  <strong class="jxr_keyword">import</strong> org.sindice.rdfcommons.storage.ResultSet;
 <a name="20" href="#20">20</a>  <strong class="jxr_keyword">import</strong> org.apache.commons.beanutils.BeanMap;
 <a name="21" href="#21">21</a>  
 <a name="22" href="#22">22</a>  <strong class="jxr_keyword">import</strong> java.lang.annotation.Annotation;
@@ -38,7 +38,7 @@
 <a name="28" href="#28">28</a>  <em class="jxr_javadoccomment"> * Bean deserializer implementation.</em>
 <a name="29" href="#29">29</a>  <em class="jxr_javadoccomment"> *</em>
 <a name="30" href="#30">30</a>  <em class="jxr_javadoccomment"> * @author Michele Mostarda ( mostarda@fbk.eu )</em>
-<a name="31" href="#31">31</a>  <em class="jxr_javadoccomment"> * @version $Id: BeanDeserializer.java 2 2010-11-20 17:45:05Z michele.mostarda $</em>
+<a name="31" href="#31">31</a>  <em class="jxr_javadoccomment"> * @version $Id: BeanDeserializer.java 24 2010-12-01 23:47:33Z michele.mostarda $</em>
 <a name="32" href="#32">32</a>  <em class="jxr_javadoccomment"> */</em>
 <a name="33" href="#33">33</a>  <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">class</strong> <a href="../../../../org/sindice/rdfcommons/beanmapper/BeanDeserializer.html">BeanDeserializer</a> <strong class="jxr_keyword">extends</strong> <a href="../../../../org/sindice/rdfcommons/beanmapper/BaseDeserializer.html">BaseDeserializer</a> {
 <a name="34" href="#34">34</a>  
@@ -137,7 +137,7 @@
 <a name="127" href="#127">127</a>     ) {
 <a name="128" href="#128">128</a>         <strong class="jxr_keyword">final</strong> String propertyURL = getPropertyURL(classUrl, propertyName, propertyWriteMethod);
 <a name="129" href="#129">129</a>         endPoint.addQuery((String) identifier.getId(), propertyURL, <span class="jxr_string">"?value"</span>);
-<a name="130" href="#130">130</a>         <a href="../../../../org/sindice/rdfcommons/ResultSet.html">ResultSet</a> rs = endPoint.execute();
+<a name="130" href="#130">130</a>         <a href="../../../../org/sindice/rdfcommons/storage/ResultSet.html">ResultSet</a> rs = endPoint.execute();
 <a name="131" href="#131">131</a>         <strong class="jxr_keyword">if</strong> (!rs.hasNext()) {
 <a name="132" href="#132">132</a>             context.reportIssue(
 <a name="133" href="#133">133</a>                     String.format(

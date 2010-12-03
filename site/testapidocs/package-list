@@ -1,3 +1,4 @@
 org.sindice.rdfcommons.beanmapper
 org.sindice.rdfcommons.jena
+org.sindice.rdfcommons.model
 org.sindice.rdfcommons.query

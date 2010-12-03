@@ -12,7 +12,7 @@
 <div class="separator">&nbsp;</div>
 <table class="report">
 <thead><tr>  <td class="heading">Classes in this File</td>  <td class="heading" width="20%"><a class="dfn" href="help.html" onclick="popupwindow('help.html'); return false;">Line Coverage</a></td>  <td class="heading" width="20%"><a class="dfn" href="help.html" onclick="popupwindow('help.html'); return false;">Branch Coverage</a></td>  <td class="heading" width="10%"><a class="dfn" href="help.html" onclick="popupwindow('help.html'); return false;">Complexity</a></td></tr></thead>
-  <tr><td class="text"><a href="org.sindice.rdfcommons.beanmapper.SerializationManager.html">SerializationManager</a></td><td class="value"><table cellpadding="0" cellspacing="0" align="right"><tr><td>84%&nbsp;</td><td><table class="percentGraph" cellpadding="0" cellspacing="0" width="100"><tr><td class="covered" width="84"></td><td class="uncovered" width="15"></td></tr></table></td></tr></table></td><td class="value"><table cellpadding="0" cellspacing="0" align="right"><tr><td>100%&nbsp;</td><td><table class="percentGraph" cellpadding="0" cellspacing="0" width="100"><tr><td class="covered" width="100"></td><td class="uncovered" width="0"></td></tr></table></td></tr></table></td><td class="value"><span class="hidden">0.0;</span>0</td></tr>
+  <tr><td class="text"><a href="org.sindice.rdfcommons.beanmapper.SerializationManager.html">SerializationManager</a></td><td class="value"><table cellpadding="0" cellspacing="0" align="right"><tr><td>86%&nbsp;</td><td><table class="percentGraph" cellpadding="0" cellspacing="0" width="100"><tr><td class="covered" width="85"></td><td class="uncovered" width="14"></td></tr></table></td></tr></table></td><td class="value"><table cellpadding="0" cellspacing="0" align="right"><tr><td>100%&nbsp;</td><td><table class="percentGraph" cellpadding="0" cellspacing="0" width="100"><tr><td class="covered" width="100"></td><td class="uncovered" width="0"></td></tr></table></td></tr></table></td><td class="value"><span class="hidden">0.0;</span>0</td></tr>
 </table>
 <div class="separator">&nbsp;</div>
 <table cellspacing="0" cellpadding="0" class="src">
@@ -109,12 +109,12 @@
 <tr>
   <td class="numLine">&nbsp;19</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;<span class="keyword">import</span> org.sindice.rdfcommons.TripleBuffer;</pre></td>
+  <td class="src"><pre class="src">&nbsp;<span class="keyword">import</span> org.sindice.rdfcommons.model.TripleBuffer;</pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;20</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;<span class="keyword">import</span> org.sindice.rdfcommons.TripleSet;</pre></td>
+  <td class="src"><pre class="src">&nbsp;<span class="keyword">import</span> org.sindice.rdfcommons.model.TripleSet;</pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;21</td>
@@ -174,7 +174,7 @@
 <tr>
   <td class="numLine">&nbsp;32</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;<span class="comment"> * @version $Id: SerializationManager.java 2 2010-11-20 17:45:05Z michele.mostarda $</span></pre></td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * @version $Id: SerializationManager.java 33 2010-12-02 18:56:19Z michele.mostarda $</span></pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;33</td>
@@ -213,17 +213,17 @@
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;40</td>
-  <td class="nbHitsCovered">&nbsp;30</td>
+  <td class="nbHitsCovered">&nbsp;46</td>
   <td class="src"><pre class="src">&nbsp;        InternalSerializationContext(Map&lt;Object, Identifier&gt; vo) {</pre></td>
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;41</td>
-  <td class="nbHitsCovered">&nbsp;30</td>
+  <td class="nbHitsCovered">&nbsp;46</td>
   <td class="src"><pre class="src">&nbsp;            visitedObjects = vo;</pre></td>
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;42</td>
-  <td class="nbHitsCovered">&nbsp;30</td>
+  <td class="nbHitsCovered">&nbsp;46</td>
   <td class="src"><pre class="src">&nbsp;        }</pre></td>
 </tr>
 <tr>
@@ -238,7 +238,7 @@
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;45</td>
-  <td class="nbHitsCovered">&nbsp;288</td>
+  <td class="nbHitsCovered">&nbsp;440</td>
   <td class="src"><pre class="src">&nbsp;            <span class="keyword">return</span> visitedObjects;</pre></td>
 </tr>
 <tr>
@@ -283,7 +283,7 @@
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;54</td>
-  <td class="nbHitsCovered">&nbsp;258</td>
+  <td class="nbHitsCovered">&nbsp;394</td>
   <td class="src"><pre class="src">&nbsp;            <span class="keyword">return</span> SerializationManager.<span class="keyword">this</span>.serialize(context, object, annotations, buffer);</pre></td>
 </tr>
 <tr>
@@ -303,7 +303,7 @@
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;58</td>
-  <td class="nbHitsCovered">&nbsp;2</td>
+  <td class="nbHitsCovered">&nbsp;3</td>
   <td class="src"><pre class="src">&nbsp;    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Identifier NULL = <span class="keyword">new</span> Identifier(BaseSerializer.NULL_VALUE, Identifier.Type.literal);</pre></td>
 </tr>
 <tr>
@@ -323,22 +323,22 @@
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;62</td>
-  <td class="nbHitsCovered">&nbsp;8</td>
+  <td class="nbHitsCovered">&nbsp;12</td>
   <td class="src"><pre class="src">&nbsp;    <span class="keyword">public</span> SerializationManager() {</pre></td>
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;63</td>
-  <td class="nbHitsCovered">&nbsp;8</td>
+  <td class="nbHitsCovered">&nbsp;12</td>
   <td class="src"><pre class="src">&nbsp;        serializers = <span class="keyword">new</span> ArrayList&lt;CriteriaSerializer&gt;();</pre></td>
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;64</td>
-  <td class="nbHitsCovered">&nbsp;8</td>
+  <td class="nbHitsCovered">&nbsp;12</td>
   <td class="src"><pre class="src">&nbsp;        configureDefaultSerializers();</pre></td>
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;65</td>
-  <td class="nbHitsCovered">&nbsp;8</td>
+  <td class="nbHitsCovered">&nbsp;12</td>
   <td class="src"><pre class="src">&nbsp;    }</pre></td>
 </tr>
 <tr>
@@ -353,7 +353,7 @@
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;68</td>
-  <td class="nbHitsCovered">&nbsp;64</td>
+  <td class="nbHitsCovered">&nbsp;100</td>
   <td class="src"><pre class="src">&nbsp;        <span class="keyword">if</span>(serializer == <span class="keyword">null</span>) {</pre></td>
 </tr>
 <tr>
@@ -368,7 +368,7 @@
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;71</td>
-  <td class="nbHitsCovered">&nbsp;64</td>
+  <td class="nbHitsCovered">&nbsp;100</td>
   <td class="src"><pre class="src">&nbsp;        <span class="keyword">return</span> serializers.add(serializer);</pre></td>
 </tr>
 <tr>
@@ -408,17 +408,17 @@
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;79</td>
-  <td class="nbHitsCovered">&nbsp;220</td>
+  <td class="nbHitsCovered">&nbsp;338</td>
   <td class="src"><pre class="src">&nbsp;        <span class="keyword">for</span>(CriteriaSerializer serializer : serializers) {</pre></td>
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;80</td>
-  <td class="nbHitsCovered">&nbsp;1550</td>
+  <td class="nbHitsCovered">&nbsp;1931</td>
   <td class="src"><pre class="src">&nbsp;            <span class="keyword">if</span>(serializer.acceptClass(clazz, annotations)) {</pre></td>
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;81</td>
-  <td class="nbHitsCovered">&nbsp;220</td>
+  <td class="nbHitsCovered">&nbsp;338</td>
   <td class="src"><pre class="src">&nbsp;                <span class="keyword">return</span> serializer;</pre></td>
 </tr>
 <tr>
@@ -488,7 +488,7 @@
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;95</td>
-  <td class="nbHitsCovered">&nbsp;288</td>
+  <td class="nbHitsCovered">&nbsp;440</td>
   <td class="src"><pre class="src">&nbsp;        <span class="keyword">if</span>(obj == <span class="keyword">null</span>) {</pre></td>
 </tr>
 <tr>
@@ -508,7 +508,7 @@
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;99</td>
-  <td class="nbHitsCovered">&nbsp;288</td>
+  <td class="nbHitsCovered">&nbsp;440</td>
   <td class="src"><pre class="src">&nbsp;        <span class="keyword">final</span> Map&lt;Object, Identifier&gt; visitedObjects = context.getSerializedObjects();</pre></td>
 </tr>
 <tr>
@@ -528,17 +528,17 @@
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;103</td>
-  <td class="nbHitsCovered">&nbsp;288</td>
+  <td class="nbHitsCovered">&nbsp;440</td>
   <td class="src"><pre class="src">&nbsp;        identifier = visitedObjects.get(obj);</pre></td>
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;104</td>
-  <td class="nbHitsCovered">&nbsp;288</td>
+  <td class="nbHitsCovered">&nbsp;440</td>
   <td class="src"><pre class="src">&nbsp;        <span class="keyword">if</span>(identifier != <span class="keyword">null</span>) {</pre></td>
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;105</td>
-  <td class="nbHitsCovered">&nbsp;68</td>
+  <td class="nbHitsCovered">&nbsp;102</td>
   <td class="src"><pre class="src">&nbsp;            <span class="keyword">return</span> identifier;</pre></td>
 </tr>
 <tr>
@@ -558,7 +558,7 @@
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;109</td>
-  <td class="nbHitsCovered">&nbsp;220</td>
+  <td class="nbHitsCovered">&nbsp;338</td>
   <td class="src"><pre class="src">&nbsp;        Serializer serializer = getSerializerFor( obj.getClass(), annotations );</pre></td>
 </tr>
 <tr>
@@ -568,22 +568,22 @@
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;111</td>
-  <td class="nbHitsCovered">&nbsp;220</td>
+  <td class="nbHitsCovered">&nbsp;338</td>
   <td class="src"><pre class="src">&nbsp;        <span class="keyword">if</span>(serializer.isComplex()) {</pre></td>
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;112</td>
-  <td class="nbHitsCovered">&nbsp;76</td>
+  <td class="nbHitsCovered">&nbsp;115</td>
   <td class="src"><pre class="src">&nbsp;            identifier = serializer.getIdentifier(context, obj, annotations, buffer);</pre></td>
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;113</td>
-  <td class="nbHitsCovered">&nbsp;76</td>
+  <td class="nbHitsCovered">&nbsp;115</td>
   <td class="src"><pre class="src">&nbsp;            visitedObjects.put(obj, identifier);</pre></td>
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;114</td>
-  <td class="nbHitsCovered">&nbsp;76</td>
+  <td class="nbHitsCovered">&nbsp;115</td>
   <td class="src"><pre class="src">&nbsp;            serializer.serialize(context, obj, annotations, buffer);</pre></td>
 </tr>
 <tr>
@@ -593,12 +593,12 @@
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;116</td>
-  <td class="nbHitsCovered">&nbsp;144</td>
+  <td class="nbHitsCovered">&nbsp;223</td>
   <td class="src"><pre class="src">&nbsp;            identifier = serializer.serialize(context, obj, annotations, buffer);</pre></td>
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;117</td>
-  <td class="nbHitsCovered">&nbsp;144</td>
+  <td class="nbHitsCovered">&nbsp;223</td>
   <td class="src"><pre class="src">&nbsp;            visitedObjects.put(obj, identifier);</pre></td>
 </tr>
 <tr>
@@ -613,7 +613,7 @@
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;120</td>
-  <td class="nbHitsCovered">&nbsp;220</td>
+  <td class="nbHitsCovered">&nbsp;338</td>
   <td class="src"><pre class="src">&nbsp;        <span class="keyword">return</span> identifier;</pre></td>
 </tr>
 <tr>
@@ -633,17 +633,17 @@
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;124</td>
-  <td class="nbHitsCovered">&nbsp;30</td>
+  <td class="nbHitsCovered">&nbsp;46</td>
   <td class="src"><pre class="src">&nbsp;        Map&lt;Object, Identifier&gt; visitedObjects = <span class="keyword">new</span> HashMap&lt;Object, Identifier&gt;();</pre></td>
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;125</td>
-  <td class="nbHitsCovered">&nbsp;30</td>
+  <td class="nbHitsCovered">&nbsp;46</td>
   <td class="src"><pre class="src">&nbsp;        serialize( <span class="keyword">new</span> InternalSerializationContext(visitedObjects) , obj, annotations, buffer);</pre></td>
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;126</td>
-  <td class="nbHitsCovered">&nbsp;30</td>
+  <td class="nbHitsCovered">&nbsp;46</td>
   <td class="src"><pre class="src">&nbsp;    }</pre></td>
 </tr>
 <tr>
@@ -688,17 +688,17 @@
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;135</td>
-  <td class="nbHitsCovered">&nbsp;30</td>
+  <td class="nbHitsCovered">&nbsp;46</td>
   <td class="src"><pre class="src">&nbsp;        TripleBuffer buffer = <span class="keyword">new</span> TripleBuffer();</pre></td>
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;136</td>
-  <td class="nbHitsCovered">&nbsp;30</td>
+  <td class="nbHitsCovered">&nbsp;46</td>
   <td class="src"><pre class="src">&nbsp;        serializeObject(obj, BaseSerializer.getAnnotations(obj), buffer);</pre></td>
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;137</td>
-  <td class="nbHitsCovered">&nbsp;30</td>
+  <td class="nbHitsCovered">&nbsp;46</td>
   <td class="src"><pre class="src">&nbsp;        <span class="keyword">return</span> buffer;</pre></td>
 </tr>
 <tr>
@@ -734,76 +734,76 @@
 <tr>
   <td class="numLine">&nbsp;144</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;</pre></td>
+  <td class="src"><pre class="src">&nbsp;        <span class="comment">// Primitive serializers.</span></pre></td>
 </tr>
 <tr>
-  <td class="numLine">&nbsp;145</td>
-  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;        <span class="comment">// Static serializers.</span></pre></td>
+  <td class="numLineCover">&nbsp;145</td>
+  <td class="nbHitsCovered">&nbsp;4</td>
+  <td class="src"><pre class="src">&nbsp;        addSerializer( <span class="keyword">new</span> PrimitiveSerializer() );</pre></td>
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;146</td>
   <td class="nbHitsCovered">&nbsp;8</td>
-  <td class="src"><pre class="src">&nbsp;        addSerializer( <span class="keyword">new</span> StaticCollectionSerializer() );</pre></td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;147</td>
   <td class="nbHitsCovered">&nbsp;8</td>
-  <td class="src"><pre class="src">&nbsp;        addSerializer( <span class="keyword">new</span> StaticMapSerializer() );</pre></td>
+  <td class="src"><pre class="src">&nbsp;        <span class="comment">// Static serializers.</span></pre></td>
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;148</td>
-  <td class="nbHitsCovered">&nbsp;8</td>
+  <td class="nbHitsCovered">&nbsp;12</td>
+  <td class="src"><pre class="src">&nbsp;        addSerializer( <span class="keyword">new</span> StaticCollectionSerializer() );</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;149</td>
+  <td class="nbHitsCovered">&nbsp;4</td>
+  <td class="src"><pre class="src">&nbsp;        addSerializer( <span class="keyword">new</span> StaticMapSerializer() );</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;150</td>
+  <td class="nbHitsCovered">&nbsp;4</td>
   <td class="src"><pre class="src">&nbsp;        addSerializer( <span class="keyword">new</span> StaticBeanSerializer() );</pre></td>
-</tr>
-<tr>
-  <td class="numLine">&nbsp;149</td>
-  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;</pre></td>
-</tr>
-<tr>
-  <td class="numLine">&nbsp;150</td>
-  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;        <span class="comment">// Instance serializers.</span></pre></td>
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;151</td>
   <td class="nbHitsCovered">&nbsp;8</td>
-  <td class="src"><pre class="src">&nbsp;        addSerializer( <span class="keyword">new</span> CollectionSerializer() );</pre></td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;152</td>
   <td class="nbHitsCovered">&nbsp;8</td>
-  <td class="src"><pre class="src">&nbsp;        addSerializer( <span class="keyword">new</span> MapSerializer()        );</pre></td>
+  <td class="src"><pre class="src">&nbsp;        <span class="comment">// Instance serializers.</span></pre></td>
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;153</td>
-  <td class="nbHitsCovered">&nbsp;8</td>
-  <td class="src"><pre class="src">&nbsp;        addSerializer( <span class="keyword">new</span> EnumSerializer()       );</pre></td>
+  <td class="nbHitsCovered">&nbsp;12</td>
+  <td class="src"><pre class="src">&nbsp;        addSerializer( <span class="keyword">new</span> CollectionSerializer() );</pre></td>
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;154</td>
-  <td class="nbHitsCovered">&nbsp;8</td>
-  <td class="src"><pre class="src">&nbsp;        addSerializer( <span class="keyword">new</span> BeanSerializer()       );</pre></td>
+  <td class="nbHitsCovered">&nbsp;12</td>
+  <td class="src"><pre class="src">&nbsp;        addSerializer( <span class="keyword">new</span> ArraySerializer()      );</pre></td>
 </tr>
 <tr>
-  <td class="numLine">&nbsp;155</td>
-  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;</pre></td>
+  <td class="numLineCover">&nbsp;155</td>
+  <td class="nbHitsCovered">&nbsp;4</td>
+  <td class="src"><pre class="src">&nbsp;        addSerializer( <span class="keyword">new</span> MapSerializer()        );</pre></td>
 </tr>
 <tr>
-  <td class="numLine">&nbsp;156</td>
-  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;        <span class="comment">// Primitive serializers.</span></pre></td>
+  <td class="numLineCover">&nbsp;156</td>
+  <td class="nbHitsCovered">&nbsp;4</td>
+  <td class="src"><pre class="src">&nbsp;        addSerializer( <span class="keyword">new</span> EnumSerializer()       );</pre></td>
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;157</td>
-  <td class="nbHitsCovered">&nbsp;8</td>
-  <td class="src"><pre class="src">&nbsp;        addSerializer( <span class="keyword">new</span> PrimitiveSerializer() );</pre></td>
+  <td class="nbHitsCovered">&nbsp;12</td>
+  <td class="src"><pre class="src">&nbsp;        addSerializer( <span class="keyword">new</span> BeanSerializer()       );</pre></td>
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;158</td>
-  <td class="nbHitsCovered">&nbsp;8</td>
+  <td class="nbHitsCovered">&nbsp;12</td>
   <td class="src"><pre class="src">&nbsp;    }</pre></td>
 </tr>
 <tr>

@@ -12,7 +12,7 @@
 <div class="separator">&nbsp;</div>
 <table class="report">
 <thead><tr>  <td class="heading">Classes in this File</td>  <td class="heading" width="20%"><a class="dfn" href="help.html" onclick="popupwindow('help.html'); return false;">Line Coverage</a></td>  <td class="heading" width="20%"><a class="dfn" href="help.html" onclick="popupwindow('help.html'); return false;">Branch Coverage</a></td>  <td class="heading" width="10%"><a class="dfn" href="help.html" onclick="popupwindow('help.html'); return false;">Complexity</a></td></tr></thead>
-  <tr><td class="text"><a href="org.sindice.rdfcommons.beanmapper.DeserializationManager.html">DeserializationManager</a></td><td class="value"><table cellpadding="0" cellspacing="0" align="right"><tr><td>76%&nbsp;</td><td><table class="percentGraph" cellpadding="0" cellspacing="0" width="100"><tr><td class="covered" width="76"></td><td class="uncovered" width="23"></td></tr></table></td></tr></table></td><td class="value"><table cellpadding="0" cellspacing="0" align="right"><tr><td>89%&nbsp;</td><td><table class="percentGraph" cellpadding="0" cellspacing="0" width="100"><tr><td class="covered" width="88"></td><td class="uncovered" width="11"></td></tr></table></td></tr></table></td><td class="value"><span class="hidden">0.0;</span>0</td></tr>
+  <tr><td class="text"><a href="org.sindice.rdfcommons.beanmapper.DeserializationManager.html">DeserializationManager</a></td><td class="value"><table cellpadding="0" cellspacing="0" align="right"><tr><td>76%&nbsp;</td><td><table class="percentGraph" cellpadding="0" cellspacing="0" width="100"><tr><td class="covered" width="75"></td><td class="uncovered" width="24"></td></tr></table></td></tr></table></td><td class="value"><table cellpadding="0" cellspacing="0" align="right"><tr><td>92%&nbsp;</td><td><table class="percentGraph" cellpadding="0" cellspacing="0" width="100"><tr><td class="covered" width="91"></td><td class="uncovered" width="8"></td></tr></table></td></tr></table></td><td class="value"><span class="hidden">0.0;</span>0</td></tr>
 </table>
 <div class="separator">&nbsp;</div>
 <table cellspacing="0" cellpadding="0" class="src">
@@ -109,7 +109,7 @@
 <tr>
   <td class="numLine">&nbsp;19</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;<span class="keyword">import</span> org.sindice.rdfcommons.ResultSet;</pre></td>
+  <td class="src"><pre class="src">&nbsp;<span class="keyword">import</span> org.sindice.rdfcommons.storage.ResultSet;</pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;20</td>
@@ -184,7 +184,7 @@
 <tr>
   <td class="numLine">&nbsp;34</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;<span class="comment"> * @version $Id: DeserializationManager.java 2 2010-11-20 17:45:05Z michele.mostarda $</span></pre></td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * @version $Id: DeserializationManager.java 30 2010-12-02 18:18:27Z michele.mostarda $</span></pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;35</td>
@@ -193,7 +193,7 @@
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;36</td>
-  <td class="nbHitsCovered">&nbsp;54</td>
+  <td class="nbHitsCovered">&nbsp;82</td>
   <td class="src"><pre class="src">&nbsp;<span class="keyword">public</span> <span class="keyword">class</span> DeserializationManager {</pre></td>
 </tr>
 <tr>
@@ -243,37 +243,37 @@
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;46</td>
-  <td class="nbHitsCovered">&nbsp;6</td>
+  <td class="nbHitsCovered">&nbsp;9</td>
   <td class="src"><pre class="src">&nbsp;    <span class="keyword">public</span> DeserializationManager() {</pre></td>
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;47</td>
-  <td class="nbHitsCovered">&nbsp;6</td>
+  <td class="nbHitsCovered">&nbsp;9</td>
   <td class="src"><pre class="src">&nbsp;        deserializers       = <span class="keyword">new</span> ArrayList&lt;CriteriaDeserializer&gt;();</pre></td>
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;48</td>
-  <td class="nbHitsCovered">&nbsp;6</td>
+  <td class="nbHitsCovered">&nbsp;9</td>
   <td class="src"><pre class="src">&nbsp;        deserializedObjects = <span class="keyword">new</span> HashMap&lt;Identifier, Object&gt;();</pre></td>
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;49</td>
-  <td class="nbHitsCovered">&nbsp;6</td>
+  <td class="nbHitsCovered">&nbsp;9</td>
   <td class="src"><pre class="src">&nbsp;        internalDeserializationContext = <span class="keyword">new</span> InternalDeserializationContext();</pre></td>
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;50</td>
-  <td class="nbHitsCovered">&nbsp;6</td>
+  <td class="nbHitsCovered">&nbsp;9</td>
   <td class="src"><pre class="src">&nbsp;        issues              = <span class="keyword">new</span> ArrayList&lt;Issue&gt;();</pre></td>
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;51</td>
-  <td class="nbHitsCovered">&nbsp;6</td>
+  <td class="nbHitsCovered">&nbsp;9</td>
   <td class="src"><pre class="src">&nbsp;        registerDefaultDeserializers();</pre></td>
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;52</td>
-  <td class="nbHitsCovered">&nbsp;6</td>
+  <td class="nbHitsCovered">&nbsp;9</td>
   <td class="src"><pre class="src">&nbsp;    }</pre></td>
 </tr>
 <tr>
@@ -333,17 +333,17 @@
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;64</td>
-  <td class="nbHitsCovered">&nbsp;40</td>
+  <td class="nbHitsCovered">&nbsp;61</td>
   <td class="src"><pre class="src">&nbsp;        <span class="keyword">for</span>(CriteriaDeserializer deserializer : deserializers) {</pre></td>
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;65</td>
-  <td class="nbHitsCovered">&nbsp;154</td>
+  <td class="nbHitsCovered">&nbsp;254</td>
   <td class="src"><pre class="src">&nbsp;            <span class="keyword">if</span>(deserializer.acceptClass(clazz, annotations)) {</pre></td>
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;66</td>
-  <td class="nbHitsCovered">&nbsp;40</td>
+  <td class="nbHitsCovered">&nbsp;61</td>
   <td class="src"><pre class="src">&nbsp;                <span class="keyword">return</span> deserializer;</pre></td>
 </tr>
 <tr>
@@ -428,17 +428,17 @@
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;83</td>
-  <td class="nbHitsCovered">&nbsp;2</td>
+  <td class="nbHitsCovered">&nbsp;3</td>
   <td class="src"><pre class="src">&nbsp;        clear();</pre></td>
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;84</td>
-  <td class="nbHitsCovered">&nbsp;2</td>
+  <td class="nbHitsCovered">&nbsp;3</td>
   <td class="src"><pre class="src">&nbsp;        <span class="keyword">final</span> Annotation[] annotations = clazz.getAnnotations();</pre></td>
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;85</td>
-  <td class="nbHitsCovered">&nbsp;2</td>
+  <td class="nbHitsCovered">&nbsp;3</td>
   <td class="src"><pre class="src">&nbsp;        <span class="keyword">return</span> deserialize(internalDeserializationContext, clazz, annotations, <span class="keyword">null</span>, endpoint);</pre></td>
 </tr>
 <tr>
@@ -503,17 +503,17 @@
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;98</td>
-  <td class="nbHitsCovered">&nbsp;2</td>
+  <td class="nbHitsCovered">&nbsp;3</td>
   <td class="src"><pre class="src">&nbsp;        clear();</pre></td>
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;99</td>
-  <td class="nbHitsCovered">&nbsp;2</td>
+  <td class="nbHitsCovered">&nbsp;3</td>
   <td class="src"><pre class="src">&nbsp;        <span class="keyword">final</span> Annotation[] annotations = clazz.getAnnotations();</pre></td>
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;100</td>
-  <td class="nbHitsCovered">&nbsp;2</td>
+  <td class="nbHitsCovered">&nbsp;3</td>
   <td class="src"><pre class="src">&nbsp;        <span class="keyword">return</span> deserializeInstancesOf(clazz, annotations, endPoint);</pre></td>
 </tr>
 <tr>
@@ -568,7 +568,7 @@
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;111</td>
-  <td class="nbHitsCovered">&nbsp;30</td>
+  <td class="nbHitsCovered">&nbsp;48</td>
   <td class="src"><pre class="src">&nbsp;        <span class="keyword">if</span>(deserializer == <span class="keyword">null</span>) {</pre></td>
 </tr>
 <tr>
@@ -583,7 +583,7 @@
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;114</td>
-  <td class="nbHitsCovered">&nbsp;30</td>
+  <td class="nbHitsCovered">&nbsp;48</td>
   <td class="src"><pre class="src">&nbsp;        <span class="keyword">return</span> deserializers.add(deserializer);</pre></td>
 </tr>
 <tr>
@@ -783,7 +783,7 @@
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;154</td>
-  <td class="nbHitsCovered">&nbsp;40</td>
+  <td class="nbHitsCovered">&nbsp;61</td>
   <td class="src"><pre class="src">&nbsp;        <span class="keyword">final</span> Deserializer deserializer = context.getDeserializerFor(clazz, annotations);</pre></td>
 </tr>
 <tr>
@@ -793,12 +793,12 @@
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;156</td>
-  <td class="nbHitsCovered">&nbsp;40</td>
+  <td class="nbHitsCovered">&nbsp;61</td>
   <td class="src"><pre class="src">&nbsp;        Object deserialized = deserializedObjects.get(identifier);</pre></td>
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;157</td>
-  <td class="nbHitsCovered">&nbsp;40</td>
+  <td class="nbHitsCovered">&nbsp;61</td>
   <td class="src"><pre class="src">&nbsp;        <span class="keyword">if</span>(deserialized != <span class="keyword">null</span>) {</pre></td>
 </tr>
 <tr>
@@ -808,7 +808,7 @@
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;159</td>
-  <td class="nbHitsCovered">&nbsp;8</td>
+  <td class="nbHitsCovered">&nbsp;12</td>
   <td class="src"><pre class="src">&nbsp;                <span class="keyword">return</span> (T) deserialized;</pre></td>
 </tr>
 <tr>
@@ -863,7 +863,7 @@
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;170</td>
-  <td class="nbHitsCovered">&nbsp;32</td>
+  <td class="nbHitsCovered">&nbsp;49</td>
   <td class="src"><pre class="src">&nbsp;            deserialized = deserializer.deserialize(</pre></td>
 </tr>
 <tr>
@@ -898,12 +898,12 @@
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;177</td>
-  <td class="nbHitsCovered">&nbsp;32</td>
+  <td class="nbHitsCovered">&nbsp;49</td>
   <td class="src"><pre class="src">&nbsp;            deserializedObjects.put(identifier, deserialized);</pre></td>
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;178</td>
-  <td class="nbHitsCovered">&nbsp;32</td>
+  <td class="nbHitsCovered">&nbsp;49</td>
   <td class="src"><pre class="src">&nbsp;            <span class="keyword">return</span> (T) deserialized;</pre></td>
 </tr>
 <tr>
@@ -948,17 +948,17 @@
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;187</td>
-  <td class="nbHitsCovered">&nbsp;2</td>
+  <td class="nbHitsCovered">&nbsp;3</td>
   <td class="src"><pre class="src">&nbsp;        <span class="keyword">final</span> String classUrl = BaseSerializer.getClassURL(clazz);</pre></td>
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;188</td>
-  <td class="nbHitsCovered">&nbsp;2</td>
+  <td class="nbHitsCovered">&nbsp;3</td>
   <td class="src"><pre class="src">&nbsp;        endPoint.addQuery(<span class="string">"?instance"</span>, RDFVocabulary.TYPE, classUrl);</pre></td>
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;189</td>
-  <td class="nbHitsCovered">&nbsp;2</td>
+  <td class="nbHitsCovered">&nbsp;3</td>
   <td class="src"><pre class="src">&nbsp;        ResultSet rs = endPoint.execute();</pre></td>
 </tr>
 <tr>
@@ -968,27 +968,27 @@
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;191</td>
-  <td class="nbHitsCovered">&nbsp;2</td>
+  <td class="nbHitsCovered">&nbsp;3</td>
   <td class="src"><pre class="src">&nbsp;        List&lt;T&gt; result = <span class="keyword">new</span> ArrayList&lt;T&gt;();</pre></td>
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;192</td>
-  <td class="nbHitsCovered">&nbsp;4</td>
+  <td class="nbHitsCovered">&nbsp;6</td>
   <td class="src"><pre class="src">&nbsp;        <span class="keyword">while</span> (rs.hasNext()) {</pre></td>
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;193</td>
-  <td class="nbHitsCovered">&nbsp;2</td>
+  <td class="nbHitsCovered">&nbsp;3</td>
   <td class="src"><pre class="src">&nbsp;            identifier = <span class="keyword">new</span> Identifier( rs.getVariableString(<span class="string">"?instance"</span>), Identifier.Type.resource);</pre></td>
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;194</td>
-  <td class="nbHitsCovered">&nbsp;2</td>
+  <td class="nbHitsCovered">&nbsp;3</td>
   <td class="src"><pre class="src">&nbsp;            result.add( deserialize(internalDeserializationContext, clazz, annotations, identifier, endPoint) );</pre></td>
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;195</td>
-  <td class="nbHitsCovered">&nbsp;2</td>
+  <td class="nbHitsCovered">&nbsp;3</td>
   <td class="src"><pre class="src">&nbsp;            rs.next();</pre></td>
 </tr>
 <tr>
@@ -998,7 +998,7 @@
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;197</td>
-  <td class="nbHitsCovered">&nbsp;2</td>
+  <td class="nbHitsCovered">&nbsp;3</td>
   <td class="src"><pre class="src">&nbsp;        <span class="keyword">return</span> result;</pre></td>
 </tr>
 <tr>
@@ -1018,17 +1018,17 @@
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;201</td>
-  <td class="nbHitsCovered">&nbsp;4</td>
+  <td class="nbHitsCovered">&nbsp;6</td>
   <td class="src"><pre class="src">&nbsp;        deserializedObjects.clear();</pre></td>
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;202</td>
-  <td class="nbHitsCovered">&nbsp;4</td>
+  <td class="nbHitsCovered">&nbsp;6</td>
   <td class="src"><pre class="src">&nbsp;        issues.clear();</pre></td>
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;203</td>
-  <td class="nbHitsCovered">&nbsp;4</td>
+  <td class="nbHitsCovered">&nbsp;6</td>
   <td class="src"><pre class="src">&nbsp;    }</pre></td>
 </tr>
 <tr>
@@ -1043,366 +1043,371 @@
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;206</td>
-  <td class="nbHitsCovered">&nbsp;6</td>
+  <td class="nbHitsCovered">&nbsp;9</td>
   <td class="src"><pre class="src">&nbsp;        addDeserializer( <span class="keyword">new</span> EnumDeserializer()       );</pre></td>
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;207</td>
-  <td class="nbHitsCovered">&nbsp;6</td>
+  <td class="nbHitsCovered">&nbsp;9</td>
   <td class="src"><pre class="src">&nbsp;        addDeserializer( <span class="keyword">new</span> CollectionDeserializer() );</pre></td>
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;208</td>
-  <td class="nbHitsCovered">&nbsp;6</td>
-  <td class="src"><pre class="src">&nbsp;        addDeserializer( <span class="keyword">new</span> StaticBeanDeserializer() );</pre></td>
+  <td class="nbHitsCovered">&nbsp;9</td>
+  <td class="src"><pre class="src">&nbsp;        addDeserializer( <span class="keyword">new</span> ArrayDeserializer()      );</pre></td>
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;209</td>
-  <td class="nbHitsCovered">&nbsp;6</td>
-  <td class="src"><pre class="src">&nbsp;        addDeserializer( <span class="keyword">new</span> PrimitiveDeserializer()  );</pre></td>
+  <td class="nbHitsCovered">&nbsp;9</td>
+  <td class="src"><pre class="src">&nbsp;        addDeserializer( <span class="keyword">new</span> StaticBeanDeserializer() );</pre></td>
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;210</td>
-  <td class="nbHitsCovered">&nbsp;6</td>
-  <td class="src"><pre class="src">&nbsp;        addDeserializer( <span class="keyword">new</span> BeanDeserializer()       );</pre></td>
+  <td class="nbHitsCovered">&nbsp;9</td>
+  <td class="src"><pre class="src">&nbsp;        addDeserializer( <span class="keyword">new</span> PrimitiveDeserializer()  );</pre></td>
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;211</td>
-  <td class="nbHitsCovered">&nbsp;6</td>
-  <td class="src"><pre class="src">&nbsp;    }</pre></td>
+  <td class="nbHitsCovered">&nbsp;9</td>
+  <td class="src"><pre class="src">&nbsp;        addDeserializer( <span class="keyword">new</span> BeanDeserializer()       );</pre></td>
 </tr>
 <tr>
-  <td class="numLine">&nbsp;212</td>
-  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;</pre></td>
+  <td class="numLineCover">&nbsp;212</td>
+  <td class="nbHitsCovered">&nbsp;3</td>
+  <td class="src"><pre class="src">&nbsp;    }</pre></td>
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;213</td>
   <td class="nbHitsCovered">&nbsp;76</td>
-  <td class="src"><pre class="src">&nbsp;    <span class="keyword">private</span> <span class="keyword">class</span> InternalDeserializationContext <span class="keyword">implements</span> DeserializationContext {</pre></td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
 </tr>
 <tr>
-  <td class="numLine">&nbsp;214</td>
-  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;</pre></td>
+  <td class="numLineCover">&nbsp;214</td>
+  <td class="nbHitsCovered">&nbsp;40</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">private</span> <span class="keyword">class</span> InternalDeserializationContext <span class="keyword">implements</span> DeserializationContext {</pre></td>
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;215</td>
   <td class="nbHitsCovered">&nbsp;38</td>
-  <td class="src"><pre class="src">&nbsp;        <span class="keyword">private</span> <span class="keyword">final</span> Map&lt;Identifier, Object&gt; unmodifiableDeserilizedObjects =</pre></td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
 </tr>
 <tr>
-  <td class="numLine">&nbsp;216</td>
-  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;                Collections.unmodifiableMap(deserializedObjects);</pre></td>
+  <td class="numLineCover">&nbsp;216</td>
+  <td class="nbHitsCovered">&nbsp;20</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="keyword">private</span> <span class="keyword">final</span> Map&lt;Identifier, Object&gt; unmodifiableDeserilizedObjects =</pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;217</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;</pre></td>
+  <td class="src"><pre class="src">&nbsp;                Collections.unmodifiableMap(deserializedObjects);</pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;218</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;        <span class="keyword">public</span> Map&lt;Identifier, Object&gt; getDeserializedObjects() {</pre></td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;219</td>
   <td class="nbHitsUncovered">&nbsp;0</td>
-  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;            <span class="keyword">return</span> unmodifiableDeserilizedObjects;</span></pre></td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;        <span class="keyword">public</span> Map&lt;Identifier, Object&gt; getDeserializedObjects() {</span></pre></td>
 </tr>
 <tr>
-  <td class="numLine">&nbsp;220</td>
-  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;        }</pre></td>
+  <td class="numLineCover">&nbsp;220</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;            <span class="keyword">return</span> unmodifiableDeserilizedObjects;</span></pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;221</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;</pre></td>
+  <td class="src"><pre class="src">&nbsp;        }</pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;222</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;        <span class="keyword">public</span> <span class="keyword">void</span> registerInstance(Identifier identifier, Object instance) {</pre></td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;223</td>
   <td class="nbHitsCovered">&nbsp;8</td>
-  <td class="src"><pre class="src">&nbsp;            <span class="keyword">if</span>(identifier == <span class="keyword">null</span>) {</pre></td>
+  <td class="src"><pre class="src">&nbsp;        <span class="keyword">public</span> <span class="keyword">void</span> registerInstance(Identifier identifier, Object instance) {</pre></td>
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;224</td>
+  <td class="nbHitsCovered">&nbsp;4</td>
+  <td class="src"><pre class="src">&nbsp;            <span class="keyword">if</span>(identifier == <span class="keyword">null</span>) {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;225</td>
   <td class="nbHitsUncovered">&nbsp;0</td>
   <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;                <span class="keyword">throw</span> <span class="keyword">new</span> NullPointerException(<span class="string">"identifier cannot be null."</span>);</span></pre></td>
 </tr>
 <tr>
-  <td class="numLine">&nbsp;225</td>
-  <td class="nbHits">&nbsp;</td>
+  <td class="numLineCover">&nbsp;226</td>
+  <td class="nbHitsCovered">&nbsp;8</td>
   <td class="src"><pre class="src">&nbsp;            }</pre></td>
 </tr>
 <tr>
-  <td class="numLineCover">&nbsp;226</td>
-  <td class="nbHitsCovered">&nbsp;8</td>
+  <td class="numLineCover">&nbsp;227</td>
+  <td class="nbHitsCovered">&nbsp;4</td>
   <td class="src"><pre class="src">&nbsp;            <span class="keyword">if</span>(instance == <span class="keyword">null</span>) {</pre></td>
 </tr>
 <tr>
-  <td class="numLineCover">&nbsp;227</td>
+  <td class="numLineCover">&nbsp;228</td>
   <td class="nbHitsUncovered">&nbsp;0</td>
   <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;                <span class="keyword">throw</span> <span class="keyword">new</span> NullPointerException(<span class="string">"instance cannot be null."</span>);</span></pre></td>
 </tr>
 <tr>
-  <td class="numLine">&nbsp;228</td>
-  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;            }</pre></td>
-</tr>
-<tr>
   <td class="numLine">&nbsp;229</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;</pre></td>
+  <td class="src"><pre class="src">&nbsp;            }</pre></td>
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;230</td>
   <td class="nbHitsCovered">&nbsp;8</td>
-  <td class="src"><pre class="src">&nbsp;            Object currInstance = deserializedObjects.get(identifier);</pre></td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;231</td>
-  <td class="nbHitsCovered">&nbsp;8</td>
-  <td class="src"><pre class="src">&nbsp;            <span class="keyword">if</span>( currInstance != <span class="keyword">null</span> &amp;&amp; ! instance.equals(currInstance) ) {</pre></td>
+  <td class="nbHitsCovered">&nbsp;12</td>
+  <td class="src"><pre class="src">&nbsp;            Object currInstance = deserializedObjects.get(identifier);</pre></td>
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;232</td>
+  <td class="nbHitsCovered">&nbsp;4</td>
+  <td class="src"><pre class="src">&nbsp;            <span class="keyword">if</span>( currInstance != <span class="keyword">null</span> &amp;&amp; ! instance.equals(currInstance) ) {</pre></td>
+</tr>
+<tr>
+  <td class="numLineCover">&nbsp;233</td>
   <td class="nbHitsUncovered">&nbsp;0</td>
   <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;                <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(</span></pre></td>
 </tr>
 <tr>
-  <td class="numLine">&nbsp;233</td>
+  <td class="numLine">&nbsp;234</td>
   <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;                    String.format(</pre></td>
 </tr>
 <tr>
-  <td class="numLine">&nbsp;234</td>
+  <td class="numLine">&nbsp;235</td>
   <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;                        <span class="string">"The identifier %s cannot be associated to the instance %s "</span> +</pre></td>
 </tr>
 <tr>
-  <td class="numLine">&nbsp;235</td>
+  <td class="numLine">&nbsp;236</td>
   <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;                        <span class="string">"because already associated to instance %s."</span>,</pre></td>
 </tr>
 <tr>
-  <td class="numLine">&nbsp;236</td>
+  <td class="numLine">&nbsp;237</td>
   <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;                        identifier,</pre></td>
 </tr>
 <tr>
-  <td class="numLine">&nbsp;237</td>
+  <td class="numLine">&nbsp;238</td>
   <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;                        instance,</pre></td>
 </tr>
 <tr>
-  <td class="numLine">&nbsp;238</td>
+  <td class="numLine">&nbsp;239</td>
   <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;                        currInstance</pre></td>
 </tr>
 <tr>
-  <td class="numLine">&nbsp;239</td>
+  <td class="numLine">&nbsp;240</td>
   <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;                    )</pre></td>
 </tr>
 <tr>
-  <td class="numLine">&nbsp;240</td>
+  <td class="numLine">&nbsp;241</td>
   <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;                );</pre></td>
 </tr>
 <tr>
-  <td class="numLine">&nbsp;241</td>
-  <td class="nbHits">&nbsp;</td>
+  <td class="numLineCover">&nbsp;242</td>
+  <td class="nbHitsCovered">&nbsp;8</td>
   <td class="src"><pre class="src">&nbsp;            }</pre></td>
 </tr>
 <tr>
-  <td class="numLineCover">&nbsp;242</td>
-  <td class="nbHitsCovered">&nbsp;8</td>
+  <td class="numLineCover">&nbsp;243</td>
+  <td class="nbHitsCovered">&nbsp;12</td>
   <td class="src"><pre class="src">&nbsp;            deserializedObjects.put(identifier, instance);</pre></td>
 </tr>
 <tr>
-  <td class="numLineCover">&nbsp;243</td>
-  <td class="nbHitsCovered">&nbsp;8</td>
+  <td class="numLineCover">&nbsp;244</td>
+  <td class="nbHitsCovered">&nbsp;4</td>
   <td class="src"><pre class="src">&nbsp;        }</pre></td>
-</tr>
-<tr>
-  <td class="numLine">&nbsp;244</td>
-  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;</pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;245</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;        <span class="keyword">public</span> Deserializer getDeserializerFor(Class clazz, Annotation[] annotations)</pre></td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;246</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;        <span class="keyword">throws</span> DeserializationException {</pre></td>
+  <td class="src"><pre class="src">&nbsp;        <span class="keyword">public</span> Deserializer getDeserializerFor(Class clazz, Annotation[] annotations)</pre></td>
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;247</td>
   <td class="nbHitsCovered">&nbsp;40</td>
-  <td class="src"><pre class="src">&nbsp;            <span class="keyword">return</span> DeserializationManager.<span class="keyword">this</span>.getDeserializerFor(clazz, annotations);</pre></td>
+  <td class="src"><pre class="src">&nbsp;        <span class="keyword">throws</span> DeserializationException {</pre></td>
 </tr>
 <tr>
-  <td class="numLine">&nbsp;248</td>
-  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;        }</pre></td>
+  <td class="numLineCover">&nbsp;248</td>
+  <td class="nbHitsCovered">&nbsp;21</td>
+  <td class="src"><pre class="src">&nbsp;            <span class="keyword">return</span> DeserializationManager.<span class="keyword">this</span>.getDeserializerFor(clazz, annotations);</pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;249</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;</pre></td>
+  <td class="src"><pre class="src">&nbsp;        }</pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;250</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;        <span class="keyword">public</span> <span class="keyword">void</span> reportIssue(String msg) {</pre></td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;251</td>
   <td class="nbHitsUncovered">&nbsp;0</td>
-  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;            issues.add( <span class="keyword">new</span> Issue(msg) );</span></pre></td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;        <span class="keyword">public</span> <span class="keyword">void</span> reportIssue(String msg) {</span></pre></td>
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;252</td>
   <td class="nbHitsUncovered">&nbsp;0</td>
-  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;        }</span></pre></td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;            issues.add( <span class="keyword">new</span> Issue(msg) );</span></pre></td>
 </tr>
 <tr>
-  <td class="numLine">&nbsp;253</td>
-  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;</pre></td>
+  <td class="numLineCover">&nbsp;253</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;        }</span></pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;254</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;        <span class="keyword">public</span> <span class="keyword">void</span> reportIssue(String msg, Throwable cause) {</pre></td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;255</td>
   <td class="nbHitsUncovered">&nbsp;0</td>
-  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;            issues.add( <span class="keyword">new</span> Issue(msg, cause) );</span></pre></td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;        <span class="keyword">public</span> <span class="keyword">void</span> reportIssue(String msg, Throwable cause) {</span></pre></td>
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;256</td>
   <td class="nbHitsUncovered">&nbsp;0</td>
-  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;        }</span></pre></td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;            issues.add( <span class="keyword">new</span> Issue(msg, cause) );</span></pre></td>
 </tr>
 <tr>
-  <td class="numLine">&nbsp;257</td>
-  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;</pre></td>
+  <td class="numLineCover">&nbsp;257</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;        }</span></pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;258</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;        <span class="keyword">public</span> &lt;T&gt; T deserialize(</pre></td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;259</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;                DeserializationContext context,</pre></td>
+  <td class="src"><pre class="src">&nbsp;        <span class="keyword">public</span> &lt;T&gt; T deserialize(</pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;260</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;                Class&lt;T&gt; clazz,</pre></td>
+  <td class="src"><pre class="src">&nbsp;                DeserializationContext context,</pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;261</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;                Annotation[] annotations,</pre></td>
+  <td class="src"><pre class="src">&nbsp;                Class&lt;T&gt; clazz,</pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;262</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;                Identifier identifier,</pre></td>
+  <td class="src"><pre class="src">&nbsp;                Annotation[] annotations,</pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;263</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;                QueryEndpoint endPoint</pre></td>
+  <td class="src"><pre class="src">&nbsp;                Identifier identifier,</pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;264</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;        ) <span class="keyword">throws</span> DeserializationException {</pre></td>
+  <td class="src"><pre class="src">&nbsp;                QueryEndpoint endPoint</pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;265</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;            <span class="keyword">try</span> {</pre></td>
+  <td class="src"><pre class="src">&nbsp;        ) <span class="keyword">throws</span> DeserializationException {</pre></td>
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;266</td>
   <td class="nbHitsCovered">&nbsp;36</td>
-  <td class="src"><pre class="src">&nbsp;                <span class="keyword">return</span> DeserializationManager.<span class="keyword">this</span>.deserialize(context, clazz, annotations, identifier, endPoint);</pre></td>
+  <td class="src"><pre class="src">&nbsp;            <span class="keyword">try</span> {</pre></td>
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;267</td>
-  <td class="nbHitsUncovered">&nbsp;0</td>
-  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;            } <span class="keyword">catch</span> (StackOverflowError soe) {</span></pre></td>
+  <td class="nbHitsCovered">&nbsp;19</td>
+  <td class="src"><pre class="src">&nbsp;                <span class="keyword">return</span> DeserializationManager.<span class="keyword">this</span>.deserialize(context, clazz, annotations, identifier, endPoint);</pre></td>
 </tr>
 <tr>
   <td class="numLineCover">&nbsp;268</td>
   <td class="nbHitsUncovered">&nbsp;0</td>
-  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;                <span class="keyword">throw</span> <span class="keyword">new</span> DeserializationException(</span></pre></td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;            } <span class="keyword">catch</span> (StackOverflowError soe) {</span></pre></td>
 </tr>
 <tr>
-  <td class="numLine">&nbsp;269</td>
-  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;                        <span class="string">"A stack overflow occurred. "</span> +</pre></td>
+  <td class="numLineCover">&nbsp;269</td>
+  <td class="nbHitsUncovered">&nbsp;0</td>
+  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;                <span class="keyword">throw</span> <span class="keyword">new</span> DeserializationException(</span></pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;270</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;                        <span class="string">"May be you have a circular reference. "</span> +</pre></td>
+  <td class="src"><pre class="src">&nbsp;                        <span class="string">"A stack overflow occurred. "</span> +</pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;271</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;                        <span class="string">"Remember to register beans within deserialization context when defining a new deserializer."</span>,</pre></td>
+  <td class="src"><pre class="src">&nbsp;                        <span class="string">"May be you have a circular reference. "</span> +</pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;272</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;                        soe</pre></td>
+  <td class="src"><pre class="src">&nbsp;                        <span class="string">"Remember to register beans within deserialization context when defining a new deserializer."</span>,</pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;273</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;                ); </pre></td>
+  <td class="src"><pre class="src">&nbsp;                        soe</pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;274</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;            }</pre></td>
+  <td class="src"><pre class="src">&nbsp;                ); </pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;275</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;        }</pre></td>
+  <td class="src"><pre class="src">&nbsp;            }</pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;276</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;    }</pre></td>
+  <td class="src"><pre class="src">&nbsp;        }</pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;277</td>
   <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;</pre></td>
+  <td class="src"><pre class="src">&nbsp;    }</pre></td>
 </tr>
 <tr>
   <td class="numLine">&nbsp;278</td>
+  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td>
+</tr>
+<tr>
+  <td class="numLine">&nbsp;279</td>
   <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;}</pre></td>
 </tr>

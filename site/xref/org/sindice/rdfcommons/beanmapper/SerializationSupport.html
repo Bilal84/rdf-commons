@@ -26,7 +26,7 @@
 <a name="16" href="#16">16</a>  
 <a name="17" href="#17">17</a>  <strong class="jxr_keyword">package</strong> org.sindice.rdfcommons.beanmapper;
 <a name="18" href="#18">18</a>  
-<a name="19" href="#19">19</a>  <strong class="jxr_keyword">import</strong> org.sindice.rdfcommons.TripleSet;
+<a name="19" href="#19">19</a>  <strong class="jxr_keyword">import</strong> org.sindice.rdfcommons.model.TripleSet;
 <a name="20" href="#20">20</a>  
 <a name="21" href="#21">21</a>  <strong class="jxr_keyword">import</strong> java.lang.annotation.Annotation;
 <a name="22" href="#22">22</a>  
@@ -34,7 +34,7 @@
 <a name="24" href="#24">24</a>  <em class="jxr_javadoccomment"> * Defines any method to provide serialization support.</em>
 <a name="25" href="#25">25</a>  <em class="jxr_javadoccomment"> *</em>
 <a name="26" href="#26">26</a>  <em class="jxr_javadoccomment"> * @author Michele Mostarda ( mostarda@fbk.eu )</em>
-<a name="27" href="#27">27</a>  <em class="jxr_javadoccomment"> * @version $Id: SerializationSupport.java 2 2010-11-20 17:45:05Z michele.mostarda $</em>
+<a name="27" href="#27">27</a>  <em class="jxr_javadoccomment"> * @version $Id: SerializationSupport.java 24 2010-12-01 23:47:33Z michele.mostarda $</em>
 <a name="28" href="#28">28</a>  <em class="jxr_javadoccomment"> */</em>
 <a name="29" href="#29">29</a>  <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">interface</strong> SerializationSupport&lt;T&gt; {
 <a name="30" href="#30">30</a>  
@@ -48,7 +48,7 @@
 <a name="38" href="#38">38</a>  <em class="jxr_javadoccomment">     * @return the result of serialization, if a complex object has been serialized, the identifier of such serialization.</em>
 <a name="39" href="#39">39</a>  <em class="jxr_javadoccomment">     * @throws SerializationException if something went wrong during the serialization process.</em>
 <a name="40" href="#40">40</a>  <em class="jxr_javadoccomment">     */</em>
-<a name="41" href="#41">41</a>      <a href="../../../../org/sindice/rdfcommons/beanmapper/Identifier.html">Identifier</a> serialize(<a href="../../../../org/sindice/rdfcommons/beanmapper/SerializationContext.html">SerializationContext</a> context, T object, Annotation[] annotations, <a href="../../../../org/sindice/rdfcommons/TripleSet.html">TripleSet</a> buffer)
+<a name="41" href="#41">41</a>      <a href="../../../../org/sindice/rdfcommons/beanmapper/Identifier.html">Identifier</a> serialize(<a href="../../../../org/sindice/rdfcommons/beanmapper/SerializationContext.html">SerializationContext</a> context, T object, Annotation[] annotations, <a href="../../../../org/sindice/rdfcommons/model/TripleSet.html">TripleSet</a> buffer)
 <a name="42" href="#42">42</a>      <strong class="jxr_keyword">throws</strong> SerializationException;
 <a name="43" href="#43">43</a>  
 <a name="44" href="#44">44</a>  }
