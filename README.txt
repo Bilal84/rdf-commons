@@ -98,13 +98,38 @@ Optionally you may require to fix the mimetype for *.html files:
   find . -name "*.css"  | xargs svn ps svn:mime-type text/css
   svn ci
 
+----------------------------------------------
+Deploy a Snapshot Release on Remote Repository
+----------------------------------------------
+
+(Developers interest only.)
+
+Check the configuration in section distributionManagement
+within pom.xml:
+
+    <distributionManagement>
+        ...
+        <repository>
+            <id>rdf-commons-googlecode</id>
+            <name>RDF Commons Google Code Snapshot Repository</name>
+            <url>svn:https://rdf-commons.googlecode.com/svn/repo/</url>
+        </repository>
+        ...
+    <distributionManagement>
+
+Then to deploy a snapshot release perform:
+
+    mvn clean deploy
+
 ------------------
 Make a new Release
 ------------------
 
 (Developers interest only.)
 
-To prepare a new release, just verify that the are no local changes and then invoke:
+To prepare a new release, verify the content of section
+distributionManagement within pom.xml, then verify that
+the are no local changes and finally invoke:
 
 	mvn release:prepare -Dusername=<svn.username> -Dpassword=<svn.pass>
 	
