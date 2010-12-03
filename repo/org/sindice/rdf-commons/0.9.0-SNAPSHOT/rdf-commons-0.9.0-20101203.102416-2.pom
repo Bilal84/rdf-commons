@@ -1,0 +1,311 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    author: Michele Mostarda (mostarda@fbk.eu)
+    version: $Id: pom.xml 18 2010-11-20 23:32:00Z michele.mostarda $
+ -->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>org.sindice</groupId>
+    <artifactId>rdf-commons</artifactId>
+    <packaging>jar</packaging>
+    <version>0.9.0-SNAPSHOT</version>
+    <name>RDF Commons Library</name>
+    <description>
+     The RDF Commons Library provides a set of general utility classes for dealing with RDF data.
+    </description>
+    <url>http://code.google.com/p/rdf-commons/</url>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    </properties>
+
+    <organization>
+        <name>Fondazione Bruno Kessler (FBK)</name>
+        <url>http://www.fbk.eu/</url>
+    </organization>
+
+    <inceptionYear>2010</inceptionYear>
+
+    <developers>
+        <developer>
+            <id>michele.mostarda</id>
+            <name>Michele Mostarda</name>
+            <email>mostarda at fbk dot eu</email>
+            <organization>Fondazione Bruno Kessler</organization>
+            <organizationUrl>http://www.fbk.eu/</organizationUrl>
+            <roles>
+                <role>Developer</role>
+            </roles>
+            <timezone>+1</timezone>
+        </developer>
+        <developer>
+            <id>davide.palmisano</id>
+            <name>Davide Palmisano</name>
+            <email>palmisano at fbk dot eu</email>
+            <organization>Fondazione Bruno Kessler</organization>
+            <organizationUrl>http://www.fbk.eu/</organizationUrl>
+            <roles>
+                <role>Developer</role>
+            </roles>
+            <timezone>+1</timezone>
+        </developer>
+    </developers>
+
+    <scm>
+        <connection>scm:svn:http://rdf-commons.googlecode.com/svn/trunk/</connection>
+        <developerConnection>scm:svn:https://rdf-commons.googlecode.com/svn/trunk/</developerConnection>
+        <url>http://code.google.com/p/rdf-commons/source/browse/</url>
+    </scm>
+
+    <issueManagement>
+        <system>Google Code Issue Tracking</system>
+        <url>http://code.google.com/p/rdf-commons/issues/list</url>
+    </issueManagement>
+
+    <distributionManagement>
+        <downloadUrl>http://code.google.com/p/rdf-commons/downloads/list</downloadUrl>
+        <repository>
+            <id>rdf-commons-googlecode</id>
+            <name>RDF Commons Google Code Snapshot Repository</name>
+            <url>svn:https://rdf-commons.googlecode.com/svn/repo/</url>
+        </repository>
+        <site>
+            <id>rdf-commons-googlecode</id>
+            <name>RDF Commons Developer Web Site</name>
+            <url>svn:https://rdf-commons.googlecode.com/svn/site/</url>
+        </site>
+    </distributionManagement>
+
+    <mailingLists>
+        <mailingList>
+            <name>Dev List</name>
+            <subscribe>sindice-dev@lists.deri.org</subscribe>
+            <post>sindice-dev@lists.deri.org</post>
+            <archive>sindice-dev@lists.deri.org</archive>
+        </mailingList>
+    </mailingLists>
+
+    <repositories>
+        <!-- Generic repository. -->
+        <repository>
+            <id>apache-public-repo</id>
+            <name>Apache Public Repository</name>
+            <url>https://repository.apache.org/content/groups/public</url>
+            <layout>default</layout>
+        </repository>
+
+        <!-- Generic repository. -->
+        <repository>
+            <id>java-maven2-repo</id>
+            <name>Java.net Repository for Maven</name>
+            <url>http://download.java.net/maven/2</url>
+            <layout>default</layout>
+        </repository>
+
+        <!-- Generic repository. -->
+        <repository>
+            <id>ibiblio-mirror-repo</id>
+            <name>Ibiblio Mirror Repository</name>
+            <url>http://mirrors.ibiblio.org/pub/mirrors/maven2</url>
+            <layout>default</layout>
+        </repository>
+
+        <!-- Fluido Skin Repository. -->
+        <repository>
+            <id>fluido-skin-repository</id>
+            <name>fluido-skin Repository for Maven</name>
+            <url>http://fluido-skin.googlecode.com/svn/repo</url>
+            <layout>default</layout>
+        </repository>
+    </repositories>
+
+    <profiles>
+        <!-- Generates Javadoc with browsable UML. -->
+        <profile>
+            <id>umlgraphdoc</id>
+            <reporting>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-javadoc-plugin</artifactId>
+                        <configuration>
+                            <!--
+                                NOTE:
+                                This plugin is optional since it needs the GraphViz
+                                external dependency.
+                                You can downalod it here: http://www.graphviz.org/
+                            -->
+                            <doclet>org.umlgraph.doclet.UmlGraphDoc</doclet>
+                            <docletArtifact>
+                                <groupId>org.umlgraph</groupId>
+                                <artifactId>UmlGraph</artifactId>
+                                <version>5.1</version>
+                            </docletArtifact>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </reporting>
+        </profile>
+    </profiles>
+
+    <reporting>
+        <plugins>
+            <!-- Main project information. -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-project-info-reports-plugin</artifactId>
+            </plugin>
+
+            <!-- Javadoc plugin. -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+            </plugin>
+
+            <!-- Browsable documentation. -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jxr-plugin</artifactId>
+            </plugin>
+
+            <!-- Changelog report. -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-changelog-plugin</artifactId>
+                <configuration>
+                    <type>range</type>
+                    <range>60</range>
+                </configuration>
+            </plugin>
+
+            <!-- Cobertura report. -->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>cobertura-maven-plugin</artifactId>
+                <version>2.0</version>
+            </plugin>
+
+            <!-- findBugs report. -->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>findbugs-maven-plugin</artifactId>
+                <version>1.1.1</version>
+                <configuration>
+                    <xmlOutput>true</xmlOutput>
+                    <xmlOutputDirectory>target/findbugs-reports</xmlOutputDirectory>
+                    <threshold>High</threshold>
+                    <effort>Max</effort>
+                    <visitors>FindDeadLocalStores</visitors>
+                    <omitVisitors>FindDeadLocalStores</omitVisitors>
+                    <onlyAnalyze>org.sindice.rdfcommons.*</onlyAnalyze>
+                    <debug>true</debug>
+                    <relaxed>true</relaxed>
+                    <xmlOutputDirectory>target/findbugs-reports</xmlOutputDirectory>
+                </configuration>
+            </plugin>
+
+            <!-- Check style report. -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-checkstyle-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </reporting>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.6</source>
+                    <target>1.6</target>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <configuration>
+                    <descriptors>
+                        <descriptor>assembly.xml</descriptor>
+                    </descriptors>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>2.1</version>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>jar-no-fork</goal>
+                            <goal>test-jar-no-fork</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.4</version>
+                <configuration>
+                    <includes>
+                        <include>**/*TestCase.java</include>
+                        <include>**/*Test.java</include>
+                    </includes>
+                </configuration>
+            </plugin>
+        </plugins>
+
+        <extensions>
+            <!-- Wagon extension for deploying via SVN. -->
+            <extension>
+                <groupId>org.jvnet.wagon-svn</groupId>
+                <artifactId>wagon-svn</artifactId>
+                <version>1.8</version>
+            </extension>
+        </extensions>
+    </build>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.hp.hpl.jena</groupId>
+            <artifactId>jena</artifactId>
+            <version>2.6.3</version>
+        </dependency>
+
+        <dependency>
+            <groupId>commons-beanutils</groupId>
+            <artifactId>commons-beanutils</artifactId>
+            <version>1.8.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>commons-collections</groupId>
+            <artifactId>commons-collections</artifactId>
+            <version>3.2.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>1.2.16</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>5.8</version>
+            <classifier>jdk15</classifier>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+</project>
