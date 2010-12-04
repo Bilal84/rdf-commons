@@ -1,3 +1,9 @@
+0.9.0-trunk
+
+Features
+
+  Added N-Quads serialization.
+
 
                           RDF Commons Library 0.9.0
                                Release Notes

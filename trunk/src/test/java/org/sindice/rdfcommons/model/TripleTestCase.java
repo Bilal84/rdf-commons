@@ -44,7 +44,7 @@ public class TripleTestCase {
         Assert.assertFalse(triple.isSubjectBNode());
         Assert.assertFalse(triple.isObjectBNode());
         Assert.assertFalse(triple.isObjLiteral());
-        Assert.assertEquals(triple.toTripleString(), "<sub-value> <pred-value> <obj-value>" );
+        Assert.assertEquals(triple.toNTriplesString(), "<sub-value> <pred-value> <obj-value>" );
     }
 
     @Test
@@ -62,7 +62,7 @@ public class TripleTestCase {
         Assert.assertFalse(triple.isSubjectBNode());
         Assert.assertFalse(triple.isObjectBNode());
         Assert.assertTrue(triple.isObjLiteral());
-        Assert.assertEquals(triple.toTripleString(), "<sub-value> <pred-value> \"obj-value\"" );
+        Assert.assertEquals(triple.toNTriplesString(), "<sub-value> <pred-value> \"obj-value\"" );
     }
 
     @Test
@@ -81,7 +81,7 @@ public class TripleTestCase {
         Assert.assertFalse(triple.isObjectBNode());
         Assert.assertTrue(triple.isObjLiteral());
         Assert.assertEquals(
-                triple.toTripleString(),
+                triple.toNTriplesString(),
                 "<sub-value> <pred-value> \"13.4\"^^<http://www.w3.org/2001/XMLSchema/float>"
         );
     }
@@ -104,7 +104,7 @@ public class TripleTestCase {
         Assert.assertFalse(triple.isObjectBNode());
         Assert.assertTrue(triple.isObjLiteral());
         Assert.assertEquals(
-                triple.toTripleString(),
+                triple.toNTriplesString(),
                 "<sub-value> <pred-value> \"2010-11-23\"^^<http://www.w3.org/2001/XMLSchema/date>"
         );
     }
@@ -126,7 +126,7 @@ public class TripleTestCase {
         Assert.assertFalse(triple.isObjectBNode());
         Assert.assertTrue(triple.isObjLiteral());
         Assert.assertEquals(
-                triple.toTripleString(),
+                triple.toNTriplesString(),
                 "<sub-value> <pred-value> \"POINT(12.7,13.9)\"^^<http://www.sindice.org/test/custom-geometry>"
         );
     }
@@ -148,7 +148,7 @@ public class TripleTestCase {
         Assert.assertFalse(triple.isObjectBNode());
         Assert.assertTrue(triple.isObjLiteral());
         Assert.assertEquals(
-                triple.toTripleString(),
+                triple.toNTriplesString(),
                 "<sub-value> <pred-value> \"Hello World!!\"@en"
         );
     }
@@ -169,7 +169,7 @@ public class TripleTestCase {
         Assert.assertFalse(triple.isObjectBNode());
         Assert.assertTrue(triple.isObjLiteral());
         Assert.assertEquals(
-                triple.toTripleString(),
+                triple.toNTriplesString(),
                 "_:sub-bnode <pred-value> \"POINT(12.7,13.9)\"^^<http://www.sindice.org/test/custom-geometry>"
         );
     }
@@ -190,7 +190,7 @@ public class TripleTestCase {
         Assert.assertTrue(triple.isObjectBNode());
         Assert.assertFalse(triple.isObjLiteral());
         Assert.assertEquals(
-                triple.toTripleString(),
+                triple.toNTriplesString(),
                 "_:sub-bnode <pred-value> _:obj-bnode"
         );
     }

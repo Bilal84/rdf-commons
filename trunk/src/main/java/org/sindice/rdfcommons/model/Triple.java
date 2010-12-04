@@ -54,7 +54,7 @@ public class Triple<O> {
             String pred, O obj, ObjectType objectType
     ) {
         final String blank = nextBNodeIdentifier();
-        return new Triple<O>(blank, pred, obj, objectType);
+        return new Triple<O>(blank, pred, obj, SubjectType.bnode, objectType);
     }
 
     public synchronized static Triple createBNodeObjectTriple(String sub, String pred, SubjectType subjectType) {
@@ -180,9 +180,9 @@ public class Triple<O> {
         return objectType == ObjectType.bnode;
     }
 
-    public String toTripleString() {
+    public String toNTriplesString() {
         final StringBuilder sb = new StringBuilder();
-        toTripleString(sb);
+        toNTriplesString(sb);
         return sb.toString();
     }
 
@@ -222,10 +222,10 @@ public class Triple<O> {
 
     @Override
     public String toString() {
-        return "{" + toTripleString() + "}";
+        return "{" + toNTriplesString() + "}";
     }
 
-    private void toTripleString(StringBuilder sb) {
+    private void toNTriplesString(StringBuilder sb) {
         toSubjectString(sb);
         sb.append(' ');
         toPredicateString(sb);
@@ -256,7 +256,9 @@ public class Triple<O> {
             sb.append('<').append(object).append('>');
             return;
         }
-        sb.append('"').append( getObjectAsString() ).append('"');
+        sb.append('"');
+        escapeLiteral( getObjectAsString(), sb );
+        sb.append('"');
         final String literalType = getLiteralType();
         if(literalType != null) {
             sb.append("^^").append('<').append(literalType).append('>');
@@ -265,6 +267,36 @@ public class Triple<O> {
         final String objectLang = getObjectLanguage();
         if(objectLang != null) {
             sb.append('@').append(objectLang);
+        }
+    }
+
+    /**
+     * Escapes characters for text appearing as literal
+     * in the <i>N-Quads</i> format.
+     *
+     * <P>The following commonly used control characters
+     * are escaped:
+     * <table border='1' cellpadding='3' cellspacing='0'>
+     * <tr><th> Character </th><th> Escaped As </th></tr>
+     * <tr><td> " </td><td> \" </td></tr>
+     * <tr><td> \ </td><td> \\ </td></tr>
+     * </table>
+     * <p/>
+     *
+     * @param in the string to be escaped.
+     * @param out buffer to print out the escaped literal.
+     */
+    public static void escapeLiteral(String in, StringBuilder out) {
+        char character;
+        for (int i = 0; i < in.length(); i++) {
+            character = in.charAt(i);
+            if (character == '\"') {
+                out.append("\\\"");
+            } else if (character == '\\') {
+                out.append("\\\\");
+            } else {
+                out.append(character);
+            }
         }
     }
 }
