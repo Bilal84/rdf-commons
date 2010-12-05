@@ -122,21 +122,28 @@ public class TripleBuffer implements TripleSet {
             SubjectType subjectType, ObjectType objectType
     ) {
         for(Triple triple : triples) {
-            if(
-                    (sub == null || sub.equals(triple.getSubject()))
-                    &&
-                    (subjectType == null || subjectType.equals(triple.getSubjectType()))
-                    &&
-                    (pred == null || pred.equals(triple.getPredicate()))
-                    &&
-                    (obj == null || obj.equals(triple.getObject()))
-                    &&
-                    (objectType == null || objectType.equals(triple.getObjectType()))
-            ) {
+            if(matchPattern(triple, sub, pred, obj, subjectType, objectType)) {
                 return true;
             }
         }
         return false;
+    }
+
+    public <O> TripleSet getTriplesWithPattern(
+            String sub, String pred, O obj,
+            SubjectType subjectType, ObjectType objectType
+    ) {
+        final TripleBuffer result = new TripleBuffer();
+        for(Triple triple : triples) {
+            if(matchPattern(triple, sub, pred, obj, subjectType, objectType)) {
+                result.addTriple(triple);
+            }
+        }
+        return result;
+    }
+
+    public Triple getTriple(int i) {
+        return triples.get(i);
     }
 
     public void add(TripleSet ts) {
@@ -202,6 +209,22 @@ public class TripleBuffer implements TripleSet {
 
     protected void internalRemove(Triple triple) {
         triples.remove(triple);
+    }
+
+    private <O> boolean matchPattern(
+            Triple triple,
+            String sub, String pred, O obj,
+            SubjectType subjectType, ObjectType objectType
+    ) {
+        return (sub == null || sub.equals(triple.getSubject()))
+                &&
+                (subjectType == null || subjectType.equals(triple.getSubjectType()))
+                &&
+                (pred == null || pred.equals(triple.getPredicate()))
+                &&
+                (obj == null || obj.equals(triple.getObject()))
+                &&
+                (objectType == null || objectType.equals(triple.getObjectType()));
     }
 
 }

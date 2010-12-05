@@ -135,7 +135,34 @@ public interface TripleSet extends Iterable<Triple> {
      * @param <O>
      * @return
      */
-    <O> boolean containsTriplePattern(String sub, String pred, O obj, SubjectType subjectType, ObjectType objectType);
+    <O> boolean containsTriplePattern(
+            String sub, String pred, O obj,
+            SubjectType subjectType, ObjectType objectType
+    );
+
+    /**
+     * Returns a new triple set of triples matching the given pattern.
+     *
+     * @param sub
+     * @param pred
+     * @param obj
+     * @param subjectType
+     * @param objectType
+     * @param <O>
+     * @return
+     */
+    <O> TripleSet getTriplesWithPattern(
+            String sub, String pred, O obj,
+            SubjectType subjectType, ObjectType objectType
+    );
+
+    /**
+     * Returns the i-th triple.
+     *
+     * @param i i-th triple
+     * @return the triple to be returned.
+     */
+    Triple getTriple(int i);
 
     /**
      * Returns the triple set iterator.
