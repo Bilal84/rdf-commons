@@ -33,4 +33,24 @@ public class FakeTypedLiteral implements TypedLiteral {
     public String getValue() {
         return "fake value";
     }
+
+    @Override
+     public boolean equals(Object obj) {
+        if(obj == null) {
+            return false;
+        }
+        if(obj == this) {
+            return true;
+        }
+        if(obj instanceof FakeTypedLiteral) {
+            final FakeTypedLiteral other = (FakeTypedLiteral) obj;
+            return getType().equals( other.getType() ) && getValue().equals( other.getValue() );
+        }
+        return false;
+    }
+
+    @Override
+    public int hashCode() {
+        return getType().hashCode() * getValue().hashCode() * 2;
+    }
 }

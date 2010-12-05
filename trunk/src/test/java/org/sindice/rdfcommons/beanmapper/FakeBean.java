@@ -49,7 +49,7 @@ public class FakeBean {
 
     private FakeTypedLiteral fakeTypedLiteral;
 
-    private List<FakeAggregateBean> aggregateBeans;
+    private List<FakeAggregateBean> aggregateBeansCollection;
 
     private FakeAggregateBean[] aggregateBeansArray;
 
@@ -69,7 +69,7 @@ public class FakeBean {
         }
         this.field6 = 3.1415f;
         fakeTypedLiteral = new FakeTypedLiteral();
-        aggregateBeans = Arrays.asList( new FakeAggregateBean(), new FakeAggregateBean() );
+        aggregateBeansCollection = Arrays.asList( new FakeAggregateBean(), new FakeAggregateBean() );
         aggregateBeansArray = new FakeAggregateBean[]{
                 new FakeAggregateBean(),
                 new FakeAggregateBean(),
@@ -136,12 +136,20 @@ public class FakeBean {
         this.fakeTypedLiteral = fakeTypedLiteral;
     }
 
-    public List<FakeAggregateBean> getInnerBeans() {
-        return aggregateBeans;
+    public List<FakeAggregateBean> getAggregateBeansCollection() {
+        return aggregateBeansCollection;
     }
 
-    public void setInnerBeans(List<FakeAggregateBean> aggregateBeans) {
-        this.aggregateBeans = aggregateBeans;
+    public void setAggregateBeansCollection(List<FakeAggregateBean> aggregateBeans) {
+        this.aggregateBeansCollection = aggregateBeans;
+    }
+
+    public FakeAggregateBean[] getAggregateBeansArray() {
+        return aggregateBeansArray;
+    }
+
+    public void setAggregateBeansArray(FakeAggregateBean[] aggregateBeansArray) {
+        this.aggregateBeansArray = aggregateBeansArray;
     }
 
     public FakeEnum getFakeEnum() {
@@ -170,7 +178,7 @@ public class FakeBean {
                 ( field5 == null ? 1 : field5.hashCode() * 5 ) *
                 ( field6 * 7 ) *
                 ( fakeTypedLiteral == null ? 1 : fakeTypedLiteral.hashCode() ) *
-                ( aggregateBeans == null ? 1 : aggregateBeans.hashCode() ) *
+                ( aggregateBeansCollection == null ? 1 : aggregateBeansCollection.hashCode() ) *
                 ( aggregateBeansArray == null ? 1 : aggregateBeansArray.hashCode() ) *
                 ( fakeEnum == null ? 1 : fakeEnum.hashCode() * 11) );
     }
@@ -204,11 +212,11 @@ public class FakeBean {
                             :
                     fakeTypedLiteral.equals(other.fakeTypedLiteral)
                     &&
-                    aggregateBeans != null
+                    aggregateBeansCollection != null
                             ?
-                    aggregateBeans.equals(other.aggregateBeans)
+                    aggregateBeansCollection.equals(other.aggregateBeansCollection)
                             :
-                    other.aggregateBeans == null
+                    other.aggregateBeansCollection == null
                     &&
                     aggregateBeansArray != null ?
                             Arrays.equals(aggregateBeansArray, other.aggregateBeansArray)

@@ -16,13 +16,13 @@
 
 package org.sindice.rdfcommons.beanmapper;
 
+import org.apache.log4j.Logger;
+import org.sindice.rdfcommons.beanmapper.annotations.Static;
 import org.sindice.rdfcommons.model.Triple;
 import org.sindice.rdfcommons.model.TripleBuffer;
 import org.sindice.rdfcommons.model.TripleFilter;
 import org.sindice.rdfcommons.model.TripleSet;
-import org.sindice.rdfcommons.beanmapper.annotations.Static;
 import org.sindice.rdfcommons.vocabulary.RDFSVocabulary;
-import org.apache.log4j.Logger;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
@@ -34,7 +34,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-import static org.sindice.rdfcommons.model.Triple.*;
+import static org.sindice.rdfcommons.model.Triple.ObjectType;
+import static org.sindice.rdfcommons.model.Triple.SubjectType;
 
 /**
  * Test case for {@link SerializationManager} class.
@@ -140,7 +141,7 @@ public class SerializerManagerTestCase {
         });
         logger.debug("-----");
         logger.debug(blankSubjects);
-        assert blankSubjects.getSize() == 12 : "Unexpected number of elements: " + blankSubjects.getSize();
+        assert blankSubjects.getSize() == 20 : "Unexpected number of elements: " + blankSubjects.getSize();
     }
 
     @Test
@@ -352,6 +353,49 @@ public class SerializerManagerTestCase {
             3.1415f, ObjectType.literal
         );
 
+        assert tripleBuffer.containsTriple(
+            instanceURL,
+            "http://org.sindice.rdfcommons.beanmapper/FakeBean#fakeTypedLiteral",
+            new FakeTypedLiteral(), ObjectType.literal
+        );
+
+        assertSequence(
+                tripleBuffer,
+                instanceURL,
+                "http://org.sindice.rdfcommons.beanmapper/FakeBean#aggregateBeansCollection"
+        );
+
+        assertSequence(
+                tripleBuffer,
+                instanceURL,
+                "http://org.sindice.rdfcommons.beanmapper/FakeBean#aggregateBeansArray"
+        );
+
+        assert tripleBuffer.containsTriple(
+            instanceURL,
+            "http://org.sindice.rdfcommons.beanmapper/FakeBean#self",
+            instanceURL, ObjectType.uri
+        );
+
+        assert tripleBuffer.containsTriple(
+            instanceURL,
+            "http://org.sindice.rdfcommons.beanmapper/FakeBean#fakeEnum",
+            "ENUM1", ObjectType.literal
+        );
+    }
+
+    private void assertSequence(TripleBuffer tb, String subject, String pred) {
+        final TripleSet innerBeans = tb.getTriplesWithPattern(
+                subject,
+                pred,
+                null, SubjectType.uri, null
+        );
+        assert innerBeans.getSize() == 1;
+        assert tb.containsTriple(
+                innerBeans.getTriple(0).getObjectAsString(), 
+                "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+                "http://www.w3.org/1999/02/22-rdf-syntax-ns#Seq"
+        );
     }
 
     @Static

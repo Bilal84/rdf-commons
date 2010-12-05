@@ -35,13 +35,17 @@ public class ArrayDeserializer extends SequenceDeserializer {
         throw new UnsupportedOperationException();
     }
 
+    @SuppressWarnings("unchecked")
     public <T> T deserialize(
             DeserializationContext context,
             Class<T> clazz, Annotation[] annotations,
             Identifier identifier, QueryEndpoint endPoint
     ) throws DeserializationException {
+        if(!clazz.isArray()) {
+            throw new IllegalStateException("The deserialized class " + clazz + " must be an array." );
+        }
         final List result = internalDeserialize(context, annotations, identifier, endPoint);
-        return (T) result.toArray( (Object[]) Array.newInstance(clazz, result.size() ) );
+        return (T) result.toArray( (Object[]) Array.newInstance(clazz.getComponentType(), result.size() ) );
     }
 
 }
