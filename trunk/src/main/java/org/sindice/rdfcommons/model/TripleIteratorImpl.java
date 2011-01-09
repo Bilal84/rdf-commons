@@ -26,7 +26,7 @@ import java.util.Iterator;
  */
 public class TripleIteratorImpl implements TripleIterator {
 
-    private Iterator<Triple> iterator;
+    private final Iterator<Triple> iterator;
 
     private Triple next;
 
@@ -68,6 +68,6 @@ public class TripleIteratorImpl implements TripleIterator {
     }
 
     public boolean isObjLiteral() {
-        return next.isObjLiteral();
+        return next.isObjectLiteral();
     }
 }

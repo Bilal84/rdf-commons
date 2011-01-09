@@ -17,17 +17,13 @@
 package org.sindice.rdfcommons.model;
 
 /**
- * Models a generic <i>RDF triple</i> literal.
- *
- * @author Michele Mostarda (mostarda@fbk.eu)
+ * Defines an <i>RDF</i> quad specific interface.
  */
-public interface Literal {
+public interface Quad {
 
     /**
-     * Returns the literal value.
-     *
-     * @return the literal value.
+     * @return the <i>URI</i> context of a triple.
      */
-    String getValue();
+    String getGraph();
 
 }

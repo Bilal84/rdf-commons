@@ -16,6 +16,8 @@
 
 package org.sindice.rdfcommons.storage;
 
+import org.sindice.rdfcommons.model.Triple;
+
 /**
  * Default implementation of {@link TripleStorageFilter}.
  *
@@ -30,19 +32,19 @@ public class TripleStorageFilterImpl implements TripleStorageFilter {
 
     private String objectMatch;
 
-    private boolean literal;
+    private Triple.SubjectType subjectType;
 
-    private boolean bsubject;
+    private Triple.ObjectType objectType;
 
-    private boolean bobject;
-
-    public TripleStorageFilterImpl(String sm, String pm, String om, boolean lit, boolean bsub, boolean bobj) {
-        subjectMatch = sm;
+    public TripleStorageFilterImpl(
+            String sm, String pm, String om,
+            Triple.SubjectType st, Triple.ObjectType ot
+    ) {
+        subjectMatch   = sm;
         predicateMatch = pm;
-        objectMatch = om;
-        literal = lit;
-        bsubject = bsub;
-        bobject = bobj;
+        objectMatch    = om;
+        subjectType = st;
+        objectType  = ot;
     }
 
     public String getSubjectMatching() {
@@ -58,14 +60,14 @@ public class TripleStorageFilterImpl implements TripleStorageFilter {
     }
 
     public boolean requireLiteral() {
-        return literal;
+        return objectType == Triple.ObjectType.literal;
     }
 
     public boolean requireSubjectBlank() {
-        return bsubject;
+        return subjectType == Triple.SubjectType.bnode;
     }
 
     public boolean requireObjectBlank() {
-        return bobject;
+        return objectType == Triple.ObjectType.bnode;
     }
 }

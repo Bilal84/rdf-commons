@@ -28,14 +28,14 @@ import java.util.Iterator;
 import java.util.List;
 
 /**
- * Defines a buffer of triples.
+ * Defines a buffer of {@link Triple}s.
  *
  * @author Michele Mostarda ( mostarda@fbk.eu )
  * @version $Id$
  */
 public class TripleBuffer implements TripleSet {
 
-    private List<Triple> triples;
+    private final List<Triple> triples;
 
     public TripleBuffer() {
         triples = new ArrayList<Triple>();
@@ -53,19 +53,33 @@ public class TripleBuffer implements TripleSet {
         this( Arrays.asList(triples) );
     }
 
+    public <O> void addTriple(String sub, String pred, O obj, String graph) {
+        internalAdd( new TripleImpl<O>(sub, pred, obj, graph) );
+    }
+
     public <O> void addTriple(String sub, String pred, O obj) {
-        internalAdd( new Triple<O>(sub, pred, obj) );
+        internalAdd( new TripleImpl<O>(sub, pred, obj) );
+    }
+
+    public <O> void addTriple(String sub, String pred, O obj, ObjectType objectType, String graph) {
+        internalAdd( new TripleImpl<O>(sub, pred, obj, objectType, graph) );
     }
 
     public <O> void addTriple(String sub, String pred, O obj, ObjectType objectType) {
-        internalAdd( new Triple<O>(sub, pred, obj, objectType) );
+        internalAdd( new TripleImpl<O>(sub, pred, obj, objectType) );
+    }
+
+    public <O> void addTriple(
+            String sub, String pred, O obj, SubjectType subjectType, ObjectType objectType, String graph
+    ) {
+        internalAdd( new TripleImpl<O>(sub, pred, obj, objectType, graph) );
     }
 
     public <O> void addTriple(
             String sub, String pred, O obj,
             SubjectType subjectType, ObjectType objectType
     ) {
-        internalAdd( new Triple<O>(sub, pred, obj, subjectType, objectType) );
+        internalAdd( new TripleImpl<O>(sub, pred, obj, subjectType, objectType) );
     }
 
     public void addTriple(Triple triple) {
@@ -82,64 +96,94 @@ public class TripleBuffer implements TripleSet {
         internalRemove(triple);
     }
 
-    public <O> String addBNodeSubjectTriple(String pred, O obj, ObjectType objectType) {
-        Triple triple = Triple.createBNodeSubjectTriple(pred, obj, objectType);
+    public <O> String addBNodeSubjectTriple(String pred, O obj, ObjectType objectType, String graph) {
+        Triple triple = TripleImpl.createBNodeSubjectTriple(pred, obj, objectType, graph);
         internalAdd(triple);
         return triple.getSubject();
     }
 
-    public String addBNodeObjectTriple(String sub, String pred, SubjectType subjectType) {
-        Triple triple = Triple.createBNodeObjectTriple(sub, pred, subjectType);
+    public <O> String addBNodeSubjectTriple(String pred, O obj, ObjectType objectType) {
+        return addBNodeSubjectTriple(pred, obj, objectType, null);
+    }
+
+    public String addBNodeObjectTriple(String sub, String pred, SubjectType subjectType, String graph) {
+         Triple triple = TripleImpl.createBNodeObjectTriple(sub, pred, subjectType, graph);
         internalAdd(triple);
         return triple.getObjectAsString();
     }
 
+    public String addBNodeObjectTriple(String sub, String pred, SubjectType subjectType) {
+        return addBNodeObjectTriple(sub, pred, subjectType, null);
+    }
+
+    public <O> void removeTriple(String sub, String pred, O obj, String graph) {
+        triples.remove( new TripleImpl<O>(sub, pred, obj, graph)  );
+    }
+
     public <O> void removeTriple(String sub, String pred, O obj) {
-        triples.remove( new Triple<O>(sub, pred, obj)  );
+        triples.remove( new TripleImpl<O>(sub, pred, obj)  );
     }
 
     public <O> void removeTriple(String sub, String pred, O obj, ObjectType objectType) {
-        triples.remove( new Triple<O>(sub, pred, obj, objectType)  );
+        triples.remove( new TripleImpl<O>(sub, pred, obj, objectType)  );
+    }
+
+    public <O> boolean containsTriple(
+            String sub, String pred, O obj, SubjectType subjectType, ObjectType objectType, String graph
+    ) {
+        return triples.contains( new TripleImpl<O>(sub, pred, obj, objectType) );
     }
 
     public <O> boolean containsTriple(String sub, String pred, O obj) {
-        return triples.contains( new Triple<O>(sub, pred, obj) );
+        return triples.contains( new TripleImpl<O>(sub, pred, obj) );
     }
 
     public <O> boolean containsTriple(String sub, String pred, O obj, ObjectType objectType) {
-        return triples.contains( new Triple<O>(sub, pred, obj, objectType)  );
+        return triples.contains( new TripleImpl<O>(sub, pred, obj, objectType)  );
     }
 
     public <O> boolean containsTriple(
             String sub, String pred, O obj,
             SubjectType subjectType, ObjectType objectType
     ) {
-        return triples.contains( new Triple<O>(sub, pred, obj, subjectType, objectType) );
+        return triples.contains( new TripleImpl<O>(sub, pred, obj, subjectType, objectType) );
     }
 
     public <O> boolean containsTriplePattern(
-            String sub, String pred, O obj,
-            SubjectType subjectType, ObjectType objectType
+            String sub, String pred, O obj, SubjectType subjectType, ObjectType objectType, String graph
     ) {
-        for(Triple triple : triples) {
-            if(matchPattern(triple, sub, pred, obj, subjectType, objectType)) {
+       for(Triple triple : triples) {
+            if(matchPattern(triple, sub, pred, obj, subjectType, objectType, graph)) {
                 return true;
             }
         }
         return false;
     }
 
-    public <O> TripleSet getTriplesWithPattern(
+    public <O> boolean containsTriplePattern(
             String sub, String pred, O obj,
             SubjectType subjectType, ObjectType objectType
     ) {
-        final TripleBuffer result = new TripleBuffer();
+        return containsTriplePattern(sub, pred, obj, subjectType, objectType, null);
+    }
+
+    public <O> TripleSet getTriplesWithPattern(
+            String sub, String pred, O obj, SubjectType subjectType, ObjectType objectType, String graph
+    ) {
+       final TripleBuffer result = new TripleBuffer();
         for(Triple triple : triples) {
-            if(matchPattern(triple, sub, pred, obj, subjectType, objectType)) {
+            if(matchPattern(triple, sub, pred, obj, subjectType, objectType, graph)) {
                 result.addTriple(triple);
             }
         }
         return result;
+    }
+
+    public <O> TripleSet getTriplesWithPattern(
+            String sub, String pred, O obj,
+            SubjectType subjectType, ObjectType objectType
+    ) {
+        return getTriplesWithPattern(sub, pred, obj, subjectType, objectType, null);
     }
 
     public Triple getTriple(int i) {
@@ -214,7 +258,7 @@ public class TripleBuffer implements TripleSet {
     private <O> boolean matchPattern(
             Triple triple,
             String sub, String pred, O obj,
-            SubjectType subjectType, ObjectType objectType
+            SubjectType subjectType, ObjectType objectType, String graph
     ) {
         return (sub == null || sub.equals(triple.getSubject()))
                 &&
@@ -224,7 +268,9 @@ public class TripleBuffer implements TripleSet {
                 &&
                 (obj == null || obj.equals(triple.getObject()))
                 &&
-                (objectType == null || objectType.equals(triple.getObjectType()));
+                (objectType == null || objectType.equals(triple.getObjectType()))
+                &&
+                (graph == null || graph.equals(triple.getGraph()));
     }
 
 }

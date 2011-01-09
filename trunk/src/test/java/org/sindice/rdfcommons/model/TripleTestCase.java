@@ -25,7 +25,7 @@ import static org.sindice.rdfcommons.model.Triple.ObjectType;
 import static org.sindice.rdfcommons.model.Triple.SubjectType;
 
 /**
- * Test case for {@link org.sindice.rdfcommons.model.Triple} class.
+ * Test case for {@link TripleImpl} class.
  *
  * @author Michele Mostarda (mostarda@fbk.eu)
  */
@@ -33,53 +33,53 @@ public class TripleTestCase {
 
     @Test
     public void testSPO() {
-        final Triple<String> triple = new Triple<String>("sub-value", "pred-value", "obj-value");
+        final TripleImpl<String> triple = new TripleImpl<String>("sub-value", "pred-value", "obj-value");
         Assert.assertEquals(triple.getSubject()  , "sub-value" );
         Assert.assertEquals(triple.getPredicate(), "pred-value");
         Assert.assertEquals(triple.getObject()   , "obj-value" );
         Assert.assertEquals(triple.getObjectAsString(), "obj-value" );
-        Assert.assertNull(triple.getObjectImplicitType() );
-        Assert.assertNull(triple.getLiteralType() );
-        Assert.assertNull(triple.getObjectLanguage() );
+        Assert.assertNull(triple.getObjectImplicitDatatype() );
+        Assert.assertNull(triple.getLiteralDatatype() );
+        Assert.assertNull(triple.getLiteralLanguage() );
         Assert.assertFalse(triple.isSubjectBNode());
         Assert.assertFalse(triple.isObjectBNode());
-        Assert.assertFalse(triple.isObjLiteral());
+        Assert.assertFalse(triple.isObjectLiteral());
         Assert.assertEquals(triple.toNTriplesString(), "<sub-value> <pred-value> <obj-value>" );
     }
 
     @Test
     public void testSPOLiteral() {
-        final Triple<String> triple = new Triple<String>(
+        final TripleImpl<String> triple = new TripleImpl<String>(
                 "sub-value", "pred-value", "obj-value", ObjectType.literal
         );
         Assert.assertEquals(triple.getSubject()  , "sub-value" );
         Assert.assertEquals(triple.getPredicate(), "pred-value");
         Assert.assertEquals(triple.getObject()   , "obj-value" );
         Assert.assertEquals(triple.getObjectAsString(), "obj-value" );
-        Assert.assertNull(triple.getObjectImplicitType() );
-        Assert.assertNull(triple.getLiteralType() );
-        Assert.assertNull(triple.getObjectLanguage() );
+        Assert.assertNull(triple.getObjectImplicitDatatype() );
+        Assert.assertNull(triple.getLiteralDatatype() );
+        Assert.assertNull(triple.getLiteralLanguage() );
         Assert.assertFalse(triple.isSubjectBNode());
         Assert.assertFalse(triple.isObjectBNode());
-        Assert.assertTrue(triple.isObjLiteral());
+        Assert.assertTrue(triple.isObjectLiteral());
         Assert.assertEquals(triple.toNTriplesString(), "<sub-value> <pred-value> \"obj-value\"" );
     }
 
     @Test
     public void testSPOImplicitTypedLiteral1() {
-        final Triple<Object> triple = new Triple<Object>(
+        final TripleImpl<Object> triple = new TripleImpl<Object>(
                 "sub-value", "pred-value", 13.4F, ObjectType.literal
         );
         Assert.assertEquals(triple.getSubject()  , "sub-value" );
         Assert.assertEquals(triple.getPredicate(), "pred-value");
         Assert.assertEquals(triple.getObject()   , 13.4F );
         Assert.assertEquals(triple.getObjectAsString(), "13.4" );
-        Assert.assertEquals(triple.getObjectImplicitType(), "http://www.w3.org/2001/XMLSchema/float" );
-        Assert.assertEquals(triple.getLiteralType()       , "http://www.w3.org/2001/XMLSchema/float" );
-        Assert.assertNull(triple.getObjectLanguage());
+        Assert.assertEquals(triple.getObjectImplicitDatatype(), "http://www.w3.org/2001/XMLSchema/float" );
+        Assert.assertEquals(triple.getLiteralDatatype()       , "http://www.w3.org/2001/XMLSchema/float" );
+        Assert.assertNull(triple.getLiteralLanguage());
         Assert.assertFalse(triple.isSubjectBNode());
         Assert.assertFalse(triple.isObjectBNode());
-        Assert.assertTrue(triple.isObjLiteral());
+        Assert.assertTrue(triple.isObjectLiteral());
         Assert.assertEquals(
                 triple.toNTriplesString(),
                 "<sub-value> <pred-value> \"13.4\"^^<http://www.w3.org/2001/XMLSchema/float>"
@@ -90,19 +90,19 @@ public class TripleTestCase {
     public void testSPOImplicitTypedLiteral2() {
         final GregorianCalendar gc = new GregorianCalendar();
         gc.set(2010, GregorianCalendar.NOVEMBER, 23);
-        final Triple<Object> triple = new Triple<Object>(
+        final TripleImpl<Object> triple = new TripleImpl<Object>(
                 "sub-value", "pred-value", gc.getTime(), ObjectType.literal
         );
         Assert.assertEquals(triple.getSubject()  , "sub-value" );
         Assert.assertEquals(triple.getPredicate(), "pred-value");
         Assert.assertEquals(triple.getObject()   , gc.getTime());
         Assert.assertEquals(triple.getObjectAsString(), "2010-11-23" );
-        Assert.assertEquals(triple.getObjectImplicitType(), "http://www.w3.org/2001/XMLSchema/date" );
-        Assert.assertEquals(triple.getLiteralType()       , "http://www.w3.org/2001/XMLSchema/date" );
-        Assert.assertNull(triple.getObjectLanguage());
+        Assert.assertEquals(triple.getObjectImplicitDatatype(), "http://www.w3.org/2001/XMLSchema/date" );
+        Assert.assertEquals(triple.getLiteralDatatype()       , "http://www.w3.org/2001/XMLSchema/date" );
+        Assert.assertNull(triple.getLiteralLanguage());
         Assert.assertFalse(triple.isSubjectBNode());
         Assert.assertFalse(triple.isObjectBNode());
-        Assert.assertTrue(triple.isObjLiteral());
+        Assert.assertTrue(triple.isObjectLiteral());
         Assert.assertEquals(
                 triple.toNTriplesString(),
                 "<sub-value> <pred-value> \"2010-11-23\"^^<http://www.w3.org/2001/XMLSchema/date>"
@@ -112,19 +112,19 @@ public class TripleTestCase {
     @Test
     public void testSPOExplicitTypedLiteral() {
         final Point point = new Point(12.7F, 13.9F);
-        final Triple<Object> triple = new Triple<Object>(
+        final TripleImpl<Object> triple = new TripleImpl<Object>(
                 "sub-value", "pred-value", point, ObjectType.literal
         );
         Assert.assertEquals(triple.getSubject()  , "sub-value" );
         Assert.assertEquals(triple.getPredicate(), "pred-value");
         Assert.assertEquals(triple.getObject()   , point );
         Assert.assertEquals(triple.getObjectAsString(), "POINT(12.7,13.9)" );
-        Assert.assertNull( triple.getObjectImplicitType() );
-        Assert.assertEquals(triple.getLiteralType(), "http://www.sindice.org/test/custom-geometry" );
-        Assert.assertNull(triple.getObjectLanguage() );
+        Assert.assertNull( triple.getObjectImplicitDatatype() );
+        Assert.assertEquals(triple.getLiteralDatatype(), "http://www.sindice.org/test/custom-geometry" );
+        Assert.assertNull(triple.getLiteralLanguage() );
         Assert.assertFalse(triple.isSubjectBNode());
         Assert.assertFalse(triple.isObjectBNode());
-        Assert.assertTrue(triple.isObjLiteral());
+        Assert.assertTrue(triple.isObjectLiteral());
         Assert.assertEquals(
                 triple.toNTriplesString(),
                 "<sub-value> <pred-value> \"POINT(12.7,13.9)\"^^<http://www.sindice.org/test/custom-geometry>"
@@ -134,19 +134,19 @@ public class TripleTestCase {
     @Test
     public void testSPOLangLiteral() {
         final Message message = new Message("Hello World!!");
-        final Triple<Object> triple = new Triple<Object>(
+        final TripleImpl<Object> triple = new TripleImpl<Object>(
                 "sub-value", "pred-value", message, ObjectType.literal
         );
         Assert.assertEquals(triple.getSubject()  , "sub-value" );
         Assert.assertEquals(triple.getPredicate(), "pred-value");
         Assert.assertEquals(triple.getObject()   , message );
         Assert.assertEquals(triple.getObjectAsString(), "Hello World!!" );
-        Assert.assertNull( triple.getObjectImplicitType() );
-        Assert.assertNull(triple.getLiteralType());
-        Assert.assertEquals(triple.getObjectLanguage(), "en");
+        Assert.assertNull( triple.getObjectImplicitDatatype() );
+        Assert.assertNull(triple.getLiteralDatatype());
+        Assert.assertEquals(triple.getLiteralLanguage(), "en");
         Assert.assertFalse(triple.isSubjectBNode());
         Assert.assertFalse(triple.isObjectBNode());
-        Assert.assertTrue(triple.isObjLiteral());
+        Assert.assertTrue(triple.isObjectLiteral());
         Assert.assertEquals(
                 triple.toNTriplesString(),
                 "<sub-value> <pred-value> \"Hello World!!\"@en"
@@ -156,18 +156,18 @@ public class TripleTestCase {
     @Test
     public void testSBlankPO() {
         final Point point = new Point(12.7F, 13.9F);
-        final Triple<Object> triple = new Triple<Object>(
+        final TripleImpl<Object> triple = new TripleImpl<Object>(
                 "sub-bnode", "pred-value", point, SubjectType.bnode, ObjectType.literal);
         Assert.assertEquals(triple.getSubject()  , "sub-bnode" );
         Assert.assertEquals(triple.getPredicate(), "pred-value");
         Assert.assertEquals(triple.getObject()   , point );
         Assert.assertEquals(triple.getObjectAsString(), "POINT(12.7,13.9)" );
-        Assert.assertNull( triple.getObjectImplicitType() );
-        Assert.assertEquals(triple.getLiteralType(), "http://www.sindice.org/test/custom-geometry" );
-        Assert.assertNull(triple.getObjectLanguage() );
+        Assert.assertNull( triple.getObjectImplicitDatatype() );
+        Assert.assertEquals(triple.getLiteralDatatype(), "http://www.sindice.org/test/custom-geometry" );
+        Assert.assertNull(triple.getLiteralLanguage() );
         Assert.assertTrue(triple.isSubjectBNode());
         Assert.assertFalse(triple.isObjectBNode());
-        Assert.assertTrue(triple.isObjLiteral());
+        Assert.assertTrue(triple.isObjectLiteral());
         Assert.assertEquals(
                 triple.toNTriplesString(),
                 "_:sub-bnode <pred-value> \"POINT(12.7,13.9)\"^^<http://www.sindice.org/test/custom-geometry>"
@@ -176,26 +176,26 @@ public class TripleTestCase {
 
     @Test
     public void testSBlankPOBlank() {
-        final Triple<Object> triple = new Triple<Object>(
+        final TripleImpl<Object> triple = new TripleImpl<Object>(
                 "sub-bnode", "pred-value", "obj-bnode",  SubjectType.bnode, ObjectType.bnode
         );
         Assert.assertEquals(triple.getSubject()  , "sub-bnode" );
         Assert.assertEquals(triple.getPredicate(), "pred-value");
         Assert.assertEquals(triple.getObject()   , "obj-bnode" );
         Assert.assertEquals(triple.getObjectAsString(), "obj-bnode" );
-        Assert.assertNull( triple.getObjectImplicitType() );
-        Assert.assertNull(triple.getLiteralType() );
-        Assert.assertNull(triple.getObjectLanguage() );
+        Assert.assertNull( triple.getObjectImplicitDatatype() );
+        Assert.assertNull(triple.getLiteralDatatype() );
+        Assert.assertNull(triple.getLiteralLanguage() );
         Assert.assertTrue(triple.isSubjectBNode());
         Assert.assertTrue(triple.isObjectBNode());
-        Assert.assertFalse(triple.isObjLiteral());
+        Assert.assertFalse(triple.isObjectLiteral());
         Assert.assertEquals(
                 triple.toNTriplesString(),
                 "_:sub-bnode <pred-value> _:obj-bnode"
         );
     }
 
-    class Point implements TypedLiteral {
+    class Point implements DatatypeLiteral {
 
         private final float x;
         private final float y;
@@ -205,8 +205,12 @@ public class TripleTestCase {
             this.y = y;
         }
 
-        public String getType() {
+        public String getDatatype() {
             return "http://www.sindice.org/test/custom-geometry";
+        }
+
+        public Object getTypedValue() {
+            return this;
         }
 
         public String getValue() {

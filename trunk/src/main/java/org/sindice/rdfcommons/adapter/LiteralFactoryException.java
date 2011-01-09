@@ -14,8 +14,19 @@
  * limitations under the License.
  */
 
+package org.sindice.rdfcommons.adapter;
+
 /**
- * This package contains <a href="http://jena.sourceforge.net/">Jena</a>
- * specific adapter classes.
+ * Defines an error specific of {@link LiteralFactory}.
  */
-package org.sindice.rdfcommons.jena;
+public class LiteralFactoryException extends Exception {
+
+    public LiteralFactoryException(String message) {
+        super(message);
+    }
+
+    public LiteralFactoryException(String message, Throwable cause) {
+        super(message, cause);
+    }
+
+}

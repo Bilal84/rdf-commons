@@ -14,20 +14,8 @@
  * limitations under the License.
  */
 
-package org.sindice.rdfcommons.model;
-
 /**
- * Models a generic <i>RDF triple</i> literal.
- *
- * @author Michele Mostarda (mostarda@fbk.eu)
+ * This package contains <a href="http://www.openrdf.org/">Sesame</a>
+ * specific adapter classes.
  */
-public interface Literal {
-
-    /**
-     * Returns the literal value.
-     *
-     * @return the literal value.
-     */
-    String getValue();
-
-}
+package org.sindice.rdfcommons.adapter.sesame;

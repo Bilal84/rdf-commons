@@ -14,20 +14,8 @@
  * limitations under the License.
  */
 
-package org.sindice.rdfcommons.model;
-
 /**
- * Models a generic <i>RDF triple</i> literal.
- *
- * @author Michele Mostarda (mostarda@fbk.eu)
+ * This package provides the adapting logic to interface <i>RDFCommons</i>
+ * with the main <i>RDF</i> libraries.
  */
-public interface Literal {
-
-    /**
-     * Returns the literal value.
-     *
-     * @return the literal value.
-     */
-    String getValue();
-
-}
+package org.sindice.rdfcommons.adapter;

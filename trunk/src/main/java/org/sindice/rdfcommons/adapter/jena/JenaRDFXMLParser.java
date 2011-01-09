@@ -14,10 +14,11 @@
  * limitations under the License.
  */
 
-package org.sindice.rdfcommons.jena;
+package org.sindice.rdfcommons.adapter.jena;
 
 import com.hp.hpl.jena.rdf.model.Model;
 import com.hp.hpl.jena.rdf.model.ModelFactory;
+import org.sindice.rdfcommons.adapter.LiteralFactoryException;
 import org.sindice.rdfcommons.parser.RDFParser;
 import org.sindice.rdfcommons.parser.RDFParserException;
 import org.sindice.rdfcommons.model.TripleSet;
@@ -30,18 +31,18 @@ import java.io.InputStream;
  * @author Michele Mostarda ( mostarda@fbk.eu )
  * @version $Id$
  */
-public class JenaRDFParser implements RDFParser {
+public class JenaRDFXMLParser implements RDFParser {
 
-    private static JenaRDFParser instance;
+    private static JenaRDFXMLParser instance;
 
     /**
      * Lazy constructor.
      * 
      * @return the singleton instance.
      */
-    public static final JenaRDFParser getInstance() {
+    public static final JenaRDFXMLParser getInstance() {
         if(instance == null) {
-            instance = new JenaRDFParser();
+            instance = new JenaRDFXMLParser();
         }
         return instance;
     }
@@ -49,16 +50,17 @@ public class JenaRDFParser implements RDFParser {
     /**
      * Singleton.
      */
-    private JenaRDFParser() {}
+    private JenaRDFXMLParser() {}
 
-    public TripleSet parse(InputStream is) throws RDFParserException {
+    public TripleSet parse(InputStream is, String defaultGraph)
+    throws RDFParserException, LiteralFactoryException {
         Model model = ModelFactory.createDefaultModel();
         try {
             model.read(is, "");
         } catch (Exception e) {
             throw new RDFParserException("An error occurred during stream reading.", e);
         }
-        return JenaConversionUtil.convertJenaModelToTripleSet(model);
+        return JenaConversionUtil.getInstance().convertJenaModelToTripleSet(model, defaultGraph);
     }
 
 }

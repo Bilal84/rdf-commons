@@ -151,7 +151,7 @@ public class TripleStorageInMemoryImpl implements TripleStorage {
         return
             matches( filter.getObjectMatching(), triple.getObject() )
                 &&
-            (! filter.requireLiteral() || triple.isObjLiteral() == filter.requireLiteral());
+            (! filter.requireLiteral() || triple.isObjectLiteral() == filter.requireLiteral());
     }
 
     private boolean matches(Object match, Object value) {

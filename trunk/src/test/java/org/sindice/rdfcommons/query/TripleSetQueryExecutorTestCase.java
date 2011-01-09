@@ -16,8 +16,8 @@
 
 package org.sindice.rdfcommons.query;
 
+import org.sindice.rdfcommons.model.TripleImpl;
 import org.sindice.rdfcommons.storage.InMemoryResultSet;
-import org.sindice.rdfcommons.model.Triple;
 import org.sindice.rdfcommons.model.TripleBuffer;
 import org.sindice.rdfcommons.model.TripleSet;
 import org.apache.log4j.Logger;
@@ -71,7 +71,7 @@ public class TripleSetQueryExecutorTestCase {
     @Test
     public void testCreateMatch() {
         Match match = TripleSetQueryExecutor.createMatch(
-                new Triple<String>("1", "2", "3"),
+                new TripleImpl<String>("1", "2", "3"),
                 new Match(queryContext, "?a",  "2", "?c"),
                 new Match(queryContext, "?c", "?d", "?e")
         );

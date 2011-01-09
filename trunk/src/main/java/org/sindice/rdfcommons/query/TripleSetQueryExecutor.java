@@ -149,7 +149,7 @@ public class TripleSetQueryExecutor {
                 }
                 if(match.isObjVar()) {
                     if( ! processedVars.contains(match.getObj()) ) {
-                        if(triple.isObjLiteral()) {
+                        if(triple.isObjectLiteral()) {
                             entries.add(
                                     new InMemoryResultSet.VarEntry(
                                         triple.getObject(),
