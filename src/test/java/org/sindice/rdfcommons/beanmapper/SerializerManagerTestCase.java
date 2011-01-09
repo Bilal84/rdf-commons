@@ -356,7 +356,7 @@ public class SerializerManagerTestCase {
         assert tripleBuffer.containsTriple(
             instanceURL,
             "http://org.sindice.rdfcommons.beanmapper/FakeBean#fakeTypedLiteral",
-            new FakeTypedLiteral(), ObjectType.literal
+            new FakeDatatypeLiteral(), ObjectType.literal
         );
 
         assertSequence(

@@ -16,6 +16,7 @@
 
 package org.sindice.rdfcommons.parser;
 
+import org.sindice.rdfcommons.adapter.LiteralFactoryException;
 import org.sindice.rdfcommons.model.TripleSet;
 
 import java.io.InputStream;
@@ -32,9 +33,11 @@ public interface RDFParser {
      * Parsers the input stream and returns a triple set.
      *
      * @param is input stream.
+     * @param graph default graph for triples without an explicit context.
      * @return the triple set.
      * @throws RDFParserException if an error occurs during the parsing.
+     * @throws org.sindice.rdfcommons.adapter.LiteralFactoryException if an error occurs during literal mapping.
      */
-    TripleSet parse(InputStream is) throws RDFParserException;
+    TripleSet parse(InputStream is, String graph) throws RDFParserException, LiteralFactoryException;
 
 }

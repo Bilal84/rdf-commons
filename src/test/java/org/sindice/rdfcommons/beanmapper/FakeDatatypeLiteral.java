@@ -16,7 +16,7 @@
 
 package org.sindice.rdfcommons.beanmapper;
 
-import org.sindice.rdfcommons.model.TypedLiteral;
+import org.sindice.rdfcommons.model.DatatypeLiteral;
 
 /**
  * Fake bean used to test serialization and deserialization
@@ -24,10 +24,14 @@ import org.sindice.rdfcommons.model.TypedLiteral;
  *
  * @author Michele Mostarda (mostarda@fbk.eu)
  */
-public class FakeTypedLiteral implements TypedLiteral {
+public class FakeDatatypeLiteral implements DatatypeLiteral {
 
-    public String getType() {
+    public String getDatatype() {
         return "http://sindice.com/test#fake-type";
+    }
+
+    public Object getTypedValue() {
+        return this;
     }
 
     public String getValue() {
@@ -42,15 +46,15 @@ public class FakeTypedLiteral implements TypedLiteral {
         if(obj == this) {
             return true;
         }
-        if(obj instanceof FakeTypedLiteral) {
-            final FakeTypedLiteral other = (FakeTypedLiteral) obj;
-            return getType().equals( other.getType() ) && getValue().equals( other.getValue() );
+        if(obj instanceof FakeDatatypeLiteral) {
+            final FakeDatatypeLiteral other = (FakeDatatypeLiteral) obj;
+            return getDatatype().equals( other.getDatatype() ) && getValue().equals( other.getValue() );
         }
         return false;
     }
 
     @Override
     public int hashCode() {
-        return getType().hashCode() * getValue().hashCode() * 2;
+        return getDatatype().hashCode() * getValue().hashCode() * 2;
     }
 }

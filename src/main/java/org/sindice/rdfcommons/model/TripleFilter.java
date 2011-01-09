@@ -26,7 +26,7 @@ package org.sindice.rdfcommons.model;
 public interface TripleFilter {
 
     /**
-     * Acceps a subject.
+     * Accepts a subject.
      *
      * @param triple triple to be accepted.
      * @return <code>true</code> if accepted, <code>false</code> otherwise.

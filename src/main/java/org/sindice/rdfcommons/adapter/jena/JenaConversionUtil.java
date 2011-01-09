@@ -14,10 +14,10 @@
  * limitations under the License.
  */
 
-package org.sindice.rdfcommons.jena;
+package org.sindice.rdfcommons.adapter.jena;
 
 import com.hp.hpl.jena.datatypes.RDFDatatype;
-import com.hp.hpl.jena.datatypes.xsd.XSDDatatype;
+import com.hp.hpl.jena.datatypes.TypeMapper;
 import com.hp.hpl.jena.graph.Node;
 import com.hp.hpl.jena.graph.TripleMatch;
 import com.hp.hpl.jena.rdf.model.AnonId;
@@ -25,35 +25,104 @@ import com.hp.hpl.jena.rdf.model.Model;
 import com.hp.hpl.jena.rdf.model.ModelFactory;
 import com.hp.hpl.jena.rdf.model.Statement;
 import com.hp.hpl.jena.rdf.model.StmtIterator;
+import org.sindice.rdfcommons.adapter.DefaultDatatypeLiteral;
+import org.sindice.rdfcommons.adapter.DefaultLanguageLiteral;
+import org.sindice.rdfcommons.adapter.LibAdapter;
+import org.sindice.rdfcommons.adapter.LiteralFactory;
+import org.sindice.rdfcommons.adapter.LiteralFactoryException;
 import org.sindice.rdfcommons.model.Triple;
 import org.sindice.rdfcommons.model.TripleBuffer;
+import org.sindice.rdfcommons.model.TripleImpl;
 import org.sindice.rdfcommons.model.TripleSet;
 import org.sindice.rdfcommons.storage.TripleStorageFilter;
 
 import java.io.OutputStream;
-import java.util.Date;
 
-import static org.sindice.rdfcommons.model.Triple.*;
+import static org.sindice.rdfcommons.model.Triple.ObjectType;
+import static org.sindice.rdfcommons.model.Triple.SubjectType;
 
 /**
- * Utility functions to convert data from <i>jena</i> domain to
- * <i>sindice.rdfcommons</i> domain.
+ * Utility functions to convert data structures from <i>Jena</i> API
+ * to <i>RDFCommons</i> API.
  *
  * @author Michele Mostarda ( mostarda@fbk.eu )
  * @version $Id$
  */
-public class JenaConversionUtil {
+public class JenaConversionUtil implements LibAdapter<Node, Object> {
+
+    private static final JenaConversionUtil instance = new JenaConversionUtil();
+
+    public static synchronized JenaConversionUtil getInstance() {
+        return instance;
+    }
+
+    private LiteralFactory literalFactory;
 
     private JenaConversionUtil() {}
 
+    public void setLiteralFactory(LiteralFactory lf) {
+        if(lf == null) {
+            throw new NullPointerException("Literal factory instance cannot be null.");
+        }
+        literalFactory = lf;
+    }
+
+    public LiteralFactory getLiteralFactory() {
+        return literalFactory;
+    }
+
     /**
-     * Converts a <i>Jena</i> triple in a {@link org.sindice.rdfcommons.model.Triple}.
+     * Returns the object type corresponding to the given node.
+     *
+     * @param node input node.
+     * @return object type.
+     */
+    public synchronized Triple.ObjectType getObjectType(Node node) {
+        if(node.isLiteral()) {
+            return ObjectType.literal;
+        }
+        if(node.isBlank()) {
+            return ObjectType.bnode;
+        }
+        return ObjectType.uri;
+    }
+
+    /**
+     * Return the object literal representing the given {@link Node} data.
+     *
+     * @param node input node.
+     * @return literal object.
+     * @throws LiteralFactoryException if an error occurs during conversion.
+     */
+    public synchronized Object getObjectLiteral(Node node) throws LiteralFactoryException {
+        final Object value    = node.getLiteralValue();
+        final String language = node.getLiteralLanguage();
+        if(language != null && ! "".equals(language)) {
+            return new DefaultLanguageLiteral(value.toString(), language);
+        }
+
+        final String datatype = node.getLiteralDatatype() != null ? node.getLiteralDatatype().getURI() : null;
+        if(datatype != null) {
+            if(value instanceof String) {
+                return literalFactory.createLiteral(datatype, (String) value);
+            }
+            return new DefaultDatatypeLiteral<Object>(datatype, value);
+        }
+        return value;
+    }
+
+    /**
+     * Converts a <i>Jena</i> {@link com.hp.hpl.jena.graph.Triple}
+     * to a {@link org.sindice.rdfcommons.model.Triple}.
      *
      * @param triple Jena triple to convert.
+     * @param graph the default graph.
      * @return the equivalent {@link org.sindice.rdfcommons.model.Triple}.
+     * @throws org.sindice.rdfcommons.adapter.LiteralFactoryException if an error occurs during mapping.
      */
     @SuppressWarnings("unchecked")
-    public static Triple convertJenaTripleToTriple(com.hp.hpl.jena.graph.Triple triple) {
+    public synchronized Triple convertJenaTripleToTriple(com.hp.hpl.jena.graph.Triple triple, String graph)
+    throws LiteralFactoryException {
         final Node subject = triple.getSubject();
         final Node object  = triple.getObject();
 
@@ -70,33 +139,85 @@ public class JenaConversionUtil {
         } else if(object.isBlank()) {
             objectValue = object.getBlankNodeLabel();
         } else {
-            objectValue = object.getLiteralValue();
+            objectValue = getObjectLiteral(object);
         }
 
-        return new Triple(
+        return new TripleImpl(
                 subjectStr,
                 triple.getPredicate().getURI(),
                 objectValue,
                 subject.isBlank() ? SubjectType.bnode : SubjectType.uri,
-                getObjectType(object)
+                getObjectType(object),
+                graph
         );
     }
 
     /**
-     * Converts a {@link org.sindice.rdfcommons.model.TripleSet} to a list of <i>Jena</i> triples.
+     * Creates an appropriate <i>Jena</i> node representing the subject of the given triple.
+     *
+     * @param triple input triple.
+     * @return subject nodel.
+     */
+    public synchronized com.hp.hpl.jena.graph.Node createSubjectNode(Triple triple) {
+        return
+                triple.isSubjectBNode()
+                        ?
+                Node.createAnon( AnonId.create(triple.getSubject()) ) : Node.createURI( triple.getSubject() );
+    }
+
+    /**
+     * Creates an appropriate <i>Jena</i> node representing the object of the given triple.
+     *
+     * @param triple input triple.
+     * @return object nodel.
+     */
+
+    public synchronized com.hp.hpl.jena.graph.Node createObjectNode(Triple triple) {
+        if(triple.isObjectLiteral()) {
+            final String datatype = triple.getLiteralDatatype();
+            if(datatype != null) {
+                return Node.createLiteral(
+                        triple.getObjectAsString(), null, TypeMapper.getInstance().getSafeTypeByName(datatype)
+                );
+            }
+            final String language = triple.getLiteralLanguage();
+            if(language != null) {
+                return Node.createLiteral(triple.getObjectAsString(), language, null);
+            }
+            return Node.createLiteral(triple.getObjectAsString());
+        }
+        if(triple.isObjectBNode()) {
+            return Node.createAnon(AnonId.create( triple.getObjectAsString() ) );
+        }
+        return Node.createURI( triple.getObjectAsString() );
+    }
+
+    /**
+     * Converts a {@link Triple} to a <i>Jena</i> {@link com.hp.hpl.jena.graph.Triple}.
+     *
+     * @param triple input triple.
+     * @return output Jena triple.
+     */
+    public synchronized com.hp.hpl.jena.graph.Triple convertTripleToJenaTriple(Triple triple) {
+        return new com.hp.hpl.jena.graph.Triple(
+                createSubjectNode(triple),
+                Node.createURI(triple.getPredicate()),
+                createObjectNode(triple)
+        );
+    }
+
+    /**
+     * Converts a {@link org.sindice.rdfcommons.model.TripleSet}
+     * to a list of <i>Jena</i> triples.
      *
      * @param tripleSet input triple set.
      * @return list of converted Jena triples.
      */
-    public static com.hp.hpl.jena.graph.Triple[] convertToJenaTriples(TripleSet tripleSet) {
+    public synchronized com.hp.hpl.jena.graph.Triple[] convertToJenaTriples(TripleSet tripleSet) {
         com.hp.hpl.jena.graph.Triple[] result = new com.hp.hpl.jena.graph.Triple[ tripleSet.getSize() ];
         int i = 0;
         for(Triple triple : tripleSet) {
-            result[i] = new com.hp.hpl.jena.graph.Triple(
-                createSubjectNode(triple),
-                Node.createURI( triple.getPredicate() ),
-                createObjectNode(triple)
-            );
+            result[i] = convertTripleToJenaTriple(triple);
             i++;
         }
         return result;
@@ -106,14 +227,17 @@ public class JenaConversionUtil {
      * Converts a <i>Jena</i> model in a {@link org.sindice.rdfcommons.model.TripleSet}.
      *
      * @param model input model.
+     * @param graph default graph.
      * @return generated triple set.
+     * @throws org.sindice.rdfcommons.adapter.LiteralFactoryException if an error occurs during mapping.
      */
-    public static TripleSet convertJenaModelToTripleSet(com.hp.hpl.jena.rdf.model.Model model) {
+    public synchronized TripleSet convertJenaModelToTripleSet(com.hp.hpl.jena.rdf.model.Model model, String graph)
+    throws LiteralFactoryException {
         StmtIterator iter = model.listStatements();
         TripleSet result = new TripleBuffer();
         while(iter.hasNext()) {
             Statement statement = iter.nextStatement();
-            result.addTriple( convertJenaTripleToTriple( statement.asTriple() ) );
+            result.addTriple( convertJenaTripleToTriple( statement.asTriple(), graph ) );
         }
         return result;
     }
@@ -124,7 +248,7 @@ public class JenaConversionUtil {
      * @param ts triple set.
      * @return generated model.
      */
-    public static com.hp.hpl.jena.rdf.model.Model convertTripleSetToJenaModel(TripleSet ts) {
+    public synchronized com.hp.hpl.jena.rdf.model.Model convertTripleSetToJenaModel(TripleSet ts) {
         Model model = ModelFactory.createDefaultModel();
         for(Triple t : ts) {
             com.hp.hpl.jena.rdf.model.Resource subject;
@@ -140,7 +264,7 @@ public class JenaConversionUtil {
             if( t.isObjectBNode() ) {
                 object = model.createResource(AnonId.create( t.getObjectAsString() ) );
             } else {
-                if(t.isObjLiteral()) {
+                if(t.isObjectLiteral()) {
                     object = model.createTypedLiteral( t.getObject() );
                 } else {
                     object = model.createResource( t.getObjectAsString() );
@@ -153,42 +277,12 @@ public class JenaConversionUtil {
     }
 
     /**
-     * Creates an appropriate <i>Jena</i> node representing the subject of the given triple.
-     *
-     * @param triple input triple.
-     * @return subject nodel.
-     */
-    public static com.hp.hpl.jena.graph.Node createSubjectNode(Triple triple) {
-        return
-                triple.isSubjectBNode()
-                        ?
-                Node.createAnon( AnonId.create(triple.getSubject()) ) : Node.createURI( triple.getSubject() );
-    }
-
-    /**
-     * Creates an appropriate <i>Jena</i> node representing the object of the given triple.
-     *
-     * @param triple input triple.
-     * @return object nodel.
-     */
-
-    public static com.hp.hpl.jena.graph.Node createObjectNode(Triple triple) {
-        if(triple.isObjLiteral()) {
-            return Node.createLiteral( triple.getObject().toString(), null, getRDFDatatype(triple.getObject()) );
-        }
-        if(triple.isObjectBNode()) {
-            return Node.createAnon(AnonId.create( triple.getObjectAsString() ) );
-        }
-        return Node.createURI( triple.getObjectAsString() );
-    }
-
-    /**
      * converts a {@link org.sindice.rdfcommons.storage.TripleStorageFilter} in a Jena <i>TripleMatch</i>.
      *
      * @param filter input filter.
      * @return generated triple match.
      */
-    public static com.hp.hpl.jena.graph.TripleMatch convertToJenaTripleMatch(final TripleStorageFilter filter) {
+    public synchronized com.hp.hpl.jena.graph.TripleMatch convertToJenaTripleMatch(final TripleStorageFilter filter) {
         return new TripleMatch() {
 
             public Node getMatchSubject() {
@@ -237,23 +331,26 @@ public class JenaConversionUtil {
     }
 
     /**
-     * Serialzes the content of a {@link org.sindice.rdfcommons.model.TripleSet} on the given output stream.
+     * Serializes the content of a {@link org.sindice.rdfcommons.model.TripleSet}
+     * on the given output stream.
      *
-     * @param os
-     * @param ts
+     * @param ts triple set to be serialized.
+     * @param os output stream to write serialization.
      */
-    public static void serializeToRDF(TripleSet ts, OutputStream os) {
+    public synchronized void serializeToRDF(TripleSet ts, OutputStream os) {
         Model model = convertTripleSetToJenaModel(ts);
         model.write(os, "RDF/XML-ABBREV");
     }
 
     /**
-     * Converts a {@link org.sindice.rdfcommons.storage.TripleStorageFilter} in a <i>SPARQL Construct</i> query.
+     * Converts a {@link org.sindice.rdfcommons.storage.TripleStorageFilter}
+     * in a <i>SPARQL Construct</i> query.
      *
+     * @param graphName
      * @param tsf
      * @return the SPARQL query.
      */
-    public static String convertToSparqlConstructQuery(String graphName, TripleStorageFilter tsf) {
+    public synchronized String convertToSparqlConstructQuery(String graphName, TripleStorageFilter tsf) {
         return String.format(
                 "PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> " +
                 "CONSTRUCT {%s %s %s} " +
@@ -283,45 +380,19 @@ public class JenaConversionUtil {
      * @return the datatype.
      * @throws IllegalArgumentException if the object is not supported.
      */
-    public static RDFDatatype getRDFDatatype(Object o) {
-        if(o instanceof String) {
-            return XSDDatatype.XSDstring;
+    public synchronized RDFDatatype getRDFDatatype(Object o) {
+        final RDFDatatype result = TypeMapper.getInstance().getTypeByValue(o);
+        if(result == null) {
+            throw new IllegalArgumentException("Invalid object type: " + o);
         }
-        if(o instanceof Integer) {
-            return XSDDatatype.XSDinteger;
-        }
-        if(o instanceof Long) {
-            return XSDDatatype.XSDlong;
-        }
-        if(o instanceof Short) {
-            return XSDDatatype.XSDshort;
-        }
-        if(o instanceof Float) {
-            return XSDDatatype.XSDfloat;
-        }
-        if(o instanceof Double) {
-            return XSDDatatype.XSDdouble;
-        }
-        if(o instanceof Byte) {
-            return XSDDatatype.XSDbyte;
-        }
-        if(o instanceof Boolean) {
-            return XSDDatatype.XSDboolean;
-        }
-        if(o instanceof Character) {
-            return XSDDatatype.XSDstring;
-        }
-        if(o instanceof Date) {
-            return XSDDatatype.XSDdateTime;
-        }
-        throw new IllegalArgumentException("Invalid object type: " + o);
+        return result;
     }
 
-    private static String toTerm(String var, String in) {
+    private String toTerm(String var, String in) {
         return in == null ? var : String.format("<%s>", in);
     }
 
-    private static String getRDFDatatypeFragment(Object in) {
+    private String getRDFDatatypeFragment(Object in) {
         String uri = getRDFDatatype(in).getURI();
         final int indexofFragment = uri.indexOf('#');
         if(indexofFragment == -1) {
@@ -330,18 +401,8 @@ public class JenaConversionUtil {
         return uri.substring( indexofFragment + 1 );
     }
 
-    private static String toObjectTerm(String var, Object in) {
+    private String toObjectTerm(String var, Object in) {
         return in == null ? var : String.format("\"%s\"^^xsd:%s", in.toString(), getRDFDatatypeFragment(in) );
-    }
-
-    private static Triple.ObjectType getObjectType(Node node) {
-        if(node.isLiteral()) {
-            return ObjectType.literal;
-        }
-        if(node.isBlank()) {
-            return ObjectType.bnode;
-        }
-        return ObjectType.uri;
     }
 
 }

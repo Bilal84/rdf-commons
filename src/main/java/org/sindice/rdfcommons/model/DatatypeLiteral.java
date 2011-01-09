@@ -17,17 +17,25 @@
 package org.sindice.rdfcommons.model;
 
 /**
- * Models a generic <i>RDF triple</i> literal.
+ * Declares any typed
+ * {@link org.sindice.rdfcommons.model.Triple} object literal.
  *
  * @author Michele Mostarda (mostarda@fbk.eu)
  */
-public interface Literal {
+public interface DatatypeLiteral<T> extends Literal {
 
     /**
-     * Returns the literal value.
+     * Returns the literal datatype.
      *
-     * @return the literal value.
+     * @return a valid <i>URI</i> representing a literal type.
      */
-    String getValue();
+    String getDatatype();
+
+    /**
+     * Returns the original typed value.
+     *
+     * @return the datatype original value.
+     */
+    T getTypedValue();
 
 }

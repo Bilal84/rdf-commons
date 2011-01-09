@@ -47,7 +47,7 @@ public class FakeBean {
 
     private float field6;
 
-    private FakeTypedLiteral fakeTypedLiteral;
+    private FakeDatatypeLiteral fakeTypedLiteral;
 
     private List<FakeAggregateBean> aggregateBeansCollection;
 
@@ -68,7 +68,7 @@ public class FakeBean {
             throw new RuntimeException(murle);
         }
         this.field6 = 3.1415f;
-        fakeTypedLiteral = new FakeTypedLiteral();
+        fakeTypedLiteral = new FakeDatatypeLiteral();
         aggregateBeansCollection = Arrays.asList( new FakeAggregateBean(), new FakeAggregateBean() );
         aggregateBeansArray = new FakeAggregateBean[]{
                 new FakeAggregateBean(),
@@ -128,11 +128,11 @@ public class FakeBean {
         this.field6 = field6;
     }
 
-    public FakeTypedLiteral getFakeTypedLiteral() {
+    public FakeDatatypeLiteral getFakeTypedLiteral() {
         return fakeTypedLiteral;
     }
 
-    public void setFakeTypedLiteral(FakeTypedLiteral fakeTypedLiteral) {
+    public void setFakeTypedLiteral(FakeDatatypeLiteral fakeTypedLiteral) {
         this.fakeTypedLiteral = fakeTypedLiteral;
     }
 

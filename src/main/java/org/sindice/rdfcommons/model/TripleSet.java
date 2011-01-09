@@ -30,21 +30,46 @@ import java.util.List;
 public interface TripleSet extends Iterable<Triple> {
 
     /**
-     * Adds a triple to the triple set.
+     * Adds a triple to the triple-set.
      *
      * @param sub the URI triple subject.
      * @param pred the URI triple predicate.
      * @param obj the URI triple object
+     * @param graph the graph graph for the triple.
+     * @param <O> the triple object type.
+     */
+     <O> void addTriple(String sub, String pred, O obj, String graph);
+
+    /**
+     * Adds a triple to the triple-set with default graph.
+     *
+     * @param sub the URI triple subject.
+     * @param pred the URI triple predicate.
+     * @param obj the URI triple object.
+     * @param <O> the triple object type.
      */
      <O> void addTriple(String sub, String pred, O obj);
 
     /**
-     * Adds a triple to the triple set with object literal.
+     * Adds a triple to the triple-set with object literal.
      *
      * @param sub the URI triple subject.
      * @param pred the URI triple predicate.
      * @param obj the triple object, of type declared by {#objectType}.
      * @param objectType the object type.
+     * @param graph the graph context for the triple.
+     * @param <O> the triple object type.
+     */
+     <O> void addTriple(String sub, String pred, O obj, ObjectType objectType, String graph);
+
+    /**
+     * Adds a triple to the triple-set with object literal with default graph.
+     *
+     * @param sub the URI triple subject.
+     * @param pred the URI triple predicate.
+     * @param obj the triple object, of type declared by {#objectType}.
+     * @param objectType the object type.
+     * @param <O> the triple object type.
      */
      <O> void addTriple(String sub, String pred, O obj, ObjectType objectType);
 
@@ -56,6 +81,20 @@ public interface TripleSet extends Iterable<Triple> {
      * @param obj the object URI or literal.
      * @param subjectType the type of the subject.
      * @param objectType the type of the object.
+     * @param graph the graph context of the triple.
+     * @param <O> the triple object type.
+     */
+    <O> void addTriple(String sub, String pred, O obj, SubjectType subjectType, ObjectType objectType, String graph);
+
+    /**
+     * Adds a blank subject triple with explicit value and default graph.
+     *
+     * @param sub the subject URI or identifier.
+     * @param pred the predicate string URI.
+     * @param obj the object URI or literal.
+     * @param subjectType the type of the subject.
+     * @param objectType the type of the object.
+     * @param <O> the triple object type.
      */
     <O> void addTriple(String sub, String pred, O obj, SubjectType subjectType, ObjectType objectType);
 
@@ -79,6 +118,19 @@ public interface TripleSet extends Iterable<Triple> {
      * @param pred the predicate URI.
      * @param obj the object string.
      * @param objectType the type of the object.
+     * @param graph the graph context of the triple.
+     * @param <O> the triple object type.
+     * @return the blank subject.
+     */
+    <O> String addBNodeSubjectTriple(String pred, O obj, ObjectType objectType, String graph);
+
+    /**
+     * Adds a triple with blank subject and default graph.
+     *
+     * @param pred the predicate URI.
+     * @param obj the object string.
+     * @param objectType the type of the object.
+     * @param <O> the triple object type.
      * @return the blank subject.
      */
     <O> String addBNodeSubjectTriple(String pred, O obj, ObjectType objectType);
@@ -86,74 +138,120 @@ public interface TripleSet extends Iterable<Triple> {
     /**
      * Adds a triple with blank object.
      *
-     * @param sub
-     * @param pred
-     * @param subjectType
-     * @return the blank object.
+     * @param sub the triple subject.
+     * @param pred the triple predicate.
+     * @param subjectType the subject type.
+     * @param graph graph context for the triple.
+     * @return the blank object identifier.
+     */
+    String addBNodeObjectTriple(String sub, String pred, SubjectType subjectType, String graph);
+
+    /**
+     * Adds a triple with blank object and default graph.
+     *
+     * @param sub the triple subject.
+     * @param pred the triple predicate.
+     * @param subjectType the subject type.
+     * @return the blank object identifier.
      */
     String addBNodeObjectTriple(String sub, String pred, SubjectType subjectType);
 
     /**
      * Removes a triple from the triple set.
      *
-     * @param sub
-     * @param pred
-     * @param obj
+     * @param sub the triple subject.
+     * @param pred the triple predicate.
+     * @param obj the triple object.
+     * @param graph the triple graph.
+     * @param <O> the triple object type.
+     */
+    <O> void removeTriple(String sub, String pred, O obj, String graph);
+
+    /**
+     * Removes a triple from the triple set with default graph.
+     *
+     * @param sub the triple subject.
+     * @param pred the triple predicate.
+     * @param obj the triple object.
+     * @param <O> the triple object type.
      */
     <O> void removeTriple(String sub, String pred, O obj);
 
     /**
      * Removes a triple from the triple set with object literal.
      *
-     * @param sub
-     * @param pred
-     * @param obj
-     * @param objectType
+     * @param sub the triple subject.
+     * @param pred the triple predicate.
+     * @param obj the triple object.
+     * @param objectType the type of the object.
      */
     <O> void removeTriple(String sub, String pred, O obj, ObjectType objectType);
 
     /**
      * Checks if a triple is contained in the triple set.
      *
-     * @param sub
-     * @param pred
-     * @param obj
-     * @param subjectType
-     * @param objectType
+     * @param sub the triple subject.
+     * @param pred the triple predicate.
+     * @param obj the triple object.
+     * @param subjectType the subject type.
+     * @param objectType the type of the object.
+     * @param graph the triple graph.
+     * @param <O> the triple object type.
      * @return <code>true</code> if contained, <code>false</code> otherwise.
      */
-    <O> boolean containsTriple(String sub, String pred, O obj, SubjectType subjectType, ObjectType objectType);
+    <O> boolean containsTriple(
+            String sub, String pred, O obj, SubjectType subjectType, ObjectType objectType, String graph
+    );
+
+    /**
+     * Checks if a triple is contained in the triple set in default graph.
+     *
+     * @param sub the triple subject.
+     * @param pred the triple predicate.
+     * @param obj the triple object.
+     * @param subjectType the subject type.
+     * @param objectType the type of the object.
+     * @param <O> the triple object type.
+     * @return <code>true</code> if contained, <code>false</code> otherwise.
+     */
+    <O> boolean containsTriple(
+            String sub, String pred, O obj, SubjectType subjectType, ObjectType objectType
+    );
 
     /**
      * Checks if a triple pattern is contained in the triple set.
      * 
-     * @param sub
-     * @param pred
-     * @param obj
-     * @param subjectType
-     * @param objectType
-     * @param <O>
-     * @return
+     * @param sub the triple subject, if <code>null</code> matches any value.
+     * @param pred the triple predicate, if <code>null</code> matches any value.
+     * @param obj the triple object, if <code>nul;</code> matches any value.
+     * @param subjectType the subject type, if <code>null</code> matches any value.
+     * @param objectType the type of the object, if <code>null</code> matches any value.
+     * @param graph the triple graph, if <code>null</code> matches any value.
+     * @param <O> the triple object type.
+     * @return <code>true</code> if pattern is detected, <code>false</code> otherwise.
      */
     <O> boolean containsTriplePattern(
             String sub, String pred, O obj,
-            SubjectType subjectType, ObjectType objectType
+            SubjectType subjectType, ObjectType objectType,
+            String graph
     );
 
     /**
      * Returns a new triple set of triples matching the given pattern.
      *
-     * @param sub
-     * @param pred
-     * @param obj
-     * @param subjectType
-     * @param objectType
-     * @param <O>
-     * @return
+     * @param sub the triple subject, if <code>null</code> matches any value.
+     * @param pred the triple predicate, if <code>null</code> matches any value.
+     * @param obj the triple object, if <code>null</code> matches any value.
+     * @param subjectType the subject type, if <code>null</code> matches any value.
+     * @param objectType the type of the object, if <code>null</code> matches any value.
+     * @param graph the triple graph, if <code>null</code> matches any value.
+     * @param <O> the triple object type.
+     * @return a triple set with the matching triples.
      */
     <O> TripleSet getTriplesWithPattern(
             String sub, String pred, O obj,
-            SubjectType subjectType, ObjectType objectType
+            SubjectType subjectType, ObjectType objectType,
+            String graph
     );
 
     /**
