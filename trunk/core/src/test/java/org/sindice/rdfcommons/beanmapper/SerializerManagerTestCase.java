@@ -83,13 +83,14 @@ public class SerializerManagerTestCase {
         TripleBuffer tripleBuffer = serializationManager.serializeObject(fakeBean);
         logger.debug(tripleBuffer);
         containsFakeBean(fakeBean, tripleBuffer);
+        assert tripleBuffer.getSize() == 44 : "Unexpected size for triple buffer.";
     }
 
    @Test
     public void testRealBeanSerialization() throws SerializationException {
         TripleBuffer tripleBuffer = serializationManager.serializeObject( new Rectangle() );
         logger.debug(tripleBuffer);
-        assert tripleBuffer.getSize() > 0 : "Unespected triples size: " + tripleBuffer.getSize();
+        assert tripleBuffer.getSize() > 0 : "Unexpected triples size: " + tripleBuffer.getSize();
     }
 
     @Test
@@ -352,6 +353,15 @@ public class SerializerManagerTestCase {
             "http://org.sindice.rdfcommons.beanmapper/FakeBean#field6",
             3.1415f, ObjectType.literal
         );
+
+        // null values are no more serialized.
+        /*
+        assert tripleBuffer.containsTriple(
+            instanceURL,
+            "http://org.sindice.rdfcommons.beanmapper/FakeBean#field7",
+            "null", ObjectType.literal
+        );
+        */
 
         assert tripleBuffer.containsTriple(
             instanceURL,
