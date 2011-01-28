@@ -83,8 +83,11 @@ public class BeanSerializer extends BaseSerializer<Object> {
                 if( isIgnored(propertyReadMethod) ) {
                     continue;
                 }
-
-                Object propertyValue = entry.getValue();
+                // Avoid serialization of null values.
+                final Object propertyValue = entry.getValue();
+                if(propertyValue == null) {
+                    continue;
+                }
 
                 Identifier identifierEntry = context.serialize(
                         context,

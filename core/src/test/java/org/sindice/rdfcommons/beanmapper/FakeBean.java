@@ -47,6 +47,8 @@ public class FakeBean {
 
     private float field6;
 
+    private Object field7;
+
     private FakeDatatypeLiteral fakeTypedLiteral;
 
     private List<FakeAggregateBean> aggregateBeansCollection;
@@ -68,6 +70,7 @@ public class FakeBean {
             throw new RuntimeException(murle);
         }
         this.field6 = 3.1415f;
+        this.field7 = null; // null value, expected to be ignored with default configuration.
         fakeTypedLiteral = new FakeDatatypeLiteral();
         aggregateBeansCollection = Arrays.asList( new FakeAggregateBean(), new FakeAggregateBean() );
         aggregateBeansArray = new FakeAggregateBean[]{
@@ -128,6 +131,14 @@ public class FakeBean {
         this.field6 = field6;
     }
 
+    public Object getField7() {
+        return field7;
+    }
+
+    public void setField7(Object field7) {
+        this.field7 = field7;
+    }
+
     public FakeDatatypeLiteral getFakeTypedLiteral() {
         return fakeTypedLiteral;
     }
@@ -177,6 +188,7 @@ public class FakeBean {
                 ( field4 == null ? 1 : field4.hashCode() * 3 ) *
                 ( field5 == null ? 1 : field5.hashCode() * 5 ) *
                 ( field6 * 7 ) *
+                ( field7 == null ? 1 : field7.hashCode() ) *
                 ( fakeTypedLiteral == null ? 1 : fakeTypedLiteral.hashCode() ) *
                 ( aggregateBeansCollection == null ? 1 : aggregateBeansCollection.hashCode() ) *
                 ( aggregateBeansArray == null ? 1 : aggregateBeansArray.hashCode() ) *
@@ -205,6 +217,8 @@ public class FakeBean {
                     field5 != null ? field5.equals(other.field5) : other.field5 == null
                     &&
                     field6 == other.field6
+                    &&
+                    field7 != null ? field7.equals(other.field7) : other.field7 == null
                     &&
                     fakeTypedLiteral == null
                             ?
