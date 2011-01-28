@@ -113,6 +113,14 @@
             <layout>default</layout>
         </repository>
 
+        <!-- Jena Repository. -->
+        <repository>
+            <id>jena-repository</id>
+            <name>Jena Repository</name>
+            <url>http://openjena.org/repo</url>
+            <layout>default</layout>
+        </repository>
+
         <!-- Fluido Skin Repository. -->
         <repository>
             <id>fluido-skin-repository</id>
@@ -274,7 +282,25 @@
         </extensions>
     </build>
 
-	<modules>
+    <dependencies>
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>1.2.16</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>5.8</version>
+            <classifier>jdk15</classifier>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <modules>
 		<module>core</module>
+		<module>virtuoso-triplestore</module>
 	</modules>	
 </project>
