@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  author: Michele Mostarda (michele@sindice.com)
+  version: $Id$
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+	<parent>
+		<groupId>org.sindice.rdfcommons</groupId>
+	    <artifactId>rdfcommons-parent</artifactId>
+	    <version>0.9.0-SNAPSHOT</version>
+	</parent>
+
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>org.sindice.rdfcommons</groupId>
+    <artifactId>virtuoso-triplestore</artifactId>
+    <packaging>jar</packaging>
+    <version>0.9.0-SNAPSHOT</version>
+    <name>RDFCommons - Virtuoso Jena Adapter Triple Store</name>
+
+    <dependencies>
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>1.2.15</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>com.sun.jdmk</groupId>
+                    <artifactId>jmxtools</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>com.sun.jmx</groupId>
+                    <artifactId>jmxri</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>javax.jms</groupId>
+                    <artifactId>jms</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>javax.mail</groupId>
+                    <artifactId>mail</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>junit</groupId>
+                    <artifactId>junit</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>oro</groupId>
+                    <artifactId>oro</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>com.hp.hpl.jena</groupId>
+            <artifactId>jena</artifactId>
+            <version>2.5.5</version>
+		</dependency>
+        <dependency>
+            <groupId>com.openlink.virtuoso</groupId>
+            <artifactId>virtuoso-jena</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.openlink.virtuoso</groupId>
+            <artifactId>virtuoso-jdbc-3</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+        <dependency>
+		    <groupId>org.sindice.rdfcommons</groupId>
+		    <artifactId>core</artifactId>
+		    <version>0.9.0-SNAPSHOT</version>
+        </dependency>
+        <!-- BEGIN test dependencies -->
+        <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>5.8</version>
+            <classifier>jdk15</classifier>
+            <scope>test</scope>
+        </dependency>
+        <!-- END test dependencies -->
+    </dependencies>
+
+</project>
