@@ -309,7 +309,7 @@ public class JenaConversionUtil implements LibAdapter<Node, Object> {
                     return
                             objectMatch == null
                                 ?
-                            Node.createAnon()
+                            null
                                 :
                             Node.createAnon( AnonId.create(objectMatch.toString()) );
                 }
@@ -340,37 +340,6 @@ public class JenaConversionUtil implements LibAdapter<Node, Object> {
     public synchronized void serializeToRDF(TripleSet ts, OutputStream os) {
         Model model = convertTripleSetToJenaModel(ts);
         model.write(os, "RDF/XML-ABBREV");
-    }
-
-    /**
-     * Converts a {@link org.sindice.rdfcommons.storage.TripleStorageFilter}
-     * in a <i>SPARQL Construct</i> query.
-     *
-     * @param graphName
-     * @param tsf
-     * @return the SPARQL query.
-     */
-    public synchronized String convertToSparqlConstructQuery(String graphName, TripleStorageFilter tsf) {
-        return String.format(
-                "PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> " +
-                "CONSTRUCT {%s %s %s} " +
-                "FROM <%s> " +
-                "WHERE {%s %s %s %s %s %s}",
-
-                toTerm( "?s", tsf.getSubjectMatching()   ),
-                toTerm( "?p", tsf.getPredicateMatching() ),
-                toObjectTerm( "?o", tsf.getObjectMatching() ),
-
-                graphName,
-
-                toTerm( "?s", tsf.getSubjectMatching()   ),
-                toTerm( "?p", tsf.getPredicateMatching() ),
-                toObjectTerm( "?o", tsf.getObjectMatching() ),
-
-                (tsf.getSubjectMatching() == null && tsf.requireSubjectBlank()) ? ". FILTER isBlank(?s)"   : "",
-                (tsf.getObjectMatching()  == null && tsf.requireObjectBlank())  ? ". FILTER isBlank(?o)"   : "",
-                (tsf.getObjectMatching()  == null && tsf.requireLiteral())      ? ". FILTER isLiteral(?o)" : ""
-        );
     }
 
     /**
