@@ -27,19 +27,24 @@ import org.sindice.rdfcommons.model.TripleSet;
  * @author Michele Mostarda ( mostarda@fbk.eu )
  * @version $Id$
  */
+// TODO: add exceptions on sensible methods.
 public interface TripleStorage {
 
     /**
      * Opens the triple storage.
      *
      * @param config configuration for the triple storage.
+     * 
+     * @throws StorageException
      */
-    void openStorage(TripleStorageConfig config);
+    void openStorage(TripleStorageConfig config) throws StorageException;
 
     /**
      * Closes the triple storage.
+     * 
+     * @throws StorageException
      */
-    void closeStorage();
+    void closeStorage() throws StorageException;
 
     /**
      * Checks if a triple storage is open or not.
@@ -87,8 +92,9 @@ public interface TripleStorage {
      *
      * @param tripleFilter the filter to be applied on the triples. 
      * @return all the triples matching the filter.
+     * @throws StorageException
      */
-    TripleIterator getTriplesIterator(TripleStorageFilter tripleFilter);
+    TripleIterator getTriplesIterator(TripleStorageFilter tripleFilter) throws StorageException;
 
     /**
      * Returns an iterator over the triples matching the filter searched in the named <i>graph</i>.
@@ -96,16 +102,19 @@ public interface TripleStorage {
      * @param graph name of the graph.
      * @param tripleFilter
      * @return all the triples matching the filter.
+     * 
+     * @throws StorageException
      */
-    TripleIterator getTriplesIterator(String graph, TripleStorageFilter tripleFilter);
+    TripleIterator getTriplesIterator(String graph, TripleStorageFilter tripleFilter) throws StorageException;
 
     /**
      * Returns a set of triples matching the triple filter searched in the default graph.
      *  
      * @param tripleFilter
      * @return set of triples matching with filter criteria.
+     * @throws StorageException
      */
-    TripleSet getTriples(TripleStorageFilter tripleFilter);
+    TripleSet getTriples(TripleStorageFilter tripleFilter) throws StorageException;
 
     /**
      * Returns a set of triples matching the triple filter searched in the named <i>graph</i>.
@@ -113,8 +122,9 @@ public interface TripleStorage {
      * @param graph
      * @param tripleFilter
      * @return set of triples matching with filter criteria.
+     * @throws StorageException
      */
-    TripleSet getTriples(String graph, TripleStorageFilter tripleFilter);
+    TripleSet getTriples(String graph, TripleStorageFilter tripleFilter) throws StorageException;
 
     /**
      * Returns the <i>SPARQL</i> endpoint of the triple storage.
@@ -125,12 +135,15 @@ public interface TripleStorage {
 
     /**
      * Removes the entire content of the named <i>graph</i>.
+     * @param graph
      */
-    void clear(String graph);
+    void clear(String graph) throws StorageException;
 
     /**
      * Removes the content of the entire storage.
+     *
+     * @throws StorageException if an error occurs during deletion.
      */
-    void clearAll();
+    void clearAll() throws StorageException;
 
 }
