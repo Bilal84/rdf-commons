@@ -12,9 +12,10 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
+ *
  */
 
-package org.sindice.rdfcommons.tripleconverter.nquads;
+package org.sindice.rdfcommons.adapter.sesame.nquads;
 
 import org.openrdf.model.BNode;
 import org.openrdf.model.Resource;
@@ -29,6 +30,7 @@ import org.openrdf.rio.RDFHandler;
 import org.openrdf.rio.RDFHandlerException;
 import org.openrdf.rio.RDFParseException;
 import org.openrdf.rio.helpers.RDFParserBase;
+import org.sindice.rdfcommons.util.ReaderInputStream;
 
 import java.io.BufferedInputStream;
 import java.io.IOException;
@@ -242,10 +244,15 @@ public class NQuadsParser extends RDFParserBase {
      */
     private void consumeSpaces(BufferedInputStream bis) throws IOException {
         char c;
-        do {
+        while(true) {
             mark(bis);
             c = readChar(bis);
-        } while (c == ' ' || c == '\r' || c == '\f' || c == '\t');
+            if(c == ' ' || c == '\r' || c == '\f' || c == '\t') {
+                mark(bis);
+            } else {
+                break;
+            }
+        }
         reset(bis);
     }
 
@@ -260,7 +267,7 @@ public class NQuadsParser extends RDFParserBase {
     }
 
     /**
-     * Parses a URI encosed within &lt; and &gt; brackets.
+     * Parses a URI enclosed within &lt; and &gt; brackets.
      * @param bis
      * @return the parsed URI.
      * @throws IOException
@@ -312,7 +319,7 @@ public class NQuadsParser extends RDFParserBase {
         StringBuilder sb = new StringBuilder();
         while(true) {
             c = readChar(bis);
-            if(c != ' ') {
+            if(c != ' ' && c != '<') {
                 sb.append(c);
                 mark(bis);
             } else {
@@ -338,7 +345,7 @@ public class NQuadsParser extends RDFParserBase {
      */
     private LiteralAttribute parseLiteralAttribute(BufferedInputStream bis) throws IOException {
         char c = readChar(bis);
-        if(c == ' ') {
+        if(c != '^' && c != '@') {
             reset(bis);
             return null;
         }
@@ -363,7 +370,7 @@ public class NQuadsParser extends RDFParserBase {
                 mark(bis);
                 continue;
             }
-            if(c != ' ') {
+            if(c != ' ' && c != '<') {
                 mark(bis);
                 sb.append(c);
             } else {

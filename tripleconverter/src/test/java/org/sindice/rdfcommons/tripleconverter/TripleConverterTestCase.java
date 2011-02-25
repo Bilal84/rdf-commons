@@ -16,10 +16,10 @@
 
 package org.sindice.rdfcommons.tripleconverter;
 
-import org.junit.After;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
+import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
 
 import java.io.BufferedInputStream;
 import java.io.File;
@@ -35,12 +35,12 @@ public class TripleConverterTestCase {
 
     private TripleConverter tripleConverter;
 
-    @Before
+    @BeforeMethod
     public void setUp() {
         tripleConverter = new TripleConverter();
     }
 
-    @After
+    @AfterMethod
     public void tearDown() {
         tripleConverter = null;
     }
@@ -75,7 +75,7 @@ public class TripleConverterTestCase {
                 lineCounter++;
             }
         }
-        Assert.assertEquals(3773, lineCounter);
+        Assert.assertEquals(lineCounter, 3773);
         bis.close();
     }
 

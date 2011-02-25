@@ -39,23 +39,14 @@
 		    <version>1.5.6</version>
 		</dependency>
 	    <!-- END: logger -->
-    
+
+        <dependency>
+            <groupId>org.sindice.rdfcommons</groupId>
+            <artifactId>core</artifactId>
+            <version>0.9.0-SNAPSHOT</version>
+        </dependency>
+
         <!-- BEGIN: Sesame 2.2.4 -->
-        <dependency>
-		    <groupId>org.openrdf.sesame</groupId>
-		    <artifactId>sesame-sail-memory</artifactId>
-		    <version>2.2.4</version>
-		</dependency>
-        <dependency>
-		    <groupId>org.openrdf.sesame</groupId>
-		    <artifactId>sesame-sail-inferencer</artifactId>
-		    <version>2.2.4</version>
-		</dependency>
-		<dependency>
-		    <groupId>org.openrdf.sesame</groupId>
-		    <artifactId>sesame-sail-api</artifactId>
-		    <version>2.2.4</version>
-		</dependency>
 		<dependency>
 		    <groupId>org.openrdf.sesame</groupId>
 		    <artifactId>sesame-rio-turtle</artifactId>
@@ -86,66 +77,6 @@
 		    <artifactId>sesame-repository-sail</artifactId>
 		    <version>2.2.4</version>
 		</dependency>
-		<dependency>
-		    <groupId>org.openrdf.sesame</groupId>
-		    <artifactId>sesame-repository-api</artifactId>
-		    <version>2.2.4</version>
-		</dependency>
-		<dependency>
-		    <groupId>org.openrdf.sesame</groupId>
-		    <artifactId>sesame-queryalgebra-model</artifactId>
-		    <version>2.2.4</version>
-		</dependency>
-		<dependency>
-		    <groupId>org.openrdf.sesame</groupId>
-		    <artifactId>sesame-queryalgebra-evaluation</artifactId>
-		    <version>2.2.4</version>
-		</dependency>
-		<dependency>
-		    <groupId>org.openrdf.sesame</groupId>
-		    <artifactId>sesame-query</artifactId>
-		    <version>2.2.4</version>
-		</dependency>
-		<dependency>
-		    <groupId>org.openrdf.sesame</groupId>
-		    <artifactId>sesame-model</artifactId>
-		    <version>2.2.4</version>
-		</dependency>
-		<dependency>
-			<groupId>info.aduna.commons</groupId>
-			<artifactId>aduna-commons-xml</artifactId>
-			<version>2.6.0</version>
-		</dependency>
-		<dependency>
-			<groupId>info.aduna.commons</groupId>
-			<artifactId>aduna-commons-text</artifactId>
-			<version>2.6.0</version>
-		</dependency>
-		<dependency>
-			<groupId>info.aduna.commons</groupId>
-			<artifactId>aduna-commons-net</artifactId>
-			<version>2.6.0</version>
-		</dependency>
-		<dependency>
-			<groupId>info.aduna.commons</groupId>
-			<artifactId>aduna-commons-lang</artifactId>
-			<version>2.6.0</version>
-		</dependency>
-		<dependency>
-			<groupId>info.aduna.commons</groupId>
-			<artifactId>aduna-commons-iteration</artifactId>
-			<version>2.6.0</version>
-		</dependency>
-		<dependency>
-			<groupId>info.aduna.commons</groupId>
-			<artifactId>aduna-commons-io</artifactId>
-			<version>2.6.0</version>
-		</dependency>
-		<dependency>
-			<groupId>info.aduna.commons</groupId>
-			<artifactId>aduna-commons-concurrent</artifactId>
-			<version>2.6.0</version>
-		</dependency>
         <!-- END: Sesame 2.2.4 -->
 
 		<!-- BEGIN: CLI library -->
@@ -158,12 +89,13 @@
         
 		<!-- BEGIN: testing -->
         <dependency>
-		    <groupId>junit</groupId>
-		    <artifactId>junit</artifactId>
-		    <version>4.5</version>
-		    <scope>test</scope>
-		</dependency>
-		<dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>5.8</version>
+            <classifier>jdk15</classifier>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
 		    <groupId>org.mockito</groupId>
 		    <artifactId>mockito-core</artifactId>
 		    <version>1.8.3</version>

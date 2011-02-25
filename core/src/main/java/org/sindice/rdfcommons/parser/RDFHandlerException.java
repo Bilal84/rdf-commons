@@ -1,11 +1,11 @@
-/**
+/*
  * Copyright 2008-2010 Digital Enterprise Research Institute (DERI)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *          http://www.apache.org/licenses/LICENSE-2.0
+ *     http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -14,25 +14,13 @@
  * limitations under the License.
  */
 
-package org.sindice.rdfcommons.tripleconverter.nquads;
-
-import org.openrdf.rio.RDFFormat;
-
-import java.nio.charset.Charset;
+package org.sindice.rdfcommons.parser;
 
 /**
- * Defines the <i>N-Quads</i> format.
+ * Models any exception raised by the {@link RDFHandler}.
  *
+ * @see RDFHandler
  * @author Michele Mostarda (mostarda@fbk.eu)
  */
-public class NQuads {
-
-    /**
-     * Returns the format associate to the <i>NQuads</i> specification.
-     */
-    public static RDFFormat FORMAT =
-               RDFFormat.register("N-Quads", "text/nquads", "nq", Charset.forName("UTF-8"));
-
-    private NQuads(){}
-
+public class RDFHandlerException extends Exception {
 }

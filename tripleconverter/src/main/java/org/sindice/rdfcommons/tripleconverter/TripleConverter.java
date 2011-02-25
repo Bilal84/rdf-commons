@@ -34,8 +34,8 @@ import org.openrdf.rio.trig.TriGParser;
 import org.openrdf.rio.trig.TriGWriter;
 import org.openrdf.rio.turtle.TurtleParser;
 import org.openrdf.rio.turtle.TurtleWriter;
-import org.sindice.rdfcommons.tripleconverter.nquads.NQuadsParser;
-import org.sindice.rdfcommons.tripleconverter.nquads.NQuadsWriter;
+import org.sindice.rdfcommons.adapter.sesame.nquads.NQuadsParser;
+import org.sindice.rdfcommons.adapter.sesame.nquads.NQuadsWriter;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;

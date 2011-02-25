@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.sindice.rdfcommons.adapter;
+package org.sindice.rdfcommons.adapter.sesame;
 
 import org.openrdf.model.Graph;
 import org.openrdf.model.Statement;
@@ -22,7 +22,8 @@ import org.openrdf.model.impl.ContextStatementImpl;
 import org.openrdf.model.impl.LiteralImpl;
 import org.openrdf.model.impl.URIImpl;
 import org.openrdf.model.vocabulary.XMLSchema;
-import org.sindice.rdfcommons.adapter.sesame.SesameConversionUtil;
+import org.sindice.rdfcommons.adapter.DefaultDatatypeLiteral;
+import org.sindice.rdfcommons.adapter.LiteralFactoryException;
 import org.sindice.rdfcommons.model.DatatypeLiteral;
 import org.sindice.rdfcommons.model.LanguageLiteral;
 import org.sindice.rdfcommons.model.Triple;
