@@ -275,7 +275,8 @@
 
     <modules>
 		<module>core</module>
-		<module>tripleconverter</module>
+        <module>sesame-adapter</module>
+        <module>tripleconverter</module>
 		<module>virtuoso-jena-triplestore</module>
 	</modules>
 
