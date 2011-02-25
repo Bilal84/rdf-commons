@@ -30,14 +30,24 @@ import java.io.InputStream;
 public interface RDFParser {
 
     /**
-     * Parsers the input stream and returns a triple set.
+     * Parses the given input stream and returns a triple set.
      *
      * @param is input stream.
      * @param graph default graph for triples without an explicit context.
-     * @return the triple set.
+     * @return the triple set representing the parsed triples.
      * @throws RDFParserException if an error occurs during the parsing.
      * @throws org.sindice.rdfcommons.adapter.LiteralFactoryException if an error occurs during literal mapping.
      */
     TripleSet parse(InputStream is, String graph) throws RDFParserException, LiteralFactoryException;
 
+    /**
+     * Parses the given input stream and notifies parsing events of the given handler.
+     *
+     * @param is input stream.
+     * @param graph default graph for triples without an explicit context.
+     * @param handler the handler receiving the intercepted triples.
+     * @throws org.sindice.rdfcommons.adapter.LiteralFactoryException
+     * @throws RDFParserException
+     */
+    void parse(InputStream is, String graph, RDFHandler handler) throws RDFParserException, LiteralFactoryException;
 }

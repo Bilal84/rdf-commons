@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.sindice.rdfcommons.tripleconverter.nquads;
+package org.sindice.rdfcommons.adapter.sesame.nquads;
 
 import org.openrdf.model.BNode;
 import org.openrdf.model.Literal;

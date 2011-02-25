@@ -14,7 +14,7 @@
  *  limitations under the License.
  */
 
-package org.sindice.rdfcommons.tripleconverter.nquads;
+package org.sindice.rdfcommons.util;
 
 import java.io.IOException;
 import java.io.InputStream;

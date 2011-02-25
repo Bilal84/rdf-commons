@@ -19,6 +19,7 @@ package org.sindice.rdfcommons.adapter.jena;
 import com.hp.hpl.jena.rdf.model.Model;
 import com.hp.hpl.jena.rdf.model.ModelFactory;
 import org.sindice.rdfcommons.adapter.LiteralFactoryException;
+import org.sindice.rdfcommons.parser.RDFHandler;
 import org.sindice.rdfcommons.parser.RDFParser;
 import org.sindice.rdfcommons.parser.RDFParserException;
 import org.sindice.rdfcommons.model.TripleSet;
@@ -61,6 +62,10 @@ public class JenaRDFXMLParser implements RDFParser {
             throw new RDFParserException("An error occurred during stream reading.", e);
         }
         return JenaConversionUtil.getInstance().convertJenaModelToTripleSet(model, defaultGraph);
+    }
+
+    public void parse(InputStream is, String graph, RDFHandler handler) {
+        throw new UnsupportedOperationException();
     }
 
 }
