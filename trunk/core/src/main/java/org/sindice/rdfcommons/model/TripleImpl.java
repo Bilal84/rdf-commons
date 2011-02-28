@@ -252,6 +252,12 @@ public class TripleImpl<O> implements Triple<O> {
         return sb.toString();
     }
 
+    public String toNQuadsString() {
+        final StringBuilder sb = new StringBuilder();
+        toNQuadsString(sb);
+        return sb.toString();
+    }
+
     @Override
     public boolean equals(Object o) {
         if(o == null) {
@@ -299,6 +305,16 @@ public class TripleImpl<O> implements Triple<O> {
         toObjectString(sb);
     }
 
+    private void toNQuadsString(StringBuilder sb) {
+        toSubjectString(sb);
+        sb.append(' ');
+        toPredicateString(sb);
+        sb.append(' ');
+        toObjectString(sb);
+        sb.append(' ');
+        toGraphString(sb);
+    }
+
     private void toSubjectString(StringBuilder sb) {
         if(subjectType == SubjectType.bnode) {
             sb.append("_:").append(subject);
@@ -334,6 +350,13 @@ public class TripleImpl<O> implements Triple<O> {
         if(objectLang != null) {
             sb.append('@').append(objectLang);
         }
+    }
+
+    private void toGraphString(StringBuilder sb) {
+        if(graph == null) return;
+        sb.append('<');
+        sb.append(graph);
+        sb.append('>');
     }
 }
 

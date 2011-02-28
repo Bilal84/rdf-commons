@@ -110,4 +110,8 @@ public interface Triple<O> extends Quad {
      */
     String toNTriplesString();
 
+    /**
+     * @return the <i>N-Quads</i> representation for this triple.
+     */
+    String toNQuadsString();
 }
