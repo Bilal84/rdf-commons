@@ -1,0 +1,17 @@
+<ns1> <http://rdfcommons.sindice.org/xmlrdf/namespace> <http://ns.dom/path1> <http://test/xml/rdf> .
+<ns2> <http://rdfcommons.sindice.org/xmlrdf/namespace> <http://ns.dom/path2> <http://test/xml/rdf> .
+<a/> <http://rdfcommons.sindice.org/xmlrdf/attribute> <a/#xmlns:ns1> <http://test/xml/rdf> .
+<a/#xmlns:ns1> <http://rdfcommons.sindice.org/xmlrdf/value> "http://ns.dom/path1" <http://test/xml/rdf> .
+<a/> <http://rdfcommons.sindice.org/xmlrdf/attribute> <a/#xmlns:ns2> <http://test/xml/rdf> .
+<a/#xmlns:ns2> <http://rdfcommons.sindice.org/xmlrdf/value> "http://ns.dom/path2" <http://test/xml/rdf> .
+<a/> <http://rdfcommons.sindice.org/xmlrdf/attribute> <a/#attrA1> <http://test/xml/rdf> .
+<a/#attrA1> <http://rdfcommons.sindice.org/xmlrdf/value> "vA1" <http://test/xml/rdf> .
+<a/ns1:b/> <http://rdfcommons.sindice.org/xmlrdf/attribute> <a/ns1:b/#attrB1> <http://test/xml/rdf> .
+<a/ns1:b/#attrB1> <http://rdfcommons.sindice.org/xmlrdf/value> "vB1" <http://test/xml/rdf> .
+<a/ns1:b/> <http://rdfcommons.sindice.org/xmlrdf/attribute> <a/ns1:b/#attrB2> <http://test/xml/rdf> .
+<a/ns1:b/#attrB2> <http://rdfcommons.sindice.org/xmlrdf/value> "bB2" <http://test/xml/rdf> .
+<a/> <http://rdfcommons.sindice.org/xmlrdf/child> <a/ns1:b/> <http://test/xml/rdf> .
+<a/ns1:b/ns2:c/> <http://rdfcommons.sindice.org/xmlrdf/attribute> <a/ns1:b/ns2:c/#attrC1> <http://test/xml/rdf> .
+<a/ns1:b/ns2:c/#attrC1> <http://rdfcommons.sindice.org/xmlrdf/value> "vC1" <http://test/xml/rdf> .
+<a/ns1:b/> <http://rdfcommons.sindice.org/xmlrdf/child> <a/ns1:b/ns2:c/> <http://test/xml/rdf> .
+<a/ns1:b/ns2:c/> <http://rdfcommons.sindice.org/xmlrdf/content> "TXT1" <http://test/xml/rdf> .
