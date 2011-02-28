@@ -232,9 +232,10 @@ public class TripleBuffer implements TripleSet {
         return new TripleBuffer(result);
     }
     
-    public void dumpContent(PrintStream printStream) {
+    public void toNQuads(PrintStream printStream) {
         for(Triple triple : triples) {
-            printStream.println( triple );
+            printStream.print( triple.toNQuadsString() );
+            printStream.println(" .");
         }
     }
 
@@ -242,7 +243,7 @@ public class TripleBuffer implements TripleSet {
     public String toString() {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         PrintStream ps = new PrintStream(baos);
-        dumpContent(ps);
+        toNQuads(ps);
         ps.close();
         return baos.toString();
     }

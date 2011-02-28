@@ -313,5 +313,5 @@ public interface TripleSet extends Iterable<Triple> {
      *
      * @param ps print stream to dump content.
      */
-    void dumpContent(PrintStream ps);
+    void toNQuads(PrintStream ps);
 }
