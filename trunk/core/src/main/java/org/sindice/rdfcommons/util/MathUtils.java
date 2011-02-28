@@ -20,7 +20,7 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 /**
- * General utility functions.
+ * General utility math functions.
  *
  * @author Michele Mostarda (mostarda@fbk.eu)
  * @author Davide Palmisano (palmisano@fbk.eu)
