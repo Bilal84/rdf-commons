@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    author: Michele Mostarda (mostarda@fbk.eu)
+    version: $Id: pom.xml 80 2011-02-25 15:30:22Z michele.mostarda $
+ -->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>org.sindice.rdfcommons</groupId>
+        <artifactId>rdfcommons-parent</artifactId>
+        <version>0.9.0-SNAPSHOT</version>
+    </parent>
+
+    <groupId>org.sindice.rdfcommons</groupId>
+    <artifactId>jena-adapter</artifactId>
+    <packaging>jar</packaging>
+    <version>0.9.0-SNAPSHOT</version>
+    <name>RDFCommons - Jena Adapter</name>
+    <description>Jena Specific Implementation of the Core API.</description>
+
+    <dependencies>
+        <!-- BEGIN: Logging -->
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>1.2.16</version>
+            <scope>test</scope>
+        </dependency>
+        <!-- END:   Logging -->
+
+        <dependency>
+            <groupId>org.sindice.rdfcommons</groupId>
+            <artifactId>core</artifactId>
+            <version>0.9.0-SNAPSHOT</version>
+        </dependency>
+
+        <!-- BEGIN: Jena -->
+        <dependency>
+            <groupId>com.hp.hpl.jena</groupId>
+            <artifactId>jena</artifactId>
+            <version>2.5.5</version>
+        </dependency>
+        <!-- END:   Jena -->
+
+        <!-- BEGIN: testing -->
+        <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>5.8</version>
+            <classifier>jdk15</classifier>
+            <scope>test</scope>
+        </dependency>
+		<dependency>
+		    <groupId>org.mockito</groupId>
+		    <artifactId>mockito-core</artifactId>
+		    <version>1.8.3</version>
+			<scope>test</scope>
+		</dependency>
+		<!-- END: testing -->
+    </dependencies>
+</project>
+
