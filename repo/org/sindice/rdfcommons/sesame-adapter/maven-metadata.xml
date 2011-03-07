@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+  <groupId>org.sindice.rdfcommons</groupId>
+  <artifactId>sesame-adapter</artifactId>
+  <version>0.9.0-SNAPSHOT</version>
+  <versioning>
+    <versions>
+      <version>0.9.0-SNAPSHOT</version>
+    </versions>
+    <lastUpdated>20110307220153</lastUpdated>
+  </versioning>
+</metadata>
