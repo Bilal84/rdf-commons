@@ -66,6 +66,23 @@ public class NQuadsParserTest {
     }
 
     /**
+     * Tests parsing of empty lines and comments.
+
+     * @throws java.io.IOException
+     */
+    @Test
+    public void testParseEmptyLinesAndComments() throws RDFHandlerException, IOException, RDFParseException {
+        final ByteArrayInputStream bais = new ByteArrayInputStream(
+            "  \n\n\n# This is a comment\n\n#this is another comment."
+            .getBytes()
+        );
+        final TestRDFHandler rdfHandler = new TestRDFHandler();
+        parser.setRDFHandler(rdfHandler);
+        parser.parse(bais, "http://test.base.uri");
+        Assert.assertEquals(rdfHandler.getStatements().size(), 0);
+    }
+
+    /**
      * Tests basic N-Quads parsing.
      *
      * @throws org.openrdf.rio.RDFHandlerException
@@ -264,7 +281,7 @@ public class NQuadsParserTest {
         );
 
         rdfHandler.assertHandler(5);
-        parseLocationListerner.assertListener(7, 107);
+        parseLocationListerner.assertListener(8, 107);
     }
 
     /**
