@@ -195,12 +195,17 @@ public class NQuadsParser extends RDFParserBase {
     private boolean parseLine(BufferedInputStream bis)
     throws IOException, RDFParseException, RDFHandlerException {
 
-        if(!consumeSpacesAndNotEOS(bis)) {
+        // Consumes initial spaces.
+        if( ! consumeSpacesAndNotEOS(bis) ) {
             return false;
         }
 
-        if(consumeEmptyLine(bis)) {
-            return true;
+        // Consumes empty line or line comment.
+        try {
+            if(consumeEmptyLine(bis)) return true;
+            if( consumeComment(bis) ) return true;
+        } catch (EOS eos) {
+            return false;
         }
 
         Resource sub = parseSubject(bis);
@@ -219,6 +224,42 @@ public class NQuadsParser extends RDFParserBase {
             return false;
         }
         return readChar(bis) == '\n';
+    }
+
+    /**
+     * Consumes spaces until a non space char is detected.
+     *
+     * @param bis input NQuads stream.
+     * @throws IOException
+     */
+    private void consumeSpaces(BufferedInputStream bis) throws IOException {
+        char c;
+        while(true) {
+            mark(bis);
+            c = readChar(bis);
+            if(c == ' ' || c == '\r' || c == '\f' || c == '\t') {
+                mark(bis);
+            } else {
+                break;
+            }
+        }
+        reset(bis);
+    }
+
+    /**
+     * Consumes all subsequent spaces and returns true, if End Of Stream is reached instead returns false.
+     *
+     * @param bis input NQuads stream.
+     * @return <code>true</code> if there are other chars to be consumed.
+     * @throws IOException if an error occurs while consuming stream.
+     */
+    private boolean consumeSpacesAndNotEOS(BufferedInputStream bis) throws IOException {
+        try {
+            consumeSpaces(bis);
+            return true;
+        } catch (EOS eos) {
+            return false;
+        }
     }
 
     /**
@@ -241,16 +282,23 @@ public class NQuadsParser extends RDFParserBase {
     }
 
     /**
-     * Consumes all subsequent spaces and returns true, if End Of Stream is reached instead returns false.
+     * Consumes a comment if any.
+     *
      * @param bis input NQuads stream.
-     * @return <code>true</code> if there are other chars to be consumed.
-     * @throws IOException if an error occurs while consuming stream.
+     * @return <code>true</code> if comment has been consumed, false otherwise.
+     * @throws IOException
      */
-    private boolean consumeSpacesAndNotEOS(BufferedInputStream bis) throws IOException {
-        try {
-            consumeSpaces(bis);
+    private boolean consumeComment(BufferedInputStream bis) throws IOException {
+        char c;
+        mark(bis);
+        c = readChar(bis);
+        if (c == '#') {
+            mark(bis);
+            while (readChar(bis) != '\n');
+            mark(bis);
             return true;
-        } catch (EOS eos) {
+        } else {
+            reset(bis);
             return false;
         }
     }
@@ -276,26 +324,6 @@ public class NQuadsParser extends RDFParserBase {
                 throw rdfhe;
             }
         }
-    }
-
-    /**
-     * Consumes spaces until a non space char is detected.
-     *
-     * @param bis
-     * @throws IOException
-     */
-    private void consumeSpaces(BufferedInputStream bis) throws IOException {
-        char c;
-        while(true) {
-            mark(bis);
-            c = readChar(bis);
-            if(c == ' ' || c == '\r' || c == '\f' || c == '\t') {
-                mark(bis);
-            } else {
-                break;
-            }
-        }
-        reset(bis);
     }
 
     /**
