@@ -27,7 +27,6 @@ import org.sindice.rdfcommons.model.TripleSet;
  * @author Michele Mostarda ( mostarda@fbk.eu )
  * @version $Id$
  */
-// TODO: add exceptions on sensible methods.
 public interface TripleStorage {
 
     /**
