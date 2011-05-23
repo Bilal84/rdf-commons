@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.sindice.rdfcommons.storage.virtuoso;
+package org.sindice.rdfcommons.storage.virtuoso.jena;
 
 import com.hp.hpl.jena.query.Query;
 import com.hp.hpl.jena.query.QueryFactory;

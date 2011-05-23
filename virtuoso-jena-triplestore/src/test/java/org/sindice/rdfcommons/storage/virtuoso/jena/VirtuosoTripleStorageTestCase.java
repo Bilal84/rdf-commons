@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.sindice.rdfcommons.storage.virtuoso;
+package org.sindice.rdfcommons.storage.virtuoso.jena;
 
 import org.sindice.rdfcommons.model.Triple;
 import org.sindice.rdfcommons.model.TripleBuffer;
@@ -26,6 +26,8 @@ import org.sindice.rdfcommons.storage.SparqlEndPoint;
 import org.sindice.rdfcommons.storage.SparqlEndpointException;
 import org.sindice.rdfcommons.storage.StorageException;
 import org.sindice.rdfcommons.storage.TripleStorageFilter;
+import org.sindice.rdfcommons.storage.virtuoso.jena.VirtuosoTripleStorage;
+import org.sindice.rdfcommons.storage.virtuoso.jena.VirtuosoTripleStorageConfig;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -34,7 +36,7 @@ import org.testng.annotations.Test;
 import java.net.MalformedURLException;
 
 /**
- * Test case for {@link org.sindice.rdfcommons.storage.virtuoso.VirtuosoTripleStorage}.
+ * Test case for {@link org.sindice.rdfcommons.storage.virtuoso.jena.VirtuosoTripleStorage}.
  *
  * @author Michele Mostarda ( michele.mostarda@gmail.com )
  * @version $Id$

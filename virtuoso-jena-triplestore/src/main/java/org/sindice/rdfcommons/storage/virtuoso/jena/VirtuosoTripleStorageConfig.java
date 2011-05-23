@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.sindice.rdfcommons.storage.virtuoso;
+package org.sindice.rdfcommons.storage.virtuoso.jena;
 
 import org.sindice.rdfcommons.storage.TripleStorageConfig;
 
