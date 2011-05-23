@@ -14,7 +14,7 @@
 
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.sindice.rdfcommons</groupId>
-    <artifactId>virtuoso-triplestore</artifactId>
+    <artifactId>virtuoso-jena-triplestore</artifactId>
     <packaging>jar</packaging>
     <version>0.9.0-SNAPSHOT</version>
     <name>RDFCommons - Virtuoso Jena Adapter Triple Store</name>
