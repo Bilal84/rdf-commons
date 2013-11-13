@@ -6,8 +6,8 @@ The RDF Commons Library provides a set of general utility classes for
 dealing with RDF data, providing features as:
 
    - Java Bean to RDF mapping support;
-   - RDF dataset abstraction over general RDF
-     libraries such Jena and Sesame (coming soon);
+   - Abstraction over common RDF
+     Storage support for both Jena and Sesame;
    - parsing and serialization facilities;
    - data storing and querying facilities;
    - abstract query language over RDF.
