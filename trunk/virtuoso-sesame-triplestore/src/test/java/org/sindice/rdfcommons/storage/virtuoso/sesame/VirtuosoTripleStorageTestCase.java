@@ -39,6 +39,7 @@ import java.net.MalformedURLException;
  * @author Michele Mostarda ( michele.mostarda@gmail.com )
  * @version $Id$
  */
+// TODO: common test with jena
 public class VirtuosoTripleStorageTestCase {
 
     private VirtuosoTripleStorage storage;
