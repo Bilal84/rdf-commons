@@ -24,7 +24,7 @@ package org.sindice.rdfcommons.storage;
  * @author Michele Mostarda ( mostarda@fbk.eu )
  * @version $Id$
  */
-public interface TripleStorageFilter {
+public interface TripleStorageFilter<T> {
 
     /**
      * @return the accepted subject criteria.
@@ -39,7 +39,7 @@ public interface TripleStorageFilter {
     /**
      * @return the accepted object criteria.
      */
-    Object getObjectMatching();
+    T getObjectMatching();
 
     /**
      * @return <code>true</code> if literal is required,
