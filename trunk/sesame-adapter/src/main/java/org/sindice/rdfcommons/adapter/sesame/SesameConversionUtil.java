@@ -23,12 +23,13 @@ import org.openrdf.model.Resource;
 import org.openrdf.model.Statement;
 import org.openrdf.model.URI;
 import org.openrdf.model.Value;
+import org.openrdf.model.ValueFactory;
 import org.openrdf.model.datatypes.XMLDatatypeUtil;
 import org.openrdf.model.impl.BNodeImpl;
 import org.openrdf.model.impl.ContextStatementImpl;
 import org.openrdf.model.impl.GraphImpl;
 import org.openrdf.model.impl.LiteralImpl;
-import org.openrdf.model.impl.URIImpl;
+import org.openrdf.model.impl.ValueFactoryImpl;
 import org.openrdf.model.vocabulary.XMLSchema;
 import org.sindice.rdfcommons.adapter.DefaultDatatypeLiteral;
 import org.sindice.rdfcommons.adapter.DefaultLanguageLiteral;
@@ -39,6 +40,7 @@ import org.sindice.rdfcommons.model.Triple;
 import org.sindice.rdfcommons.model.TripleBuffer;
 import org.sindice.rdfcommons.model.TripleImpl;
 import org.sindice.rdfcommons.model.TripleSet;
+import org.sindice.rdfcommons.storage.TripleStorageFilter;
 
 /**
  * Utility functions to convert data structures from <i>Jena</i> API
@@ -47,6 +49,8 @@ import org.sindice.rdfcommons.model.TripleSet;
 public class SesameConversionUtil implements LibAdapter<Literal, Object> {
 
     private static final SesameConversionUtil instance = new SesameConversionUtil();
+
+    private static final ValueFactory valueFactory = new ValueFactoryImpl();
 
     /**
      * @return the {@link org.sindice.rdfcommons.adapter.sesame.SesameConversionUtil} singleton instance.
@@ -126,7 +130,7 @@ public class SesameConversionUtil implements LibAdapter<Literal, Object> {
      *
      * @param statement input statement.
      * @return output triple representing the input statement.
-     * @throws org.sindice.rdfcommons.adapter.LiteralFactoryException in an error occues during literal mapping.
+     * @throws org.sindice.rdfcommons.adapter.LiteralFactoryException if an error occurs during literal mapping.
      */
     public synchronized Triple<Object> convertSesameStatementToTriple(Statement statement)
     throws LiteralFactoryException {
@@ -162,7 +166,7 @@ public class SesameConversionUtil implements LibAdapter<Literal, Object> {
      */
     public synchronized Resource createSubjectResource(Triple triple) {
         if(triple.getSubjectType() == Triple.SubjectType.uri) {
-            return new URIImpl(triple.getSubject());
+            return valueFactory.createURI(triple.getSubject());
         }
         if(triple.getSubjectType() == Triple.SubjectType.bnode) {
             return new BNodeImpl(triple.getSubject());
@@ -179,7 +183,7 @@ public class SesameConversionUtil implements LibAdapter<Literal, Object> {
      */
     public synchronized Value createObjectValue(Triple triple) {
         if(triple.getObjectType() == Triple.ObjectType.uri) {
-            return new URIImpl(triple.getObjectAsString());
+            return valueFactory.createURI(triple.getObjectAsString());
         }
         if(triple.getObjectType() == Triple.ObjectType.bnode) {
             return new BNodeImpl(triple.getObjectAsString());
@@ -187,7 +191,7 @@ public class SesameConversionUtil implements LibAdapter<Literal, Object> {
         if(triple.getObjectType() == Triple.ObjectType.literal) {
             final String datatype = triple.getLiteralDatatype();
             if(datatype != null) {
-                return new LiteralImpl(triple.getObjectAsString(), new URIImpl(datatype));
+                return new LiteralImpl(triple.getObjectAsString(), valueFactory.createURI(datatype));
             }
             final String language = triple.getLiteralLanguage();
             if(language != null) {
@@ -207,9 +211,9 @@ public class SesameConversionUtil implements LibAdapter<Literal, Object> {
     public Statement convertTripleToSesameStatement(Triple triple) {
         return new ContextStatementImpl(
                 createSubjectResource(triple),
-                new URIImpl(triple.getPredicate()),
+                valueFactory.createURI(triple.getPredicate()),
                 createObjectValue(triple),
-                new URIImpl(triple.getGraph())
+                valueFactory.createURI(triple.getGraph())
         );
     }
 
@@ -237,14 +241,56 @@ public class SesameConversionUtil implements LibAdapter<Literal, Object> {
     public Graph convertTripleSetToSesameGraph(TripleSet tripleSet) {
         final Graph graph = new GraphImpl();
         for(Triple triple : tripleSet) {
+            final String graphURL = triple.getGraph();
             graph.add(
                 createSubjectResource(triple),
-                new URIImpl(triple.getPredicate()),
+                valueFactory.createURI(triple.getPredicate()),
                 createObjectValue(triple),
-                new URIImpl(triple.getGraph())
+                graphURL == null ? null : valueFactory.createURI(graphURL)
             );
         }
         return graph;
+    }
+
+    /**
+     * Converts a triple storage filter in a list of values to perform a triple match with <i>Sesame</i>.
+     *
+     * @param filter filter to be converted.
+     * @return a list of converted values.
+     */
+    public synchronized Value[] convertToTripleMatch(final TripleStorageFilter filter) {
+        final String s = filter.getSubjectMatching();
+        final String p = filter.getPredicateMatching();
+        final Object o = filter.getObjectMatching();
+        return new Value[] {
+                s == null ? null :
+                        filter.requireSubjectBlank()
+                                ?
+                        valueFactory.createBNode(s) : valueFactory.createURI(s),
+                p == null ? null : valueFactory.createURI(p),
+                o == null ? null :
+                        filter.requireObjectBlank()
+                                ?
+                        valueFactory.createBNode(o.toString()) : valueFactory.createLiteral(o.toString())
+
+        };
+    }
+
+    /**
+     * Converts a generic <i>Sesame</i> value to the most appropriate object.
+     *
+     * @param value Sesame value.
+     * @return generated object.
+     * @throws org.sindice.rdfcommons.adapter.LiteralFactoryException
+     */
+    public synchronized Object convertValueToObject(Value value) throws LiteralFactoryException {
+        if(value instanceof URI || value instanceof BNode) {
+            return value.stringValue();
+        }
+        if(value instanceof Literal) {
+            getObjectLiteral((Literal) value);
+        }
+        throw new IllegalStateException();
     }
 
 }
