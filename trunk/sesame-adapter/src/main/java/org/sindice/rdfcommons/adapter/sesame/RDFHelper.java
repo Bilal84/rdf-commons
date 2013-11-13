@@ -17,11 +17,13 @@
 package org.sindice.rdfcommons.adapter.sesame;
 
 import org.openrdf.model.BNode;
+import org.openrdf.model.Graph;
 import org.openrdf.model.Literal;
 import org.openrdf.model.Resource;
 import org.openrdf.model.Statement;
 import org.openrdf.model.URI;
 import org.openrdf.model.Value;
+import org.openrdf.model.impl.GraphImpl;
 import org.openrdf.model.impl.ValueFactoryImpl;
 import org.sindice.rdfcommons.util.MathUtils;
 
@@ -33,36 +35,62 @@ import java.util.Date;
  */
 public class RDFHelper {
 
+    private static final ValueFactoryImpl factory = ValueFactoryImpl.getInstance();
+
     private RDFHelper(){}
 
     public static URI uri(String uri) {
-        return ValueFactoryImpl.getInstance().createURI(uri);
+        return factory.createURI(uri);
     }
 
     public static Literal literal(String s) {
-        return ValueFactoryImpl.getInstance().createLiteral(s);
+        return factory.createLiteral(s);
     }
 
     public static Literal literal(String s, String l) {
-        return ValueFactoryImpl.getInstance().createLiteral(s, l);
+        return factory.createLiteral(s, l);
     }
 
     public static Literal literal(String s, URI datatype) {
-        return ValueFactoryImpl.getInstance().createLiteral(s, datatype);
+        return factory.createLiteral(s, datatype);
+    }
+
+    public static Literal literal(boolean b) {
+        return factory.createLiteral(b);
+    }
+
+    public static Literal literal(byte t) {
+        return factory.createLiteral(t);
+    }
+
+    public static Literal literal(short s) {
+        return factory.createLiteral(s);
+    }
+
+    public static Literal literal(int i) {
+        return factory.createLiteral(i);
+    }
+
+    public static Literal literal(float f) {
+        return factory.createLiteral(f);
+    }
+
+    public static Literal literal(double d) {
+        return factory.createLiteral(d);
     }
 
     public static BNode getBNode(String id) {
-        return ValueFactoryImpl.getInstance().createBNode(
+        return factory.createBNode(
             "node" + MathUtils.md5(id)
         );
     }
 
     public static Statement triple(Resource s, URI p, Value o) {
-        return ValueFactoryImpl.getInstance().createStatement(s, p, o);
+        return factory.createStatement(s, p, o);
     }
 
     public static Statement quad(Resource s, URI p, Value o, Resource g) {
-        return ValueFactoryImpl.getInstance().createStatement(s, p, o, g);
+        return factory.createStatement(s, p, o, g);
     }
 
     public static String toXSDDateTime(Date date) {
@@ -72,4 +100,9 @@ public class RDFHelper {
         sb.insert(22, ':');
         return sb.toString();
     }
+
+    public static Graph createNewGraph() {
+        return new GraphImpl();
+    }
+
 }
