@@ -25,6 +25,8 @@ import org.openrdf.query.QueryLanguage;
 import org.openrdf.query.TupleQuery;
 import org.openrdf.query.TupleQueryResult;
 import org.openrdf.query.parser.ParsedQuery;
+import org.openrdf.query.parser.QueryParser;
+import org.openrdf.query.parser.QueryParserRegistry;
 import org.openrdf.repository.RepositoryException;
 import org.sindice.rdfcommons.adapter.sesame.SesameConversionUtil;
 import org.sindice.rdfcommons.model.TripleBuffer;
@@ -122,14 +124,13 @@ public class VirtuosoSparqlEndPoint implements SparqlEndPoint {
     }
 
     public QueryType getQueryType(ParsedQuery qry) throws SparqlEndpointException {
-        return null; // TODO: TBI
+        return null;
     }
 
     private ParsedQuery parseQuery(String qry) throws MalformedQueryException {
-//        final SPARQLParser sparqlParser =
-//                (SPARQLParser) QueryParserRegistry.getInstance().get(QueryLanguage.SPARQL).getParser();
-//        return sparqlParser.parseQuery(qry, null);
-        return null;
+        // TODO: migrate to: http://stackoverflow.com/questions/17040208/how-can-i-parse-optional-statements-from-a-sparql-query-using-sesame
+        final QueryParser queryParser = QueryParserRegistry.getInstance().get(QueryLanguage.SPARQL).getParser();
+        return queryParser.parseQuery(qry, null);
     }
 
     private TripleSet processGraphQuery(String qry) throws SparqlEndpointException {
