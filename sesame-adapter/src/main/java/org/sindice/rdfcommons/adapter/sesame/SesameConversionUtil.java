@@ -150,11 +150,12 @@ public class SesameConversionUtil implements LibAdapter<Literal, Object> {
             objectType = Triple.ObjectType.literal;
             value = getObjectLiteral((Literal) objResource);
         }
-        return new TripleImpl<Object>(
+        final Resource context = statement.getContext();
+        return new TripleImpl<>(
                 subResource.stringValue(),
                 statement.getPredicate().stringValue(),
                 value, subjectType, objectType,
-                statement.getContext().stringValue()
+                context == null ? null : context.stringValue()
         );
     }
 
