@@ -40,19 +40,7 @@
                 <role>Developer</role>
             </roles>
             <timezone>+1</timezone>
-        </developer>
-        <developer>
-            <id>davide.palmisano</id>
-            <name>Davide Palmisano</name>
-            <email>palmisano at fbk dot eu</email>
-            <organization>Fondazione Bruno Kessler</organization>
-            <organizationUrl>http://www.fbk.eu/</organizationUrl>
-            <roles>
-                <role>Developer</role>
-            </roles>
-            <timezone>+1</timezone>
-        </developer>
-    </developers>
+        </developer>    </developers>
 
     <scm>
         <connection>scm:svn:http://rdf-commons.googlecode.com/svn/trunk/</connection>
@@ -113,7 +101,15 @@
             <layout>default</layout>
         </repository>
 
-        <!-- Jena Repository. -->
+        <!-- Aduna Sesame repository. -->
+        <repository>
+            <id>aduna-software-release-repo</id>
+            <name>Aduna SW Release Repository</name>
+            <url>http://repo.aduna-software.org/maven2/releases</url>
+            <layout>default</layout>
+         </repository>
+
+        <!-- Jena repository. -->
         <repository>
             <id>jena-repository</id>
             <name>Jena Repository</name>
@@ -121,7 +117,7 @@
             <layout>default</layout>
         </repository>
 
-        <!-- Fluido Skin Repository. -->
+        <!-- Fluido Skin repository. -->
         <repository>
             <id>fluido-skin-repository</id>
             <name>fluido-skin Repository for Maven</name>
@@ -139,6 +135,7 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-javadoc-plugin</artifactId>
+                        <version>2.9.1</version>
                         <configuration>
                             <!--
                                 NOTE:
@@ -165,24 +162,28 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-project-info-reports-plugin</artifactId>
+                <version>2.7</version>
             </plugin>
 
             <!-- Javadoc plugin. -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
+                <version>2.9.1</version>
             </plugin>
 
             <!-- Browsable documentation. -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jxr-plugin</artifactId>
+                <version>2.3</version>
             </plugin>
 
             <!-- Changelog report. -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-changelog-plugin</artifactId>
+                <version>2.2</version>
                 <configuration>
                     <type>range</type>
                     <range>60</range>
@@ -219,6 +220,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-checkstyle-plugin</artifactId>
+                <version>2.10</version>
             </plugin>
         </plugins>
     </reporting>
@@ -228,6 +230,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.1</version>
                 <configuration>
                     <source>1.6</source>
                     <target>1.6</target>
@@ -278,6 +281,7 @@
         <module>sesame-adapter</module>
 		<module>jena-adapter</module>
         <module>tripleconverter</module>
+		<module>virtuoso-sesame-triplestore</module>
 		<module>virtuoso-jena-triplestore</module>
 	</modules>
 
