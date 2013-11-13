@@ -47,9 +47,8 @@ import java.util.List;
  * @author Michele Mostarda ( michele.mostarda@gmail.com )
  * @version $Id: VirtuosoDriverTestCase.java 143 2011-05-23 21:41:46Z michele.mostarda $
  */
+// TODO: common test with jena
 public class VirtuosoDriverTestCase {
-
-    private static final String NAMED_GRAPH_URI = "http://test/named/graph/sesame";
 
     /**
      * Test querying by triple match.
@@ -58,7 +57,7 @@ public class VirtuosoDriverTestCase {
      */
     @Test
     public void testTriples() throws RepositoryException {
-        VirtuosoRepository repository = getTestRepository();
+        VirtuosoRepository repository = TestUtil.getTestRepository();
         RepositoryConnection connection = repository.getConnection();
         addTestTriples(connection);
         RepositoryResult result = connection.getStatements(null, null, null, true, (Resource) null);
@@ -79,7 +78,7 @@ public class VirtuosoDriverTestCase {
     @Test
     public void testDataRetrieval()
     throws SQLException, RepositoryException, MalformedQueryException, QueryEvaluationException {
-        VirtuosoRepository repository = getTestRepository();
+        VirtuosoRepository repository = TestUtil.getTestRepository();
         RepositoryConnection connection = repository.getConnection();
         try {
         TupleQuery query = connection.prepareTupleQuery(
@@ -123,7 +122,7 @@ public class VirtuosoDriverTestCase {
             graph.add(sub, pre, obj);
         }
 
-        VirtuosoRepository repository = getTestRepository();
+        VirtuosoRepository repository = TestUtil.getTestRepository();
         RepositoryConnection connection = repository.getConnection();
         connection.clear();
         connection.add(graph);
@@ -154,9 +153,9 @@ public class VirtuosoDriverTestCase {
     public void testConstruct() throws RepositoryException, MalformedQueryException, QueryEvaluationException {
         final String qry = "PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> " +
                            "CONSTRUCT {?s ?p \"123.456\"^^xsd:double} " +
-                            String.format("FROM <%s> ", NAMED_GRAPH_URI) +
+                            String.format("FROM <%s> ", TestUtil.NAMED_GRAPH_URI) +
                             "WHERE {?s ?p \"123.456\"^^xsd:double   }";
-        VirtuosoRepository repository = getTestRepository();
+        VirtuosoRepository repository = TestUtil.getTestRepository();
         RepositoryConnection connection = repository.getConnection();
         GraphQuery query = connection.prepareGraphQuery(QueryLanguage.SPARQL, qry);
         query.evaluate();
@@ -183,22 +182,6 @@ public class VirtuosoDriverTestCase {
             count++;
         }
         return count;
-    }
-
-    /**
-     * @return a named instance of the virtuoso graph.
-     */
-    private VirtuosoRepository getTestRepository() {
-		final String url = "jdbc:virtuoso://localhost:1111";
-        return new VirtuosoRepository(url, "dba", "dba", NAMED_GRAPH_URI);
-    }
-
-    /**
-     * @return an anonymous instance of the virtuoso graph.
-     */
-    private VirtuosoRepository createGraph() {
-		final String url = "jdbc:virtuoso://localhost:1111";
-        return new VirtuosoRepository(url, "dba", "dba");
     }
 
     private void addTestTriples(RepositoryConnection connection) throws RepositoryException {
