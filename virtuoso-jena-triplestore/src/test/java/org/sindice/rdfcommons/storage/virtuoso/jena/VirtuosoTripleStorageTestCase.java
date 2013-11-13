@@ -26,8 +26,6 @@ import org.sindice.rdfcommons.storage.SparqlEndPoint;
 import org.sindice.rdfcommons.storage.SparqlEndpointException;
 import org.sindice.rdfcommons.storage.StorageException;
 import org.sindice.rdfcommons.storage.TripleStorageFilter;
-import org.sindice.rdfcommons.storage.virtuoso.jena.VirtuosoTripleStorage;
-import org.sindice.rdfcommons.storage.virtuoso.jena.VirtuosoTripleStorageConfig;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -48,7 +46,7 @@ public class VirtuosoTripleStorageTestCase {
     public static VirtuosoTripleStorageConfig createLocalTestConfig() {
         return new VirtuosoTripleStorageConfig(
             "jdbc:virtuoso://localhost:1111",
-            "http://default/graph/test",
+            "http://default/graph/test/jena",
             "dba",
             "dba"
         );
@@ -81,9 +79,9 @@ public class VirtuosoTripleStorageTestCase {
         TripleSet tripleSet = new TripleBuffer();
         for(int i = 0; i < SIZE; i++) {
             tripleSet.addTriple(
-                "http//org.sindice.rdfcommons#subject_"   + i + discriminant,
-                "http//org.sindice.rdfcommons#predicate_" + i + discriminant,
-                "http//org.sindice.rdfcommons#object_"    + i + discriminant
+                "http://org.sindice.rdfcommons#subject_"   + i + discriminant,
+                "http://org.sindice.rdfcommons#predicate_" + i + discriminant,
+                "http://org.sindice.rdfcommons#object_"    + i + discriminant
             );
         }
         storage.store(tripleSet);
@@ -93,9 +91,9 @@ public class VirtuosoTripleStorageTestCase {
         assert allTriples.getSize() >= SIZE : "Expected at least the same number of inserted triples.";
         for(int i = 0; i < SIZE; i++) {
             assert allTriples.containsTriple(
-                "http//org.sindice.rdfcommons#subject_"   + i + discriminant,
-                "http//org.sindice.rdfcommons#predicate_" + i + discriminant,
-                "http//org.sindice.rdfcommons#object_"    + i + discriminant,
+                "http://org.sindice.rdfcommons#subject_"   + i + discriminant,
+                "http://org.sindice.rdfcommons#predicate_" + i + discriminant,
+                "http://org.sindice.rdfcommons#object_"    + i + discriminant,
                 Triple.SubjectType.uri, Triple.ObjectType.uri
             );
         }
@@ -111,9 +109,9 @@ public class VirtuosoTripleStorageTestCase {
         TripleSet tripleSet = new TripleBuffer();
         for(int i = 0; i < SIZE; i++) {
             tripleSet.addTriple(
-                "http//org.sindice.rdfcommons#subject_"   + i + discriminant,
-                "http//org.sindice.rdfcommons#predicate_" + i + discriminant,
-                "http//org.sindice.rdfcommons#object_"    + i + discriminant
+                "http://org.sindice.rdfcommons#subject_"   + i + discriminant,
+                "http://org.sindice.rdfcommons#predicate_" + i + discriminant,
+                "http://org.sindice.rdfcommons#object_"    + i + discriminant
             );
         }
         storage.store(graphName, tripleSet);
@@ -123,9 +121,9 @@ public class VirtuosoTripleStorageTestCase {
         assert allTriples.getSize() >= SIZE : "Expected at least the same number of inserted triples.";
         for(int i = 0; i < SIZE; i++) {
             assert allTriples.containsTriple(
-                "http//org.sindice.rdfcommons#subject_"   + i + discriminant,
-                "http//org.sindice.rdfcommons#predicate_" + i + discriminant,
-                "http//org.sindice.rdfcommons#object_"    + i + discriminant,
+                "http://org.sindice.rdfcommons#subject_"   + i + discriminant,
+                "http://org.sindice.rdfcommons#predicate_" + i + discriminant,
+                "http://org.sindice.rdfcommons#object_"    + i + discriminant,
                 Triple.SubjectType.uri, Triple.ObjectType.uri
             );
         }
@@ -146,9 +144,9 @@ public class VirtuosoTripleStorageTestCase {
         for(int i = 0; i < SIZE; i++) {
             tripleSet.addTriple(
                 new TripleImpl<String>(
-                    "http//org.sindice.rdfcommons#blanksub_"  + i + discriminant,
-                    "http//org.sindice.rdfcommons#predicate_" + i + discriminant,
-                    "http//org.sindice.rdfcommons#blankobj_"  + i + discriminant
+                    "http://org.sindice.rdfcommons#blanksub_"  + i + discriminant,
+                    "http://org.sindice.rdfcommons#predicate_" + i + discriminant,
+                    "http://org.sindice.rdfcommons#blankobj_"  + i + discriminant
                 )
             );
         }
@@ -159,9 +157,9 @@ public class VirtuosoTripleStorageTestCase {
         assert allTriples.getSize() >= SIZE : "Expected at least the same number of inserted triples.";
         for(int i = 0; i < SIZE; i++) {
             assert allTriples.containsTriple(
-                "http//org.sindice.rdfcommons#blanksub_"  + i + discriminant,
-                "http//org.sindice.rdfcommons#predicate_" + i + discriminant,
-                "http//org.sindice.rdfcommons#blankobj_"  + i + discriminant,
+                "http://org.sindice.rdfcommons#blanksub_"  + i + discriminant,
+                "http://org.sindice.rdfcommons#predicate_" + i + discriminant,
+                "http://org.sindice.rdfcommons#blankobj_"  + i + discriminant,
                 Triple.SubjectType.uri, Triple.ObjectType.uri
             ) : String.format("Triple %s differs to expected one.", i);
         }
@@ -203,7 +201,7 @@ public class VirtuosoTripleStorageTestCase {
      */
     @Test
     public void testFilterWithBlankSubjectCriteria() throws StorageException {
-        final String graphName = "blank-graph-subject-test";
+        final String graphName = "http://blank-graph-subject-test";
 
         // Preparing storage.
         storage.clear(graphName);
@@ -254,7 +252,7 @@ public class VirtuosoTripleStorageTestCase {
      */
     @Test
     public void testFilterWithBlankObjectCriteria() throws StorageException {
-        final String graphName = "blank-graph-object-test";
+        final String graphName = "http://blank-graph-object-test";
 
         // Preparing storage.
         storage.clear(graphName);
@@ -380,9 +378,9 @@ public class VirtuosoTripleStorageTestCase {
         final String predicate = "http//org.sindice.rdfcommons#predicate_" + discriminant;
         for (int i = 0; i < SIZE; i++) {
             tripleSet.addTriple(
-                    "http//org.sindice.rdfcommons#subject_" + i + discriminant,
+                    "http://org.sindice.rdfcommons#subject_" + i + discriminant,
                     predicate,
-                    "http//org.sindice.rdfcommons#object_" + i + discriminant
+                    "http://org.sindice.rdfcommons#object_" + i + discriminant
             );
         }
         storage.store(tripleSet);
