@@ -46,7 +46,7 @@ import java.util.List;
  */
 public class VirtuosoDriverTestCase {
 
-    private static final String NAMED_GRAPH_URI = "http://test/named/graph";
+    private static final String NAMED_GRAPH_URI = "http://test/named/graph/jena";
 
     /**
      * Test querying by triple match.
